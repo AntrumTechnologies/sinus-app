@@ -9,8 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        // Gather data.
+        let data = DataGatherer.CollectData()
+        
+        // Show data as list.
+        GraphList(charts: data)
     }
 }
 

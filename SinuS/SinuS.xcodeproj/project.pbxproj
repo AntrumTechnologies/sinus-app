@@ -13,9 +13,11 @@
 		4AD26FC128BBA5D60065FB01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AD26FC028BBA5D60065FB01 /* Preview Assets.xcassets */; };
 		4AD26FCC28BBA5D60065FB01 /* SinuSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FCB28BBA5D60065FB01 /* SinuSTests.swift */; };
 		4AD26FD728BBA5D60065FB01 /* SinuSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FD628BBA5D60065FB01 /* SinuSUITests.swift */; };
-		4AD26FE628BBA8D00065FB01 /* SinusGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FE528BBA8D00065FB01 /* SinusGraph.swift */; };
-		4AD26FE828BBAB2A0065FB01 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FE728BBAB2A0065FB01 /* LineChart.swift */; };
 		4AD26FEB28BBAEA40065FB01 /* SinusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FEA28BBAEA40065FB01 /* SinusData.swift */; };
+		4AD26FED28C676C10065FB01 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FEC28C676C10065FB01 /* LineChart.swift */; };
+		4AD26FF128C6773E0065FB01 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FF028C6773E0065FB01 /* Row.swift */; };
+		4AD26FF328C6782D0065FB01 /* GraphList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FF228C6782D0065FB01 /* GraphList.swift */; };
+		4AD26FF528C7BFC10065FB01 /* DataGatherer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,9 +50,11 @@
 		4AD26FD228BBA5D60065FB01 /* SinuSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SinuSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD26FD628BBA5D60065FB01 /* SinuSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinuSUITests.swift; sourceTree = "<group>"; };
 		4AD26FD828BBA5D60065FB01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4AD26FE528BBA8D00065FB01 /* SinusGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusGraph.swift; sourceTree = "<group>"; };
-		4AD26FE728BBAB2A0065FB01 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		4AD26FEA28BBAEA40065FB01 /* SinusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusData.swift; sourceTree = "<group>"; };
+		4AD26FEC28C676C10065FB01 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		4AD26FF028C6773E0065FB01 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		4AD26FF228C6782D0065FB01 /* GraphList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphList.swift; sourceTree = "<group>"; };
+		4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGatherer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +145,9 @@
 		4AD26FE428BBA8C40065FB01 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4AD26FE528BBA8D00065FB01 /* SinusGraph.swift */,
-				4AD26FE728BBAB2A0065FB01 /* LineChart.swift */,
+				4AD26FF228C6782D0065FB01 /* GraphList.swift */,
+				4AD26FEC28C676C10065FB01 /* LineChart.swift */,
+				4AD26FF028C6773E0065FB01 /* Row.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				4AD26FEA28BBAEA40065FB01 /* SinusData.swift */,
+				4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -284,11 +290,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AD26FE828BBAB2A0065FB01 /* LineChart.swift in Sources */,
 				4AD26FEB28BBAEA40065FB01 /* SinusData.swift in Sources */,
+				4AD26FF328C6782D0065FB01 /* GraphList.swift in Sources */,
+				4AD26FF528C7BFC10065FB01 /* DataGatherer.swift in Sources */,
 				4AD26FBC28BBA5D40065FB01 /* ContentView.swift in Sources */,
 				4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */,
-				4AD26FE628BBA8D00065FB01 /* SinusGraph.swift in Sources */,
+				4AD26FF128C6773E0065FB01 /* Row.swift in Sources */,
+				4AD26FED28C676C10065FB01 /* LineChart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

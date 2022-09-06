@@ -7,24 +7,23 @@
 
 import SwiftUI
 
+// The chart view, contains the name of the user
+// and a line graph with data and labels.
 struct LineChart: View {
-    
-    let values: [Int]
-    let labels: [String]
-    
+    let data: SinusData
     let screenWidth = UIScreen.main.bounds.width
     
     private var path: Path {
-        if self.values.isEmpty {
+        if self.data.values.isEmpty {
             return Path()
         }
         
-        var xOffset: Int = Int(screenWidth/CGFloat(self.values.count))
+        var xOffset: Int = Int(screenWidth/CGFloat(self.data.values.count))
         var path = Path()
-        path.move(to: CGPoint(x: xOffset, y: self.values[0]))
+        path.move(to: CGPoint(x: xOffset, y: self.data.values[0]))
         
-        for value in self.values {
-            xOffset += Int(screenWidth/CGFloat(self.values.count))
+        for value in self.data.values {
+            xOffset += Int(screenWidth/CGFloat(self.data.values.count))
             path.addLine(to: CGPoint(x: xOffset, y: value))
         }
         
@@ -32,41 +31,47 @@ struct LineChart: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Line chart test")
-            self.path.stroke(Color.black, lineWidth: 2.0)
+        ZStack {
+            Color.black
+            ZStack {
+                Color.gray
+                VStack {
+                    Text(data.sinusName)
+                        .foregroundColor(.white)
+                        .font(.title)
+                        .padding(.top, 50)
+                    
+                    self.path.stroke(Color.white, lineWidth: 2.0).padding(.top, 100)
+                        .rotationEffect(.degrees(180), anchor: .center)
+                        .rotation3DEffect(
+                            .degrees(180),
+                            axis: /*@START_MENU_TOKEN@*/(x: 0.0, y: 1.0, z: 0.0)/*@END_MENU_TOKEN@*/)
+                        .frame(maxWidth: .infinity, maxHeight: 300)
+                
+                    HStack {
+                        ForEach(self.data.labels, id: \.self) { label in
+                            Text(label)
+                                .frame(width: screenWidth/CGFloat(self.data
+                                    .labels.count) - 10)
+                                .font(.system(size: 12))
+                                .foregroundColor(.white)
+                        }
+                    }
+                }
+                .ignoresSafeArea()
+            }
+            .frame(maxWidth: .infinity, maxHeight: 350)
         }
-    }
-}
-
-// Temp helper function
-private func generatePoints()  -> [SinusPoint] {
-    var points = [SinusPoint]()
-    
-    for _ in 1...20 {
-        let p = SinusPoint(value: Double.random(in: 0...100))
-        points.append(p)
+        .ignoresSafeArea()
     }
     
-    return points
-}
-
-// Temp Helper function
-private func getLabels() -> [String] {
-    var labels = [String]()
-    
-    for i in 1...20 {
-        labels.append(String(i))
-    }
-    
-    return labels
 }
 
 
 struct LineChart_Previews: PreviewProvider {
     static var previews: some View {
-        let values = generatePoints().map { Int($0.value) }
+        let values = generatePoints()
         let labels = getLabels()
-        LineChart(values: values, labels: labels)
+        LineChart(data: SinusData(id: 1, values: values, labels: labels, sinusName: "Lukas"))
     }
 }

@@ -7,15 +7,10 @@
 
 import Foundation
 
-struct SinusData {
-    // Name of the sinus graph
-    var name: String
-    
-    // List of points to display
-    private var points: [Int]
-    
-    // Adds a point to the list
-    public mutating func addPoint(point: Int) {
-        self.points.append(point)
-    }
+// Contains all data required to create a sinus graph.
+public struct SinusData {
+    var id: Int
+    var values: [Int]
+    var labels: [String]
+    let sinusName: String
 }
