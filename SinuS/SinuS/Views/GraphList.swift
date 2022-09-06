@@ -12,16 +12,29 @@ struct GraphList: View {
     let charts: [SinusData]
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                List(charts, id: \.id) { c in
-                    NavigationLink(
-                        destination: LineChart(data: c),
-                        label: {
-                            Row(data: c)
-                        })
-                }.navigationTitle("Sinus Members")
-                
+        ZStack {
+            NavigationView {
+                ZStack {
+                    List(charts, id: \.id) { c in
+                        NavigationLink(
+                            destination: LineChart(data: c),
+                            label: {
+                                Row(data: c)
+                            })
+                    }.navigationTitle("Sinus Members")
+                    
+                    VStack(alignment:.trailing) {
+                       Spacer()
+                       HStack {
+                            Spacer()
+                            NavigationLink(
+                                destination: ProfileView(),
+                                label: {
+                                    ProfileButton()
+                                }).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 30)
+                       }
+                    }
+                }
             }
         }
     }

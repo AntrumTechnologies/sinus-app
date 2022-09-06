@@ -13,6 +13,7 @@ struct Row: View {
     
     var body: some View {
         HStack {
+            Image(systemName: "person.fill")
             Text(data.sinusName)
         }
     }
