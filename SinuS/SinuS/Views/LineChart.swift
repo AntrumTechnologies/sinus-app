@@ -18,13 +18,13 @@ struct LineChart: View {
             return Path()
         }
         
-        var xOffset: Int = Int(screenWidth/CGFloat(self.data.values.count))
+        var xOffset: Int = 0 //Int(screenWidth/CGFloat(self.data.values.count))
         var path = Path()
         path.move(to: CGPoint(x: xOffset, y: self.data.values[0]))
         
         for value in self.data.values {
             xOffset += Int(screenWidth/CGFloat(self.data.values.count))
-            path.addLine(to: CGPoint(x: xOffset, y: value))
+            path.addLine(to: CGPoint(x: xOffset, y: value * 2))
         }
         
         return path
@@ -52,7 +52,7 @@ struct LineChart: View {
                         ForEach(self.data.labels, id: \.self) { label in
                             Text(label)
                                 .frame(width: screenWidth/CGFloat(self.data
-                                    .labels.count) - 10)
+                                    .labels.count)-10)
                                 .font(.system(size: 12))
                                 .foregroundColor(.white)
                         }
@@ -72,6 +72,6 @@ struct LineChart_Previews: PreviewProvider {
     static var previews: some View {
         let values = generatePoints()
         let labels = getLabels()
-        LineChart(data: SinusData(id: 1, values: values, labels: labels, sinusName: "Lukas"))
+        LineChart(data: SinusData(id: 1, values: values, labels: labels, sinusName: "Lukas", sinusTarget: "Target"))
     }
 }

@@ -43,10 +43,9 @@ struct GraphList: View {
 // Temp helper function
 public func generatePoints()  -> [Int] {
     var points = [Int]()
-    
-    for _ in 1...10 {
-        points.append(Int.random(in: 0...100))
-    }
+    points.append(0)
+    points.append(12)
+    points.append(99)
     
     return points
 }
@@ -55,7 +54,7 @@ public func generatePoints()  -> [Int] {
 public func getLabels() -> [String] {
     var labels = [String]()
     
-    for i in 1...10 {
+    for i in 1...3 {
         labels.append(String(i) + "-01")
     }
     
@@ -67,7 +66,7 @@ private func getCharts() -> [SinusData] {
     for i in 1...20 {
         let values = generatePoints()
         let labels = getLabels()
-        let l = SinusData(id: i, values: values, labels: labels, sinusName: "Lukas " + String(i))
+        let l = SinusData(id: i, values: values, labels: labels, sinusName: "Lukas " + String(i), sinusTarget: "Target")
         list.append(l)
     }
     return list

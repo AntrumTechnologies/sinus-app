@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         // Gather data.
+        
         let data = DataGatherer.CollectData()
         
         // Show data as list.
