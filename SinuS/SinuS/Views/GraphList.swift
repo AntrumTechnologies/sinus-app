@@ -9,31 +9,17 @@ import SwiftUI
 
 // View for a list of rows
 struct GraphList: View {
-    let charts: [SinusData]
+    let gatherer: DataManager
     
     var body: some View {
         ZStack {
-            NavigationView {
-                ZStack {
-                    List(charts, id: \.id) { c in
-                        NavigationLink(
-                            destination: LineChart(data: c),
-                            label: {
-                                Row(data: c)
-                            })
-                    }.navigationTitle("Sinus Members")
-                    
-                    VStack(alignment:.trailing) {
-                       Spacer()
-                       HStack {
-                            Spacer()
-                            NavigationLink(
-                                destination: ProfileView(),
-                                label: {
-                                    ProfileButton()
-                                }).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 30)
-                       }
-                    }
+            ZStack {
+                List(gatherer.CollectData(), id: \.id) { c in
+                    NavigationLink(
+                        destination: LineChart(data: c),
+                        label: {
+                            Row(data: c)
+                        })
                 }
             }
         }
@@ -75,6 +61,6 @@ private func getCharts() -> [SinusData] {
 struct GraphList_Previews: PreviewProvider {
     static var previews: some View {
         let list = getCharts()
-        GraphList(charts: list)
+        GraphList(gatherer: DataManager())
     }
 }

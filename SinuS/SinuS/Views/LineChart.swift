@@ -23,7 +23,7 @@ struct LineChart: View {
         path.move(to: CGPoint(x: xOffset, y: self.data.values[0]))
         
         for value in self.data.values {
-            xOffset += Int(screenWidth/CGFloat(self.data.values.count))
+            xOffset += Int((screenWidth - 20)/CGFloat(self.data.values.count))
             path.addLine(to: CGPoint(x: xOffset, y: value * 2))
         }
         
@@ -31,17 +31,11 @@ struct LineChart: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.black
+        VStack {
             ZStack {
-                Color.gray
+                Color.yellow
                 VStack {
-                    Text(data.sinusName)
-                        .foregroundColor(.white)
-                        .font(.title)
-                        .padding(.top, 50)
-                    
-                    self.path.stroke(Color.white, lineWidth: 2.0).padding(.top, 100)
+                    self.path.stroke(Color.blue, lineWidth: 2.0).padding(.top, 100)
                         .rotationEffect(.degrees(180), anchor: .center)
                         .rotation3DEffect(
                             .degrees(180),
@@ -50,17 +44,27 @@ struct LineChart: View {
                 
                     HStack {
                         ForEach(self.data.labels, id: \.self) { label in
-                            Text(label)
+                            Text(label.substring(from: label.index(label.endIndex, offsetBy: -4)))
                                 .frame(width: screenWidth/CGFloat(self.data
-                                    .labels.count)-10)
+                                    .labels.count)-10, height: 20)
                                 .font(.system(size: 12))
-                                .foregroundColor(.white)
+                                .foregroundColor(.blue)
                         }
                     }
                 }
                 .ignoresSafeArea()
             }
             .frame(maxWidth: .infinity, maxHeight: 350)
+            .cornerRadius(15)
+            .shadow(radius: 10)
+            .padding()
+            
+            HStack{
+                SmallFrame(header: "Name:", text: data.sinusName)
+                Spacer()
+                SmallFrame(header: "Target:", text: data.sinusTarget)
+            }
+            .padding()
         }
         .ignoresSafeArea()
     }

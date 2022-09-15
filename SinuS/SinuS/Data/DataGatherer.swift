@@ -20,29 +20,77 @@ private struct GraphDataPoint : Codable {
     let value: Int
 }
 
-// TODO(LoeHen) This class should do the REST class to retrieve data.
-public class DataGatherer {
+public class DataManager {
     private static var userUrl = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/sinus"
     private static var dataUrl = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/sinusvalue/"
     
-    public static func CollectData() -> [SinusData] {
+    private var users = [SinusUserData]()
+    
+    public func AddUser(user: String, target: String) {
+        let parameters: [String: Any] = ["name": user, "date_name": target]
+        var request = URLRequest(url: URL(string: DataManager.userUrl)!)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+           print(response)
+        })
+        task.resume()
+    }
+    
+    public func SendData(data: SinusUpdate) {
+        if let user = self.users.first(where: { user in
+            return user.name == data.name
+        }) {
+            let url = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/sinusvalue"
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "y-MM-d"
+            
+            let parameters: [String: Any] = ["sinus_id": user.id, "date": formatter.string(from: data.date), "value": data.value]
+            var request = URLRequest(url: URL(string: url)!)
+            request.httpMethod = "PUT"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+            } catch let error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            let session = URLSession.shared
+            let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+               print(response)
+            })
+            task.resume()
+        }
+    }
+    
+    public func CollectData() -> [SinusData] {
         let decoder = JSONDecoder()
         
-        var users = [SinusUserData]()
         var sinusData = [SinusData]()
         var dict: [String: [GraphDataPoint]] = [:]
         
         // Get all users.
-        var request = URLRequest(url: URL(string: userUrl)!)
+        var request = URLRequest(url: URL(string: DataManager.userUrl)!)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
-                users = try decoder.decode([SinusUserData].self, from: data!)
-                
-                users.forEach { user in
-                    let url = URL(string: dataUrl + String(user.id))
+                self.users = try decoder.decode([SinusUserData].self, from: data!)
+                self.users.forEach { user in
+                    let url = URL(string: DataManager.dataUrl + String(user.id))
                     var graphDataRequest = URLRequest(url: url!)
                     graphDataRequest.httpMethod = "GET"
                     graphDataRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -64,10 +112,7 @@ public class DataGatherer {
         task.resume()
     
         // WHY CAN SWIFT NOT WAIT FOR A TASK, DUMBASS LANGUAGE
-        Thread.sleep(forTimeInterval: 2)
-        
-        // Construct sinus data
-        print(dict)
+        Thread.sleep(forTimeInterval: 0.5)
         
         dict.forEach { kvp in
             let values = kvp.value.map { p in p.value }

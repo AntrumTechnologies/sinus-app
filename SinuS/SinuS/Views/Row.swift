@@ -20,29 +20,23 @@ struct Row: View {
     
     private var color: Color {
         if (data.values.count > 1) {
-            print("AA")
-            print(data.values.last!)
-            print(data.values[data.values.count - 2])
-            
             if (data.values.last! > data.values[data.values.count - 2]) {
-                print("A")
                 return Color.green
             }
             else if (data.values.last! < data.values[data.values.count - 2]) {
-                print("B")
                 return Color.red
             }
-            
         }
-        print("C")
-        return Color.black
+        return Color.gray
     }
     
     var body: some View {
         HStack {
             Image(systemName: "person.fill")
+                .foregroundColor(.yellow)
             Text(self.data.sinusName)
             Image(systemName: "arrow.right")
+                .foregroundColor(.yellow)
             Text(self.data.sinusTarget)
             Spacer()
             Text(String(self.percentage) + "%").foregroundColor(self.color)
