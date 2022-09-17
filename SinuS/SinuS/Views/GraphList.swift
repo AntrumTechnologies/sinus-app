@@ -14,9 +14,11 @@ struct GraphList: View {
     var body: some View {
         ZStack {
             ZStack {
-                List(gatherer.CollectData(), id: \.id) { c in
+                List(gatherer.CollectData().sorted {
+                    $0.sinusName < $1.sinusName
+                }, id: \.id) { c in
                     NavigationLink(
-                        destination: LineChart(data: c),
+                        destination: LineChart2(data: c),
                         label: {
                             Row(data: c)
                         })
@@ -60,7 +62,6 @@ private func getCharts() -> [SinusData] {
 
 struct GraphList_Previews: PreviewProvider {
     static var previews: some View {
-        let list = getCharts()
         GraphList(gatherer: DataManager())
     }
 }

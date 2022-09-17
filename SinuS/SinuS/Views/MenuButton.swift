@@ -19,10 +19,10 @@ struct MenuButton: View {
             Text(name)
         }
         .frame(width: 150, height: 75)
-        .background(Color.yellow)
-        .cornerRadius(15)
+        .background(Color.blue.opacity(0.5))
+        .cornerRadius(5)
         .shadow(radius: 10)
-        
+        .foregroundColor(.white)
     }
 }
 

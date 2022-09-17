@@ -41,7 +41,7 @@ public class DataManager {
         
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-           print(response)
+            print(response as Any)
         })
         task.resume()
     }
@@ -69,7 +69,7 @@ public class DataManager {
             
             let session = URLSession.shared
             let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-               print(response)
+                print(response as Any)
             })
             task.resume()
         }

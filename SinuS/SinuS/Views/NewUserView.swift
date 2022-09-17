@@ -20,32 +20,39 @@ struct NewUserView: View {
             Image(systemName: "person.circle")
                 .resizable()
                 .frame(width: 100, height: 100, alignment: .center)
-                .foregroundColor(.yellow)
+                .foregroundColor(.blue.opacity(0.5))
             
             Spacer()
             
-            HStack {
-                Text("Username:")
-                Spacer()
-                TextField("", text: self.$username)
-                    .disableAutocorrection(true)
-                    .border(Color.gray, width: 0.5)
-                    .frame(width: 220)
-            }.padding(.horizontal, 15)
+            VStack {
+                HStack {
+                    Text("Username:")
+                    Spacer()
+                    TextField("", text: self.$username)
+                        .disableAutocorrection(true)
+                        .border(Color.white, width: 0.5)
+                        .frame(width: 220)
+                }.padding(.horizontal).padding(.top)
+                
+                HStack {
+                    Text("Target:")
+                    Spacer()
+                    TextField("", text: self.$targetname)
+                        .disableAutocorrection(true)
+                        .border(Color.white, width: 0.5)
+                        .frame(width: 220)
+                }.padding(.horizontal)
+                
+                Button("Add User!") {
+                    self.manager.AddUser(user: self.username, target: self.targetname)
+                }.padding()
+            }
+            .foregroundColor(.white)
+            .background(.blue.opacity(0.5))
+            .cornerRadius(5)
+            .shadow(radius: 5)
+            .padding()
             
-            HStack {
-                Text("Target:")
-                Spacer()
-                TextField("", text: self.$targetname)
-                    .disableAutocorrection(true)
-                    .border(Color.gray, width: 0.5)
-                    .frame(width: 220)
-            }.padding(.horizontal, 15)
-            
-            Button("Add User!") {
-                self.manager.AddUser(user: self.username, target: self.targetname)
-            }.foregroundColor(.yellow)
-                .padding(.top)
             
             Spacer()
         }

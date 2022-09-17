@@ -19,7 +19,7 @@ struct MenuView: View {
                 Image(systemName: "heart")
                     .resizable()
                     .frame(width: 200, height: 200)
-                    .foregroundColor(.yellow)
+                    .foregroundColor(.blue.opacity(0.5))
                 
                 Spacer()
                 HStack {

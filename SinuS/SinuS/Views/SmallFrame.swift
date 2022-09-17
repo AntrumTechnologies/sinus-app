@@ -17,11 +17,11 @@ struct SmallFrame: View {
                 .bold()
             Text(text)
         }
-        .foregroundColor(.blue)
+        .foregroundColor(.white)
         .frame(width: 150, height: 75)
-        .background(Color.yellow)
-        .cornerRadius(15)
-        .shadow(radius: 10)
+        .background(Color.blue.opacity(0.5))
+        .cornerRadius(5)
+        .shadow(radius: 5)
     }
 }
 
