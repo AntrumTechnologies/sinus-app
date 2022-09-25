@@ -33,10 +33,10 @@ struct Row: View {
     var body: some View {
         HStack {
             Image(systemName: "person.fill")
-                .foregroundColor(.blue)
+                .foregroundColor(.red)
             Text(self.data.sinusName)
             Image(systemName: "arrow.right")
-                .foregroundColor(.blue)
+                .foregroundColor(.red)
             Text(self.data.sinusTarget)
             Spacer()
             Text(String(self.percentage) + "%").foregroundColor(self.color).bold()

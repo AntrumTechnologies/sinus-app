@@ -88,6 +88,7 @@ public class DataManager {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
+
                 self.users = try decoder.decode([SinusUserData].self, from: data!)
                 self.users.forEach { user in
                     let url = URL(string: DataManager.dataUrl + String(user.id))
@@ -104,15 +105,17 @@ public class DataManager {
                         }
                     })
                     task2.resume()
+                    
                 }
             } catch {
                 print(error.localizedDescription)
             }
         })
         task.resume()
-    
-        // WHY CAN SWIFT NOT WAIT FOR A TASK, DUMBASS LANGUAGE
-        Thread.sleep(forTimeInterval: 0.5)
+        
+        // Increase sleep for now, issue can be fixed when we refactor this class.
+        // Described: https://github.com/patbro/sinus-app/issues/8
+        Thread.sleep(forTimeInterval: 2)
         
         dict.forEach { kvp in
             let values = kvp.value.map { p in p.value }

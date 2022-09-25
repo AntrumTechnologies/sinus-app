@@ -14,6 +14,7 @@ struct ProfileView: View {
     @State private var value = 50.0
     @State private var isEditing = false
     @State private var date = Date()
+    @State private var showingAlert = false
     
     var body: some View {
         VStack {
@@ -21,7 +22,7 @@ struct ProfileView: View {
             Spacer()
             
             Image(systemName: "person.circle").resizable().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.blue.opacity(0.5))
+                .foregroundColor(.red.opacity(0.5))
             
             Spacer()
             
@@ -56,9 +57,14 @@ struct ProfileView: View {
                 Button("Update") {
                     let update = SinusUpdate(name: self.username, password: "", value: Int(self.value), date: self.date)
                     manager.SendData(data: update)
-                }.padding()
+                    showingAlert = true
+                }
+                .padding()
+                .alert("Value added!", isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) { }
+                }
             }
-            .background(.blue.opacity(0.5))
+            .background(.red.opacity(0.5))
             .cornerRadius(5)
             .shadow(radius: 5)
             .padding()

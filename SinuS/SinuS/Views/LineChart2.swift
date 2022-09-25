@@ -51,7 +51,7 @@ struct LineChart2: View {
             .padding()
             .chartPlotStyle { plotArea in
                 plotArea
-                    .background(.blue.opacity(0.5))
+                    .background(.red.opacity(0.5))
             }
             .foregroundColor(.white)
             

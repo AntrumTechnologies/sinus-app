@@ -12,6 +12,7 @@ struct NewUserView: View {
     
     @State private var username: String = ""
     @State private var targetname: String = ""
+    @State private var showingAlert = false
     
     var body: some View {
         VStack {
@@ -20,7 +21,7 @@ struct NewUserView: View {
             Image(systemName: "person.circle")
                 .resizable()
                 .frame(width: 100, height: 100, alignment: .center)
-                .foregroundColor(.blue.opacity(0.5))
+                .foregroundColor(.red.opacity(0.5))
             
             Spacer()
             
@@ -48,10 +49,14 @@ struct NewUserView: View {
                     
                     // Add initial point at zero
                     self.manager.SendData(data: SinusUpdate(name: self.username, password: "", value: 0, date: Date()))
-                }.padding()
+                }
+                .padding()
+                .alert("User added!", isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) { }
+                }
             }
             .foregroundColor(.white)
-            .background(.blue.opacity(0.5))
+            .background(.red.opacity(0.5))
             .cornerRadius(5)
             .shadow(radius: 5)
             .padding()
