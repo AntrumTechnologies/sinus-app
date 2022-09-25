@@ -7,7 +7,15 @@
 
 import SwiftUI
 
+/**
+    View for the main menu of the application.
+    Allows users to navigate to different parts of the application.
+ */
 struct MenuView: View {
+    
+    /**
+        The view.
+     */
     var body: some View {
         let manager = DataManager()
         

@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+    View which allows users to create new graphs.
+ */
 struct NewUserView: View {
     let manager: DataManager
     
@@ -14,6 +17,9 @@ struct NewUserView: View {
     @State private var targetname: String = ""
     @State private var showingAlert = false
     
+    /**
+        The view.
+     */
     var body: some View {
         VStack {
             Spacer()

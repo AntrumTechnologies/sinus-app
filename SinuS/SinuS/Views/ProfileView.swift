@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+
+/**
+    View showing the user profile,.
+    This view allows the user to update their graph.
+ */
 struct ProfileView: View {
     let manager: DataManager
     
@@ -16,6 +21,9 @@ struct ProfileView: View {
     @State private var date = Date()
     @State private var showingAlert = false
     
+    /**
+        The view.
+     */
     var body: some View {
         VStack {
             
