@@ -7,10 +7,16 @@
 
 import SwiftUI
 
+/**
+    View for a menu button which is used by the MenuView.
+ */
 struct MenuButton: View {
     let image: Image
     let name: String
     
+    /**
+        The view.
+     */
     var body: some View {
         VStack {
             image
@@ -19,7 +25,7 @@ struct MenuButton: View {
             Text(name)
         }
         .frame(width: 150, height: 75)
-        .background(Color.blue.opacity(0.5))
+        .background(Color.red.opacity(0.5))
         .cornerRadius(5)
         .shadow(radius: 10)
         .foregroundColor(.white)

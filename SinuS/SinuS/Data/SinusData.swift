@@ -7,20 +7,40 @@
 
 import Foundation
 
-// Contains all data required to create a sinus graph.
-public struct SinusData {
-    // If of the sinus chart
+/**
+    Class holding all data required to create a sinus graph.
+ */
+public class SinusData: ObservableObject {
+    init(id: Int, values: [Int], labels: [String], sinusName: String, sinusTarget: String) {
+        self.id = id
+        self.values = values
+        self.labels = labels
+        self.sinusName = sinusName
+        self.sinusTarget = sinusTarget
+    }
+    
+    /**
+        Id of the sinus chart
+     */
     var id: Int
     
-    // List of values for the chart between 0 and 100
+    /**
+        List of values for the chart between 0 and 100
+     */
     var values: [Int]
     
-    // Label containing the date.
+    /**
+        Label containing the date.
+     */
     var labels: [String]
     
-    // Name of user.
+    /**
+        Label containing the date.
+     */
     let sinusName: String
     
-    // Name of the target.
+    /**
+        Name of the target.
+     */
     let sinusTarget: String
 }

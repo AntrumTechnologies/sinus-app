@@ -7,19 +7,29 @@
 
 import SwiftUI
 
+/**
+    View for the main menu of the application.
+    Allows users to navigate to different parts of the application.
+ */
 struct MenuView: View {
     
-    
+    /**
+        The view.
+     */
     var body: some View {
         let manager = DataManager()
         
         NavigationView {
             VStack {
                 Spacer()
-                Image(systemName: "heart")
+                Text("Love Wave")
+                    .font(.system(size: 50))
+                    .foregroundColor(.red.opacity(0.5))
+                    
+                Image(systemName: "chart.line.uptrend.xyaxis.circle.fill")
                     .resizable()
                     .frame(width: 200, height: 200)
-                    .foregroundColor(.blue.opacity(0.5))
+                    .foregroundColor(.red.opacity(0.5))
                 
                 Spacer()
                 HStack {

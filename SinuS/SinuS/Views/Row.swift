@@ -7,10 +7,14 @@
 
 import SwiftUI
 
-// View for the rows in the list of users. Can be expanded with user picture.
+/**
+    View for the rows in the list of users. Can be expanded with user picture.
+ */
 struct Row: View {
-    var data: SinusData
-    
+    var data: SinusUserData
+  
+    // TODO show last percentage again in the row view.
+    /*
     private var percentage: Int {
         if (data.values.count > 0) {
             return data.values.last!
@@ -28,18 +32,22 @@ struct Row: View {
             }
         }
         return Color.gray
-    }
+    }*/
     
+    /**
+        The view.
+     */
     var body: some View {
         HStack {
             Image(systemName: "person.fill")
-                .foregroundColor(.blue)
-            Text(self.data.sinusName)
+                .foregroundColor(.red)
+            Text(self.data.name)
             Image(systemName: "arrow.right")
-                .foregroundColor(.blue)
-            Text(self.data.sinusTarget)
+                .foregroundColor(.red)
+            Text(self.data.date_name)
             Spacer()
-            Text(String(self.percentage) + "%").foregroundColor(self.color).bold()
+            // TODO show last percentage again in the row view.
+            //Text(String(self.percentage) + "%").foregroundColor(self.color).bold()
         }
     }
 }
@@ -48,6 +56,6 @@ struct Row_Previews: PreviewProvider {
     static var previews: some View {
         let values = generatePoints()
         let labels = getLabels()
-        Row(data: SinusData(id: 1, values: values, labels: labels, sinusName: "Name", sinusTarget: "Target")).previewLayout(.fixed(width: 300, height: 70))
+        Row(data: SinusUserData(id: 1, name: "Name", date_name: "Target"))
     }
 }

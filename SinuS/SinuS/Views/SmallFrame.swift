@@ -7,10 +7,17 @@
 
 import SwiftUI
 
+/**
+    Small frame view in the style of the application.
+    Used by the LineChart.
+ */
 struct SmallFrame: View {
     let header: String
     let text: String
     
+    /**
+        The view.
+     */
     var body: some View {
         VStack {
             Text(header)
@@ -19,7 +26,7 @@ struct SmallFrame: View {
         }
         .foregroundColor(.white)
         .frame(width: 150, height: 75)
-        .background(Color.blue.opacity(0.5))
+        .background(Color.red.opacity(0.5))
         .cornerRadius(5)
         .shadow(radius: 5)
     }

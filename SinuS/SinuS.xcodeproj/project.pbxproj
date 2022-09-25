@@ -13,6 +13,7 @@
 		4A0B397028D3937100D7EEC9 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B396F28D3937100D7EEC9 /* AdminView.swift */; };
 		4A0B397228D3ABF200D7EEC9 /* SmallFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397128D3ABF100D7EEC9 /* SmallFrame.swift */; };
 		4A0B397428D6044300D7EEC9 /* LineChart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397328D6044200D7EEC9 /* LineChart2.swift */; };
+		4A0B397728E06E9600D7EEC9 /* SinusUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397628E06E9600D7EEC9 /* SinusUserData.swift */; };
 		4A15E00128C7C91C00422C05 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A15E00028C7C91C00422C05 /* ProfileButton.swift */; };
 		4A15E00328C7CD5300422C05 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A15E00228C7CD5300422C05 /* ProfileView.swift */; };
 		4AABA28528CFACC500070E6E /* SinusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABA28428CFACC500070E6E /* SinusUpdate.swift */; };
@@ -53,10 +54,11 @@
 		4A0B396F28D3937100D7EEC9 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
 		4A0B397128D3ABF100D7EEC9 /* SmallFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallFrame.swift; sourceTree = "<group>"; };
 		4A0B397328D6044200D7EEC9 /* LineChart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart2.swift; sourceTree = "<group>"; };
+		4A0B397628E06E9600D7EEC9 /* SinusUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusUserData.swift; sourceTree = "<group>"; };
 		4A15E00028C7C91C00422C05 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		4A15E00228C7CD5300422C05 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4AABA28428CFACC500070E6E /* SinusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusUpdate.swift; sourceTree = "<group>"; };
-		4AD26FB628BBA5D40065FB01 /* SinuS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SinuS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AD26FB628BBA5D40065FB01 /* Love Wave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Love Wave.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinuSApp.swift; sourceTree = "<group>"; };
 		4AD26FBB28BBA5D40065FB01 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4AD26FBD28BBA5D60065FB01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		4A0B397528D60A8B00D7EEC9 /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
+				4A15E00028C7C91C00422C05 /* ProfileButton.swift */,
 				4AD26FEC28C676C10065FB01 /* LineChart.swift */,
 			);
 			path = Deprecated;
@@ -121,7 +124,7 @@
 		4AD26FB728BBA5D40065FB01 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4AD26FB628BBA5D40065FB01 /* SinuS.app */,
+				4AD26FB628BBA5D40065FB01 /* Love Wave.app */,
 				4AD26FC728BBA5D60065FB01 /* SinuSTests.xctest */,
 				4AD26FD228BBA5D60065FB01 /* SinuSUITests.xctest */,
 			);
@@ -174,7 +177,6 @@
 				4A0B397528D60A8B00D7EEC9 /* Deprecated */,
 				4AD26FF228C6782D0065FB01 /* GraphList.swift */,
 				4AD26FF028C6773E0065FB01 /* Row.swift */,
-				4A15E00028C7C91C00422C05 /* ProfileButton.swift */,
 				4A15E00228C7CD5300422C05 /* ProfileView.swift */,
 				4A0B396928D38DE000D7EEC9 /* MenuView.swift */,
 				4A0B396B28D38F0700D7EEC9 /* MenuButton.swift */,
@@ -192,6 +194,7 @@
 				4AD26FEA28BBAEA40065FB01 /* SinusData.swift */,
 				4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */,
 				4AABA28428CFACC500070E6E /* SinusUpdate.swift */,
+				4A0B397628E06E9600D7EEC9 /* SinusUserData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -213,7 +216,7 @@
 			);
 			name = SinuS;
 			productName = SinuS;
-			productReference = 4AD26FB628BBA5D40065FB01 /* SinuS.app */;
+			productReference = 4AD26FB628BBA5D40065FB01 /* Love Wave.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4AD26FC628BBA5D60065FB01 /* SinuSTests */ = {
@@ -331,6 +334,7 @@
 				4AD26FF328C6782D0065FB01 /* GraphList.swift in Sources */,
 				4AD26FF528C7BFC10065FB01 /* DataGatherer.swift in Sources */,
 				4A15E00128C7C91C00422C05 /* ProfileButton.swift in Sources */,
+				4A0B397728E06E9600D7EEC9 /* SinusUserData.swift in Sources */,
 				4AD26FBC28BBA5D40065FB01 /* ContentView.swift in Sources */,
 				4A0B397428D6044300D7EEC9 /* LineChart2.swift in Sources */,
 				4A0B396A28D38DE000D7EEC9 /* MenuView.swift in Sources */,
@@ -508,7 +512,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = LoeHen.SinuS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Love Wave";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -530,7 +534,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = LoeHen.SinuS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Love Wave";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
