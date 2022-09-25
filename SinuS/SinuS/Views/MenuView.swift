@@ -22,7 +22,7 @@ struct MenuView: View {
         NavigationView {
             VStack {
                 Spacer()
-                Text("Love Wave")
+                Text("Love Waves")
                     .font(.system(size: 50))
                     .foregroundColor(.red.opacity(0.5))
                     

@@ -14,6 +14,8 @@
 		4A0B397228D3ABF200D7EEC9 /* SmallFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397128D3ABF100D7EEC9 /* SmallFrame.swift */; };
 		4A0B397428D6044300D7EEC9 /* LineChart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397328D6044200D7EEC9 /* LineChart2.swift */; };
 		4A0B397728E06E9600D7EEC9 /* SinusUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397628E06E9600D7EEC9 /* SinusUserData.swift */; };
+		4A0B397928E081CF00D7EEC9 /* RelationshipStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397828E081CF00D7EEC9 /* RelationshipStatus.swift */; };
+		4A0B397B28E0846900D7EEC9 /* RelationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397A28E0846900D7EEC9 /* RelationStatusView.swift */; };
 		4A15E00128C7C91C00422C05 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A15E00028C7C91C00422C05 /* ProfileButton.swift */; };
 		4A15E00328C7CD5300422C05 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A15E00228C7CD5300422C05 /* ProfileView.swift */; };
 		4AABA28528CFACC500070E6E /* SinusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABA28428CFACC500070E6E /* SinusUpdate.swift */; };
@@ -55,6 +57,8 @@
 		4A0B397128D3ABF100D7EEC9 /* SmallFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallFrame.swift; sourceTree = "<group>"; };
 		4A0B397328D6044200D7EEC9 /* LineChart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart2.swift; sourceTree = "<group>"; };
 		4A0B397628E06E9600D7EEC9 /* SinusUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusUserData.swift; sourceTree = "<group>"; };
+		4A0B397828E081CF00D7EEC9 /* RelationshipStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipStatus.swift; sourceTree = "<group>"; };
+		4A0B397A28E0846900D7EEC9 /* RelationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationStatusView.swift; sourceTree = "<group>"; };
 		4A15E00028C7C91C00422C05 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		4A15E00228C7CD5300422C05 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4AABA28428CFACC500070E6E /* SinusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusUpdate.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				4A0B396F28D3937100D7EEC9 /* AdminView.swift */,
 				4A0B397128D3ABF100D7EEC9 /* SmallFrame.swift */,
 				4A0B397328D6044200D7EEC9 /* LineChart2.swift */,
+				4A0B397A28E0846900D7EEC9 /* RelationStatusView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 				4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */,
 				4AABA28428CFACC500070E6E /* SinusUpdate.swift */,
 				4A0B397628E06E9600D7EEC9 /* SinusUserData.swift */,
+				4A0B397828E081CF00D7EEC9 /* RelationshipStatus.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -341,6 +347,8 @@
 				4A0B397028D3937100D7EEC9 /* AdminView.swift in Sources */,
 				4A0B396C28D38F0700D7EEC9 /* MenuButton.swift in Sources */,
 				4A0B397228D3ABF200D7EEC9 /* SmallFrame.swift in Sources */,
+				4A0B397928E081CF00D7EEC9 /* RelationshipStatus.swift in Sources */,
+				4A0B397B28E0846900D7EEC9 /* RelationStatusView.swift in Sources */,
 				4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */,
 				4AD26FF128C6773E0065FB01 /* Row.swift in Sources */,
 				4AD26FED28C676C10065FB01 /* LineChart.swift in Sources */,

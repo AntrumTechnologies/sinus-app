@@ -54,6 +54,11 @@ struct LineChart2: View {
     
     var body: some View {
         VStack {
+            
+            Divider()
+            
+            RelationStatusView(value: self.data.values.last!)
+            
             Divider()
             Chart {
                 ForEach(points) { point in
@@ -88,6 +93,7 @@ struct LineChart2: View {
                 SmallFrame(header: "Target:", text: self.data.sinusTarget)
             }
             .padding()
+            
             Divider()
         }.onAppear {
             self.gatherer.GatherSingleData(user: self.user)
