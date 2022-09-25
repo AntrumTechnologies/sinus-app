@@ -45,6 +45,9 @@ struct NewUserView: View {
                 
                 Button("Add User!") {
                     self.manager.AddUser(user: self.username, target: self.targetname)
+                    
+                    // Add initial point at zero
+                    self.manager.SendData(data: SinusUpdate(name: self.username, password: "", value: 0, date: Date()))
                 }.padding()
             }
             .foregroundColor(.white)
