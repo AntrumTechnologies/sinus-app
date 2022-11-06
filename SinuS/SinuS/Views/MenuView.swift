@@ -22,6 +22,10 @@ struct MenuView: View {
         NavigationView {
             VStack {
                 Spacer()
+                Text("Token: " + ContentView.AuthenticationToken)
+                    .font(.system(size: 8))
+                    .background(.yellow)
+                
                 Text("Love Waves")
                     .font(.system(size: 50))
                     .foregroundColor(.red.opacity(0.5))

@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    static var AuthenticationToken: String = ""
+    
     var body: some View {
-        MenuView()
+        //MenuView()
+        AutenticationStartView()
     }
 }
 

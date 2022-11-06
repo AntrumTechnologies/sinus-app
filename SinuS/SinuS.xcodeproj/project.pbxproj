@@ -18,6 +18,10 @@
 		4A0B397B28E0846900D7EEC9 /* RelationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397A28E0846900D7EEC9 /* RelationStatusView.swift */; };
 		4A15E00128C7C91C00422C05 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A15E00028C7C91C00422C05 /* ProfileButton.swift */; };
 		4A15E00328C7CD5300422C05 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A15E00228C7CD5300422C05 /* ProfileView.swift */; };
+		4A4C6D002917C2E4001DB4F7 /* AutenticationStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6CFF2917C2E4001DB4F7 /* AutenticationStartView.swift */; };
+		4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D022917C2F9001DB4F7 /* LoginView.swift */; };
+		4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D052917C30D001DB4F7 /* RegisterView.swift */; };
+		4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */; };
 		4AABA28528CFACC500070E6E /* SinusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABA28428CFACC500070E6E /* SinusUpdate.swift */; };
 		4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */; };
 		4AD26FBC28BBA5D40065FB01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FBB28BBA5D40065FB01 /* ContentView.swift */; };
@@ -61,6 +65,10 @@
 		4A0B397A28E0846900D7EEC9 /* RelationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationStatusView.swift; sourceTree = "<group>"; };
 		4A15E00028C7C91C00422C05 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		4A15E00228C7CD5300422C05 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		4A4C6CFF2917C2E4001DB4F7 /* AutenticationStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutenticationStartView.swift; sourceTree = "<group>"; };
+		4A4C6D022917C2F9001DB4F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		4A4C6D052917C30D001DB4F7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResult.swift; sourceTree = "<group>"; };
 		4AABA28428CFACC500070E6E /* SinusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusUpdate.swift; sourceTree = "<group>"; };
 		4AD26FB628BBA5D40065FB01 /* Love Wave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Love Wave.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinuSApp.swift; sourceTree = "<group>"; };
@@ -113,6 +121,35 @@
 				4AD26FEC28C676C10065FB01 /* LineChart.swift */,
 			);
 			path = Deprecated;
+			sourceTree = "<group>";
+		};
+		4A4C6CFE2917C2A8001DB4F7 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4A4C6CFF2917C2E4001DB4F7 /* AutenticationStartView.swift */,
+				4A4C6D022917C2F9001DB4F7 /* LoginView.swift */,
+				4A4C6D052917C30D001DB4F7 /* RegisterView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		4A4C6D092917CDD5001DB4F7 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		4A4C6D0A2917CDE5001DB4F7 /* SinusData */ = {
+			isa = PBXGroup;
+			children = (
+				4AD26FEA28BBAEA40065FB01 /* SinusData.swift */,
+				4AABA28428CFACC500070E6E /* SinusUpdate.swift */,
+				4A0B397628E06E9600D7EEC9 /* SinusUserData.swift */,
+				4A0B397828E081CF00D7EEC9 /* RelationshipStatus.swift */,
+			);
+			path = SinusData;
 			sourceTree = "<group>";
 		};
 		4AD26FAD28BBA5D40065FB01 = {
@@ -178,6 +215,7 @@
 		4AD26FE428BBA8C40065FB01 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4A4C6CFE2917C2A8001DB4F7 /* Authentication */,
 				4A0B397528D60A8B00D7EEC9 /* Deprecated */,
 				4AD26FF228C6782D0065FB01 /* GraphList.swift */,
 				4AD26FF028C6773E0065FB01 /* Row.swift */,
@@ -196,11 +234,9 @@
 		4AD26FE928BBAE930065FB01 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				4AD26FEA28BBAEA40065FB01 /* SinusData.swift */,
+				4A4C6D0A2917CDE5001DB4F7 /* SinusData */,
+				4A4C6D092917CDD5001DB4F7 /* Authentication */,
 				4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */,
-				4AABA28428CFACC500070E6E /* SinusUpdate.swift */,
-				4A0B397628E06E9600D7EEC9 /* SinusUserData.swift */,
-				4A0B397828E081CF00D7EEC9 /* RelationshipStatus.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -334,6 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A4C6D002917C2E4001DB4F7 /* AutenticationStartView.swift in Sources */,
 				4AD26FEB28BBAEA40065FB01 /* SinusData.swift in Sources */,
 				4AABA28528CFACC500070E6E /* SinusUpdate.swift in Sources */,
 				4A15E00328C7CD5300422C05 /* ProfileView.swift in Sources */,
@@ -344,10 +381,13 @@
 				4AD26FBC28BBA5D40065FB01 /* ContentView.swift in Sources */,
 				4A0B397428D6044300D7EEC9 /* LineChart2.swift in Sources */,
 				4A0B396A28D38DE000D7EEC9 /* MenuView.swift in Sources */,
+				4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */,
 				4A0B397028D3937100D7EEC9 /* AdminView.swift in Sources */,
 				4A0B396C28D38F0700D7EEC9 /* MenuButton.swift in Sources */,
 				4A0B397228D3ABF200D7EEC9 /* SmallFrame.swift in Sources */,
 				4A0B397928E081CF00D7EEC9 /* RelationshipStatus.swift in Sources */,
+				4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */,
+				4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */,
 				4A0B397B28E0846900D7EEC9 /* RelationStatusView.swift in Sources */,
 				4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */,
 				4AD26FF128C6773E0065FB01 /* Row.swift in Sources */,

@@ -26,6 +26,82 @@ public class DataManager {
     private var users = [SinusUserData]()
     
     /**
+        Register call to the backend.
+     */
+    public func Register(name: String, email: String, password: String, confirmPassword: String) -> AuthenticationResult? {
+        let semaphore = DispatchSemaphore.init(value: 0)
+        let registerUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/register?"
+        let parameters: [String: Any] = ["name": name, "email": email, "password": password, "confirm_password": confirmPassword]
+        let decoder = JSONDecoder()
+        
+        var request = URLRequest(url: URL(string: registerUrl)!)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        }
+        catch let error {
+            print(error.localizedDescription)
+            return nil
+        }
+        
+        var result: AuthenticationResult? = nil
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            do {
+                defer { semaphore.signal() }
+                result = try decoder.decode(AuthenticationResult.self, from: data!)
+            } catch {
+                print(error.localizedDescription)
+            }
+        })
+        
+        task.resume()
+        semaphore.wait()
+        return result!
+    }
+    
+    /**
+        Login call to the backend.
+     */
+    public func Login(email: String, password: String) -> AuthenticationResult? {
+        let semaphore = DispatchSemaphore.init(value: 0)
+        let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/login?"
+        let parameters: [String: Any] = ["email": email, "password": password]
+        let decoder = JSONDecoder()
+        
+        var request = URLRequest(url: URL(string: loginUrl)!)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        }
+        catch let error {
+            print(error.localizedDescription)
+            return nil
+        }
+        
+        var result: AuthenticationResult? = nil
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            do {
+                defer { semaphore.signal() }
+                result = try decoder.decode(AuthenticationResult.self, from: data!)
+            } catch {
+                print(error.localizedDescription)
+            }
+        })
+        
+        task.resume()
+        semaphore.wait()
+        return result!
+    }
+    
+    /**
         Creates a new user.
      */
     public func AddUser(user: String, target: String) {
@@ -38,7 +114,8 @@ public class DataManager {
         
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-        } catch let error {
+        }
+        catch let error {
             print(error.localizedDescription)
             return
         }
