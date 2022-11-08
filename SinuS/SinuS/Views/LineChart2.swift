@@ -104,6 +104,6 @@ struct LineChart2: View {
 struct LineChart2_Previews: PreviewProvider {
     static var previews: some View {let values = generatePoints()
         let labels = getLabels()
-        LineChart2(gatherer: DataManager(), user: SinusUserData(id: 1, name: "Lukas", date_name: "Target"))
+        LineChart2(gatherer: DataManager(), user: SinusUserData(id: 1, name: "Lukas", date_name: "Target", created_at: "", updated_at: "", deleted_at: ""))
     }
 }

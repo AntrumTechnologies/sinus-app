@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     static var AuthenticationToken: String = ""
+    static var Cookie: String = ""
     
     var body: some View {
         //MenuView()

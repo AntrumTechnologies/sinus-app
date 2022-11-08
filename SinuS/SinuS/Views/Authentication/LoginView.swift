@@ -40,10 +40,16 @@ struct LoginView: View {
             Button("Login") {
                 let ar = self.manager.Login(email: self.email, password: self.password)
                 
-                // Set global authentication token.
-                ContentView.AuthenticationToken = ar!.success
+                if (ar == nil) {
+                    Alert(title: Text("Failure"))
+                }
+                else{
+                    // Set global authentication token.
+                    ContentView.AuthenticationToken = ar!.success
+                    
+                    self.showButton.toggle()
+                }
                 
-                self.showButton.toggle()
             }
             .padding()
         }

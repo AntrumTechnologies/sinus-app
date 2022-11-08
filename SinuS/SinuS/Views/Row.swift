@@ -56,6 +56,6 @@ struct Row_Previews: PreviewProvider {
     static var previews: some View {
         let values = generatePoints()
         let labels = getLabels()
-        Row(data: SinusUserData(id: 1, name: "Name", date_name: "Target"))
+        Row(data: SinusUserData(id: 1, name: "Name", date_name: "Target", created_at: "", updated_at: "", deleted_at: ""))
     }
 }

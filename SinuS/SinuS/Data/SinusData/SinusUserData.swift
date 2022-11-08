@@ -11,4 +11,7 @@ public struct SinusUserData : Codable {
     let id: Int
     let name: String
     let date_name: String
+    let created_at: String?
+    let updated_at: String?
+    let deleted_at: String?
 }

@@ -13,6 +13,7 @@ import Foundation
 private struct GraphDataPoint : Codable {
     let date: String
     let value: Int
+    let deleted_at: String?
 }
 
 /**
@@ -51,6 +52,9 @@ public class DataManager {
         
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
+                if let httpResponse = response as? HTTPURLResponse {
+                    ContentView.Cookie = httpResponse.value(forHTTPHeaderField: "Set-Cookie")!
+                }
                 defer { semaphore.signal() }
                 result = try decoder.decode(AuthenticationResult.self, from: data!)
             } catch {
@@ -89,6 +93,10 @@ public class DataManager {
         
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
+                if let httpResponse = response as? HTTPURLResponse {
+                    ContentView.Cookie = httpResponse.value(forHTTPHeaderField: "Set-Cookie") ?? ""
+                }
+                
                 defer { semaphore.signal() }
                 result = try decoder.decode(AuthenticationResult.self, from: data!)
             } catch {
@@ -98,7 +106,7 @@ public class DataManager {
         
         task.resume()
         semaphore.wait()
-        return result!
+        return result
     }
     
     /**
@@ -111,6 +119,7 @@ public class DataManager {
         var request = URLRequest(url: URL(string: DataManager.userUrl)!)
         request.httpMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
         
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -149,6 +158,7 @@ public class DataManager {
             var request = URLRequest(url: URL(string: url)!)
             request.httpMethod = "PUT"
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
             
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -181,6 +191,8 @@ public class DataManager {
         var request = URLRequest(url: URL(string: DataManager.userUrl)!)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
+        
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
@@ -210,7 +222,7 @@ public class DataManager {
         var graphDataRequest = URLRequest(url: url!)
         graphDataRequest.httpMethod = "GET"
         graphDataRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        graphDataRequest.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
         let session = URLSession.shared
         let task = session.dataTask(with: graphDataRequest, completionHandler: { data2, response2, error2 -> Void in
             do {
