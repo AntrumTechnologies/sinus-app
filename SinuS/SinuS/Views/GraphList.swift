@@ -14,8 +14,6 @@ struct GraphList: View {
     let gatherer: DataManager
     let onlyFollowing: Bool
     
-    
-    
     var body: some View {
         ZStack {
             ZStack {

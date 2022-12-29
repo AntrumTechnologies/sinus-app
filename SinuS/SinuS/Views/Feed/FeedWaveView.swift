@@ -91,6 +91,6 @@ struct FeedWaveView: View {
 
 struct Row_Previews: PreviewProvider {
     static var previews: some View {
-        FeedWaveView(userData: SinusUserData(id: 1, name: "Name", date_name: "Target", created_at: "", updated_at: "", deleted_at: ""), data: SinusData(id: 1, values: [ 20 , 30], labels: [ "label", "Lavel" ], sinusName: "Name", sinusTarget: "Name"))
+        FeedWaveView(userData: SinusUserData(id: 1, name: "Name", user_id: 1, date_name: "Target", created_at: "", updated_at: "", deleted_at: ""), data: SinusData(id: 1, values: [ 20 , 30], labels: [ "label", "Lavel" ], sinusName: "Name", sinusTarget: "Name"))
     }
 }

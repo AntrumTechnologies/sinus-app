@@ -66,7 +66,7 @@ public class DataManager {
         
         task.resume()
         semaphore.wait()
-        return result!
+        return result
     }
     
     /**
@@ -232,7 +232,7 @@ public class DataManager {
         return internalUsers
     }
     
-    public func UnFollowUser(user: SinusUserData) {
+    public func UnFollowUser(user_id: Int) {
         let sem = DispatchSemaphore.init(value: 0)
         
         let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/unfollow"
@@ -242,7 +242,7 @@ public class DataManager {
         request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
         
         
-        let parameters: [String: Any] = ["user_id_to_unfollow": user.id,]
+        let parameters: [String: Any] = ["user_id_to_unfollow": user_id,]
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         } catch let error {
@@ -260,7 +260,7 @@ public class DataManager {
         sem.wait()
     }
     
-    public func FollowUser(user: SinusUserData) {
+    public func FollowUser(user_id: Int) {
         let sem = DispatchSemaphore.init(value: 0)
         
         let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/follow"
@@ -270,7 +270,7 @@ public class DataManager {
         request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
         
         
-        let parameters: [String: Any] = ["user_id_to_follow": user.id,]
+        let parameters: [String: Any] = ["user_id_to_follow": user_id,]
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         } catch let error {
