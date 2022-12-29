@@ -18,19 +18,37 @@ struct MenuView: View {
      */
     var body: some View {
         let manager = DataManager()
-        TabView {
-            ProfileView(manager: manager)
-                .tabItem{
-                    Label("Profile", systemImage: "person")
-                }
-            GraphList(gatherer: manager)
-                .tabItem{
-                    Label("Explore", systemImage: "list.bullet")
-                }
-            NewUserView(manager: manager)
-                .tabItem{
-                    Label("Create Wave", systemImage: "water.waves")
-                }
+        
+        VStack{
+            HStack{
+                Spacer()
+                Image(systemName: "water.waves")
+                    .resizable()
+                    .frame().frame(width: 25, height: 25)
+                    .foregroundColor(.white)
+                    .padding(.bottom)
+                Text("Love Waves")
+                    .foregroundColor(.white)
+                    .font(.system(size: 25))
+                    .padding(.bottom)
+                Spacer()
+            }
+            .background(Color.red.opacity(0.5))
+            
+            TabView {
+                ProfileView(manager: manager)
+                    .tabItem{
+                        Label("Profile", systemImage: "person")
+                    }
+                GraphList(gatherer: manager)
+                    .tabItem{
+                        Label("Explore", systemImage: "list.bullet")
+                    }
+                NewUserView(manager: manager)
+                    .tabItem{
+                        Label("Create Wave", systemImage: "water.waves")
+                    }
+            }
         }
     }
 }

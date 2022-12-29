@@ -22,7 +22,7 @@ struct GraphList: View {
                     NavigationLink(
                         destination: LineChart2(gatherer: gatherer, user: c),
                         label: {
-                            Row(data: c)
+                            FeedWaveView(data: c, pointA: 10, pointB: 20)
                         })
                 }
             }

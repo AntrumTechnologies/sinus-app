@@ -20,12 +20,9 @@ struct LineChart: View {
         
         var xOffset: Int = 0 //Int(screenWidth/CGFloat(self.data.values.count))
         var path = Path()
-        path.move(to: CGPoint(x: xOffset, y: self.data.values[0]))
+        path.move(to: CGPoint(x: 10, y: 0))
+        path.addLine(to: CGPoint(x: Int(screenWidth - 20), y: 20))
         
-        for value in self.data.values {
-            xOffset += Int((screenWidth - 20)/CGFloat(self.data.values.count))
-            path.addLine(to: CGPoint(x: xOffset, y: value * 2))
-        }
         
         return path
     }

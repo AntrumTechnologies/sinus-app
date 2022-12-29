@@ -22,6 +22,7 @@
 		4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D022917C2F9001DB4F7 /* LoginView.swift */; };
 		4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D052917C30D001DB4F7 /* RegisterView.swift */; };
 		4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */; };
+		4A4C6D0D295D9E1B001DB4F7 /* FeedWaveGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D0C295D9E1B001DB4F7 /* FeedWaveGraphView.swift */; };
 		4AABA28528CFACC500070E6E /* SinusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABA28428CFACC500070E6E /* SinusUpdate.swift */; };
 		4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */; };
 		4AD26FBC28BBA5D40065FB01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FBB28BBA5D40065FB01 /* ContentView.swift */; };
@@ -31,7 +32,7 @@
 		4AD26FD728BBA5D60065FB01 /* SinuSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FD628BBA5D60065FB01 /* SinuSUITests.swift */; };
 		4AD26FEB28BBAEA40065FB01 /* SinusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FEA28BBAEA40065FB01 /* SinusData.swift */; };
 		4AD26FED28C676C10065FB01 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FEC28C676C10065FB01 /* LineChart.swift */; };
-		4AD26FF128C6773E0065FB01 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FF028C6773E0065FB01 /* Row.swift */; };
+		4AD26FF128C6773E0065FB01 /* FeedWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FF028C6773E0065FB01 /* FeedWaveView.swift */; };
 		4AD26FF328C6782D0065FB01 /* GraphList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FF228C6782D0065FB01 /* GraphList.swift */; };
 		4AD26FF528C7BFC10065FB01 /* DataGatherer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		4A4C6D022917C2F9001DB4F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4A4C6D052917C30D001DB4F7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResult.swift; sourceTree = "<group>"; };
+		4A4C6D0C295D9E1B001DB4F7 /* FeedWaveGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedWaveGraphView.swift; sourceTree = "<group>"; };
 		4AABA28428CFACC500070E6E /* SinusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusUpdate.swift; sourceTree = "<group>"; };
 		4AD26FB628BBA5D40065FB01 /* Love Wave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Love Wave.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinuSApp.swift; sourceTree = "<group>"; };
@@ -84,7 +86,7 @@
 		4AD26FD828BBA5D60065FB01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AD26FEA28BBAEA40065FB01 /* SinusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusData.swift; sourceTree = "<group>"; };
 		4AD26FEC28C676C10065FB01 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
-		4AD26FF028C6773E0065FB01 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		4AD26FF028C6773E0065FB01 /* FeedWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedWaveView.swift; sourceTree = "<group>"; };
 		4AD26FF228C6782D0065FB01 /* GraphList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphList.swift; sourceTree = "<group>"; };
 		4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGatherer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +154,15 @@
 			path = SinusData;
 			sourceTree = "<group>";
 		};
+		4A4C6D0B295D9D7A001DB4F7 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				4AD26FF028C6773E0065FB01 /* FeedWaveView.swift */,
+				4A4C6D0C295D9E1B001DB4F7 /* FeedWaveGraphView.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
 		4AD26FAD28BBA5D40065FB01 = {
 			isa = PBXGroup;
 			children = (
@@ -215,10 +226,10 @@
 		4AD26FE428BBA8C40065FB01 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4A4C6D0B295D9D7A001DB4F7 /* Feed */,
 				4A4C6CFE2917C2A8001DB4F7 /* Authentication */,
 				4A0B397528D60A8B00D7EEC9 /* Deprecated */,
 				4AD26FF228C6782D0065FB01 /* GraphList.swift */,
-				4AD26FF028C6773E0065FB01 /* Row.swift */,
 				4A15E00228C7CD5300422C05 /* ProfileView.swift */,
 				4A0B396928D38DE000D7EEC9 /* MenuView.swift */,
 				4A0B396B28D38F0700D7EEC9 /* MenuButton.swift */,
@@ -384,13 +395,14 @@
 				4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */,
 				4A0B397028D3937100D7EEC9 /* AdminView.swift in Sources */,
 				4A0B396C28D38F0700D7EEC9 /* MenuButton.swift in Sources */,
+				4A4C6D0D295D9E1B001DB4F7 /* FeedWaveGraphView.swift in Sources */,
 				4A0B397228D3ABF200D7EEC9 /* SmallFrame.swift in Sources */,
 				4A0B397928E081CF00D7EEC9 /* RelationshipStatus.swift in Sources */,
 				4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */,
 				4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */,
 				4A0B397B28E0846900D7EEC9 /* RelationStatusView.swift in Sources */,
 				4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */,
-				4AD26FF128C6773E0065FB01 /* Row.swift in Sources */,
+				4AD26FF128C6773E0065FB01 /* FeedWaveView.swift in Sources */,
 				4AD26FED28C676C10065FB01 /* LineChart.swift in Sources */,
 				4A0B396E28D3935900D7EEC9 /* NewUserView.swift in Sources */,
 			);
