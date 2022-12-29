@@ -170,6 +170,7 @@ public class DataManager {
             
             let formatter = DateFormatter()
             formatter.dateFormat = "y-MM-d"
+            print(formatter.string(from: data.date))
             
             let parameters: [String: Any] = ["sinus_id": user.id, "date": formatter.string(from: data.date), "value": data.value]
             var request = URLRequest(url: URL(string: url)!)
