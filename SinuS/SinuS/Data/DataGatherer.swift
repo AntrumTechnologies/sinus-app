@@ -56,6 +56,7 @@ public class DataManager {
                     ContentView.Cookie = httpResponse.value(forHTTPHeaderField: "Set-Cookie")!
                 }
                 defer { semaphore.signal() }
+                print(data!)
                 result = try decoder.decode(AuthenticationResult.self, from: data!)
             } catch {
                 print(error.localizedDescription)
@@ -197,6 +198,7 @@ public class DataManager {
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
                 defer { sem.signal() }
+                print(data)
                 internalUsers = try decoder.decode([SinusUserData].self, from: data!)
             } catch {
                 print(error.localizedDescription)
@@ -227,6 +229,7 @@ public class DataManager {
         let task = session.dataTask(with: graphDataRequest, completionHandler: { data2, response2, error2 -> Void in
             do {
                 defer { sem.signal() }
+                print(data2!)
                 points = try decoder.decode([GraphDataPoint].self, from: data2!)
             } catch {
                 print(error2!.localizedDescription)
