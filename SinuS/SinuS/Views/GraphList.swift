@@ -13,16 +13,20 @@ import SwiftUI
 struct GraphList: View {
     let gatherer: DataManager
     
+    
+    
     var body: some View {
         ZStack {
             ZStack {
                 List(gatherer.GatherUsers().sorted {
                     $0.name < $1.name
                 }, id: \.id) { c in
+                    var data = gatherer.GatherSingleData(user: c)
+                    
                     NavigationLink(
-                        destination: LineChart2(gatherer: gatherer, user: c),
+                        destination: LineChart2(user: c, data: data),
                         label: {
-                            FeedWaveView(data: c, pointA: 10, pointB: 20)
+                            FeedWaveView(userData: c, data: data)
                         })
                 }
             }

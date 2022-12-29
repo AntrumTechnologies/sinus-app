@@ -36,18 +36,22 @@ struct MenuView: View {
             .background(Color.red.opacity(0.5))
             
             TabView {
-                ProfileView(manager: manager)
-                    .tabItem{
-                        Label("Profile", systemImage: "person")
-                    }
-                GraphList(gatherer: manager)
-                    .tabItem{
-                        Label("Explore", systemImage: "list.bullet")
-                    }
-                NewUserView(manager: manager)
-                    .tabItem{
-                        Label("Create Wave", systemImage: "water.waves")
-                    }
+                Group{
+                    ProfileView(manager: manager)
+                        .tabItem{
+                            Label("Profile", systemImage: "person")
+                        }
+                    GraphList(gatherer: manager)
+                        .tabItem{
+                            Label("Explore", systemImage: "list.bullet")
+                        }
+                    NewUserView(manager: manager)
+                        .tabItem{
+                            Label("Create Wave", systemImage: "water.waves")
+                        }
+                }
+                .toolbar(.visible, for: .tabBar)
+                .toolbarBackground(.red.opacity(0.5), for: .tabBar)
             }
         }
     }

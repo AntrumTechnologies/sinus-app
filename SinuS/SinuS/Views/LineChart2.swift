@@ -22,14 +22,12 @@ struct ChartPoint: Identifiable {
     View showing the user's Sinus/Graph.
  */
 struct LineChart2: View {
-    private let gatherer: DataManager
     private let user: SinusUserData
     private let data: SinusData
     
-    init(gatherer: DataManager, user: SinusUserData) {
-        self.gatherer = gatherer
+    init(user: SinusUserData, data: SinusData) {
         self.user = user
-        self.data = self.gatherer.GatherSingleData(user: self.user)
+        self.data = data
     }
     
     var points: [ChartPoint] {
@@ -54,7 +52,15 @@ struct LineChart2: View {
     
     var body: some View {
         VStack {
-            
+            HStack{
+                Spacer()
+                Image(systemName: "water.waves")
+                    .resizable()
+                    .frame(width: 25, height: 25)
+                    .foregroundColor(.white)
+                    .padding(.bottom)
+                Spacer()
+            }.background(.red.opacity(0.5))
             Divider()
             
             RelationStatusView(value: self.data.values.last!)
@@ -95,8 +101,6 @@ struct LineChart2: View {
             .padding()
             
             Divider()
-        }.onAppear {
-            self.gatherer.GatherSingleData(user: self.user)
         }
     }
 }
@@ -104,6 +108,6 @@ struct LineChart2: View {
 struct LineChart2_Previews: PreviewProvider {
     static var previews: some View {let values = generatePoints()
         let labels = getLabels()
-        LineChart2(gatherer: DataManager(), user: SinusUserData(id: 1, name: "Lukas", date_name: "Target", created_at: "", updated_at: "", deleted_at: ""))
+        LineChart2(user: SinusUserData(id: 1, name: "Lukas", date_name: "Target", created_at: "", updated_at: "", deleted_at: ""), data: SinusData(id: 1, values: [ 20 , 30], labels: [ "label", "Lavel" ], sinusName: "Name", sinusTarget: "Name"))
     }
 }

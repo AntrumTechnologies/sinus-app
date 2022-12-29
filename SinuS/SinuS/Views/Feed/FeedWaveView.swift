@@ -11,9 +11,25 @@ import SwiftUI
     View for the rows in the list of users. Can be expanded with user picture.
  */
 struct FeedWaveView: View {
-    var data: SinusUserData
-    var pointA: Int
-    var pointB: Int
+    var userData: SinusUserData
+    var data: SinusData
+    
+    
+    private var pointA: Int {
+        if (data.values.count > 1)
+        {
+            return data.values[data.values.count - 2]
+        }
+        return 1;
+    }
+    
+    private var pointB: Int {
+        if (data.values.count > 1)
+        {
+            return data.values[data.values.count - 1]
+        }
+        return 1;
+    }
   
 
     private var percentage: Int {
@@ -47,14 +63,15 @@ struct FeedWaveView: View {
      */
     var body: some View {
         VStack{
+            Spacer()
             HStack {
                 Spacer()
                 Image(systemName: "person.fill")
                     .foregroundColor(.red)
-                Text(self.data.name)
+                Text(self.userData.name)
                 Image(systemName: "arrow.right")
                     .foregroundColor(.red)
-                Text(self.data.date_name)
+                Text(self.userData.date_name)
                 Spacer()
                 
                 Spacer()
@@ -68,12 +85,12 @@ struct FeedWaveView: View {
             FeedWaveGraphView(pointA: self.pointA, pointB: self.pointB)
             Spacer()
         }
-        .frame(height: 200)
+        .frame(height: 260)
     }
 }
 
 struct Row_Previews: PreviewProvider {
     static var previews: some View {
-        FeedWaveView(data: SinusUserData(id: 1, name: "Name", date_name: "Target", created_at: "", updated_at: "", deleted_at: ""), pointA: 30, pointB: 42)
+        FeedWaveView(userData: SinusUserData(id: 1, name: "Name", date_name: "Target", created_at: "", updated_at: "", deleted_at: ""), data: SinusData(id: 1, values: [ 20 , 30], labels: [ "label", "Lavel" ], sinusName: "Name", sinusTarget: "Name"))
     }
 }
