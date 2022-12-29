@@ -76,7 +76,7 @@ struct RegisterView: View {
                 self.showButton.toggle()
             }.padding()
         }
-        .background(.red.opacity(0.5))
+        .background(ContentView.AppColor)
         .cornerRadius(5)
         .shadow(radius: 5)
         .padding()

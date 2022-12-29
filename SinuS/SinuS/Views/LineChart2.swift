@@ -60,7 +60,7 @@ struct LineChart2: View {
                     .foregroundColor(.white)
                     .padding(.bottom)
                 Spacer()
-            }.background(.red.opacity(0.5))
+            }.background(ContentView.AppColor)
             Divider()
             
             RelationStatusView(value: self.data.values.last!)
@@ -76,7 +76,7 @@ struct LineChart2: View {
             .padding()
             .chartPlotStyle { plotArea in
                 plotArea
-                    .background(.red.opacity(0.5))
+                    .background(ContentView.SecondAppColor)
             }
             .foregroundColor(.white)
             

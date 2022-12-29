@@ -24,7 +24,7 @@ struct RelationStatusView: View {
         case .Kwarrel: return "Kwarrel"
         case .Prela: return "Prela"
         case .Ignorela: return "Ignorela"
-        case .Relationship: return "Relationsip"
+        case .Relationship: return "Relationship"
         }
     }
     
@@ -38,7 +38,7 @@ struct RelationStatusView: View {
         }
         .foregroundColor(.white)
         .frame(width: 250, height: 50)
-        .background(Color.red.opacity(0.5))
+        .background(ContentView.AppColor)
         .cornerRadius(5)
         .shadow(radius: 5)
     }

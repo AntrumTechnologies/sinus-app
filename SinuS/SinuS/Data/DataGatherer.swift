@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
     Internal struct to hold data/date's
@@ -113,7 +114,7 @@ public class DataManager {
     /**
         Creates a new user.
      */
-    public func AddUser(user: String, target: String) {
+    public func AddUser(user: String, target: String) -> Bool {
         let sem = DispatchSemaphore.init(value: 0)
         let parameters: [String: Any] = ["name": user, "date_name": target]
         
@@ -127,24 +128,41 @@ public class DataManager {
         }
         catch let error {
             print(error.localizedDescription)
-            return
+            return false
         }
         
         let session = URLSession.shared
+        var success = false;
+        
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             defer { sem.signal() }
             print(response as Any)
+            
+            if (error.debugDescription == "") {
+                success = true
+            }
+            
+            print(error.debugDescription)
         })
         
         task.resume()
         sem.wait()
+        
+        print(success)
+        return success
     }
     
     /**
         Updates the graphs for a user by adding a new point.
      */
     public func SendData(data: SinusUpdate) {
+        print("SendData")
         let sem = DispatchSemaphore.init(value: 0)
+        
+        if (users.count < 1) {
+            _ = self.GatherUsers()
+        }
+        
         if let user = self.users.first(where: { user in
             return user.name == data.name
         }) {
@@ -189,7 +207,7 @@ public class DataManager {
         var internalUsers = [SinusUserData]()
         let sem = DispatchSemaphore.init(value: 0)
         
-        var request = URLRequest(url: URL(string: DataManager.userUrl)!)
+        var request = URLRequest(url: URL(string: DataManager.userUrl + "/index")!)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
@@ -208,6 +226,7 @@ public class DataManager {
         task.resume()
         sem.wait()
         
+        self.users = internalUsers
         return internalUsers
     }
     

@@ -27,7 +27,7 @@ struct NewUserView: View {
             Image(systemName: "person.circle")
                 .resizable()
                 .frame(width: 100, height: 100, alignment: .center)
-                .foregroundColor(.red.opacity(0.5))
+                .foregroundColor(ContentView.AppColor)
             
             Spacer()
             
@@ -62,7 +62,7 @@ struct NewUserView: View {
                 }
             }
             .foregroundColor(.white)
-            .background(.red.opacity(0.5))
+            .background(ContentView.AppColor)
             .cornerRadius(5)
             .shadow(radius: 5)
             .padding()

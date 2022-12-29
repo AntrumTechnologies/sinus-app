@@ -33,7 +33,8 @@ struct MenuView: View {
                     .padding(.bottom)
                 Spacer()
             }
-            .background(Color.red.opacity(0.5))
+            //.background(.red)
+            .background(ContentView.AppColor)
             
             TabView {
                 Group{
@@ -51,7 +52,7 @@ struct MenuView: View {
                         }
                 }
                 .toolbar(.visible, for: .tabBar)
-                .toolbarBackground(.red.opacity(0.5), for: .tabBar)
+                .toolbarBackground(ContentView.AppColor, for: .tabBar)
             }
         }
     }

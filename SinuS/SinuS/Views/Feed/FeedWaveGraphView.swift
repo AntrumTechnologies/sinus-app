@@ -21,7 +21,7 @@ struct FeedWaveGraphView: View {
         
         if (pointB >= pointA) {
             pointAy = 0
-            pointBy = Int(Double(pointB - pointA) * -0.5)
+            pointBy = Int(Double(pointB - pointA) * -1)
         }
         else {
             pointAy = -100
@@ -44,7 +44,7 @@ struct FeedWaveGraphView: View {
             self.path.stroke(.white, lineWidth: 2.0).padding(.top, 120)
                 .frame(maxWidth: .infinity, maxHeight: 300)
         }
-        .background(Color.red.opacity(0.5))
+        .background(ContentView.SecondAppColor)
         .frame(height: 200)
         .cornerRadius(5)
         .padding(.all)
@@ -54,6 +54,6 @@ struct FeedWaveGraphView: View {
 
 struct FeedWaveGraphView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedWaveGraphView(pointA: 100, pointB: 0)
+        FeedWaveGraphView(pointA: 10, pointB: 100)
     }
 }

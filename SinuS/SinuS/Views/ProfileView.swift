@@ -30,7 +30,7 @@ struct ProfileView: View {
             Spacer()
             
             Image(systemName: "person.circle").resizable().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.red.opacity(0.5))
+                .foregroundColor(ContentView.AppColor)
             
             Spacer()
             
@@ -72,7 +72,7 @@ struct ProfileView: View {
                     Button("OK", role: .cancel) { }
                 }
             }
-            .background(.red.opacity(0.5))
+            .background(ContentView.AppColor)
             .cornerRadius(5)
             .shadow(radius: 5)
             .padding()
