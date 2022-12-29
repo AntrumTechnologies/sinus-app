@@ -12,13 +12,14 @@ import SwiftUI
  */
 struct GraphList: View {
     let gatherer: DataManager
+    let onlyFollowing: Bool
     
     
     
     var body: some View {
         ZStack {
             ZStack {
-                List(gatherer.GatherUsers().sorted {
+                List(gatherer.GatherUsers(onlyFollowing: self.onlyFollowing).sorted {
                     $0.name < $1.name
                 }, id: \.id) { c in
                     var data = gatherer.GatherSingleData(user: c)
@@ -75,6 +76,6 @@ private func getCharts() -> [SinusData] {
 
 struct GraphList_Previews: PreviewProvider {
     static var previews: some View {
-        GraphList(gatherer: DataManager())
+        GraphList(gatherer: DataManager(), onlyFollowing: false)
     }
 }

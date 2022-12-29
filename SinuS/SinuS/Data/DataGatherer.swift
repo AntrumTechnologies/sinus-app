@@ -160,7 +160,7 @@ public class DataManager {
         let sem = DispatchSemaphore.init(value: 0)
         
         if (users.count < 1) {
-            _ = self.GatherUsers()
+            _ = self.GatherUsers(onlyFollowing: false)
         }
         
         if let user = self.users.first(where: { user in
@@ -170,8 +170,6 @@ public class DataManager {
             
             let formatter = DateFormatter()
             formatter.dateFormat = "y-MM-d"
-            
-            
             
             let parameters: [String: Any] = ["sinus_id": user.id, "date": formatter.string(from: data.date), "value": data.value]
             var request = URLRequest(url: URL(string: url)!)
@@ -201,13 +199,18 @@ public class DataManager {
     /**
         Gathers the list of users.
      */
-    public func GatherUsers() -> [SinusUserData] {
+    public func GatherUsers(onlyFollowing: Bool) -> [SinusUserData] {
         let decoder = JSONDecoder()
         
         var internalUsers = [SinusUserData]()
         let sem = DispatchSemaphore.init(value: 0)
         
-        var request = URLRequest(url: URL(string: DataManager.userUrl + "/index")!)
+        var url = DataManager.userUrl
+        if (onlyFollowing) {
+            url += "/following"
+        }
+        
+        var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
@@ -216,7 +219,6 @@ public class DataManager {
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
                 defer { sem.signal() }
-                print(data)
                 internalUsers = try decoder.decode([SinusUserData].self, from: data!)
             } catch {
                 print(error.localizedDescription)
@@ -228,6 +230,62 @@ public class DataManager {
         
         self.users = internalUsers
         return internalUsers
+    }
+    
+    public func UnFollowUser(user: SinusUserData) {
+        let sem = DispatchSemaphore.init(value: 0)
+        
+        let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/unfollow"
+        var request = URLRequest(url: URL(string: urlString)!)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
+        
+        
+        let parameters: [String: Any] = ["user_id_to_unfollow": user.id,]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            defer { sem.signal() }
+            print(response as Any)
+        })
+        
+        task.resume()
+        sem.wait()
+    }
+    
+    public func FollowUser(user: SinusUserData) {
+        let sem = DispatchSemaphore.init(value: 0)
+        
+        let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/follow"
+        var request = URLRequest(url: URL(string: urlString)!)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
+        
+        
+        let parameters: [String: Any] = ["user_id_to_follow": user.id,]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            defer { sem.signal() }
+            print(response as Any)
+        })
+        
+        task.resume()
+        sem.wait()
     }
     
     

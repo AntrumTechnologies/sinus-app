@@ -24,6 +24,7 @@ struct ChartPoint: Identifiable {
 struct LineChart2: View {
     private let user: SinusUserData
     private let data: SinusData
+    private static var following = false
     
     init(user: SinusUserData, data: SinusData) {
         self.user = user
@@ -101,6 +102,22 @@ struct LineChart2: View {
             .padding()
             
             Divider()
+            
+            HStack{
+                Button("Follow") {
+                    var manager = DataManager()
+                    manager.FollowUser(user: self.user)
+                }
+                Spacer()
+                Button("Unfollow") {
+                    var manager = DataManager()
+                    manager.UnFollowUser(user: self.user)
+                }
+                
+            }
+            .foregroundColor(ContentView.AppColor)
+            .padding()
+            
         }
     }
 }

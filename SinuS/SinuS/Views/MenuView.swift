@@ -42,9 +42,13 @@ struct MenuView: View {
                         .tabItem{
                             Label("Profile", systemImage: "person")
                         }
-                    GraphList(gatherer: manager)
+                    GraphList(gatherer: manager, onlyFollowing: false)
                         .tabItem{
                             Label("Explore", systemImage: "list.bullet")
+                        }
+                    GraphList(gatherer: manager, onlyFollowing: true)
+                        .tabItem{
+                            Label("Following", systemImage: "checklist.checked")
                         }
                     NewUserView(manager: manager)
                         .tabItem{
