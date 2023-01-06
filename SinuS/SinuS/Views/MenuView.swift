@@ -24,7 +24,7 @@ struct MenuView: View {
                 Spacer()
                 Image(systemName: "water.waves")
                     .resizable()
-                    .frame().frame(width: 25, height: 25)
+                    .frame(width: 25, height: 25)
                     .foregroundColor(.white)
                     .padding(.bottom)
                 Text("Love Waves")

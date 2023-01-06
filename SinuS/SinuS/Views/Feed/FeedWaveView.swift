@@ -18,14 +18,14 @@ struct FeedWaveView: View {
         if data.values.count > 1 {
             return data.values[data.values.count - 2]
         }
-        return 1
+        return 0
     }
 
     private var pointB: Int {
         if data.values.count > 1 {
             return data.values[data.values.count - 1]
         }
-        return 1
+        return 0
     }
 
     private var percentage: Int {
