@@ -38,7 +38,7 @@ struct LoginView: View {
 
             // Login Button
             Button("Login") {
-                let ar = self.manager.Login(email: self.email, password: self.password)
+                let ar = self.manager.login(email: self.email, password: self.password)
 
                 if ar == nil {
                     Alert(title: Text("Failure"))

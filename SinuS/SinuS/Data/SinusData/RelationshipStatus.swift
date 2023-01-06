@@ -14,51 +14,51 @@ public enum RelationshipStatus {
     /**
         value = 0% - 20%
      */
-    case Twarrel
+    case twarrel
 
     /**
         value = 21% - 40%
      */
-    case Scharrel
+    case scharrel
 
     /**
         value = 41% - 60%
      */
-    case Kwarrel
+    case kwarrel
 
     /**
         value = 61% - 80%
      */
-    case Prela
+    case prela
 
     /**
         value = 81% - 99%
      */
-    case Ignorela
+    case ignorela
 
     /**
         value = 100%
      */
-    case Relationship
+    case relationship
 }
 
 /**
     Converts a graph value to a RelationshipStatus.
  */
-public func ValueToRelationshipStatus(value: Int) -> RelationshipStatus {
+public func valueToRelationshipStatus(value: Int) -> RelationshipStatus {
     if value < 20 {
-        return RelationshipStatus.Twarrel
+        return RelationshipStatus.twarrel
     } else if value >= 21 && value <= 40 {
-        return RelationshipStatus.Scharrel
+        return RelationshipStatus.scharrel
     } else if value >= 41 && value <= 60 {
-        return RelationshipStatus.Kwarrel
+        return RelationshipStatus.kwarrel
     } else if value >= 61 && value <= 80 {
-        return RelationshipStatus.Prela
+        return RelationshipStatus.prela
     } else if value >= 81 && value <= 99 {
-        return RelationshipStatus.Ignorela
+        return RelationshipStatus.ignorela
     } else if value == 100 {
-        return RelationshipStatus.Relationship
+        return RelationshipStatus.relationship
     }
 
-    return RelationshipStatus.Twarrel
+    return RelationshipStatus.twarrel
 }

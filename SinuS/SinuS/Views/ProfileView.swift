@@ -28,7 +28,8 @@ struct ProfileView: View {
 
             Spacer()
 
-            Image(systemName: "person.circle").resizable().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            Image(systemName: "person.circle").resizable()
+                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .foregroundColor(ContentView.AppColor)
 
             Spacer()
@@ -63,7 +64,7 @@ struct ProfileView: View {
 
                 Button("Update") {
                     let update = SinusUpdate(name: self.username, password: "", value: Int(self.value), date: self.date)
-                    manager.SendData(data: update)
+                    manager.sendData(data: update)
                     showingAlert = true
                 }
                 .padding()

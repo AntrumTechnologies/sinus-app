@@ -14,17 +14,17 @@ struct RelationStatusView: View {
     let value: Int
 
     var status: RelationshipStatus {
-        return ValueToRelationshipStatus(value: self.value)
+        return valueToRelationshipStatus(value: self.value)
     }
 
     var text: String {
         switch self.status {
-        case .Twarrel: return "Twarrel"
-        case .Scharrel: return "Scharrel"
-        case .Kwarrel: return "Kwarrel"
-        case .Prela: return "Prela"
-        case .Ignorela: return "Ignorela"
-        case .Relationship: return "Relationship"
+        case .twarrel: return "Twarrel"
+        case .scharrel: return "Scharrel"
+        case .kwarrel: return "Kwarrel"
+        case .prela: return "Prela"
+        case .ignorela: return "Ignorela"
+        case .relationship: return "Relationship"
         }
     }
 

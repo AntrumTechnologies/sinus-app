@@ -51,7 +51,7 @@ struct NewUserView: View {
                 }.padding(.horizontal)
 
                 Button("Add User!") {
-                    self.manager.AddUser(user: self.username, target: self.targetname)
+                    self.manager.addUser(user: self.username, target: self.targetname)
                 }
                 .padding()
                 .alert("User added!", isPresented: $showingAlert) {

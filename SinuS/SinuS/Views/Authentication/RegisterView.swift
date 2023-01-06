@@ -64,7 +64,7 @@ struct RegisterView: View {
 
             // Register button
             Button("Register") {
-                let ar = self.manager.Register(
+                let ar = self.manager.register(
                     name: self.name,
                     email: self.email,
                     password: self.password,
