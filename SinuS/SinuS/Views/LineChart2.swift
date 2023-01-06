@@ -32,9 +32,14 @@ struct LineChart2: View {
 
     var points: [ChartPoint] {
         var list = [ChartPoint]()
-        for val in 0...self.self.data.values.count - 1 {
-            list.append(ChartPoint(label: self.data.labels[val], value: self.data.values[val]))
+        print(self.data.values.count)
+        if (self.data.values.count > 1) {
+            for val in 0...self.self.data.values.count - 1 {
+                list.append(ChartPoint(label: self.data.labels[val], value: self.data.values[val]))
+            }
+            
         }
+        
         return list
     }
 
@@ -62,7 +67,8 @@ struct LineChart2: View {
             }.background(ContentView.AppColor)
             Divider()
 
-            RelationStatusView(value: self.data.values.last!)
+            
+            RelationStatusView(value: self.data.values.last ?? 0)
 
             Divider()
             Chart {
@@ -89,7 +95,7 @@ struct LineChart2: View {
                     Image(systemName: "arrow.right")
                         .foregroundColor(.blue)
                     Divider()
-                    Text(String(self.data.values.last!) + " %")
+                    Text(String(self.data.values.last ?? 0) + " %")
                         .font(.system(size: 10))
                         .foregroundColor(self.color)
                 }
@@ -122,7 +128,6 @@ struct LineChart2: View {
 
 struct LineChart2_Previews: PreviewProvider {
     static var previews: some View {
-        let values = generatePoints()
         LineChart2(user: SinusUserData(
             id: 1,
             name: "Lukas",

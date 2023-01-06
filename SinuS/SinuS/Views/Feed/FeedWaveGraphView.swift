@@ -14,26 +14,33 @@ struct FeedWaveGraphView: View {
 
     private var path: Path {
         var path = Path()
-        let pointAx = 20
-        var pointAy: Int
-        let pointBx = Int(screenWidth - 150)
-        var pointBy: Int
-
-        if pointB >= pointA {
-            pointAy = 0
-            pointBy = Int(Double(pointB - pointA) * -1)
+        
+        if (pointA == 0 && pointB == 0) {
+            path.addEllipse(in: CGRect(x: Int(screenWidth - 150) / 2 + 10, y: -5, width: 15, height: 15))
         } else {
-            pointAy = -100
-            pointBy = Int(Double(pointA - pointB) * 0.5)
+            let pointAx = 20
+            var pointAy: Int
+            let pointBx = Int(screenWidth - 150)
+            var pointBy: Int
+
+            if pointB >= pointA {
+                pointAy = 0
+                pointBy = Int(Double(pointB - pointA) * -1)
+            } else {
+                pointAy = -100
+                pointBy = Int(Double(pointA - pointB) * 0.5)
+            }
+            path.move(to: CGPoint(x: pointAx, y: pointAy))
+            path.addEllipse(in: CGRect(x: pointAx, y: pointAy, width: 15, height: 15))
+            path.addLine(
+                to: CGPoint(
+                    x: pointBx,
+                    y: pointBy
+                ))
+            path.addEllipse(in: CGRect(x: pointBx, y: pointBy - 7, width: 15, height: 15))
         }
-        path.move(to: CGPoint(x: pointAx, y: pointAy))
-        path.addEllipse(in: CGRect(x: pointAx, y: pointAy, width: 15, height: 15))
-        path.addLine(
-            to: CGPoint(
-                x: pointBx,
-                y: pointBy
-            ))
-        path.addEllipse(in: CGRect(x: pointBx, y: pointBy - 7, width: 15, height: 15))
+        
+        
 
         return path
     }
@@ -53,6 +60,6 @@ struct FeedWaveGraphView: View {
 
 struct FeedWaveGraphView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedWaveGraphView(pointA: 10, pointB: 100)
+        FeedWaveGraphView(pointA: 0, pointB: 0)
     }
 }
