@@ -69,16 +69,15 @@ struct RegisterView: View {
                     email: self.email,
                     password: self.password,
                     confirmPassword: self.confirmPassword)
-                
-                if (authenticationResult == nil) {
+
+                if authenticationResult == nil {
                     self.showAlert.toggle()
-                }
-                else{
+                } else {
                     // Set global authentication token.
                     ContentView.AuthenticationToken = authenticationResult!.success
                     self.showButton.toggle()
                 }
-                
+
             }
             .alert(isPresented: $showAlert) {
                 return Alert(title: Text("Failed to Register"), message: Text("Unable to register user: \(self.email)"), dismissButton: .default(Text("OK")))

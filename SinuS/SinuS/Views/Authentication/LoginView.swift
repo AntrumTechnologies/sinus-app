@@ -40,11 +40,10 @@ struct LoginView: View {
             // Login Button
             Button("Login") {
                 let ar = self.manager.login(email: self.email, password: self.password)
-                
-                if (ar == nil) {
+
+                if ar == nil {
                     self.showAlert.toggle()
-                }
-                else{
+                } else {
                     // Set global authentication token.
                     ContentView.AuthenticationToken = ar!.success
 
@@ -54,7 +53,7 @@ struct LoginView: View {
             }
             .alert(isPresented: $showAlert) {
                 return Alert(title: Text("Failed to Login"), message: Text("Unable to log user: \(self.email) in"), dismissButton: .default(Text("OK")))
-                
+
             }
             .padding()
         }

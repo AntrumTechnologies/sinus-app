@@ -39,10 +39,7 @@ public class DataManager {
         let parameters: [String: Any] = [
             "name": name, "email": email, "password": password, "confirm_password": confirmPassword]
         let decoder = JSONDecoder()
-
-        var request = URLRequest(url: URL(string: registerUrl)!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        var request = RestApiHelper.createRequest(type: "POST", url: registerUrl, setCookie: false)
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -50,16 +47,16 @@ public class DataManager {
             print(error.localizedDescription)
             return nil
         }
-        
+
         var result: AuthenticationResult?
         let data = RestApiHelper.perfomRestCall(request: request)
-        
+
         do {
             result = try decoder.decode(AuthenticationResult.self, from: data!)
         } catch {
             print("Unexpected error: \(error).")
         }
-        
+
         return result
     }
 
@@ -70,10 +67,7 @@ public class DataManager {
         let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/login?"
         let parameters: [String: Any] = ["email": email, "password": password]
         let decoder = JSONDecoder()
-
-        var request = URLRequest(url: URL(string: loginUrl)!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, setCookie: false)
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -84,13 +78,13 @@ public class DataManager {
 
         var result: AuthenticationResult?
         let data = RestApiHelper.perfomRestCall(request: request)
-        
+
         do {
             result = try decoder.decode(AuthenticationResult.self, from: data!)
         } catch {
             print("Unexpected error: \(error).")
         }
-        
+
         return result
     }
 
@@ -150,7 +144,8 @@ public class DataManager {
             formatter.dateFormat = "y-MM-d"
             print(formatter.string(from: data.date))
 
-            let parameters: [String: Any] = ["sinus_id": user.id, "date": formatter.string(from: data.date), "value": data.value]
+            let parameters: [String: Any] = ["sinus_id": user.id, "date":
+                    formatter.string(from: data.date), "value": data.value]
             var request = RestApiHelper.createRequest(type: "PUT", url: url)
 
             do {
@@ -185,7 +180,7 @@ public class DataManager {
             url += "/following"
         }
 
-        var request = RestApiHelper.createRequest(type: "GET", url: url)
+        let request = RestApiHelper.createRequest(type: "GET", url: url)
 
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, _, error -> Void in
@@ -239,25 +234,17 @@ public class DataManager {
      */
     public func gatherSingleData(user: SinusUserData) -> SinusData {
         let decoder = JSONDecoder()
-        let url = URL(string: DataManager.dataUrl + String(user.id))
         var points = [GraphDataPoint]()
-        let sem = DispatchSemaphore.init(value: 0)
+        let request = RestApiHelper.createRequest(type: "GET", url: DataManager.dataUrl + String(user.id))
 
-        var request = RestApiHelper.createRequest(type: "GET", url: DataManager.dataUrl + String(user.id))
-
-        let session = URLSession.shared
-        let task = session.dataTask(with: request, completionHandler: { data2, _, error2 -> Void in
+        let data = RestApiHelper.perfomRestCall(request: request)
+        if data != nil {
             do {
-                defer { sem.signal() }
-                print(data2!)
-                points = try decoder.decode([GraphDataPoint].self, from: data2!)
+                points = try decoder.decode([GraphDataPoint].self, from: data!)
             } catch {
-                print(error2!.localizedDescription)
+                print("Unable to decode points")
             }
-        })
-
-        task.resume()
-        sem.wait()
+        }
 
         var values = [Int]()
         var labels = [String]()
