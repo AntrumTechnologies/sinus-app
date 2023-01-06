@@ -211,5 +211,133 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "08320D95-F179-4BF3-8CE8-BC0237E8C74D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/Data/DataGatherer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "Login(email:password:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A99AF104-9054-43B2-96C7-10105EF09A2C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/Data/DataGatherer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "Login(email:password:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A99AF104-9054-43B2-96C7-10105EF09A2C - 9fa5caff5462c985"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Love_Wave.DataManager.Login(email: Swift.String, password: Swift.String) -&gt; Swift.Optional&lt;Love_Wave.AuthenticationResult&gt;"
+                  moduleName = "Love Wave"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sns/SinuS/SinuS/Data/DataGatherer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "1484">
+               </Location>
+               <Location
+                  uuid = "A99AF104-9054-43B2-96C7-10105EF09A2C - 9fa5caff5462c985"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Love_Wave.DataManager.Login(email: Swift.String, password: Swift.String) -&gt; Swift.Optional&lt;Love_Wave.AuthenticationResult&gt;"
+                  moduleName = "Love Wave"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sns/SinuS/SinuS/Data/DataGatherer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "1948">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3F0780D4-2B29-470C-960A-CD18EB54FDDB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/Views/Authentication/LoginView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "29994833-8416-43F5-B50F-0B84196DA7FE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/Data/DataGatherer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "Login(email:password:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "29994833-8416-43F5-B50F-0B84196DA7FE - 9fa5caff5462c947"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Love_Wave.DataManager.Login(email: Swift.String, password: Swift.String) -&gt; Swift.Optional&lt;Love_Wave.AuthenticationResult&gt;"
+                  moduleName = "Love Wave"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sns/SinuS/SinuS/Data/DataGatherer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "1480">
+               </Location>
+               <Location
+                  uuid = "29994833-8416-43F5-B50F-0B84196DA7FE - 1251fa86859430ae"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "$defer() -&gt; ()"
+                  moduleName = "Love Wave"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sns/SinuS/SinuS/Data/DataGatherer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

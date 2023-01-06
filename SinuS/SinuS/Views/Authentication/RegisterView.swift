@@ -15,7 +15,7 @@ struct RegisterView: View {
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     
-    @State private var showingAlert = false
+    @State private var showAlert = false
     static var isPasswordCorrect: Bool = false
     @State private var showButton = false
     
@@ -70,11 +70,20 @@ struct RegisterView: View {
                     password: self.password,
                     confirmPassword: self.confirmPassword)
                 
-                // Set global authentication token.
-                ContentView.AuthenticationToken = ar!.success
+                if (ar == nil) {
+                    self.showAlert.toggle()
+                }
+                else{
+                    // Set global authentication token.
+                    ContentView.AuthenticationToken = ar!.success
+                    self.showButton.toggle()
+                }
                 
-                self.showButton.toggle()
-            }.padding()
+            }
+            .alert(isPresented: $showAlert) {
+                return Alert(title: Text("Failed to Register"), message: Text("Unable to register user: \(self.email)"), dismissButton: .default(Text("OK")))
+            }
+            .padding()
         }
         .background(ContentView.AppColor)
         .cornerRadius(5)
