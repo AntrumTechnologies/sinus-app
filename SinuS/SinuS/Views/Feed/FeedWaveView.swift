@@ -75,6 +75,7 @@ struct FeedWaveView: View {
 
             Spacer()
             FeedWaveGraphView(pointA: self.pointA, pointB: self.pointB)
+                .shadow(radius: 10)
             Spacer()
         }
         .frame(height: 260)

@@ -27,6 +27,7 @@ struct GraphList: View {
     var body: some View {
         ZStack {
             ZStack {
+                
                 List(self.feed, id: \.id) { user in
                     let data = gatherer.gatherSingleData(user: user)
 

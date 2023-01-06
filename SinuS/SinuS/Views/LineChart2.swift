@@ -58,11 +58,13 @@ struct LineChart2: View {
         VStack {
             HStack {
                 Spacer()
+                
                 Image(systemName: "water.waves")
                     .resizable()
                     .frame(width: 25, height: 25)
                     .foregroundColor(.white)
                     .padding(.bottom)
+                    .padding(.top)
                 Spacer()
             }.background(ContentView.AppColor)
             Divider()
@@ -123,6 +125,10 @@ struct LineChart2: View {
             .padding()
 
         }
+        .toolbar(.visible, for: ToolbarPlacement.navigationBar)
+        .toolbarBackground(ContentView.AppColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
     }
 }
 
