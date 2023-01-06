@@ -14,8 +14,8 @@ struct RegisterView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
+    @State private var showAlert = false
 
-    @State private var showingAlert = false
     static var isPasswordCorrect: Bool = false
     @State private var showButton = false
 
@@ -64,17 +64,25 @@ struct RegisterView: View {
 
             // Register button
             Button("Register") {
-                let register = self.manager.register(
+                let authenticationResult = self.manager.register(
                     name: self.name,
                     email: self.email,
                     password: self.password,
                     confirmPassword: self.confirmPassword)
 
-                // Set global authentication token.
-                ContentView.AuthenticationToken = register!.success
+                if authenticationResult == nil {
+                    self.showAlert.toggle()
+                } else {
+                    // Set global authentication token.
+                    ContentView.AuthenticationToken = authenticationResult!.success
+                    self.showButton.toggle()
+                }
 
-                self.showButton.toggle()
-            }.padding()
+            }
+            .alert(isPresented: $showAlert) {
+                return Alert(title: Text("Failed to Register"), message: Text("Unable to register user: \(self.email)"), dismissButton: .default(Text("OK")))
+            }
+            .padding()
         }
         .background(ContentView.AppColor)
         .cornerRadius(5)

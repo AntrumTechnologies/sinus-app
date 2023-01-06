@@ -24,6 +24,7 @@
 		4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */; };
 		4A4C6D0D295D9E1B001DB4F7 /* FeedWaveGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D0C295D9E1B001DB4F7 /* FeedWaveGraphView.swift */; };
 		4AABA28528CFACC500070E6E /* SinusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABA28428CFACC500070E6E /* SinusUpdate.swift */; };
+		4AC5B3D3296849DD003D819C /* RestApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5B3D2296849DD003D819C /* RestApiHelper.swift */; };
 		4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */; };
 		4AD26FBC28BBA5D40065FB01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FBB28BBA5D40065FB01 /* ContentView.swift */; };
 		4AD26FBE28BBA5D60065FB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AD26FBD28BBA5D60065FB01 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResult.swift; sourceTree = "<group>"; };
 		4A4C6D0C295D9E1B001DB4F7 /* FeedWaveGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedWaveGraphView.swift; sourceTree = "<group>"; };
 		4AABA28428CFACC500070E6E /* SinusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusUpdate.swift; sourceTree = "<group>"; };
+		4AC5B3D2296849DD003D819C /* RestApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiHelper.swift; sourceTree = "<group>"; };
 		4AD26FB628BBA5D40065FB01 /* Love Wave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Love Wave.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinuSApp.swift; sourceTree = "<group>"; };
 		4AD26FBB28BBA5D40065FB01 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				4A4C6D0A2917CDE5001DB4F7 /* SinusData */,
 				4A4C6D092917CDD5001DB4F7 /* Authentication */,
 				4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */,
+				4AC5B3D2296849DD003D819C /* RestApiHelper.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */,
 				4A0B397B28E0846900D7EEC9 /* RelationStatusView.swift in Sources */,
 				4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */,
+				4AC5B3D3296849DD003D819C /* RestApiHelper.swift in Sources */,
 				4AD26FF128C6773E0065FB01 /* FeedWaveView.swift in Sources */,
 				4AD26FED28C676C10065FB01 /* LineChart.swift in Sources */,
 				4A0B396E28D3935900D7EEC9 /* NewUserView.swift in Sources */,

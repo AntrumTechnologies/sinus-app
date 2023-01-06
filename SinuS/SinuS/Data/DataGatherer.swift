@@ -35,15 +35,11 @@ public class DataManager {
         email: String,
         password: String,
         confirmPassword: String) -> AuthenticationResult? {
-        let semaphore = DispatchSemaphore.init(value: 0)
         let registerUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/register?"
         let parameters: [String: Any] = [
             "name": name, "email": email, "password": password, "confirm_password": confirmPassword]
         let decoder = JSONDecoder()
-
-        var request = URLRequest(url: URL(string: registerUrl)!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        var request = RestApiHelper.createRequest(type: "POST", url: registerUrl, setCookie: false)
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -53,23 +49,14 @@ public class DataManager {
         }
 
         var result: AuthenticationResult?
-        let session = URLSession.shared
+        let data = RestApiHelper.perfomRestCall(request: request)
 
-        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-            do {
-                if let httpResponse = response as? HTTPURLResponse {
-                    ContentView.Cookie = httpResponse.value(forHTTPHeaderField: "Set-Cookie")!
-                }
-                defer { semaphore.signal() }
-                print(data!)
-                result = try decoder.decode(AuthenticationResult.self, from: data!)
-            } catch {
-                print(error.localizedDescription)
-            }
-        })
+        do {
+            result = try decoder.decode(AuthenticationResult.self, from: data!)
+        } catch {
+            print("Unexpected error: \(error).")
+        }
 
-        task.resume()
-        semaphore.wait()
         return result
     }
 
@@ -77,14 +64,10 @@ public class DataManager {
         Login call to the backend.
      */
     public func login(email: String, password: String) -> AuthenticationResult? {
-        let semaphore = DispatchSemaphore.init(value: 0)
         let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/login?"
         let parameters: [String: Any] = ["email": email, "password": password]
         let decoder = JSONDecoder()
-
-        var request = URLRequest(url: URL(string: loginUrl)!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, setCookie: false)
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -94,23 +77,14 @@ public class DataManager {
         }
 
         var result: AuthenticationResult?
-        let session = URLSession.shared
+        let data = RestApiHelper.perfomRestCall(request: request)
 
-        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-            do {
-                if let httpResponse = response as? HTTPURLResponse {
-                    ContentView.Cookie = httpResponse.value(forHTTPHeaderField: "Set-Cookie") ?? ""
-                }
+        do {
+            result = try decoder.decode(AuthenticationResult.self, from: data!)
+        } catch {
+            print("Unexpected error: \(error).")
+        }
 
-                defer { semaphore.signal() }
-                result = try decoder.decode(AuthenticationResult.self, from: data!)
-            } catch {
-                print(error.localizedDescription)
-            }
-        })
-
-        task.resume()
-        semaphore.wait()
         return result
     }
 
@@ -120,11 +94,7 @@ public class DataManager {
     public func addUser(user: String, target: String) -> Bool {
         let sem = DispatchSemaphore.init(value: 0)
         let parameters: [String: Any] = ["name": user, "date_name": target]
-
-        var request = URLRequest(url: URL(string: DataManager.userUrl)!)
-        request.httpMethod = "PUT"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
+        var request = RestApiHelper.createRequest(type: "PUT", url: DataManager.userUrl)
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -174,12 +144,9 @@ public class DataManager {
             formatter.dateFormat = "y-MM-d"
             print(formatter.string(from: data.date))
 
-            let parameters: [String: Any] = [
-                "sinus_id": user.id, "date": formatter.string(from: data.date), "value": data.value]
-            var request = URLRequest(url: URL(string: url)!)
-            request.httpMethod = "PUT"
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
+            let parameters: [String: Any] = ["sinus_id": user.id, "date":
+                    formatter.string(from: data.date), "value": data.value]
+            var request = RestApiHelper.createRequest(type: "PUT", url: url)
 
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -213,10 +180,7 @@ public class DataManager {
             url += "/following"
         }
 
-        var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = "GET"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
+        let request = RestApiHelper.createRequest(type: "GET", url: url)
 
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, _, error -> Void in
@@ -236,13 +200,8 @@ public class DataManager {
     }
 
     public func unFollowUser(user_id: Int) {
-        let sem = DispatchSemaphore.init(value: 0)
-
         let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/unfollow"
-        var request = URLRequest(url: URL(string: urlString)!)
-        request.httpMethod = "PUT"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
+        var request = RestApiHelper.createRequest(type: "PUT", url: urlString)
 
         let parameters: [String: Any] = ["user_id_to_unfollow": user_id ]
         do {
@@ -252,24 +211,12 @@ public class DataManager {
             return
         }
 
-        let session = URLSession.shared
-        let task = session.dataTask(with: request, completionHandler: { _, response, _ -> Void in
-            defer { sem.signal() }
-            print(response as Any)
-        })
-
-        task.resume()
-        sem.wait()
+        _ = RestApiHelper.perfomRestCall(request: request)
     }
 
     public func followUser(user_id: Int) {
-        let sem = DispatchSemaphore.init(value: 0)
-
         let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/follow"
-        var request = URLRequest(url: URL(string: urlString)!)
-        request.httpMethod = "PUT"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
+        var request = RestApiHelper.createRequest(type: "PUT", url: urlString)
 
         let parameters: [String: Any] = ["user_id_to_follow": user_id ]
         do {
@@ -279,14 +226,7 @@ public class DataManager {
             return
         }
 
-        let session = URLSession.shared
-        let task = session.dataTask(with: request, completionHandler: { _, response, _ -> Void in
-            defer { sem.signal() }
-            print(response as Any)
-        })
-
-        task.resume()
-        sem.wait()
+        _ = RestApiHelper.perfomRestCall(request: request)
     }
 
     /**
@@ -294,27 +234,17 @@ public class DataManager {
      */
     public func gatherSingleData(user: SinusUserData) -> SinusData {
         let decoder = JSONDecoder()
-        let url = URL(string: DataManager.dataUrl + String(user.id))
         var points = [GraphDataPoint]()
-        let sem = DispatchSemaphore.init(value: 0)
+        let request = RestApiHelper.createRequest(type: "GET", url: DataManager.dataUrl + String(user.id))
 
-        var graphDataRequest = URLRequest(url: url!)
-        graphDataRequest.httpMethod = "GET"
-        graphDataRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        graphDataRequest.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
-        let session = URLSession.shared
-        let task = session.dataTask(with: graphDataRequest, completionHandler: { data2, _, error2 -> Void in
+        let data = RestApiHelper.perfomRestCall(request: request)
+        if data != nil {
             do {
-                defer { sem.signal() }
-                print(data2!)
-                points = try decoder.decode([GraphDataPoint].self, from: data2!)
+                points = try decoder.decode([GraphDataPoint].self, from: data!)
             } catch {
-                print(error2!.localizedDescription)
+                print("Unable to decode points")
             }
-        })
-
-        task.resume()
-        sem.wait()
+        }
 
         var values = [Int]()
         var labels = [String]()

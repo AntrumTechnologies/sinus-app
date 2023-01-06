@@ -13,6 +13,7 @@ struct LoginView: View {
     @State private var showButton = false
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var showAlert = false
 
     var body: some View {
         VStack {
@@ -38,16 +39,20 @@ struct LoginView: View {
 
             // Login Button
             Button("Login") {
-                let login = self.manager.login(email: self.email, password: self.password)
+                let ar = self.manager.login(email: self.email, password: self.password)
 
-                if login == nil {
-                    Alert(title: Text("Failure"))
+                if ar == nil {
+                    self.showAlert.toggle()
                 } else {
                     // Set global authentication token.
-                    ContentView.AuthenticationToken = login!.success
+                    ContentView.AuthenticationToken = ar!.success
 
                     self.showButton.toggle()
                 }
+
+            }
+            .alert(isPresented: $showAlert) {
+                return Alert(title: Text("Failed to Login"), message: Text("Unable to log user: \(self.email) in"), dismissButton: .default(Text("OK")))
 
             }
             .padding()
