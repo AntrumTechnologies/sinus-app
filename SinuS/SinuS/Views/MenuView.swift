@@ -33,7 +33,6 @@ struct MenuView: View {
                     .padding(.bottom)
                 Spacer()
             }
-            // .background(.red)
             .background(ContentView.AppColor)
 
             TabView {
@@ -52,11 +51,13 @@ struct MenuView: View {
                         }
                     NewUserView(manager: manager)
                         .tabItem {
-                            Label("Create Wave", systemImage: "water.waves")
+                            Label("Create wave", systemImage: "water.waves")
                         }
                 }
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(ContentView.AppColor, for: .tabBar)
+                .toolbarBackground(.visible, for: .tabBar)
+                .toolbarColorScheme(.dark, for: .tabBar)
             }
         }
     }
