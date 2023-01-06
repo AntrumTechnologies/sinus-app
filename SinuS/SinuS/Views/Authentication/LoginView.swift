@@ -39,7 +39,7 @@ struct LoginView: View {
 
             // Login Button
             Button("Login") {
-                let ar = self.manager.Login(email: self.email, password: self.password)
+                let ar = self.manager.login(email: self.email, password: self.password)
                 
                 if (ar == nil) {
                     self.showAlert.toggle()
@@ -47,6 +47,7 @@ struct LoginView: View {
                 else{
                     // Set global authentication token.
                     ContentView.AuthenticationToken = ar!.success
+
                     self.showButton.toggle()
                 }
 

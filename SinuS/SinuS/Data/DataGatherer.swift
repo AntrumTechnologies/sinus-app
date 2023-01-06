@@ -30,10 +30,14 @@ public class DataManager {
     /**
         Register call to the backend.
      */
-    public func Register(name: String, email: String, password: String, confirmPassword: String) -> AuthenticationResult? {
-        let semaphore = DispatchSemaphore.init(value: 0)
+    public func register(
+        name: String,
+        email: String,
+        password: String,
+        confirmPassword: String) -> AuthenticationResult? {
         let registerUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/register?"
-        let parameters: [String: Any] = ["name": name, "email": email, "password": password, "confirm_password": confirmPassword]
+        let parameters: [String: Any] = [
+            "name": name, "email": email, "password": password, "confirm_password": confirmPassword]
         let decoder = JSONDecoder()
 
         var request = URLRequest(url: URL(string: registerUrl)!)
@@ -62,7 +66,7 @@ public class DataManager {
     /**
         Login call to the backend.
      */
-    public func Login(email: String, password: String) -> AuthenticationResult? {
+    public func login(email: String, password: String) -> AuthenticationResult? {
         let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/login?"
         let parameters: [String: Any] = ["email": email, "password": password]
         let decoder = JSONDecoder()
@@ -93,7 +97,7 @@ public class DataManager {
     /**
         Creates a new user.
      */
-    public func AddUser(user: String, target: String) -> Bool {
+    public func addUser(user: String, target: String) -> Bool {
         let sem = DispatchSemaphore.init(value: 0)
         let parameters: [String: Any] = ["name": user, "date_name": target]
         var request = RestApiHelper.createRequest(type: "PUT", url: DataManager.userUrl)
@@ -129,12 +133,12 @@ public class DataManager {
     /**
         Updates the graphs for a user by adding a new point.
      */
-    public func SendData(data: SinusUpdate) {
+    public func sendData(data: SinusUpdate) {
         print("SendData")
         let sem = DispatchSemaphore.init(value: 0)
 
         if users.count < 1 {
-            _ = self.GatherUsers(onlyFollowing: false)
+            _ = self.gatherUsers(onlyFollowing: false)
         }
 
         if let user = self.users.first(where: { user in
@@ -170,7 +174,7 @@ public class DataManager {
     /**
         Gathers the list of users.
      */
-    public func GatherUsers(onlyFollowing: Bool) -> [SinusUserData] {
+    public func gatherUsers(onlyFollowing: Bool) -> [SinusUserData] {
         let decoder = JSONDecoder()
 
         var internalUsers = [SinusUserData]()
@@ -200,7 +204,7 @@ public class DataManager {
         return internalUsers
     }
 
-    public func UnFollowUser(user_id: Int) {
+    public func unFollowUser(user_id: Int) {
         let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/unfollow"
         var request = RestApiHelper.createRequest(type: "PUT", url: urlString)
 
@@ -215,7 +219,7 @@ public class DataManager {
         _ = RestApiHelper.perfomRestCall(request: request)
     }
 
-    public func FollowUser(user_id: Int) {
+    public func followUser(user_id: Int) {
         let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/follow"
         var request = RestApiHelper.createRequest(type: "PUT", url: urlString)
 
@@ -233,7 +237,7 @@ public class DataManager {
     /**
         Retrieves the Sinus data for a single user.
      */
-    public func GatherSingleData(user: SinusUserData) -> SinusData {
+    public func gatherSingleData(user: SinusUserData) -> SinusData {
         let decoder = JSONDecoder()
         let url = URL(string: DataManager.dataUrl + String(user.id))
         var points = [GraphDataPoint]()
@@ -257,9 +261,9 @@ public class DataManager {
 
         var values = [Int]()
         var labels = [String]()
-        points.forEach { p in
-            values.append(p.value)
-            labels.append(p.date)
+        points.forEach { point in
+            values.append(point.value)
+            labels.append(point.date)
         }
 
         return SinusData(id: user.id, values: values, labels: labels, sinusName: user.name, sinusTarget: user.date_name)

@@ -18,7 +18,6 @@ struct LineChart: View {
             return Path()
         }
 
-        var xOffset: Int = 0 // Int(screenWidth/CGFloat(self.data.values.count))
         var path = Path()
         path.move(to: CGPoint(x: 10, y: 0))
         path.addLine(to: CGPoint(x: Int(screenWidth - 20), y: 20))

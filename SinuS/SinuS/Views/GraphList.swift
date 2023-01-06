@@ -17,15 +17,15 @@ struct GraphList: View {
     var body: some View {
         ZStack {
             ZStack {
-                List(gatherer.GatherUsers(onlyFollowing: self.onlyFollowing).sorted {
+                List(gatherer.gatherUsers(onlyFollowing: self.onlyFollowing).sorted {
                     $0.name < $1.name
-                }, id: \.id) { c in
-                    var data = gatherer.GatherSingleData(user: c)
+                }, id: \.id) { user in
+                    let data = gatherer.gatherSingleData(user: user)
 
                     NavigationLink(
-                        destination: LineChart2(user: c, data: data),
+                        destination: LineChart2(user: user, data: data),
                         label: {
-                            FeedWaveView(userData: c, data: data)
+                            FeedWaveView(userData: user, data: data)
                         })
                 }
             }
@@ -51,8 +51,8 @@ public func generatePoints() -> [Int] {
 public func getLabels() -> [String] {
     var labels = [String]()
 
-    for i in 1...3 {
-        labels.append(String(i) + "-01")
+    for val in 1...3 {
+        labels.append(String(val) + "-01")
     }
 
     return labels
@@ -63,11 +63,12 @@ public func getLabels() -> [String] {
  */
 private func getCharts() -> [SinusData] {
     var list = [SinusData]()
-    for i in 1...20 {
+    for val in 1...20 {
         let values = generatePoints()
         let labels = getLabels()
-        let l = SinusData(id: i, values: values, labels: labels, sinusName: "Lukas " + String(i), sinusTarget: "Target")
-        list.append(l)
+        let item = SinusData(
+            id: val, values: values, labels: labels, sinusName: "Lukas " + String(val), sinusTarget: "Target")
+        list.append(item)
     }
     return list
 }
