@@ -14,7 +14,7 @@ import SwiftUI
 struct SmallFrame: View {
     let header: String
     let text: String
-    
+
     /**
         The view.
      */

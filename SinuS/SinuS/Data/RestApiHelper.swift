@@ -7,27 +7,35 @@
 
 import Foundation
 
-
-public func PerfomRestCall(request: URLRequest) -> AuthenticationResult? {
-    let semaphore = DispatchSemaphore.init(value: 0)
-    
-    let session = URLSession.shared
-    
-    let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-        do {
+public class RestApiHelper {
+    public static func perfomRestCall(request: URLRequest) -> Data? {
+        let semaphore = DispatchSemaphore.init(value: 0)
+        let session = URLSession.shared
+        var returnObject: Data? = nil
+        
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            defer { semaphore.signal() }
+            
             if let httpResponse = response as? HTTPURLResponse {
                 ContentView.Cookie = httpResponse.value(forHTTPHeaderField: "Set-Cookie") ?? ""
             }
             
-            defer { semaphore.signal() }
-            return data
-            //result = try decoder.decode(AuthenticationResult.self, from: data!)
-        } catch {
-            print(error.localizedDescription)
-        }
-    })
+            returnObject = data!
+        })
+
+        task.resume()
+        semaphore.wait()
+        return returnObject
+    }
     
-    task.resume()
-    semaphore.wait()
-    return nil
+    public static func createRequest(type: String, url: String) -> URLRequest {
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = type
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
+        
+        return request
+    }
 }
+
+

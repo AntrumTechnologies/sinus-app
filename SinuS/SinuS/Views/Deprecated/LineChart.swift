@@ -12,21 +12,20 @@ import SwiftUI
 struct LineChart: View {
     let data: SinusData
     let screenWidth = UIScreen.main.bounds.width
-    
+
     private var path: Path {
         if self.data.values.isEmpty {
             return Path()
         }
-        
-        var xOffset: Int = 0 //Int(screenWidth/CGFloat(self.data.values.count))
+
+        var xOffset: Int = 0 // Int(screenWidth/CGFloat(self.data.values.count))
         var path = Path()
         path.move(to: CGPoint(x: 10, y: 0))
         path.addLine(to: CGPoint(x: Int(screenWidth - 20), y: 20))
-        
-        
+
         return path
     }
-    
+
     var body: some View {
         VStack {
             ZStack {
@@ -38,7 +37,7 @@ struct LineChart: View {
                             .degrees(180),
                             axis: /*@START_MENU_TOKEN@*/(x: 0.0, y: 1.0, z: 0.0)/*@END_MENU_TOKEN@*/)
                         .frame(maxWidth: .infinity, maxHeight: 300)
-                
+
                     HStack {
                         ForEach(self.data.labels, id: \.self) { label in
                             Text(label.substring(from: label.index(label.endIndex, offsetBy: -4)))
@@ -55,8 +54,8 @@ struct LineChart: View {
             .cornerRadius(15)
             .shadow(radius: 10)
             .padding()
-            
-            HStack{
+
+            HStack {
                 SmallFrame(header: "Name:", text: data.sinusName)
                 Spacer()
                 SmallFrame(header: "Target:", text: data.sinusTarget)
@@ -65,9 +64,8 @@ struct LineChart: View {
         }
         .ignoresSafeArea()
     }
-    
-}
 
+}
 
 struct LineChart_Previews: PreviewProvider {
     static var previews: some View {

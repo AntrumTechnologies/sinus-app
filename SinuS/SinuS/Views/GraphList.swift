@@ -13,7 +13,7 @@ import SwiftUI
 struct GraphList: View {
     let gatherer: DataManager
     let onlyFollowing: Bool
-    
+
     var body: some View {
         ZStack {
             ZStack {
@@ -21,7 +21,7 @@ struct GraphList: View {
                     $0.name < $1.name
                 }, id: \.id) { c in
                     var data = gatherer.GatherSingleData(user: c)
-                    
+
                     NavigationLink(
                         destination: LineChart2(user: c, data: data),
                         label: {
@@ -36,12 +36,12 @@ struct GraphList: View {
 /**
     Temp helper function.
  */
-public func generatePoints()  -> [Int] {
+public func generatePoints() -> [Int] {
     var points = [Int]()
     points.append(0)
     points.append(12)
     points.append(99)
-    
+
     return points
 }
 
@@ -50,11 +50,11 @@ public func generatePoints()  -> [Int] {
  */
 public func getLabels() -> [String] {
     var labels = [String]()
-    
+
     for i in 1...3 {
         labels.append(String(i) + "-01")
     }
-    
+
     return labels
 }
 

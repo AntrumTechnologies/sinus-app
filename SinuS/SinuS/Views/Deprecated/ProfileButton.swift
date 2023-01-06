@@ -15,7 +15,7 @@ struct ProfileButton: View {
             .background(Color.blue)
             .clipShape(Circle())
                 .overlay(Circle().stroke(Color.white, lineWidth: 4))
-    
+
     }
 }
 

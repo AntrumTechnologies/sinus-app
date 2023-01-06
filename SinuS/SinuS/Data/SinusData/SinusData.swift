@@ -18,27 +18,27 @@ public class SinusData: ObservableObject {
         self.sinusName = sinusName
         self.sinusTarget = sinusTarget
     }
-    
+
     /**
         Id of the sinus chart
      */
     var id: Int
-    
+
     /**
         List of values for the chart between 0 and 100
      */
     var values: [Int]
-    
+
     /**
         Label containing the date.
      */
     var labels: [String]
-    
+
     /**
         Label containing the date.
      */
     let sinusName: String
-    
+
     /**
         Name of the target.
      */

@@ -11,7 +11,7 @@ import SwiftUI
     View which allows administrators to delete users.
  */
 struct AdminView: View {
-    
+
     /**
         The view.
      */

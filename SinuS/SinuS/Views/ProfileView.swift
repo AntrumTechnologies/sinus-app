@@ -7,34 +7,33 @@
 
 import SwiftUI
 
-
 /**
     View showing the user profile,.
     This view allows the user to update their graph.
  */
 struct ProfileView: View {
     let manager: DataManager
-    
+
     @State private var username: String = ""
     @State private var value = 50.0
     @State private var isEditing = false
     @State private var date = Date()
     @State private var showingAlert = false
-    
+
     /**
         The view.
      */
     var body: some View {
         VStack {
-            
+
             Spacer()
-            
+
             Image(systemName: "person.circle").resizable().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .foregroundColor(ContentView.AppColor)
-            
+
             Spacer()
-            
-            VStack{
+
+            VStack {
                 HStack {
                     Text("Username:")
                     Spacer()
@@ -43,11 +42,11 @@ struct ProfileView: View {
                         .border(Color.white, width: 0.5)
                         .frame(width: 220)
                 }.padding(.horizontal).padding(.top)
-                
+
                 HStack {
                     DatePicker(selection: $date, displayedComponents: [.date], label: { Text("Date:") })
                 }.padding(.horizontal)
-                
+
                 HStack {
                     Text("Value:")
                     Spacer()
@@ -57,11 +56,11 @@ struct ProfileView: View {
                         step: 1).foregroundColor(.yellow)
                         .frame(width: 220)
                 }.padding(.horizontal)
-                
+
                 HStack {
                     Text("\(Int(self.value))")
                 }.font(.system(size: 50))
-                
+
                 Button("Update") {
                     let update = SinusUpdate(name: self.username, password: "", value: Int(self.value), date: self.date)
                     manager.SendData(data: update)
@@ -77,10 +76,9 @@ struct ProfileView: View {
             .shadow(radius: 5)
             .padding()
             .foregroundColor(.white)
-    
-            
+
             Spacer()
-            
+
         }
     }
 }

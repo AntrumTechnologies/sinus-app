@@ -13,7 +13,7 @@ import SwiftUI
 struct MenuButton: View {
     let image: Image
     let name: String
-    
+
     /**
         The view.
      */
