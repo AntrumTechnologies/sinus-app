@@ -38,13 +38,13 @@ struct LoginView: View {
 
             // Login Button
             Button("Login") {
-                let ar = self.manager.login(email: self.email, password: self.password)
+                let login = self.manager.login(email: self.email, password: self.password)
 
-                if ar == nil {
+                if login == nil {
                     Alert(title: Text("Failure"))
                 } else {
                     // Set global authentication token.
-                    ContentView.AuthenticationToken = ar!.success
+                    ContentView.AuthenticationToken = login!.success
 
                     self.showButton.toggle()
                 }

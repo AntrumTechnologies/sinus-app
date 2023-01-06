@@ -64,14 +64,14 @@ struct RegisterView: View {
 
             // Register button
             Button("Register") {
-                let ar = self.manager.register(
+                let register = self.manager.register(
                     name: self.name,
                     email: self.email,
                     password: self.password,
                     confirmPassword: self.confirmPassword)
 
                 // Set global authentication token.
-                ContentView.AuthenticationToken = ar!.success
+                ContentView.AuthenticationToken = register!.success
 
                 self.showButton.toggle()
             }.padding()

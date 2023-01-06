@@ -30,10 +30,15 @@ public class DataManager {
     /**
         Register call to the backend.
      */
-    public func register(name: String, email: String, password: String, confirmPassword: String) -> AuthenticationResult? {
+    public func register(
+        name: String,
+        email: String,
+        password: String,
+        confirmPassword: String) -> AuthenticationResult? {
         let semaphore = DispatchSemaphore.init(value: 0)
         let registerUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/register?"
-        let parameters: [String: Any] = ["name": name, "email": email, "password": password, "confirm_password": confirmPassword]
+        let parameters: [String: Any] = [
+            "name": name, "email": email, "password": password, "confirm_password": confirmPassword]
         let decoder = JSONDecoder()
 
         var request = URLRequest(url: URL(string: registerUrl)!)
@@ -169,7 +174,8 @@ public class DataManager {
             formatter.dateFormat = "y-MM-d"
             print(formatter.string(from: data.date))
 
-            let parameters: [String: Any] = ["sinus_id": user.id, "date": formatter.string(from: data.date), "value": data.value]
+            let parameters: [String: Any] = [
+                "sinus_id": user.id, "date": formatter.string(from: data.date), "value": data.value]
             var request = URLRequest(url: URL(string: url)!)
             request.httpMethod = "PUT"
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")

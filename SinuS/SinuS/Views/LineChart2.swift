@@ -103,12 +103,12 @@ struct LineChart2: View {
 
             HStack {
                 Button("Follow") {
-                    var manager = DataManager()
+                    let manager = DataManager()
                     manager.followUser(user_id: self.user.user_id)
                 }
                 Spacer()
                 Button("Unfollow") {
-                    var manager = DataManager()
+                    let manager = DataManager()
                     manager.unFollowUser(user_id: self.user.user_id)
                 }
 
@@ -121,8 +121,8 @@ struct LineChart2: View {
 }
 
 struct LineChart2_Previews: PreviewProvider {
-    static var previews: some View {let values = generatePoints()
-        let labels = getLabels()
+    static var previews: some View {
+        let values = generatePoints()
         LineChart2(user: SinusUserData(
             id: 1,
             name: "Lukas",
@@ -131,6 +131,11 @@ struct LineChart2_Previews: PreviewProvider {
             created_at: "",
             updated_at: "",
             deleted_at: ""),
-            data: SinusData(id: 1, values: [ 20, 30], labels: [ "label", "Lavel" ], sinusName: "Name", sinusTarget: "Name"))
+            data: SinusData(
+                id: 1,
+                values: [ 20, 30],
+                labels: [ "label", "Lavel" ],
+                sinusName: "Name",
+                sinusTarget: "Name"))
     }
 }

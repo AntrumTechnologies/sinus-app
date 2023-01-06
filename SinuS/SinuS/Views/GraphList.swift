@@ -20,7 +20,7 @@ struct GraphList: View {
                 List(gatherer.gatherUsers(onlyFollowing: self.onlyFollowing).sorted {
                     $0.name < $1.name
                 }, id: \.id) { user in
-                    var data = gatherer.gatherSingleData(user: user)
+                    let data = gatherer.gatherSingleData(user: user)
 
                     NavigationLink(
                         destination: LineChart2(user: user, data: data),
@@ -66,7 +66,8 @@ private func getCharts() -> [SinusData] {
     for val in 1...20 {
         let values = generatePoints()
         let labels = getLabels()
-        let item = SinusData(id: val, values: values, labels: labels, sinusName: "Lukas " + String(val), sinusTarget: "Target")
+        let item = SinusData(
+            id: val, values: values, labels: labels, sinusName: "Lukas " + String(val), sinusTarget: "Target")
         list.append(item)
     }
     return list
