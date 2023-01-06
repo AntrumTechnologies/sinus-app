@@ -11,19 +11,18 @@ struct FeedWaveGraphView: View {
     var pointA: Int
     var pointB: Int
     let screenWidth = UIScreen.main.bounds.width
-    
+
     private var path: Path {
         var path = Path()
         let pointAx = 20
         var pointAy: Int
         let pointBx = Int(screenWidth - 150)
         var pointBy: Int
-        
-        if (pointB >= pointA) {
+
+        if pointB >= pointA {
             pointAy = 0
             pointBy = Int(Double(pointB - pointA) * -1)
-        }
-        else {
+        } else {
             pointAy = -100
             pointBy = Int(Double(pointA - pointB) * 0.5)
         }
@@ -35,12 +34,12 @@ struct FeedWaveGraphView: View {
                 y: pointBy
             ))
         path.addEllipse(in: CGRect(x: pointBx, y: pointBy - 7, width: 15, height: 15))
-            
+
         return path
     }
-    
+
     var body: some View {
-        VStack{
+        VStack {
             self.path.stroke(.white, lineWidth: 2.0).padding(.top, 120)
                 .frame(maxWidth: .infinity, maxHeight: 300)
         }

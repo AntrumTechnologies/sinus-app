@@ -12,15 +12,15 @@ import SwiftUI
     Allows users to navigate to different parts of the application.
  */
 struct MenuView: View {
-    
+
     /**
         The view.
      */
     var body: some View {
         let manager = DataManager()
-        
-        VStack{
-            HStack{
+
+        VStack {
+            HStack {
                 Spacer()
                 Image(systemName: "water.waves")
                     .resizable()
@@ -33,25 +33,25 @@ struct MenuView: View {
                     .padding(.bottom)
                 Spacer()
             }
-            //.background(.red)
+            // .background(.red)
             .background(ContentView.AppColor)
-            
+
             TabView {
-                Group{
+                Group {
                     ProfileView(manager: manager)
-                        .tabItem{
+                        .tabItem {
                             Label("Profile", systemImage: "person")
                         }
                     GraphList(gatherer: manager, onlyFollowing: false)
-                        .tabItem{
+                        .tabItem {
                             Label("Explore", systemImage: "list.bullet")
                         }
                     GraphList(gatherer: manager, onlyFollowing: true)
-                        .tabItem{
+                        .tabItem {
                             Label("Following", systemImage: "checklist.checked")
                         }
                     NewUserView(manager: manager)
-                        .tabItem{
+                        .tabItem {
                             Label("Create Wave", systemImage: "water.waves")
                         }
                 }

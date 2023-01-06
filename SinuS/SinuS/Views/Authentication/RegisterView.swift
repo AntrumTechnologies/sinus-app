@@ -9,19 +9,19 @@ import SwiftUI
 
 struct RegisterView: View {
     let manager = DataManager()
-    
+
     @State private var name: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
-    
+
     @State private var showingAlert = false
     static var isPasswordCorrect: Bool = false
     @State private var showButton = false
-    
+
     var body: some View {
         VStack {
-            
+
             // Name
             HStack {
                 Text("Name:")
@@ -31,9 +31,9 @@ struct RegisterView: View {
                     .border(Color.white, width: 0.5)
                     .frame(width: 220)
             }.padding(.horizontal).padding(.top)
-            
+
             // Email
-            HStack{
+            HStack {
                 Text("Email:")
                 Spacer()
                 TextField("", text: self.$email)
@@ -41,9 +41,9 @@ struct RegisterView: View {
                     .border(Color.white, width: 0.5)
                     .frame(width: 220)
             }.padding(.horizontal).padding(.top)
-            
+
             // Password
-            HStack{
+            HStack {
                 Text("Password:")
                 Spacer()
                 TextField("", text: self.$password)
@@ -51,9 +51,9 @@ struct RegisterView: View {
                     .border(Color.white, width: 0.5)
                     .frame(width: 220)
             }.padding(.horizontal).padding(.top)
-            
+
             // Confirm password
-            HStack{
+            HStack {
                 Text("Confirm password:")
                 Spacer()
                 TextField("", text: self.$confirmPassword)
@@ -61,7 +61,7 @@ struct RegisterView: View {
                     .border(Color.white, width: 0.5)
                     .frame(width: 220)
             }.padding(.horizontal).padding(.top)
-            
+
             // Register button
             Button("Register") {
                 let ar = self.manager.Register(
@@ -69,10 +69,10 @@ struct RegisterView: View {
                     email: self.email,
                     password: self.password,
                     confirmPassword: self.confirmPassword)
-                
+
                 // Set global authentication token.
                 ContentView.AuthenticationToken = ar!.success
-                
+
                 self.showButton.toggle()
             }.padding()
         }
@@ -81,8 +81,8 @@ struct RegisterView: View {
         .shadow(radius: 5)
         .padding()
         .foregroundColor(.white)
-        
-        if (self.showButton) {
+
+        if self.showButton {
             NavigationLink(destination: MenuView(), label: {
                 MenuButton(image: Image(systemName: "lock.open"), name: "Enter")
             })

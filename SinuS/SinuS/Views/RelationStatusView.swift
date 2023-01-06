@@ -12,12 +12,12 @@ import SwiftUI
  */
 struct RelationStatusView: View {
     let value: Int
-    
-    var status : RelationshipStatus {
+
+    var status: RelationshipStatus {
         return ValueToRelationshipStatus(value: self.value)
     }
-    
-    var text : String {
+
+    var text: String {
         switch self.status {
         case .Twarrel: return "Twarrel"
         case .Scharrel: return "Scharrel"
@@ -27,7 +27,7 @@ struct RelationStatusView: View {
         case .Relationship: return "Relationship"
         }
     }
-    
+
     /**
         The view.
      */
@@ -43,7 +43,6 @@ struct RelationStatusView: View {
         .shadow(radius: 5)
     }
 }
-    
 
 struct RelationStatusView_Previews: PreviewProvider {
     static var previews: some View {

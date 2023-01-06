@@ -9,11 +9,11 @@ import SwiftUI
 
 struct LoginView: View {
     let manager = DataManager()
-    
+
     @State private var showButton = false
     @State private var email: String = ""
     @State private var password: String = ""
-    
+
     var body: some View {
         VStack {
             // Email
@@ -25,9 +25,9 @@ struct LoginView: View {
                     .border(Color.white, width: 0.5)
                     .frame(width: 220)
             }.padding(.horizontal).padding(.top)
-            
+
             // Password
-            HStack{
+            HStack {
                 Text("Password:")
                 Spacer()
                 SecureField("", text: self.$password)
@@ -35,21 +35,20 @@ struct LoginView: View {
                     .border(Color.white, width: 0.5)
                     .frame(width: 220)
             }.padding(.horizontal).padding(.top)
-            
+
             // Login Button
             Button("Login") {
                 let ar = self.manager.Login(email: self.email, password: self.password)
-                
-                if (ar == nil) {
+
+                if ar == nil {
                     Alert(title: Text("Failure"))
-                }
-                else{
+                } else {
                     // Set global authentication token.
                     ContentView.AuthenticationToken = ar!.success
-                    
+
                     self.showButton.toggle()
                 }
-                
+
             }
             .padding()
         }
@@ -58,8 +57,8 @@ struct LoginView: View {
         .shadow(radius: 5)
         .padding()
         .foregroundColor(.white)
-        
-        if (self.showButton) {
+
+        if self.showButton {
             NavigationLink(destination: MenuView(), label: {
                 MenuButton(image: Image(systemName: "lock.open"), name: "Enter")
             })
