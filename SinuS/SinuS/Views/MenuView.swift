@@ -12,13 +12,13 @@ import SwiftUI
     Allows users to navigate to different parts of the application.
  */
 struct MenuView: View {
-
+    @State private var selection = 2
+    
     /**
         The view.
      */
     var body: some View {
         let manager = DataManager()
-
         VStack {
             HStack {
                 Spacer()
@@ -35,24 +35,23 @@ struct MenuView: View {
             }
             .background(ContentView.AppColor)
 
-            TabView {
+            TabView(selection: self.$selection) {
                 Group {
-                    ProfileView(manager: manager)
-                        .tabItem {
-                            Label("Profile", systemImage: "person")
-                        }
                     GraphList(gatherer: manager, onlyFollowing: false)
                         .tabItem {
                             Label("Explore", systemImage: "list.bullet")
                         }
+                        .tag(1)
                     GraphList(gatherer: manager, onlyFollowing: true)
                         .tabItem {
                             Label("Following", systemImage: "checklist.checked")
                         }
-                    NewUserView(manager: manager)
+                        .tag(2)
+                    PersonalView(gatherer: manager)
                         .tabItem {
-                            Label("Create wave", systemImage: "water.waves")
+                            Label("Profile", systemImage: "person")
                         }
+                        .tag(3)
                 }
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(ContentView.AppColor, for: .tabBar)

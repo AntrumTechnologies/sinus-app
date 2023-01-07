@@ -132,7 +132,7 @@ public class DataManager {
         let sem = DispatchSemaphore.init(value: 0)
 
         if users.count < 1 {
-            _ = self.gatherUsers(onlyFollowing: false)
+            _ = self.gatherUsers()
         }
 
         if let user = self.users.first(where: { user in
@@ -169,16 +169,13 @@ public class DataManager {
     /**
         Gathers the list of users.
      */
-    public func gatherUsers(onlyFollowing: Bool) -> [SinusUserData] {
+    public func gatherUsers(postfix: String = "") -> [SinusUserData] {
         let decoder = JSONDecoder()
 
         var internalUsers = [SinusUserData]()
         let sem = DispatchSemaphore.init(value: 0)
 
-        var url = DataManager.userUrl
-        if onlyFollowing {
-            url += "/following"
-        }
+        var url = DataManager.userUrl + postfix
 
         let request = RestApiHelper.createRequest(type: "GET", url: url)
 
@@ -198,7 +195,7 @@ public class DataManager {
         self.users = internalUsers
         return internalUsers
     }
-
+    
     public func unFollowUser(user_id: Int) {
         let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/unfollow"
         var request = RestApiHelper.createRequest(type: "PUT", url: urlString)

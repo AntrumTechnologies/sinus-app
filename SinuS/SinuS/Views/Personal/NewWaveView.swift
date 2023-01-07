@@ -10,7 +10,7 @@ import SwiftUI
 /**
     View which allows users to create new graphs.
  */
-struct NewUserView: View {
+struct NewWaveView: View {
     let manager: DataManager
 
     @State private var username: String = ""
@@ -21,19 +21,18 @@ struct NewUserView: View {
         The view.
      */
     var body: some View {
-        VStack {
-            Spacer()
-
-            Image(systemName: "person.circle")
-                .resizable()
-                .frame(width: 100, height: 100, alignment: .center)
+        VStack(alignment: .leading) {
+            Text("Create new Wave:")
+                .font(.headline)
+                .padding(.leading, 15)
+                .padding(.top, 5)
                 .foregroundColor(ContentView.AppColor)
-
+            
             Spacer()
 
             VStack {
                 HStack {
-                    Text("Username:")
+                    Text("Wave name:")
                     Spacer()
                     TextField("", text: self.$username)
                         .disableAutocorrection(true)
@@ -50,7 +49,7 @@ struct NewUserView: View {
                         .frame(width: 220)
                 }.padding(.horizontal)
 
-                Button("Add User!") {
+                Button("Add Wave!") {
                     self.manager.addUser(user: self.username, target: self.targetname)
                 }
                 .padding()
@@ -71,6 +70,6 @@ struct NewUserView: View {
 
 struct NewUserView_Previews: PreviewProvider {
     static var previews: some View {
-        NewUserView(manager: DataManager())
+        NewWaveView(manager: DataManager())
     }
 }

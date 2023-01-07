@@ -19,9 +19,17 @@ struct GraphList: View {
     init(gatherer: DataManager, onlyFollowing: Bool) {
         self.gatherer = gatherer
         self.onlyFollowing = onlyFollowing
-        _feed = State(initialValue: gatherer.gatherUsers(onlyFollowing: self.onlyFollowing).sorted {
-            $0.name < $1.name
-        })
+        
+        if (self.onlyFollowing) {
+            _feed = State(initialValue: gatherer.gatherUsers(postfix: "/following").sorted {
+                $0.name < $1.name
+            })
+        }
+        else {
+            _feed = State(initialValue: gatherer.gatherUsers().sorted {
+                $0.name < $1.name
+            })
+        }
     }
     
     var body: some View {
@@ -38,11 +46,19 @@ struct GraphList: View {
                         })
                 }
                 .refreshable {
-                    self.feed = gatherer.gatherUsers(onlyFollowing: self.onlyFollowing).sorted {
-                        $0.name < $1.name
+                    if (self.onlyFollowing) {
+                        self.feed = gatherer.gatherUsers(postfix: "/following").sorted {
+                            $0.name < $1.name
+                        }
                     }
-                    print("Refresh")
+                    else {
+                        self.feed = gatherer.gatherUsers().sorted {
+                            $0.name < $1.name
+                        }
+                    }
+                    
                 }
+                
             }
         }
     }
