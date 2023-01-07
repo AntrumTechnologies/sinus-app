@@ -39,7 +39,7 @@ public class DataManager {
         let parameters: [String: Any] = [
             "name": name, "email": email, "password": password, "confirm_password": confirmPassword]
         let decoder = JSONDecoder()
-        var request = RestApiHelper.createRequest(type: "POST", url: registerUrl, setCookie: false)
+        var request = RestApiHelper.createRequest(type: "POST", url: registerUrl, auth: false)
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -67,7 +67,7 @@ public class DataManager {
         let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/login?"
         let parameters: [String: Any] = ["email": email, "password": password]
         let decoder = JSONDecoder()
-        var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, setCookie: false)
+        var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, auth: false)
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -180,12 +180,13 @@ public class DataManager {
         let request = RestApiHelper.createRequest(type: "GET", url: url)
 
         let session = URLSession.shared
-        let task = session.dataTask(with: request, completionHandler: { data, _, error -> Void in
+        let task = session.dataTask(with: request, completionHandler: { data, _, _ -> Void in
             do {
                 defer { sem.signal() }
                 internalUsers = try decoder.decode([SinusUserData].self, from: data!)
             } catch {
-                print(error.localizedDescription)
+                print("ERROR OCCURRED")
+                print(String(decoding: data!, as: UTF8.self))
             }
         })
 

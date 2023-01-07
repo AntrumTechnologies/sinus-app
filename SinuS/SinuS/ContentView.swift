@@ -6,16 +6,22 @@
 //
 
 import SwiftUI
+import SwiftKeychainWrapper
 
 struct ContentView: View {
-    static var AuthenticationToken: String = ""
-    static var Cookie: String = ""
+    static var AuthenticationToken: String = KeychainWrapper.standard.string(forKey: "bearerToken") ?? ""
     static let AppColor: Color = Color(red: 253/255, green: 81/255, blue: 106/255)
     static let SecondAppColor: Color = Color(red: 255/255, green: 112/255, blue: 134/255)
+    @State private var pushActive = true
 
     var body: some View {
-        // MenuView()
-        AutenticationStartView()
+        NavigationView {
+            if KeychainWrapper.standard.string(forKey: "bearerToken") == nil {
+                AuthenticationStartView()
+            } else {
+                MenuView()
+            }
+        }
     }
 }
 
