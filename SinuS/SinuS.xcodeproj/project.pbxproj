@@ -18,7 +18,7 @@
 		4A0B397B28E0846900D7EEC9 /* RelationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397A28E0846900D7EEC9 /* RelationStatusView.swift */; };
 		4A15E00128C7C91C00422C05 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A15E00028C7C91C00422C05 /* ProfileButton.swift */; };
 		4A15E00328C7CD5300422C05 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A15E00228C7CD5300422C05 /* ProfileView.swift */; };
-		4A4C6D002917C2E4001DB4F7 /* AutenticationStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6CFF2917C2E4001DB4F7 /* AutenticationStartView.swift */; };
+		4A4C6D002917C2E4001DB4F7 /* AuthenticationStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6CFF2917C2E4001DB4F7 /* AuthenticationStartView.swift */; };
 		4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D022917C2F9001DB4F7 /* LoginView.swift */; };
 		4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D052917C30D001DB4F7 /* RegisterView.swift */; };
 		4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */; };
@@ -39,6 +39,7 @@
 		4AD26FF128C6773E0065FB01 /* FeedWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FF028C6773E0065FB01 /* FeedWaveView.swift */; };
 		4AD26FF328C6782D0065FB01 /* GraphList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FF228C6782D0065FB01 /* GraphList.swift */; };
 		4AD26FF528C7BFC10065FB01 /* DataGatherer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */; };
+		CE6A64E629696C1C00DC47E5 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A64E529696C1C00DC47E5 /* SwiftKeychainWrapper */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +71,7 @@
 		4A0B397A28E0846900D7EEC9 /* RelationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationStatusView.swift; sourceTree = "<group>"; };
 		4A15E00028C7C91C00422C05 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		4A15E00228C7CD5300422C05 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		4A4C6CFF2917C2E4001DB4F7 /* AutenticationStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutenticationStartView.swift; sourceTree = "<group>"; };
+		4A4C6CFF2917C2E4001DB4F7 /* AuthenticationStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStartView.swift; sourceTree = "<group>"; };
 		4A4C6D022917C2F9001DB4F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4A4C6D052917C30D001DB4F7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResult.swift; sourceTree = "<group>"; };
@@ -104,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6A64E629696C1C00DC47E5 /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +138,7 @@
 		4A4C6CFE2917C2A8001DB4F7 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				4A4C6CFF2917C2E4001DB4F7 /* AutenticationStartView.swift */,
+				4A4C6CFF2917C2E4001DB4F7 /* AuthenticationStartView.swift */,
 				4A4C6D022917C2F9001DB4F7 /* LoginView.swift */,
 				4A4C6D052917C30D001DB4F7 /* RegisterView.swift */,
 			);
@@ -289,6 +291,9 @@
 			dependencies = (
 			);
 			name = SinuS;
+			packageProductDependencies = (
+				CE6A64E529696C1C00DC47E5 /* SwiftKeychainWrapper */,
+			);
 			productName = SinuS;
 			productReference = 4AD26FB628BBA5D40065FB01 /* Love Wave.app */;
 			productType = "com.apple.product-type.application";
@@ -360,6 +365,9 @@
 				Base,
 			);
 			mainGroup = 4AD26FAD28BBA5D40065FB01;
+			packageReferences = (
+				CE6A64E429696C1C00DC47E5 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+			);
 			productRefGroup = 4AD26FB728BBA5D40065FB01 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -423,7 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A4C6D002917C2E4001DB4F7 /* AutenticationStartView.swift in Sources */,
+				4A4C6D002917C2E4001DB4F7 /* AuthenticationStartView.swift in Sources */,
 				4AD26FEB28BBAEA40065FB01 /* SinusData.swift in Sources */,
 				4AABA28528CFACC500070E6E /* SinusUpdate.swift in Sources */,
 				4A15E00328C7CD5300422C05 /* ProfileView.swift in Sources */,
@@ -772,6 +780,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE6A64E429696C1C00DC47E5 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE6A64E529696C1C00DC47E5 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE6A64E429696C1C00DC47E5 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4AD26FAE28BBA5D40065FB01 /* Project object */;
 }

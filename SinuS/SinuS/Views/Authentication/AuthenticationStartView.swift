@@ -16,7 +16,7 @@ struct AutenticationStartView: View {
 
                 // Login Button
                 NavigationLink(destination: LoginView(), label: {
-                    MenuButton(image: Image(systemName: "person.fill"), name: "Login")
+                    MenuButton(image: Image(systemName: "person.badge.key.fill"), name: "Login")
                 })
 
                 // Register Button
