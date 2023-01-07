@@ -33,13 +33,13 @@ struct LineChart2: View {
     var points: [ChartPoint] {
         var list = [ChartPoint]()
         print(self.data.values.count)
-        if (self.data.values.count > 1) {
+        if self.data.values.count > 1 {
             for val in 0...self.self.data.values.count - 1 {
                 list.append(ChartPoint(label: self.data.labels[val], value: self.data.values[val]))
             }
-            
+
         }
-        
+
         return list
     }
 
@@ -58,7 +58,7 @@ struct LineChart2: View {
         VStack {
             HStack {
                 Spacer()
-                
+
                 Image(systemName: "water.waves")
                     .resizable()
                     .frame(width: 25, height: 25)
@@ -69,7 +69,6 @@ struct LineChart2: View {
             }.background(ContentView.AppColor)
             Divider()
 
-            
             RelationStatusView(value: self.data.values.last ?? 0)
 
             Divider()

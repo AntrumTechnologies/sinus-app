@@ -9,18 +9,18 @@ import SwiftUI
 
 struct PersonalView: View {
     let gatherer: DataManager
-    
+
     var body: some View {
         VStack {
-            ScrollView (.vertical) {
+            ScrollView(.vertical) {
                 CreatedRowView(gatherer: gatherer, waves: gatherer.gatherUsers(postfix: "/created"))
-                
+
                 ProfileView(manager: gatherer)
-                
+
                 NewWaveView(manager: gatherer)
-                
+
             }
-            
+
         }
     }
 }

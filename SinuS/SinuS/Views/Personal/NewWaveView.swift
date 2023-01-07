@@ -27,7 +27,7 @@ struct NewWaveView: View {
                 .padding(.leading, 15)
                 .padding(.top, 5)
                 .foregroundColor(ContentView.AppColor)
-            
+
             Spacer()
 
             VStack {

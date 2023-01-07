@@ -15,6 +15,9 @@ private struct GraphDataPoint: Codable {
     let date: String
     let value: Int
     let deleted_at: String?
+    let latitude: Double
+    let longitude: Double
+    let tags: String
 }
 
 /**
@@ -175,7 +178,7 @@ public class DataManager {
         var internalUsers = [SinusUserData]()
         let sem = DispatchSemaphore.init(value: 0)
 
-        var url = DataManager.userUrl + postfix
+        let url = DataManager.userUrl + postfix
 
         let request = RestApiHelper.createRequest(type: "GET", url: url)
 
@@ -196,7 +199,7 @@ public class DataManager {
         self.users = internalUsers
         return internalUsers
     }
-    
+
     public func unFollowUser(user_id: Int) {
         let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/unfollow"
         var request = RestApiHelper.createRequest(type: "PUT", url: urlString)

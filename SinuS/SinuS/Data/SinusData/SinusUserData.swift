@@ -15,4 +15,5 @@ public struct SinusUserData: Codable {
     let created_at: String?
     let updated_at: String?
     let deleted_at: String?
+    let archived: Bool
 }

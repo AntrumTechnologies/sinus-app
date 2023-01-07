@@ -81,7 +81,7 @@
 		4AC5B3D429698525003D819C /* PersonalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalView.swift; sourceTree = "<group>"; };
 		4AC5B3D72969876B003D819C /* CreatedRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedRowView.swift; sourceTree = "<group>"; };
 		4AC5B3D9296989B0003D819C /* PersonalWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalWaveView.swift; sourceTree = "<group>"; };
-		4AD26FB628BBA5D40065FB01 /* Love Wave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Love Wave.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AD26FB628BBA5D40065FB01 /* Love waves.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Love waves.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinuSApp.swift; sourceTree = "<group>"; };
 		4AD26FBB28BBA5D40065FB01 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4AD26FBD28BBA5D60065FB01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 		4AD26FB728BBA5D40065FB01 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4AD26FB628BBA5D40065FB01 /* Love Wave.app */,
+				4AD26FB628BBA5D40065FB01 /* Love waves.app */,
 				4AD26FC728BBA5D60065FB01 /* SinuSTests.xctest */,
 				4AD26FD228BBA5D60065FB01 /* SinuSUITests.xctest */,
 			);
@@ -295,7 +295,7 @@
 				CE6A64E529696C1C00DC47E5 /* SwiftKeychainWrapper */,
 			);
 			productName = SinuS;
-			productReference = 4AD26FB628BBA5D40065FB01 /* Love Wave.app */;
+			productReference = 4AD26FB628BBA5D40065FB01 /* Love waves.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4AD26FC628BBA5D60065FB01 /* SinuSTests */ = {
@@ -617,7 +617,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SinuS/Preview Content\"";
-				DEVELOPMENT_TEAM = 479GB76B7L;
+				DEVELOPMENT_TEAM = 27MSAG6A3N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SinuS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -626,7 +626,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = LoeHen.SinuS;
-				PRODUCT_NAME = "Love Wave";
+				PRODUCT_NAME = "Love waves";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -639,7 +639,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SinuS/Preview Content\"";
-				DEVELOPMENT_TEAM = 479GB76B7L;
+				DEVELOPMENT_TEAM = 27MSAG6A3N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SinuS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -648,7 +648,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = LoeHen.SinuS;
-				PRODUCT_NAME = "Love Wave";
+				PRODUCT_NAME = "Love waves";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
