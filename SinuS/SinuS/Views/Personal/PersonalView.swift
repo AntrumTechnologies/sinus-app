@@ -19,6 +19,7 @@ struct PersonalView: View {
 
                 NewWaveView(manager: gatherer)
 
+                ManageProfileView(manager: gatherer)
             }
 
         }
