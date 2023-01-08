@@ -10,7 +10,6 @@ import SwiftKeychainWrapper
 
 struct ContentView: View {
     static var AuthenticationToken: String = KeychainWrapper.standard.string(forKey: "bearerToken") ?? ""
-    @State private var pushActive = true
 
     var body: some View {
         NavigationView {
