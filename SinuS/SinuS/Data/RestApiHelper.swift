@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftKeychainWrapper
 
 public class RestApiHelper {
     public static func perfomRestCall(request: URLRequest) -> Data? {
@@ -13,12 +14,8 @@ public class RestApiHelper {
         let session = URLSession.shared
         var returnObject: Data?
 
-        let task = session.dataTask(with: request, completionHandler: { data, response, _ -> Void in
+        let task = session.dataTask(with: request, completionHandler: { data, _, _ -> Void in
             defer { semaphore.signal() }
-
-            if let httpResponse = response as? HTTPURLResponse {
-                ContentView.Cookie = httpResponse.value(forHTTPHeaderField: "Set-Cookie") ?? ""
-            }
 
             returnObject = data!
         })
@@ -28,13 +25,15 @@ public class RestApiHelper {
         return returnObject
     }
 
-    public static func createRequest(type: String, url: String, setCookie: Bool = true) -> URLRequest {
+    public static func createRequest(type: String, url: String, auth: Bool = true) -> URLRequest {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = type
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
 
-        if setCookie {
-            request.addValue(ContentView.Cookie, forHTTPHeaderField: "Cookie")
+        if auth {
+            let bearerToken: String = KeychainWrapper.standard.string(forKey: "bearerToken") ?? ""
+            request.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
         }
 
         return request

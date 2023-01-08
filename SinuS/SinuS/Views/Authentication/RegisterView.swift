@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftKeychainWrapper
 
 struct RegisterView: View {
     let manager = DataManager()
@@ -75,6 +76,10 @@ struct RegisterView: View {
                 } else {
                     // Set global authentication token.
                     ContentView.AuthenticationToken = authenticationResult!.success
+                    let saveSuccessful: Bool = KeychainWrapper.standard.set(ContentView.AuthenticationToken, forKey: "bearerToken", isSynchronizable: true)
+                    if !saveSuccessful {
+                        print("Could not save bearerToken")
+                    }
                     self.showButton.toggle()
                 }
 
@@ -84,7 +89,7 @@ struct RegisterView: View {
             }
             .padding()
         }
-        .background(ContentView.AppColor)
+        .background(Style.AppColor)
         .cornerRadius(5)
         .shadow(radius: 5)
         .padding()

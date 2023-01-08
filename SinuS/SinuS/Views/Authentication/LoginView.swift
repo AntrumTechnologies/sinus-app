@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwiftKeychainWrapper
 
 struct LoginView: View {
     let manager = DataManager()
 
-    @State private var showButton = false
-    @State private var email: String = ""
+    // Tokens never expire so we can keep reusing the saved token
+    @State private var pushActive = false
+    @State private var email: String = UserDefaults.standard.string(forKey: "email") ?? ""
     @State private var password: String = ""
     @State private var showAlert = false
 
@@ -39,15 +41,20 @@ struct LoginView: View {
 
             // Login Button
             Button("Login") {
-                let ar = self.manager.login(email: self.email, password: self.password)
+                let res = self.manager.login(email: self.email, password: self.password)
+                UserDefaults.standard.set(self.email, forKey: "email")
 
-                if ar == nil {
+                if res == nil {
                     self.showAlert.toggle()
                 } else {
                     // Set global authentication token.
-                    ContentView.AuthenticationToken = ar!.success
+                    ContentView.AuthenticationToken = res!.success
+                    let saveSuccessful: Bool = KeychainWrapper.standard.set(ContentView.AuthenticationToken, forKey: "bearerToken")
+                    if !saveSuccessful {
+                        print("Could not save bearerToken")
+                    }
 
-                    self.showButton.toggle()
+                    self.pushActive = true
                 }
 
             }
@@ -57,17 +64,16 @@ struct LoginView: View {
             }
             .padding()
         }
-        .background(ContentView.AppColor)
+        .background(Style.AppColor)
         .cornerRadius(5)
         .shadow(radius: 5)
         .padding()
         .foregroundColor(.white)
 
-        if self.showButton {
-            NavigationLink(destination: MenuView(), label: {
-                MenuButton(image: Image(systemName: "lock.open"), name: "Enter")
-            })
-        }
+        NavigationLink(destination: MenuView(),
+           isActive: self.$pushActive) {
+             EmptyView()
+        }.hidden()
     }
 }
 

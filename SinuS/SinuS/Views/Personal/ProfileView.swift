@@ -24,22 +24,18 @@ struct ProfileView: View {
         The view.
      */
     var body: some View {
-        VStack {
-
-            Spacer()
-
-            Image(systemName: "person.circle").resizable()
-                .frame(
-                    width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/,
-                    height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/,
-                    alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .foregroundColor(ContentView.AppColor)
+        VStack(alignment: .leading) {
+            Text("Update Wave:")
+                .font(.headline)
+                .padding(.leading, 15)
+                .padding(.top, 5)
+                .foregroundColor(Style.ThirdAppColor)
 
             Spacer()
 
             VStack {
                 HStack {
-                    Text("Username:")
+                    Text("Wave name:")
                     Spacer()
                     TextField("", text: self.$username)
                         .disableAutocorrection(true)
@@ -75,7 +71,7 @@ struct ProfileView: View {
                     Button("OK", role: .cancel) { }
                 }
             }
-            .background(ContentView.AppColor)
+            .background(Style.AppColor)
             .cornerRadius(5)
             .shadow(radius: 5)
             .padding()

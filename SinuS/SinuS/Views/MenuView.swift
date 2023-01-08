@@ -12,13 +12,13 @@ import SwiftUI
     Allows users to navigate to different parts of the application.
  */
 struct MenuView: View {
+    @State private var selection = 2
 
     /**
         The view.
      */
     var body: some View {
         let manager = DataManager()
-
         VStack {
             HStack {
                 Spacer()
@@ -33,29 +33,28 @@ struct MenuView: View {
                     .padding(.bottom)
                 Spacer()
             }
-            .background(ContentView.AppColor)
+            .background(Style.AppColor)
 
-            TabView {
+            TabView(selection: self.$selection) {
                 Group {
-                    ProfileView(manager: manager)
+                    GraphList(gatherer: manager, onlyFollowing: false)
+                        .tabItem {
+                            Label("Explore", systemImage: "network")
+                        }
+                        .tag(1)
+                    GraphList(gatherer: manager, onlyFollowing: true)
+                        .tabItem {
+                            Label("Following", systemImage: "person.2.fill")
+                        }
+                        .tag(2)
+                    PersonalView(gatherer: manager)
                         .tabItem {
                             Label("Profile", systemImage: "person")
                         }
-                    GraphList(gatherer: manager, onlyFollowing: false)
-                        .tabItem {
-                            Label("Explore", systemImage: "list.bullet")
-                        }
-                    GraphList(gatherer: manager, onlyFollowing: true)
-                        .tabItem {
-                            Label("Following", systemImage: "checklist.checked")
-                        }
-                    NewUserView(manager: manager)
-                        .tabItem {
-                            Label("Create wave", systemImage: "water.waves")
-                        }
+                        .tag(3)
                 }
                 .toolbar(.visible, for: .tabBar)
-                .toolbarBackground(ContentView.AppColor, for: .tabBar)
+                .toolbarBackground(Style.AppColor, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .toolbarColorScheme(.dark, for: .tabBar)
             }

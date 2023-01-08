@@ -38,7 +38,7 @@ struct RelationStatusView: View {
         }
         .foregroundColor(.white)
         .frame(width: 250, height: 50)
-        .background(ContentView.AppColor)
+        .background(Style.ThirdAppColor)
         .cornerRadius(5)
         .shadow(radius: 5)
     }

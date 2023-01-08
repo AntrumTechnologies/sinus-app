@@ -15,6 +15,9 @@ private struct GraphDataPoint: Codable {
     let date: String
     let value: Int
     let deleted_at: String?
+    let latitude: Double?
+    let longitude: Double?
+    let tags: String
 }
 
 /**
@@ -26,6 +29,7 @@ public class DataManager {
     private static var dataUrl = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/sinusvalue/"
 
     private var users = [SinusUserData]()
+    private var logHelper = LogHelper()
 
     /**
         Register call to the backend.
@@ -39,7 +43,7 @@ public class DataManager {
         let parameters: [String: Any] = [
             "name": name, "email": email, "password": password, "confirm_password": confirmPassword]
         let decoder = JSONDecoder()
-        var request = RestApiHelper.createRequest(type: "POST", url: registerUrl, setCookie: false)
+        var request = RestApiHelper.createRequest(type: "POST", url: registerUrl, auth: false)
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -54,7 +58,10 @@ public class DataManager {
         do {
             result = try decoder.decode(AuthenticationResult.self, from: data!)
         } catch {
-            print("Unexpected error: \(error).")
+            let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
+            let errMsg = "Unable to register: \(returnedData)"
+            self.logHelper.logMsg(level: "error", message: errMsg)
+            print(errMsg)
         }
 
         return result
@@ -67,7 +74,7 @@ public class DataManager {
         let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/login?"
         let parameters: [String: Any] = ["email": email, "password": password]
         let decoder = JSONDecoder()
-        var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, setCookie: false)
+        var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, auth: false)
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -82,7 +89,30 @@ public class DataManager {
         do {
             result = try decoder.decode(AuthenticationResult.self, from: data!)
         } catch {
-            print("Unexpected error: \(error).")
+            let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
+            let errMsg = "Unable to login: \(returnedData)"
+            self.logHelper.logMsg(level: "error", message: errMsg)
+            print(errMsg)
+        }
+
+        return result
+    }
+
+    public func getCurrentUser() -> TotalUserData? {
+        let url = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/user"
+        let decoder = JSONDecoder()
+        let request = RestApiHelper.createRequest(type: "GET", url: url, auth: true)
+
+        var result: TotalUserData?
+        let data = RestApiHelper.perfomRestCall(request: request)
+
+        do {
+            result = try decoder.decode(TotalUserData.self, from: data!)
+        } catch {
+            let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
+            let errMsg = "Unable to login: \(returnedData)"
+            self.logHelper.logMsg(level: "error", message: errMsg)
+            print(errMsg)
         }
 
         return result
@@ -112,9 +142,11 @@ public class DataManager {
 
             if error.debugDescription == "" {
                 success = true
+            } else {
+                let errMsg = "Unable to addUser: \(error.debugDescription)"
+                self.logHelper.logMsg(level: "error", message: errMsg)
+                print(errMsg)
             }
-
-            print(error.debugDescription)
         })
 
         task.resume()
@@ -132,7 +164,7 @@ public class DataManager {
         let sem = DispatchSemaphore.init(value: 0)
 
         if users.count < 1 {
-            _ = self.gatherUsers(onlyFollowing: false)
+            _ = self.gatherUsers()
         }
 
         if let user = self.users.first(where: { user in
@@ -156,9 +188,15 @@ public class DataManager {
             }
 
             let session = URLSession.shared
-            let task = session.dataTask(with: request, completionHandler: { _, response, _ -> Void in
+            let task = session.dataTask(with: request, completionHandler: { _, response, error -> Void in
                 defer { sem.signal() }
                 print(response as Any)
+
+                if error.debugDescription != "" {
+                    let errMsg = "Unable to sendData: \(error.debugDescription)"
+                    self.logHelper.logMsg(level: "error", message: errMsg)
+                    print(errMsg)
+                }
             })
 
             task.resume()
@@ -169,26 +207,26 @@ public class DataManager {
     /**
         Gathers the list of users.
      */
-    public func gatherUsers(onlyFollowing: Bool) -> [SinusUserData] {
+    public func gatherUsers(postfix: String = "") -> [SinusUserData] {
         let decoder = JSONDecoder()
 
         var internalUsers = [SinusUserData]()
         let sem = DispatchSemaphore.init(value: 0)
 
-        var url = DataManager.userUrl
-        if onlyFollowing {
-            url += "/following"
-        }
+        let url = DataManager.userUrl + postfix
 
         let request = RestApiHelper.createRequest(type: "GET", url: url)
 
         let session = URLSession.shared
-        let task = session.dataTask(with: request, completionHandler: { data, _, error -> Void in
+        let task = session.dataTask(with: request, completionHandler: { data, _, _ -> Void in
             do {
                 defer { sem.signal() }
                 internalUsers = try decoder.decode([SinusUserData].self, from: data!)
             } catch {
-                print(error.localizedDescription)
+                let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
+                let errMsg = "Unable to decode points in gatherUsers: \(returnedData)"
+                self.logHelper.logMsg(level: "error", message: errMsg)
+                print(errMsg)
             }
         })
 
@@ -242,7 +280,10 @@ public class DataManager {
             do {
                 points = try decoder.decode([GraphDataPoint].self, from: data!)
             } catch {
-                print("Unable to decode points")
+                let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
+                let errMsg = "Unable to decode points in gatherSingleData: \(returnedData)"
+                self.logHelper.logMsg(level: "error", message: errMsg)
+                print(errMsg)
             }
         }
 

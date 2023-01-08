@@ -13,35 +13,50 @@ import SwiftUI
 struct GraphList: View {
     let gatherer: DataManager
     let onlyFollowing: Bool
-    
+
     @State private var feed: [SinusUserData] = []
-    
+
     init(gatherer: DataManager, onlyFollowing: Bool) {
         self.gatherer = gatherer
         self.onlyFollowing = onlyFollowing
-        _feed = State(initialValue: gatherer.gatherUsers(onlyFollowing: self.onlyFollowing).sorted {
-            $0.name < $1.name
-        })
+
+        if self.onlyFollowing {
+            _feed = State(initialValue: gatherer.gatherUsers(postfix: "/following").sorted {
+                $0.name < $1.name
+            })
+        } else {
+            _feed = State(initialValue: gatherer.gatherUsers().sorted {
+                $0.name < $1.name
+            })
+        }
     }
-    
+
     var body: some View {
         ZStack {
             ZStack {
+
                 List(self.feed, id: \.id) { user in
                     let data = gatherer.gatherSingleData(user: user)
 
                     NavigationLink(
-                        destination: LineChart2(user: user, data: data),
+                        destination: LineChart2(gatherer: self.gatherer, user: user, data: data),
                         label: {
                             FeedWaveView(userData: user, data: data)
                         })
                 }
                 .refreshable {
-                    self.feed = gatherer.gatherUsers(onlyFollowing: self.onlyFollowing).sorted {
-                        $0.name < $1.name
+                    if self.onlyFollowing {
+                        self.feed = gatherer.gatherUsers(postfix: "/following").sorted {
+                            $0.name < $1.name
+                        }
+                    } else {
+                        self.feed = gatherer.gatherUsers().sorted {
+                            $0.name < $1.name
+                        }
                     }
-                    print("Refresh")
+
                 }
+
             }
         }
     }

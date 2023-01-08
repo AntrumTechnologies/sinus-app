@@ -26,7 +26,7 @@ struct SmallFrame: View {
         }
         .foregroundColor(.white)
         .frame(width: 150, height: 75)
-        .background(ContentView.AppColor)
+        .background(Style.ThirdAppColor)
         .cornerRadius(5)
         .shadow(radius: 5)
     }

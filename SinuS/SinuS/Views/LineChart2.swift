@@ -21,11 +21,13 @@ struct ChartPoint: Identifiable {
     View showing the user's Sinus/Graph.
  */
 struct LineChart2: View {
+    private let gatherer: DataManager
     private let user: SinusUserData
     private let data: SinusData
     private static var following = false
 
-    init(user: SinusUserData, data: SinusData) {
+    init(gatherer: DataManager, user: SinusUserData, data: SinusData) {
+        self.gatherer = gatherer
         self.user = user
         self.data = data
     }
@@ -33,13 +35,13 @@ struct LineChart2: View {
     var points: [ChartPoint] {
         var list = [ChartPoint]()
         print(self.data.values.count)
-        if (self.data.values.count > 1) {
+        if self.data.values.count > 1 {
             for val in 0...self.self.data.values.count - 1 {
                 list.append(ChartPoint(label: self.data.labels[val], value: self.data.values[val]))
             }
-            
+
         }
-        
+
         return list
     }
 
@@ -56,18 +58,8 @@ struct LineChart2: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                Image(systemName: "water.waves")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                    .foregroundColor(.white)
-                    .padding(.bottom)
-                Spacer()
-            }.background(ContentView.AppColor)
             Divider()
 
-            
             RelationStatusView(value: self.data.values.last ?? 0)
 
             Divider()
@@ -81,7 +73,7 @@ struct LineChart2: View {
             .padding()
             .chartPlotStyle { plotArea in
                 plotArea
-                    .background(ContentView.SecondAppColor)
+                    .background(Style.SecondAppColor)
             }
             .foregroundColor(.white)
 
@@ -113,29 +105,41 @@ struct LineChart2: View {
                     manager.followUser(user_id: self.user.user_id)
                 }
                 Spacer()
+                NavigationLink(destination: CompareView(initialData: data, gatherer: self.gatherer), label: {
+                    Text("Compare")
+                })
+
+                Spacer()
                 Button("Unfollow") {
                     let manager = DataManager()
                     manager.unFollowUser(user_id: self.user.user_id)
                 }
 
             }
-            .foregroundColor(ContentView.AppColor)
+            .foregroundColor(Style.AppColor)
             .padding()
 
         }
+        .toolbar(.visible, for: ToolbarPlacement.navigationBar)
+        .toolbarBackground(Style.AppColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
     }
 }
 
 struct LineChart2_Previews: PreviewProvider {
     static var previews: some View {
-        LineChart2(user: SinusUserData(
+        LineChart2(
+            gatherer: DataManager(),
+            user: SinusUserData(
             id: 1,
             name: "Lukas",
             user_id: 1,
             date_name: "Target",
             created_at: "",
             updated_at: "",
-            deleted_at: ""),
+            deleted_at: "",
+            archived: 0),
             data: SinusData(
                 id: 1,
                 values: [ 20, 30],

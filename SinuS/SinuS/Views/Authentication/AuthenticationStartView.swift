@@ -1,5 +1,5 @@
 //
-//  AutenticationStartView.swift
+//  AuthenticationStartView.swift
 //  SinuS
 //
 //  Created by Loe Hendriks on 06/11/2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AutenticationStartView: View {
+struct AuthenticationStartView: View {
     var body: some View {
         NavigationView {
             VStack {
@@ -16,7 +16,7 @@ struct AutenticationStartView: View {
 
                 // Login Button
                 NavigationLink(destination: LoginView(), label: {
-                    MenuButton(image: Image(systemName: "person.fill"), name: "Login")
+                    MenuButton(image: Image(systemName: "person.badge.key.fill"), name: "Login")
                 })
 
                 // Register Button
@@ -32,6 +32,6 @@ struct AutenticationStartView: View {
 
 struct AutenticationStartView_Previews: PreviewProvider {
     static var previews: some View {
-        AutenticationStartView()
+        AuthenticationStartView()
     }
 }
