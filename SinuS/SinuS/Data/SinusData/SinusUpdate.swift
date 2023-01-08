@@ -18,11 +18,6 @@ public struct SinusUpdate {
     let name: String
 
     /**
-        The password of the user.
-     */
-    let password: String
-
-    /**
         The new point for the graph.
      */
     let value: Int

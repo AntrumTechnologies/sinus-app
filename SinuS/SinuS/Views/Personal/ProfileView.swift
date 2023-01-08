@@ -13,12 +13,17 @@ import SwiftUI
  */
 struct ProfileView: View {
     let manager: DataManager
+    let waves: [SinusUserData]
 
-    @State private var username: String = ""
     @State private var value = 50.0
     @State private var isEditing = false
     @State private var date = Date()
     @State private var showingAlert = false
+    @State private var selection = ""
+
+    var options: [String] {
+        return waves.map { "\($0.date_name)" }
+    }
 
     /**
         The view.
@@ -35,16 +40,22 @@ struct ProfileView: View {
 
             VStack {
                 HStack {
-                    Text("Wave name:")
+                    Text("Wave:")
+
                     Spacer()
-                    TextField("", text: self.$username)
-                        .disableAutocorrection(true)
-                        .border(Color.white, width: 0.5)
-                        .frame(width: 220)
+
+                    Picker("", selection: self.$selection) {
+                        ForEach(options, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .cornerRadius(5)
+                    .shadow(radius: 10)
                 }.padding(.horizontal).padding(.top)
 
                 HStack {
                     DatePicker(selection: $date, displayedComponents: [.date], label: { Text("Date:") })
+                        .colorScheme(.dark)
                 }.padding(.horizontal)
 
                 HStack {
@@ -62,7 +73,7 @@ struct ProfileView: View {
                 }.font(.system(size: 50))
 
                 Button("Update") {
-                    let update = SinusUpdate(name: self.username, password: "", value: Int(self.value), date: self.date)
+                    let update = SinusUpdate(name: self.selection, value: Int(self.value), date: self.date)
                     manager.sendData(data: update)
                     showingAlert = true
                 }
@@ -85,6 +96,12 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(manager: DataManager())
+        let waves = [
+            SinusUserData(id: 1, name: "Name", user_id: 2, date_name: "Target1", created_at: "", updated_at: "", deleted_at: "", archived: 0),
+            SinusUserData(id: 2, name: "Name2", user_id: 4, date_name: "Target2", created_at: "", updated_at: "", deleted_at: "", archived: 0),
+            SinusUserData(id: 3, name: "Name3", user_id: 5, date_name: "Target3", created_at: "", updated_at: "", deleted_at: "", archived: 0)
+        ]
+
+        ProfileView(manager: DataManager(), waves: waves)
     }
 }

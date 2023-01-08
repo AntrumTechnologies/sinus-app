@@ -21,7 +21,7 @@ struct PersonalView: View {
 
                 Divider()
 
-                ProfileView(manager: gatherer)
+                ProfileView(manager: gatherer, waves: gatherer.gatherUsers(postfix: "/created"))
 
                 Divider()
 
