@@ -15,8 +15,8 @@ private struct GraphDataPoint: Codable {
     let date: String
     let value: Int
     let deleted_at: String?
-    let latitude: Double
-    let longitude: Double
+    let latitude: Double?
+    let longitude: Double?
     let tags: String
 }
 
@@ -94,7 +94,7 @@ public class DataManager {
     public func getCurrentUser() -> TotalUserData?{
         let url = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/user"
         let decoder = JSONDecoder()
-        var request = RestApiHelper.createRequest(type: "GET", url: url, auth: true)
+        let request = RestApiHelper.createRequest(type: "GET", url: url, auth: true)
         
         var result: TotalUserData?
         let data = RestApiHelper.perfomRestCall(request: request)

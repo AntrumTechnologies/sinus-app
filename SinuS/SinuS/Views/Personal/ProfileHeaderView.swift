@@ -12,7 +12,7 @@ struct ProfileHeaderView: View {
     let avatar: Image
     
     var name: String {
-        var currentUser = self.gatherer.getCurrentUser()
+        let currentUser = self.gatherer.getCurrentUser()
         
         if (currentUser == nil) {
             return "Unknown"

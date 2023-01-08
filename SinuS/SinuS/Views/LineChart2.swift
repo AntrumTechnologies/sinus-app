@@ -21,11 +21,13 @@ struct ChartPoint: Identifiable {
     View showing the user's Sinus/Graph.
  */
 struct LineChart2: View {
+    private let gatherer: DataManager
     private let user: SinusUserData
     private let data: SinusData
     private static var following = false
 
-    init(user: SinusUserData, data: SinusData) {
+    init(gatherer: DataManager, user: SinusUserData, data: SinusData) {
+        self.gatherer = gatherer
         self.user = user
         self.data = data
     }
@@ -103,6 +105,11 @@ struct LineChart2: View {
                     manager.followUser(user_id: self.user.user_id)
                 }
                 Spacer()
+                NavigationLink(destination: CompareView(initialData: data, gatherer: self.gatherer), label: {
+                    Text("Compare")
+                })
+                
+                Spacer()
                 Button("Unfollow") {
                     let manager = DataManager()
                     manager.unFollowUser(user_id: self.user.user_id)
@@ -122,7 +129,9 @@ struct LineChart2: View {
 
 struct LineChart2_Previews: PreviewProvider {
     static var previews: some View {
-        LineChart2(user: SinusUserData(
+        LineChart2(
+            gatherer: DataManager(),
+            user: SinusUserData(
             id: 1,
             name: "Lukas",
             user_id: 1,
