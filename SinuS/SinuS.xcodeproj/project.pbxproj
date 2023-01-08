@@ -47,6 +47,7 @@
 		4AD26FF528C7BFC10065FB01 /* DataGatherer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */; };
 		CE6A64E629696C1C00DC47E5 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A64E529696C1C00DC47E5 /* SwiftKeychainWrapper */; };
 		CE89A8762969F93200300C9D /* ManageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89A8752969F93200300C9D /* ManageProfileView.swift */; };
+		CE89A87A296AF2D300300C9D /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89A879296AF2D300300C9D /* LogHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		4AD26FF228C6782D0065FB01 /* GraphList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphList.swift; sourceTree = "<group>"; };
 		4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGatherer.swift; sourceTree = "<group>"; };
 		CE89A8752969F93200300C9D /* ManageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageProfileView.swift; sourceTree = "<group>"; };
+		CE89A879296AF2D300300C9D /* LogHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,12 +305,21 @@
 		4AD26FE928BBAE930065FB01 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				CE89A878296AF29E00300C9D /* Log */,
 				4A4C6D0A2917CDE5001DB4F7 /* SinusData */,
 				4A4C6D092917CDD5001DB4F7 /* Authentication */,
 				4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */,
 				4AC5B3D2296849DD003D819C /* RestApiHelper.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		CE89A878296AF29E00300C9D /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				CE89A879296AF2D300300C9D /* LogHelper.swift */,
+			);
+			path = Log;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,6 +499,7 @@
 				4A0B396A28D38DE000D7EEC9 /* MenuView.swift in Sources */,
 				4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */,
 				4A0B397028D3937100D7EEC9 /* AdminView.swift in Sources */,
+				CE89A87A296AF2D300300C9D /* LogHelper.swift in Sources */,
 				4AC5B3DA296989B0003D819C /* PersonalWaveView.swift in Sources */,
 				4A0B396C28D38F0700D7EEC9 /* MenuButton.swift in Sources */,
 				4A4C6D0D295D9E1B001DB4F7 /* FeedWaveGraphView.swift in Sources */,

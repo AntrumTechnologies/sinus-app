@@ -29,6 +29,7 @@ public class DataManager {
     private static var dataUrl = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/sinusvalue/"
 
     private var users = [SinusUserData]()
+    private var logHelper = LogHelper()
 
     /**
         Register call to the backend.
@@ -57,7 +58,10 @@ public class DataManager {
         do {
             result = try decoder.decode(AuthenticationResult.self, from: data!)
         } catch {
-            print("Unexpected error: \(error).")
+            let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
+            let errMsg = "Unable to register: \(returnedData)"
+            self.logHelper.logMsg(level: "error", message: errMsg)
+            print(errMsg)
         }
 
         return result
@@ -85,7 +89,10 @@ public class DataManager {
         do {
             result = try decoder.decode(AuthenticationResult.self, from: data!)
         } catch {
-            print("Unexpected error: \(error).")
+            let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
+            let errMsg = "Unable to login: \(returnedData)"
+            self.logHelper.logMsg(level: "error", message: errMsg)
+            print(errMsg)
         }
 
         return result
@@ -134,9 +141,11 @@ public class DataManager {
 
             if error.debugDescription == "" {
                 success = true
+            } else {
+                let errMsg = "Unable to addUser: \(error.debugDescription)"
+                self.logHelper.logMsg(level: "error", message: errMsg)
+                print(errMsg)
             }
-
-            print(error.debugDescription)
         })
 
         task.resume()
@@ -178,9 +187,15 @@ public class DataManager {
             }
 
             let session = URLSession.shared
-            let task = session.dataTask(with: request, completionHandler: { _, response, _ -> Void in
+            let task = session.dataTask(with: request, completionHandler: { _, response, error -> Void in
                 defer { sem.signal() }
                 print(response as Any)
+
+                if error.debugDescription != "" {
+                    let errMsg = "Unable to sendData: \(error.debugDescription)"
+                    self.logHelper.logMsg(level: "error", message: errMsg)
+                    print(errMsg)
+                }
             })
 
             task.resume()
@@ -207,8 +222,10 @@ public class DataManager {
                 defer { sem.signal() }
                 internalUsers = try decoder.decode([SinusUserData].self, from: data!)
             } catch {
-                print("ERROR OCCURRED")
-                print(String(decoding: data!, as: UTF8.self))
+                let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
+                let errMsg = "Unable to decode points in gatherUsers: \(returnedData)"
+                self.logHelper.logMsg(level: "error", message: errMsg)
+                print(errMsg)
             }
         })
 
@@ -262,7 +279,10 @@ public class DataManager {
             do {
                 points = try decoder.decode([GraphDataPoint].self, from: data!)
             } catch {
-                print("Unable to decode points")
+                let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
+                let errMsg = "Unable to decode points in gatherSingleData: \(returnedData)"
+                self.logHelper.logMsg(level: "error", message: errMsg)
+                print(errMsg)
             }
         }
 
