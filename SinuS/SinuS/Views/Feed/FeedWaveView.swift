@@ -91,7 +91,8 @@ struct Row_Previews: PreviewProvider {
             date_name: "Target",
             created_at: "",
             updated_at: "",
-            deleted_at: ""),
+            deleted_at: "",
+            archived: 0),
             data: SinusData(
                 id: 1,
                 values: [ 20, 30],

@@ -15,6 +15,9 @@ private struct GraphDataPoint: Codable {
     let date: String
     let value: Int
     let deleted_at: String?
+    let latitude: Double
+    let longitude: Double
+    let tags: String
 }
 
 /**
@@ -39,7 +42,7 @@ public class DataManager {
         let parameters: [String: Any] = [
             "name": name, "email": email, "password": password, "confirm_password": confirmPassword]
         let decoder = JSONDecoder()
-        var request = RestApiHelper.createRequest(type: "POST", url: registerUrl, setCookie: false)
+        var request = RestApiHelper.createRequest(type: "POST", url: registerUrl, auth: false)
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -67,7 +70,7 @@ public class DataManager {
         let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/login?"
         let parameters: [String: Any] = ["email": email, "password": password]
         let decoder = JSONDecoder()
-        var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, setCookie: false)
+        var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, auth: false)
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -175,17 +178,18 @@ public class DataManager {
         var internalUsers = [SinusUserData]()
         let sem = DispatchSemaphore.init(value: 0)
 
-        var url = DataManager.userUrl + postfix
+        let url = DataManager.userUrl + postfix
 
         let request = RestApiHelper.createRequest(type: "GET", url: url)
 
         let session = URLSession.shared
-        let task = session.dataTask(with: request, completionHandler: { data, _, error -> Void in
+        let task = session.dataTask(with: request, completionHandler: { data, _, _ -> Void in
             do {
                 defer { sem.signal() }
                 internalUsers = try decoder.decode([SinusUserData].self, from: data!)
             } catch {
-                print(error.localizedDescription)
+                print("ERROR OCCURRED")
+                print(String(decoding: data!, as: UTF8.self))
             }
         })
 
@@ -195,7 +199,7 @@ public class DataManager {
         self.users = internalUsers
         return internalUsers
     }
-    
+
     public func unFollowUser(user_id: Int) {
         let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/unfollow"
         var request = RestApiHelper.createRequest(type: "PUT", url: urlString)

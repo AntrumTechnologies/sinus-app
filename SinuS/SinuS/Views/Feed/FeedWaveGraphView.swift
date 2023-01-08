@@ -14,8 +14,8 @@ struct FeedWaveGraphView: View {
 
     private var path: Path {
         var path = Path()
-        
-        if (pointA == 0 && pointB == 0) {
+
+        if pointA == 0 && pointB == 0 {
             path.addEllipse(in: CGRect(x: Int(screenWidth - 150) / 2 + 10, y: -5, width: 15, height: 15))
         } else {
             let pointAx = 20
@@ -39,8 +39,6 @@ struct FeedWaveGraphView: View {
                 ))
             path.addEllipse(in: CGRect(x: pointBx, y: pointBy - 7, width: 15, height: 15))
         }
-        
-        
 
         return path
     }

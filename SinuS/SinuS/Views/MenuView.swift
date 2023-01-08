@@ -13,7 +13,7 @@ import SwiftUI
  */
 struct MenuView: View {
     @State private var selection = 2
-    
+
     /**
         The view.
      */

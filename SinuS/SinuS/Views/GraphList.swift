@@ -13,29 +13,28 @@ import SwiftUI
 struct GraphList: View {
     let gatherer: DataManager
     let onlyFollowing: Bool
-    
+
     @State private var feed: [SinusUserData] = []
-    
+
     init(gatherer: DataManager, onlyFollowing: Bool) {
         self.gatherer = gatherer
         self.onlyFollowing = onlyFollowing
-        
-        if (self.onlyFollowing) {
+
+        if self.onlyFollowing {
             _feed = State(initialValue: gatherer.gatherUsers(postfix: "/following").sorted {
                 $0.name < $1.name
             })
-        }
-        else {
+        } else {
             _feed = State(initialValue: gatherer.gatherUsers().sorted {
                 $0.name < $1.name
             })
         }
     }
-    
+
     var body: some View {
         ZStack {
             ZStack {
-                
+
                 List(self.feed, id: \.id) { user in
                     let data = gatherer.gatherSingleData(user: user)
 
@@ -46,19 +45,18 @@ struct GraphList: View {
                         })
                 }
                 .refreshable {
-                    if (self.onlyFollowing) {
+                    if self.onlyFollowing {
                         self.feed = gatherer.gatherUsers(postfix: "/following").sorted {
                             $0.name < $1.name
                         }
-                    }
-                    else {
+                    } else {
                         self.feed = gatherer.gatherUsers().sorted {
                             $0.name < $1.name
                         }
                     }
-                    
+
                 }
-                
+
             }
         }
     }

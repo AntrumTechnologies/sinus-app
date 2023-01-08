@@ -32,7 +32,7 @@ struct ProfileView: View {
                 .foregroundColor(ContentView.AppColor)
 
             Spacer()
-            
+
             VStack {
                 HStack {
                     Text("Wave name:")
