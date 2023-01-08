@@ -33,18 +33,18 @@ struct MenuView: View {
                     .padding(.bottom)
                 Spacer()
             }
-            .background(ContentView.AppColor)
+            .background(Style.AppColor)
 
             TabView(selection: self.$selection) {
                 Group {
                     GraphList(gatherer: manager, onlyFollowing: false)
                         .tabItem {
-                            Label("Explore", systemImage: "list.bullet")
+                            Label("Explore", systemImage: "network")
                         }
                         .tag(1)
                     GraphList(gatherer: manager, onlyFollowing: true)
                         .tabItem {
-                            Label("Following", systemImage: "checklist.checked")
+                            Label("Following", systemImage: "person.2.fill")
                         }
                         .tag(2)
                     PersonalView(gatherer: manager)
@@ -54,7 +54,7 @@ struct MenuView: View {
                         .tag(3)
                 }
                 .toolbar(.visible, for: .tabBar)
-                .toolbarBackground(ContentView.AppColor, for: .tabBar)
+                .toolbarBackground(Style.AppColor, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .toolbarColorScheme(.dark, for: .tabBar)
             }

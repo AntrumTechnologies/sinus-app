@@ -9,16 +9,29 @@ import SwiftUI
 
 struct ManageProfileView: View {
     let manager: DataManager
-
+    
     var body: some View {
-        VStack {
-            Spacer()
+        VStack (alignment: .leading) {
+            Text("Manage Profile:")
+                .font(.headline)
+                .padding(.leading, 15)
+                .padding(.top, 5)
+                .foregroundColor(Style.ThirdAppColor)
+            
+            HStack {
+                Spacer()
+                
+                NavigationLink(destination: AuthenticationStartView(), label: {
+                    MenuButton(image: Image(systemName: "figure.walk.departure"), name: "Logout")
+                })
+                
+                NavigationLink(destination: EditProfileView(gatherer: self.manager), label: {
+                    MenuButton(image: Image(systemName: "gearshape.fill"), name: "Edit")
+                })
 
-            NavigationLink(destination: AuthenticationStartView(), label: {
-                MenuButton(image: Image(systemName: "figure.walk.departure"), name: "Logout")
-            })
-
-            Spacer()
+                Spacer()
+            }
+            
         }
     }
 }

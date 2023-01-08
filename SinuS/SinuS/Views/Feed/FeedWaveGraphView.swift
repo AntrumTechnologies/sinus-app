@@ -48,7 +48,7 @@ struct FeedWaveGraphView: View {
             self.path.stroke(.white, lineWidth: 2.0).padding(.top, 120)
                 .frame(maxWidth: .infinity, maxHeight: 300)
         }
-        .background(ContentView.SecondAppColor)
+        .background(Style.ThirdAppColor)
         .frame(height: 200)
         .cornerRadius(5)
         .padding(.all)

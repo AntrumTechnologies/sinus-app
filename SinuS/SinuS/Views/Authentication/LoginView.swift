@@ -64,7 +64,7 @@ struct LoginView: View {
             }
             .padding()
         }
-        .background(ContentView.AppColor)
+        .background(Style.AppColor)
         .cornerRadius(5)
         .shadow(radius: 5)
         .padding()

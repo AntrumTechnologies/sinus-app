@@ -12,6 +12,7 @@ struct PersonalWaveView: View {
 
     var body: some View {
         VStack(alignment: .center) {
+
             Spacer()
             Image(systemName: "water.waves")
                 .resizable()
@@ -29,7 +30,7 @@ struct PersonalWaveView: View {
 
         }
         .frame(width: 150, height: 150)
-        .background(ContentView.AppColor)
+        .background(Style.AppColor)
         .cornerRadius(5)
         .shadow(radius: 10)
         .foregroundColor(.white)

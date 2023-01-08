@@ -91,6 +91,25 @@ public class DataManager {
         return result
     }
 
+    public func getCurrentUser() -> TotalUserData?{
+        let url = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/user"
+        let decoder = JSONDecoder()
+        var request = RestApiHelper.createRequest(type: "GET", url: url, auth: true)
+        
+        var result: TotalUserData?
+        let data = RestApiHelper.perfomRestCall(request: request)
+        
+        print(String(decoding: data!, as: UTF8.self))
+    
+        do {
+            result = try decoder.decode(TotalUserData.self, from: data!)
+        } catch {
+            print("Unexpected error: \(error).")
+        }
+
+        return result
+    }
+    
     /**
         Creates a new user.
      */

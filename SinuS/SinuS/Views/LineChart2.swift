@@ -56,17 +56,6 @@ struct LineChart2: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-
-                Image(systemName: "water.waves")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                    .foregroundColor(.white)
-                    .padding(.bottom)
-                    .padding(.top)
-                Spacer()
-            }.background(ContentView.AppColor)
             Divider()
 
             RelationStatusView(value: self.data.values.last ?? 0)
@@ -82,7 +71,7 @@ struct LineChart2: View {
             .padding()
             .chartPlotStyle { plotArea in
                 plotArea
-                    .background(ContentView.SecondAppColor)
+                    .background(Style.SecondAppColor)
             }
             .foregroundColor(.white)
 
@@ -120,12 +109,12 @@ struct LineChart2: View {
                 }
 
             }
-            .foregroundColor(ContentView.AppColor)
+            .foregroundColor(Style.AppColor)
             .padding()
 
         }
         .toolbar(.visible, for: ToolbarPlacement.navigationBar)
-        .toolbarBackground(ContentView.AppColor, for: .navigationBar)
+        .toolbarBackground(Style.AppColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarColorScheme(.dark, for: .navigationBar)
     }

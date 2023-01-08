@@ -29,7 +29,7 @@ struct ProfileView: View {
                 .font(.headline)
                 .padding(.leading, 15)
                 .padding(.top, 5)
-                .foregroundColor(ContentView.AppColor)
+                .foregroundColor(Style.ThirdAppColor)
 
             Spacer()
 
@@ -71,7 +71,7 @@ struct ProfileView: View {
                     Button("OK", role: .cancel) { }
                 }
             }
-            .background(ContentView.AppColor)
+            .background(Style.AppColor)
             .cornerRadius(5)
             .shadow(radius: 5)
             .padding()
