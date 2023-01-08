@@ -13,7 +13,7 @@ struct CreatedRowView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Created Waves:")
+            Text("Your Waves:")
                 .font(.headline)
                 .padding(.leading, 15)
                 .padding(.top, 5)

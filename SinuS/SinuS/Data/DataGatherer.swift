@@ -17,7 +17,7 @@ private struct GraphDataPoint: Codable {
     let deleted_at: String?
     let latitude: Double?
     let longitude: Double?
-    let tags: String
+    let tags: String?
 }
 
 /**
@@ -160,7 +160,6 @@ public class DataManager {
         Updates the graphs for a user by adding a new point.
      */
     public func sendData(data: SinusUpdate) {
-        print("SendData")
         let sem = DispatchSemaphore.init(value: 0)
 
         if users.count < 1 {
@@ -168,7 +167,7 @@ public class DataManager {
         }
 
         if let user = self.users.first(where: { user in
-            return user.name == data.name
+            return user.date_name == data.name
         }) {
             let url = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/sinusvalue"
 
@@ -188,15 +187,8 @@ public class DataManager {
             }
 
             let session = URLSession.shared
-            let task = session.dataTask(with: request, completionHandler: { _, response, error -> Void in
+            let task = session.dataTask(with: request, completionHandler: { _, _, _ -> Void in
                 defer { sem.signal() }
-                print(response as Any)
-
-                if error.debugDescription != "" {
-                    let errMsg = "Unable to sendData: \(error.debugDescription)"
-                    self.logHelper.logMsg(level: "error", message: errMsg)
-                    print(errMsg)
-                }
             })
 
             task.resume()
