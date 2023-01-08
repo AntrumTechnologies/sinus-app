@@ -10,48 +10,47 @@ import PhotosUI
 
 struct EditProfileView: View {
     let gatherer: DataManager
-    
-    @State private var selectedItem: PhotosPickerItem? = nil
-    @State private var selectedImageData: Data? = nil
+
+    @State private var selectedItem: PhotosPickerItem?
+    @State private var selectedImageData: Data?
     @State private var name: String = ""
     @State private var email: String = ""
-    
+
     init(gatherer: DataManager) {
         self.gatherer = gatherer
         _email = State(initialValue: self.currentEmail)
         _name = State(initialValue: self.currentName)
     }
-    
-    private var image : Image {
-        if (self.selectedImageData == nil)
-        {
+
+    private var image: Image {
+        if self.selectedImageData == nil {
             return Image("Placeholder")
         }
-        
+
         let uiImage = UIImage(data: self.selectedImageData!)!
         return Image(uiImage: uiImage)
     }
-    
+
     var currentUser: UserData? {
         return self.gatherer.getCurrentUser()?.success
     }
-    
+
     var currentName: String {
-        if (currentUser == nil) {
+        if currentUser == nil {
             return "Unknown"
         }
-        
+
         return currentUser!.name
     }
-    
+
     var currentEmail: String {
-        if (currentUser == nil) {
+        if currentUser == nil {
             return "Unknown"
         }
-        
+
         return currentUser!.email
     }
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -68,18 +67,15 @@ struct EditProfileView: View {
                 Spacer()
             }
             .background(Style.AppColor)
-            
-            
-            
-            
+
             Spacer()
-            
+
             VStack {
                 Text("Avatar:")
-                
+
                 HStack {
                     Spacer()
-                    
+
                     self.image
                         .resizable()
                         .frame(width: 100, height: 100)
@@ -88,9 +84,9 @@ struct EditProfileView: View {
                             Circle().stroke(Style.ThirdAppColor, lineWidth: 4)
                                 .shadow(radius: 10)
                         }
-                    
+
                     Spacer()
-                    
+
                     PhotosPicker(
                            selection: $selectedItem,
                            matching: .images,
@@ -112,11 +108,10 @@ struct EditProfileView: View {
                                    }
                                }
                            }
-                           
-                    
+
                     Spacer()
                 }
-                
+
                 HStack {
                     Text("Name:")
                     Spacer()
@@ -125,8 +120,7 @@ struct EditProfileView: View {
                         .border(Color.white, width: 0.5)
                         .frame(width: 220)
                 }.padding(.horizontal).padding(.top)
-                
-                
+
                 HStack {
                     Text("Email:")
                     Spacer()
@@ -135,7 +129,7 @@ struct EditProfileView: View {
                         .border(Color.white, width: 0.5)
                         .frame(width: 220)
                 }.padding(.horizontal).padding(.top)
-                
+
             }
             .frame(height: 300)
             .background(Style.AppColor)
@@ -143,14 +137,14 @@ struct EditProfileView: View {
             .shadow(radius: 5)
             .padding()
             .foregroundColor(.white)
-            
+
             Button("Save") {
-                
+
             }
             .foregroundColor(Style.ThirdAppColor)
             .font(.headline)
             .shadow(radius: 5)
-            
+
             Spacer()
         }
     }

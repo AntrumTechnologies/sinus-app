@@ -10,17 +10,17 @@ import SwiftUI
 struct ProfileHeaderView: View {
     let gatherer: DataManager
     let avatar: Image
-    
+
     var name: String {
         let currentUser = self.gatherer.getCurrentUser()
-        
-        if (currentUser == nil) {
+
+        if currentUser == nil {
             return "Unknown"
         }
-        
+
         return currentUser!.success.name
     }
-    
+
     var body: some View {
         HStack {
             self.avatar
@@ -31,17 +31,17 @@ struct ProfileHeaderView: View {
                     Circle().stroke(Style.ThirdAppColor, lineWidth: 4)
                         .shadow(radius: 10)
                 }
-             
+
             Spacer()
-            
+
             Text(self.name)
                 .font(.system(size: 35))
                 .foregroundColor(Style.ThirdAppColor)
-            
+
             Spacer()
-            
+
         }.padding(15)
-        
+
     }
 }
 

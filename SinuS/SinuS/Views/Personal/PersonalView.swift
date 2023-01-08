@@ -14,21 +14,21 @@ struct PersonalView: View {
         VStack {
             ScrollView(.vertical) {
                 ProfileHeaderView(gatherer: gatherer, avatar: Image("Placeholder"))
-                
+
                 Divider()
-                
+
                 CreatedRowView(gatherer: gatherer, waves: gatherer.gatherUsers(postfix: "/created"))
 
                 Divider()
-                
+
                 ProfileView(manager: gatherer)
 
                 Divider()
-                
+
                 NewWaveView(manager: gatherer)
 
                 Divider()
-                
+
                 ManageProfileView(manager: gatherer)
             }
 

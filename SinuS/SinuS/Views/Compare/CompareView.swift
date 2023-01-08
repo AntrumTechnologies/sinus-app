@@ -12,17 +12,15 @@ struct CompareView: View {
     let initialData: SinusData
     let gatherer: DataManager
     @State private var selection = ""
-    
+
     var options: [String] {
         let users = gatherer.gatherUsers()
-        
+
         return users.map { "\($0.name) - \($0.date_name)" }
     }
-    
-    
+
     var points: [ChartPoint] {
         var list = [ChartPoint]()
-        print(self.initialData.values.count)
         if self.initialData.values.count > 1 {
             for val in 0...self.self.initialData.values.count - 1 {
                 list.append(ChartPoint(label: self.initialData.labels[val], value: self.initialData.values[val]))
@@ -32,9 +30,9 @@ struct CompareView: View {
 
         return list
     }
-    
+
     @State private var comparePoints: [ChartPoint] = []
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -51,23 +49,21 @@ struct CompareView: View {
                 Spacer()
             }
             .background(Style.AppColor)
-            
+
             Spacer()
-            
+
             Chart {
                 ForEach(points) { point in
                     LineMark(x: .value("Date", point.label.substring(from: point.label.index(point.label.endIndex, offsetBy: -4))), y: .value("Value", point.value),
                              series: .value("Serie", "A"))
                         .foregroundStyle(.white)
                 }
-                
-                
+
                 ForEach(comparePoints) { point in
                     LineMark(x: .value("Date", point.label.substring(from: point.label.index(point.label.endIndex, offsetBy: -4))), y: .value("Value", point.value), series: .value("Serie", "B"))
                         .foregroundStyle(.black)
                 }
-                
-                
+
             }
             .frame(maxWidth: .infinity, maxHeight: 350)
             .shadow(radius: 10)
@@ -77,12 +73,12 @@ struct CompareView: View {
                     .background(Style.SecondAppColor)
             }
             .foregroundColor(.white)
-            
+
             Spacer()
-            
+
             HStack {
                 Spacer()
-                
+
                 Picker("Select a paint color", selection: $selection) {
                     ForEach(options, id: \.self) {
                         Text($0)
@@ -92,24 +88,23 @@ struct CompareView: View {
                 .background(Style.ThirdAppColor)
                 .cornerRadius(5)
                 .shadow(radius: 10)
-                
+
                 Spacer()
-                
+
                 Button("Compare") {
                     let nameAndTarget = selection.components(separatedBy: " - ")
                     let name = nameAndTarget[0]
                     let target = nameAndTarget[1]
-                    
+
                     let user = self.gatherer.gatherUsers().filter { userOption in
                         return (userOption.name == name && userOption.date_name == target)
                     }.first
-                    
-                    if (user != nil) {
+
+                    if user != nil {
                         let data = gatherer.gatherSingleData(user: user!)
-                        
+
                         var list = [ChartPoint]()
-                        
-                        print(data.values.count)
+
                         if data.values.count > 1 {
                             for val in 0...data.values.count - 1 {
                                 list.append(ChartPoint(label: data.labels[val], value: data.values[val]))
@@ -118,18 +113,17 @@ struct CompareView: View {
                         }
 
                         comparePoints = list
-                        
+
                     }
                 }
                 .frame(width: 100, height: 40)
                 .background(Style.ThirdAppColor)
                 .cornerRadius(5)
                 .shadow(radius: 10)
-                
+
                 Spacer()
             }
 
-            
             Spacer()
         }
     }
@@ -138,7 +132,6 @@ struct CompareView: View {
 struct CompareView_Previews: PreviewProvider {
     static var previews: some View {
 
-        
         CompareView(initialData: SinusData(
             id: 1,
             values: [ 20, 30],

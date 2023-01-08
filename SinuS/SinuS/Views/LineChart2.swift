@@ -108,7 +108,7 @@ struct LineChart2: View {
                 NavigationLink(destination: CompareView(initialData: data, gatherer: self.gatherer), label: {
                     Text("Compare")
                 })
-                
+
                 Spacer()
                 Button("Unfollow") {
                     let manager = DataManager()
