@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             if KeychainWrapper.standard.string(forKey: "bearerToken") == nil {
-                AuthenticationStartView()
+                LoginView()
             } else {
                 MenuView()
             }

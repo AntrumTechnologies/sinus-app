@@ -94,6 +94,26 @@ struct RegisterView: View {
         .shadow(radius: 5)
         .padding()
         .foregroundColor(.white)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Style.AppColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    HStack {
+                        Image(systemName: "water.waves")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(.white)
+                            .padding(.bottom)
+                        Text("Love Waves")
+                            .foregroundColor(.white)
+                            .font(.system(size: 25))
+                            .padding(.bottom)
+                    }
+                }
+            }
+        }
 
         if self.showButton {
             NavigationLink(destination: MenuView(), label: {
