@@ -8,28 +8,39 @@
 import Foundation
 
 class FeedViewModel: ObservableObject {
-    @Published private var feedViewModel: GraphList
-    @Published private var _isLoading: Bool = false
+    @Published private var _feedModel: [SinusUserData]
+    @Published private var _isLoading: Bool = true
     private var _gatherer: DataManager
-    
+
     init() {
         _gatherer = DataManager()
-        feedViewModel = GraphList(gatherer: _gatherer, onlyFollowing: true) // Generate some default model?
+        _feedModel = []
     }
-    
+
     var isLoading: Bool {
         get { return _isLoading}
     }
-    
+
+    var feedModel: [SinusUserData] {
+        get {return _feedModel}
+    }
+
     @MainActor
-    func retrieveFollowingData(_ d:Data) async {
+    func retrieveFollowingData(onlyFollowing: Bool) {
         _isLoading = true
         print("Executing async...")
-        
+
         do {
-            let rawData = try await _gatherer.gatherUsers(postfix: "/following").sorted {
+            var postfix: String = ""
+            print("only \(onlyFollowing)")
+            if onlyFollowing {
+                postfix = "/following"
+            }
+
+            let rawData = _gatherer.gatherUsers(postfix: postfix).sorted {
                 $0.name < $1.name
             }
+            _feedModel = rawData
             _isLoading = false
             print("Done loading data")
         } catch {
