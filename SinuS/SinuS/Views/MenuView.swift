@@ -12,7 +12,15 @@ import SwiftUI
     Allows users to navigate to different parts of the application.
  */
 struct MenuView: View {
-    @State private var selection = 2
+    @State private var selection = 1
+
+    private var feedViewModelFollowing: FeedViewModel
+    private var feedViewModelExplore: FeedViewModel
+
+    init() {
+        self.feedViewModelFollowing = FeedViewModel()
+        self.feedViewModelExplore = FeedViewModel()
+    }
 
     /**
         The view.
@@ -37,12 +45,12 @@ struct MenuView: View {
 
             TabView(selection: self.$selection) {
                 Group {
-                    GraphList(gatherer: manager, onlyFollowing: false)
+                    FeedView(feedViewModel: self.feedViewModelExplore, gatherer: manager, onlyFollowing: false)
                         .tabItem {
                             Label("Explore", systemImage: "network")
                         }
                         .tag(1)
-                    GraphList(gatherer: manager, onlyFollowing: true)
+                    FeedView(feedViewModel: self.feedViewModelFollowing, gatherer: manager, onlyFollowing: true)
                         .tabItem {
                             Label("Following", systemImage: "person.2.fill")
                         }

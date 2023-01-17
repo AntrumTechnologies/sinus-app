@@ -13,30 +13,24 @@ import SwiftUI
 struct GraphList: View {
     let gatherer: DataManager
     let onlyFollowing: Bool
+    let viewModel: FeedViewModel
 
     @State private var feed: [SinusUserData] = []
 
-    init(gatherer: DataManager, onlyFollowing: Bool) {
+    init(gatherer: DataManager, viewModel: FeedViewModel, onlyFollowing: Bool) {
         self.gatherer = gatherer
         self.onlyFollowing = onlyFollowing
-
-        if self.onlyFollowing {
-            _feed = State(initialValue: gatherer.gatherUsers(postfix: "/following").sorted {
-                $0.name < $1.name
-            })
-        } else {
-            _feed = State(initialValue: gatherer.gatherUsers().sorted {
-                $0.name < $1.name
-            })
-        }
+        self.viewModel = viewModel
+        _feed = State(initialValue: self.viewModel.feedModel)
     }
 
     var body: some View {
         ZStack {
             ZStack {
+                Text("")
 
                 List(self.feed, id: \.id) { user in
-                    let data = gatherer.gatherSingleData(user: user)
+                    let data = self.gatherer.gatherSingleData(user: user)
 
                     NavigationLink(
                         destination: LineChart2(gatherer: self.gatherer, user: user, data: data),
@@ -45,16 +39,8 @@ struct GraphList: View {
                         })
                 }
                 .refreshable {
-                    if self.onlyFollowing {
-                        self.feed = gatherer.gatherUsers(postfix: "/following").sorted {
-                            $0.name < $1.name
-                        }
-                    } else {
-                        self.feed = gatherer.gatherUsers().sorted {
-                            $0.name < $1.name
-                        }
-                    }
-
+                        self.viewModel.retrieveFollowingData(onlyFollowing: self.onlyFollowing)
+                        self.feed = self.viewModel.feedModel
                 }
 
             }
@@ -104,6 +90,7 @@ private func getCharts() -> [SinusData] {
 
 struct GraphList_Previews: PreviewProvider {
     static var previews: some View {
-        GraphList(gatherer: DataManager(), onlyFollowing: false)
+       // GraphList(gatherer: DataManager(), onlyFollowing: false)
+        GraphList(gatherer: DataManager(), viewModel: FeedViewModel(), onlyFollowing: false)
     }
 }
