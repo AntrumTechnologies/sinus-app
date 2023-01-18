@@ -49,13 +49,17 @@ struct ProfileView: View {
                             Text($0)
                         }
                     }
+                    .colorMultiply(Style.AppColor)
+                    .accentColor(Style.FifthAppColor)
                     .cornerRadius(5)
                     .shadow(radius: 10)
                 }.padding(.horizontal).padding(.top)
 
                 HStack {
                     DatePicker(selection: $date, displayedComponents: [.date], label: { Text("Date:") })
-                        .colorScheme(.dark)
+                        .colorInvert()
+                        .colorMultiply(Style.AppColor)
+                        .accentColor(Style.FourthAppColor)
                 }.padding(.horizontal)
 
                 HStack {
@@ -66,6 +70,7 @@ struct ProfileView: View {
                         in: 0...100,
                         step: 1).foregroundColor(.yellow)
                         .frame(width: 220)
+                        .accentColor(Style.FourthAppColor)
                 }.padding(.horizontal)
 
                 HStack {
@@ -82,7 +87,8 @@ struct ProfileView: View {
                     Button("OK", role: .cancel) { }
                 }
             }
-            .background(Style.AppColor)
+            .background(Style.SecondAppColor)
+            .foregroundColor(Style.AppColor)
             .cornerRadius(5)
             .shadow(radius: 5)
             .padding()

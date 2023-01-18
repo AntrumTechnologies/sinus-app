@@ -33,7 +33,7 @@ struct GraphList: View {
                     let data = self.gatherer.gatherSingleData(user: user)
 
                     NavigationLink(
-                        destination: LineChart2(gatherer: self.gatherer, user: user, data: data),
+                        destination: WaveView(gatherer: self.gatherer, user: user, data: data),
                         label: {
                             FeedWaveView(userData: user, data: data)
                         })

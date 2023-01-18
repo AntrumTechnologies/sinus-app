@@ -8,24 +8,17 @@
 import SwiftUI
 
 struct ProfileHeaderView: View {
-    let gatherer: DataManager
+    let name: String
     let avatar: Image
-
-    var name: String {
-        let currentUser = self.gatherer.getCurrentUser()
-
-        if currentUser == nil {
-            return "Unknown"
-        }
-
-        return currentUser!.success.name
-    }
+    let scaleFactor: Double
 
     var body: some View {
         HStack {
             self.avatar
                 .resizable()
-                .frame(width: 100, height: 100)
+                .frame(
+                    width: 100 * self.scaleFactor,
+                    height: 100 * self.scaleFactor)
                 .clipShape(Circle())
                 .overlay {
                     Circle().stroke(Style.ThirdAppColor, lineWidth: 4)
@@ -35,20 +28,20 @@ struct ProfileHeaderView: View {
             Spacer()
 
             Text(self.name)
-                .font(.system(size: 35))
+                .font(.system(size: 35 * self.scaleFactor))
                 .foregroundColor(Style.ThirdAppColor)
 
             Spacer()
 
         }.padding(15)
-
     }
 }
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileHeaderView(
-            gatherer: DataManager(),
-            avatar: Image("Placeholder"))
+            name: "Test",
+            avatar: Image("Placeholder"),
+            scaleFactor: 1)
     }
 }

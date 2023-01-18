@@ -24,7 +24,7 @@ struct CreatedRowView: View {
                     ForEach(waves, id: \.id) { wave in
                         let data = gatherer.gatherSingleData(user: wave)
                         NavigationLink(
-                            destination: LineChart2(gatherer: self.gatherer, user: wave, data: data),
+                            destination: WaveView(gatherer: self.gatherer, user: wave, data: data),
                             label: {
                                 PersonalWaveView(wave: wave)
                             })
