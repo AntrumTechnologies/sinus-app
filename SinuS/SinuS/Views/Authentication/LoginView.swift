@@ -11,8 +11,7 @@ import SwiftKeychainWrapper
 struct LoginView: View {
     let manager = DataManager()
 
-    // Tokens never expire so we can keep reusing the saved token
-    @State private var pushActive = false
+    @State private var showMenu: Bool? = false
     @State private var email: String = UserDefaults.standard.string(forKey: "email") ?? ""
     @State private var password: String = ""
     @State private var showAlert = false
@@ -24,23 +23,25 @@ struct LoginView: View {
             VStack {
                 // Email
                 HStack {
-                    Text("Email:")
+                    Text("Email")
                     Spacer()
                     TextField("", text: self.$email)
                         .disableAutocorrection(true)
-                        .border(Color.white, width: 0.5)
+                        .border(Color.white, width: 1)
                         .frame(width: 220)
                 }.padding(.horizontal).padding(.top)
 
                 // Password
                 HStack {
-                    Text("Password:")
+                    Text("Password")
                     Spacer()
                     SecureField("", text: self.$password)
                         .disableAutocorrection(true)
-                        .border(Color.white, width: 0.5)
+                        .border(Color.white, width: 1)
                         .frame(width: 220)
                 }.padding(.horizontal).padding(.top)
+
+                NavigationLink(destination: MenuView(), tag: true, selection: self.$showMenu) { EmptyView() }
 
                 // Login Button
                 Button("Login") {
@@ -52,17 +53,21 @@ struct LoginView: View {
                     } else {
                         // Set global authentication token.
                         ContentView.AuthenticationToken = res!.success
-                        let saveSuccessful: Bool = KeychainWrapper.standard.set(ContentView.AuthenticationToken, forKey: "bearerToken")
+                        let saveSuccessful: Bool = KeychainWrapper.standard.set(
+                            ContentView.AuthenticationToken,
+                            forKey: "bearerToken")
                         if !saveSuccessful {
                             print("Could not save bearerToken")
                         }
 
-                        self.pushActive = true
+                        self.showMenu = true
                     }
 
                 }
                 .alert(isPresented: $showAlert) {
-                    return Alert(title: Text("Failed to Login"), message: Text("Unable to log user: \(self.email) in"), dismissButton: .default(Text("OK")))
+                    return Alert(title: Text("Failed to login"),
+                                 message: Text(self.email),
+                                 dismissButton: .default(Text("OK")))
 
                 }
                 .padding()
@@ -73,7 +78,7 @@ struct LoginView: View {
             .padding()
             .foregroundColor(.white)
 
-            NavigationLink(destination: RegisterView(), label: {
+            NavigationLink(destination: ForgotPasswordView(), label: {
                 Text("Forgot password?")
             })
             .foregroundColor(.black)
@@ -110,11 +115,6 @@ struct LoginView: View {
                 }
             }
         }
-
-        NavigationLink(destination: MenuView(),
-           isActive: self.$pushActive) {
-             EmptyView()
-        }.hidden()
     }
 }
 

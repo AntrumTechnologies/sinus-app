@@ -1,49 +1,41 @@
 //
-//  RegisterView.swift
+//  ResetPasswordView.swift
 //  SinuS
 //
-//  Created by Loe Hendriks on 06/11/2022.
+//  Created by Patrick van Broeckhuijsen on 15/01/2023.
 //
 
 import SwiftUI
 import SwiftKeychainWrapper
 
-struct RegisterView: View {
+struct ResetPasswordView: View {
     let manager = DataManager()
 
-    @State private var name: String = ""
-    @State private var email: String = ""
+    @State private var token: String = ""
+    @State private var email: String = UserDefaults.standard.string(forKey: "forgotPasswordEmail") ?? ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     @State private var showAlert = false
-    @State private var showMenu: Bool? = false
+    @State private var showLogin: Bool? = false
 
     var body: some View {
         VStack {
-
-            // Name
-            HStack {
-                Text("Name")
-                Spacer()
-                TextField("", text: self.$name)
-                    .disableAutocorrection(true)
-                    .border(Color.white, width: 0.5)
-                    .frame(width: 220)
-            }.padding(.horizontal).padding(.top)
-
-            // Email
-            HStack {
-                Text("Email")
-                Spacer()
-                TextField("", text: self.$email)
-                    .disableAutocorrection(true)
-                    .border(Color.white, width: 0.5)
-                    .frame(width: 220)
-            }.padding(.horizontal).padding(.top)
+            if self.email != "" {
+                // Show email address of which reset password email was sent to
+                HStack {
+                    Text("Email")
+                    Spacer()
+                    TextField("", text: self.$email)
+                        .disabled(true)
+                        .disableAutocorrection(true)
+                        .border(Color.white, width: 0.5)
+                        .frame(width: 220)
+                }.padding(.horizontal).padding(.top)
+            }
 
             // Password
             HStack {
-                Text("Password")
+                Text("New password")
                 Spacer()
                 TextField("", text: self.$password)
                     .disableAutocorrection(true)
@@ -61,12 +53,11 @@ struct RegisterView: View {
                     .frame(width: 220)
             }.padding(.horizontal).padding(.top)
 
-            NavigationLink(destination: VerifyEmailView(), tag: true, selection: self.$showMenu) { EmptyView() }
+            NavigationLink(destination: LoginView(), tag: true, selection: self.$showLogin) { EmptyView() }
 
-            // Register button
-            Button("Register") {
-                let authenticationResult = self.manager.register(
-                    name: self.name,
+            Button("Submit") {
+                let authenticationResult = self.manager.resetPassword(
+                    token: self.token,
                     email: self.email,
                     password: self.password,
                     confirmPassword: self.confirmPassword)
@@ -74,6 +65,8 @@ struct RegisterView: View {
                 if authenticationResult == nil {
                     self.showAlert.toggle()
                 } else {
+                    UserDefaults.standard.removeObject(forKey: "forgotPasswordEmail")
+
                     // Set global authentication token.
                     ContentView.AuthenticationToken = authenticationResult!.success
                     let saveSuccessful: Bool = KeychainWrapper.standard.set(ContentView.AuthenticationToken, forKey: "bearerToken")
@@ -81,12 +74,12 @@ struct RegisterView: View {
                         print("Could not save bearerToken")
                     }
 
-                    self.showMenu = true
+                    self.showLogin = true
                 }
 
             }
             .alert(isPresented: $showAlert) {
-                return Alert(title: Text("Failed to Register"), message: Text("Unable to register user: \(self.email)"), dismissButton: .default(Text("OK")))
+                return Alert(title: Text("Failed to reset password"), message: Text("Unable to reset password: \(self.email)"), dismissButton: .default(Text("OK")))
             }
             .padding()
         }
@@ -118,8 +111,8 @@ struct RegisterView: View {
     }
 }
 
-struct RegisterView_Previews: PreviewProvider {
+struct ResetPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView()
+        ResetPasswordView()
     }
 }
