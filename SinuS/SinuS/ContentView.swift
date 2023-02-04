@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftKeychainWrapper
+import Firebase
 
 struct ContentView: View {
     static var AuthenticationToken: String = KeychainWrapper.standard.string(forKey: "bearerToken") ?? ""
@@ -17,7 +18,7 @@ struct ContentView: View {
                 LoginView()
             } else {
                 MenuView()
-            }
+              }
         }
     }
 }

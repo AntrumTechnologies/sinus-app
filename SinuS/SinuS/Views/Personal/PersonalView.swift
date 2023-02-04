@@ -10,10 +10,23 @@ import SwiftUI
 struct PersonalView: View {
     let gatherer: DataManager
 
+    var name: String {
+        let currentUser = self.gatherer.getCurrentUser()
+
+        if currentUser == nil {
+            return "Unknown"
+        }
+
+        return currentUser!.success.name
+    }
+
     var body: some View {
         VStack {
             ScrollView(.vertical) {
-                ProfileHeaderView(gatherer: gatherer, avatar: Image("Placeholder"))
+                ProfileHeaderView(
+                    name: self.name,
+                    avatar: Image("Placeholder"),
+                    scaleFactor: 1)
 
                 Divider()
 

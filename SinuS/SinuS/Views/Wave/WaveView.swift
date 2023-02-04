@@ -8,19 +8,13 @@
 import SwiftUI
 import Charts
 
-/**
-    Internal struct to link values and their labels.
- */
 struct ChartPoint: Identifiable {
     let id = UUID()
     let label: String
     let value: Int
 }
 
-/**
-    View showing the user's Sinus/Graph.
- */
-struct LineChart2: View {
+struct WaveView: View {
     private let gatherer: DataManager
     private let user: SinusUserData
     private let data: SinusData
@@ -58,67 +52,32 @@ struct LineChart2: View {
 
     var body: some View {
         VStack {
-            Divider()
+            HeaderWithSubTextView(
+                name: self.user.name,
+                subtext: "Is dating \(self.data.sinusTarget)..",
+                avatar: Image("Placeholder"),
+                scaleFactor: 0.75)
 
-            RelationStatusView(value: self.data.values.last ?? 0)
+            ScrollView(.vertical) {
 
-            Divider()
-            Chart {
-                ForEach(points) { point in
-                    LineMark(x: .value("Date", point.label.substring(from: point.label.index(point.label.endIndex, offsetBy: -4))), y: .value("Value", point.value))
-                }
-            }
-            .frame(maxWidth: .infinity, maxHeight: 350)
-            .shadow(radius: 10)
-            .padding()
-            .chartPlotStyle { plotArea in
-                plotArea
-                    .background(Style.SecondAppColor)
-            }
-            .foregroundColor(.white)
+                WaveMenuView(
+                    gatherer: self.gatherer,
+                    user: self.user,
+                    data: self.data)
 
-            Divider()
+                Divider()
 
-            HStack {
-                SmallFrame(header: "Name:", text: self.data.sinusName)
-                Spacer()
+                ChartView(points: self.points)
+                    .frame(height: 450)
 
-                VStack {
-                    Image(systemName: "arrow.right")
-                        .foregroundColor(.blue)
-                    Divider()
-                    Text(String(self.data.values.last ?? 0) + " %")
-                        .font(.system(size: 10))
-                        .foregroundColor(self.color)
-                }
+                CompareButtonView(gatherer: self.gatherer, data: self.data)
+                    .padding(.bottom)
 
-                Spacer()
-                SmallFrame(header: "Target:", text: self.data.sinusTarget)
-            }
-            .padding()
+                Divider()
 
-            Divider()
-
-            HStack {
-                Button("Follow") {
-                    let manager = DataManager()
-                    manager.followUser(user_id: self.user.user_id)
-                }
-                Spacer()
-                NavigationLink(destination: CompareView(initialData: data, gatherer: self.gatherer), label: {
-                    Text("Compare")
-                })
-
-                Spacer()
-                Button("Unfollow") {
-                    let manager = DataManager()
-                    manager.unFollowUser(user_id: self.user.user_id)
-                }
+                StatisticsView(data: self.data)
 
             }
-            .foregroundColor(Style.AppColor)
-            .padding()
-
         }
         .toolbar(.visible, for: ToolbarPlacement.navigationBar)
         .toolbarBackground(Style.AppColor, for: .navigationBar)
@@ -129,7 +88,7 @@ struct LineChart2: View {
 
 struct LineChart2_Previews: PreviewProvider {
     static var previews: some View {
-        LineChart2(
+        WaveView(
             gatherer: DataManager(),
             user: SinusUserData(
             id: 1,

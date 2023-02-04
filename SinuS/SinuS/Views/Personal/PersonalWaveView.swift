@@ -23,14 +23,15 @@ struct PersonalWaveView: View {
 
             Spacer()
 
-            Text("Target:")
+            Text("Date:")
                 .font(.headline)
             Text(self.wave.date_name)
             Spacer()
 
         }
         .frame(width: 150, height: 150)
-        .background(Style.AppColor)
+        .foregroundColor(Style.AppColor)
+        .background(Style.SecondAppColor)
         .cornerRadius(5)
         .shadow(radius: 10)
         .foregroundColor(.white)
