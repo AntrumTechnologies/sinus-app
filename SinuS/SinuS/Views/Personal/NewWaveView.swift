@@ -36,7 +36,7 @@ struct NewWaveView: View {
                     Spacer()
                     TextField("", text: self.$username)
                         .disableAutocorrection(true)
-                        .border(Color.white, width: 0.5)
+                        .border(Style.FifthAppColor, width: 0.5)
                         .frame(width: 220)
                 }.padding(.horizontal).padding(.top)
 
@@ -45,7 +45,7 @@ struct NewWaveView: View {
                     Spacer()
                     TextField("", text: self.$targetname)
                         .disableAutocorrection(true)
-                        .border(Color.white, width: 0.5)
+                        .border(Style.FifthAppColor, width: 0.5)
                         .frame(width: 220)
                 }.padding(.horizontal)
 
@@ -57,8 +57,8 @@ struct NewWaveView: View {
                     Button("OK", role: .cancel) { }
                 }
             }
-            .foregroundColor(.white)
-            .background(Style.AppColor)
+            .foregroundColor(Style.AppColor)
+            .background(Style.SecondAppColor)
             .cornerRadius(5)
             .shadow(radius: 5)
             .padding()

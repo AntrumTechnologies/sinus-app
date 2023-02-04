@@ -7,17 +7,18 @@
 
 import SwiftUI
 import SwiftKeychainWrapper
+import Firebase
 
 struct ContentView: View {
     static var AuthenticationToken: String = KeychainWrapper.standard.string(forKey: "bearerToken") ?? ""
 
     var body: some View {
         NavigationView {
-            if KeychainWrapper.standard.string(forKey: "bearerToken") == nil {
+              if KeychainWrapper.standard.string(forKey: "bearerToken") == nil {
                 AuthenticationStartView()
-            } else {
+              } else {
                 MenuView()
-            }
+              }
         }
     }
 }

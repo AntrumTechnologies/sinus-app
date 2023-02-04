@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftKeychainWrapper
+import Firebase
 
 struct LoginView: View {
     let manager = DataManager()
