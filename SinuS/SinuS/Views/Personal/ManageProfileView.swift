@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftKeychainWrapper
 
 struct ManageProfileView: View {
     let manager: DataManager
@@ -22,9 +23,10 @@ struct ManageProfileView: View {
                 Spacer()
 
                 NavigationLink(destination: AuthenticationStartView(), label: {
-                    MenuButton(image: Image(systemName: "figure.walk.departure"), name: "Logout")
-                })
-
+                                     MenuButton(image: Image(systemName: "figure.walk.departure"), name: "Logout")
+                                 }).simultaneousGesture(TapGesture().onEnded {
+                                     KeychainWrapper.standard.remove(forKey: "bearerToken")
+                                 })
                 NavigationLink(destination: EditProfileView(gatherer: self.manager), label: {
                     MenuButton(image: Image(systemName: "gearshape.fill"), name: "Edit")
                 })

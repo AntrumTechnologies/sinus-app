@@ -55,16 +55,6 @@ struct LoginView: View {
                         print("Could not save bearerToken")
                     }
 
-                    // firebase login
-//                    Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-//                        print(result)
-//                        if error != nil {
-//                            print(error?.localizedDescription ?? "")
-//                        } else {
-//                            print("success")
-//                        }
-//                    }
-
                     self.pushActive = true
                 }
 
@@ -74,17 +64,17 @@ struct LoginView: View {
 
             }
             .padding()
+
+            NavigationLink(destination: MenuView(),
+               isActive: self.$pushActive) {
+                 EmptyView()
+            }.hidden()
         }
         .background(Style.AppColor)
         .cornerRadius(5)
         .shadow(radius: 5)
         .padding()
         .foregroundColor(.white)
-
-        NavigationLink(destination: MenuView(),
-           isActive: self.$pushActive) {
-             EmptyView()
-        }.hidden()
     }
 }
 
