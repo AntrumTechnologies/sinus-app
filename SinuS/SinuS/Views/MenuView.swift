@@ -28,21 +28,6 @@ struct MenuView: View {
     var body: some View {
         let manager = DataManager()
         VStack {
-            HStack {
-                Spacer()
-                Image(systemName: "water.waves")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                    .foregroundColor(.white)
-                    .padding(.bottom)
-                Text("Love Waves")
-                    .foregroundColor(.white)
-                    .font(.system(size: 25))
-                    .padding(.bottom)
-                Spacer()
-            }
-            .background(Style.AppColor)
-
             TabView(selection: self.$selection) {
                 Group {
                     FeedView(feedViewModel: self.feedViewModelExplore, gatherer: manager, onlyFollowing: false)
@@ -65,6 +50,27 @@ struct MenuView: View {
                 .toolbarBackground(Style.AppColor, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .toolbarColorScheme(.dark, for: .tabBar)
+            }
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Style.AppColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    HStack {
+                        Image(systemName: "water.waves")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(.white)
+                            .padding(.bottom)
+                        Text("Love Waves")
+                            .foregroundColor(.white)
+                            .font(.system(size: 25))
+                            .padding(.bottom)
+                    }
+                }
             }
         }
     }

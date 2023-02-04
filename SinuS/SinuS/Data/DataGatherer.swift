@@ -98,6 +98,67 @@ public class DataManager {
         return result
     }
 
+    public func forgotPassword(email: String) -> AuthenticationResult? {
+        let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/forgot-password"
+        let parameters: [String: Any] = ["email": email]
+        let decoder = JSONDecoder()
+        var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, auth: false)
+
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+            return nil
+        }
+
+        var result: AuthenticationResult?
+        let data = RestApiHelper.perfomRestCall(request: request)
+
+        do {
+            result = try decoder.decode(AuthenticationResult.self, from: data!)
+        } catch {
+            let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
+            let errMsg = "Unable to process forgot password request: \(returnedData)"
+            self.logHelper.logMsg(level: "error", message: errMsg)
+            print(errMsg)
+        }
+
+        return result
+    }
+
+    public func resetPassword(token: String, email: String, password: String, confirmPassword: String) -> AuthenticationResult? {
+        let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/reset-password"
+        let parameters: [String: Any] = [
+            "token": token,
+            "email": email,
+            "password": password,
+            "password_confirmation": confirmPassword
+        ]
+        let decoder = JSONDecoder()
+        var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, auth: false)
+
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+            return nil
+        }
+
+        var result: AuthenticationResult?
+        let data = RestApiHelper.perfomRestCall(request: request)
+
+        do {
+            result = try decoder.decode(AuthenticationResult.self, from: data!)
+        } catch {
+            let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
+            let errMsg = "Unable to reset password: \(returnedData)"
+            self.logHelper.logMsg(level: "error", message: errMsg)
+            print(errMsg)
+        }
+
+        return result
+    }
+
     public func getCurrentUser() -> TotalUserData? {
         let url = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/user"
         let decoder = JSONDecoder()
