@@ -1,32 +1,29 @@
 //
-//  MenuView.swift
+//  PreAuthenticationView.swift
 //  SinuS
 //
-//  Created by Loe Hendriks on 15/09/2022.
+//  Created by Loe Hendriks on 04/02/2023.
 //
 
 import SwiftUI
 
-/**
-    View for the main menu of the application.
-    Allows users to navigate to different parts of the application.
- */
-struct MenuView: View {
-    @State private var selection = 1
+struct PreAuthenticationView: View {
+    @State private var selection = Tab.feed
 
-    private var feedViewModelFollowing: FeedViewModel
     private var feedViewModelExplore: FeedViewModel
 
+    private enum Tab: Hashable {
+        case feed
+        case login
+    }
+
     init() {
-        self.feedViewModelFollowing = FeedViewModel()
         self.feedViewModelExplore = FeedViewModel()
     }
 
-    /**
-        The view.
-     */
     var body: some View {
         let manager = DataManager()
+
         VStack {
             TabView(selection: self.$selection) {
                 Group {
@@ -34,23 +31,17 @@ struct MenuView: View {
                         .tabItem {
                             Label("Explore", systemImage: "network")
                         }
-                        .tag(1)
-                    FeedView(feedViewModel: self.feedViewModelFollowing, gatherer: manager, onlyFollowing: true)
+                        .tag(Tab.feed)
+                    LoginView()
                         .tabItem {
-                            Label("Following", systemImage: "person.2.fill")
+                            Label("Login", systemImage: "person.badge.key.fill")
                         }
-                        .tag(2)
-                    PersonalView(gatherer: manager)
-                        .tabItem {
-                            Label("Profile", systemImage: "person")
-                        }
-                        .tag(3)
+                        .tag(Tab.login)
                 }
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Style.AppColor, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .toolbarColorScheme(.dark, for: .tabBar)
-
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -77,8 +68,8 @@ struct MenuView: View {
     }
 }
 
-struct MenuView_Previews: PreviewProvider {
+struct PreAuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        PreAuthenticationView()
     }
 }

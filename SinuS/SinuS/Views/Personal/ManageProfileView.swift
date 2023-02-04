@@ -22,11 +22,12 @@ struct ManageProfileView: View {
             HStack {
                 Spacer()
 
-                NavigationLink(destination: AuthenticationStartView(), label: {
-                                     MenuButton(image: Image(systemName: "figure.walk.departure"), name: "Logout")
-                                 }).simultaneousGesture(TapGesture().onEnded {
-                                     KeychainWrapper.standard.remove(forKey: "bearerToken")
-                                 })
+                NavigationLink(destination: PreAuthenticationView(), label: {
+                    MenuButton(image: Image(systemName: "figure.walk.departure"), name: "Logout")
+                }).simultaneousGesture(TapGesture().onEnded {
+                    KeychainWrapper.standard.remove(forKey: "bearerToken")
+                })
+
                 NavigationLink(destination: EditProfileView(gatherer: self.manager), label: {
                     MenuButton(image: Image(systemName: "gearshape.fill"), name: "Edit")
                 })
