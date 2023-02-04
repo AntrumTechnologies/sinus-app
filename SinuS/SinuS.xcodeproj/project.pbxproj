@@ -24,6 +24,12 @@
 		4A327527297729BE009D1CC8 /* HeaderWithSubTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A327526297729BE009D1CC8 /* HeaderWithSubTextView.swift */; };
 		4A32752929772B0A009D1CC8 /* WaveMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32752829772B0A009D1CC8 /* WaveMenuView.swift */; };
 		4A32752B29773236009D1CC8 /* CompareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32752A29773236009D1CC8 /* CompareButtonView.swift */; };
+		4A32752D297D4B6E009D1CC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A32752C297D4B6E009D1CC8 /* GoogleService-Info.plist */; };
+		4A32753A298AE46A009D1CC8 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4A327539298AE46A009D1CC8 /* FirebaseAnalytics */; };
+		4A32753C298AE46A009D1CC8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32753B298AE46A009D1CC8 /* FirebaseAuth */; };
+		4A32753E298AE46A009D1CC8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32753D298AE46A009D1CC8 /* FirebaseDatabase */; };
+		4A327540298AE46A009D1CC8 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32753F298AE46A009D1CC8 /* FirebaseMessaging */; };
+		4A327542298AE46A009D1CC8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4A327541298AE46A009D1CC8 /* FirebaseStorage */; };
 		4A4C6D002917C2E4001DB4F7 /* AuthenticationStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6CFF2917C2E4001DB4F7 /* AuthenticationStartView.swift */; };
 		4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D022917C2F9001DB4F7 /* LoginView.swift */; };
 		4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D052917C30D001DB4F7 /* RegisterView.swift */; };
@@ -94,6 +100,8 @@
 		4A327526297729BE009D1CC8 /* HeaderWithSubTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderWithSubTextView.swift; sourceTree = "<group>"; };
 		4A32752829772B0A009D1CC8 /* WaveMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveMenuView.swift; sourceTree = "<group>"; };
 		4A32752A29773236009D1CC8 /* CompareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareButtonView.swift; sourceTree = "<group>"; };
+		4A32752C297D4B6E009D1CC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4A327537298AE0F5009D1CC8 /* SinuS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SinuS.entitlements; sourceTree = "<group>"; };
 		4A4C6CFF2917C2E4001DB4F7 /* AuthenticationStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStartView.swift; sourceTree = "<group>"; };
 		4A4C6D022917C2F9001DB4F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4A4C6D052917C30D001DB4F7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -139,7 +147,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A32753A298AE46A009D1CC8 /* FirebaseAnalytics in Frameworks */,
+				4A32753C298AE46A009D1CC8 /* FirebaseAuth in Frameworks */,
+				4A327540298AE46A009D1CC8 /* FirebaseMessaging in Frameworks */,
+				4A32753E298AE46A009D1CC8 /* FirebaseDatabase in Frameworks */,
 				CE6A64E629696C1C00DC47E5 /* SwiftKeychainWrapper in Frameworks */,
+				4A327542298AE46A009D1CC8 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +308,7 @@
 		4AD26FB828BBA5D40065FB01 /* SinuS */ = {
 			isa = PBXGroup;
 			children = (
+				4A327537298AE0F5009D1CC8 /* SinuS.entitlements */,
 				4AC5B3DD296AD537003D819C /* Style */,
 				4AD26FE928BBAE930065FB01 /* Data */,
 				4AD26FE428BBA8C40065FB01 /* Views */,
@@ -302,6 +316,7 @@
 				4AD26FBB28BBA5D40065FB01 /* ContentView.swift */,
 				4AD26FBD28BBA5D60065FB01 /* Assets.xcassets */,
 				4AD26FC228BBA5D60065FB01 /* Info.plist */,
+				4A32752C297D4B6E009D1CC8 /* GoogleService-Info.plist */,
 				4AD26FBF28BBA5D60065FB01 /* Preview Content */,
 			);
 			path = SinuS;
@@ -392,6 +407,11 @@
 			name = SinuS;
 			packageProductDependencies = (
 				CE6A64E529696C1C00DC47E5 /* SwiftKeychainWrapper */,
+				4A327539298AE46A009D1CC8 /* FirebaseAnalytics */,
+				4A32753B298AE46A009D1CC8 /* FirebaseAuth */,
+				4A32753D298AE46A009D1CC8 /* FirebaseDatabase */,
+				4A32753F298AE46A009D1CC8 /* FirebaseMessaging */,
+				4A327541298AE46A009D1CC8 /* FirebaseStorage */,
 			);
 			productName = SinuS;
 			productReference = 4AD26FB628BBA5D40065FB01 /* Love waves.app */;
@@ -466,6 +486,7 @@
 			mainGroup = 4AD26FAD28BBA5D40065FB01;
 			packageReferences = (
 				CE6A64E429696C1C00DC47E5 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				4A327538298AE46A009D1CC8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 4AD26FB728BBA5D40065FB01 /* Products */;
 			projectDirPath = "";
@@ -485,6 +506,7 @@
 			files = (
 				4AD26FC128BBA5D60065FB01 /* Preview Assets.xcassets in Resources */,
 				4AD26FBE28BBA5D60065FB01 /* Assets.xcassets in Resources */,
+				4A32752D297D4B6E009D1CC8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,6 +753,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SinuS/SinuS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SinuS/Preview Content\"";
 				DEVELOPMENT_TEAM = 479GB76B7L;
@@ -741,8 +765,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = LoeHen.SinuS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.antrum.lovewaves;
 				PRODUCT_NAME = "Love waves";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -753,6 +778,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SinuS/SinuS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SinuS/Preview Content\"";
 				DEVELOPMENT_TEAM = 479GB76B7L;
@@ -763,8 +790,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = LoeHen.SinuS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.antrum.lovewaves;
 				PRODUCT_NAME = "Love waves";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -898,6 +926,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4A327538298AE46A009D1CC8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		CE6A64E429696C1C00DC47E5 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
@@ -909,6 +945,31 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4A327539298AE46A009D1CC8 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A327538298AE46A009D1CC8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		4A32753B298AE46A009D1CC8 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A327538298AE46A009D1CC8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		4A32753D298AE46A009D1CC8 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A327538298AE46A009D1CC8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		4A32753F298AE46A009D1CC8 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A327538298AE46A009D1CC8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		4A327541298AE46A009D1CC8 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A327538298AE46A009D1CC8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		CE6A64E529696C1C00DC47E5 /* SwiftKeychainWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE6A64E429696C1C00DC47E5 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;

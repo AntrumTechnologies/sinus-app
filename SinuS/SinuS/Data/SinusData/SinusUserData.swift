@@ -16,4 +16,5 @@ public struct SinusUserData: Codable {
     let updated_at: String?
     let deleted_at: String?
     let archived: Int
+
 }

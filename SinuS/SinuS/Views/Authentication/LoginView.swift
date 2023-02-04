@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftKeychainWrapper
+import Firebase
 
 struct LoginView: View {
     let manager = DataManager()
@@ -53,6 +54,16 @@ struct LoginView: View {
                     if !saveSuccessful {
                         print("Could not save bearerToken")
                     }
+
+                    // firebase login
+//                    Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+//                        print(result)
+//                        if error != nil {
+//                            print(error?.localizedDescription ?? "")
+//                        } else {
+//                            print("success")
+//                        }
+//                    }
 
                     self.pushActive = true
                 }
