@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftKeychainWrapper
 
 struct ManageProfileView: View {
     let manager: DataManager
@@ -21,8 +22,10 @@ struct ManageProfileView: View {
             HStack {
                 Spacer()
 
-                NavigationLink(destination: AuthenticationStartView(), label: {
+                NavigationLink(destination: PreAuthenticationView(), label: {
                     MenuButton(image: Image(systemName: "figure.walk.departure"), name: "Logout")
+                }).simultaneousGesture(TapGesture().onEnded {
+                    KeychainWrapper.standard.remove(forKey: "bearerToken")
                 })
 
                 NavigationLink(destination: EditProfileView(gatherer: self.manager), label: {

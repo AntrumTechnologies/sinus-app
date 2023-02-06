@@ -1,22 +1,21 @@
 //
-//  AuthenticationStartView.swift
+//  PreAuthenticationView.swift
 //  SinuS
 //
-//  Created by Loe Hendriks on 06/11/2022.
+//  Created by Loe Hendriks on 04/02/2023.
 //
 
 import SwiftUI
 
-struct AuthenticationStartView: View {
+struct PreAuthenticationView: View {
     @State private var selection = Tab.feed
 
     private var feedViewModelExplore: FeedViewModel
 
     private enum Tab: Hashable {
-            case feed
-            case login
-            case register
-        }
+        case feed
+        case login
+    }
 
     init() {
         self.feedViewModelExplore = FeedViewModel()
@@ -33,11 +32,6 @@ struct AuthenticationStartView: View {
                             Label("Explore", systemImage: "network")
                         }
                         .tag(Tab.feed)
-                    RegisterView()
-                        .tabItem {
-                            Label("Register", systemImage: "person.fill.badge.plus")
-                        }
-                        .tag(Tab.register)
                     LoginView()
                         .tabItem {
                             Label("Login", systemImage: "person.badge.key.fill")
@@ -50,11 +44,32 @@ struct AuthenticationStartView: View {
                 .toolbarColorScheme(.dark, for: .tabBar)
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Style.AppColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    HStack {
+                        Image(systemName: "water.waves")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(.white)
+                            .padding(.bottom)
+                        Text("Love Waves")
+                            .foregroundColor(.white)
+                            .font(.system(size: 25))
+                            .padding(.bottom)
+                    }
+                }
+            }
+        }
     }
 }
 
-struct AutenticationStartView_Previews: PreviewProvider {
+struct PreAuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthenticationStartView()
+        PreAuthenticationView()
     }
 }
