@@ -24,7 +24,6 @@
 		4A327527297729BE009D1CC8 /* HeaderWithSubTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A327526297729BE009D1CC8 /* HeaderWithSubTextView.swift */; };
 		4A32752929772B0A009D1CC8 /* WaveMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32752829772B0A009D1CC8 /* WaveMenuView.swift */; };
 		4A32752B29773236009D1CC8 /* CompareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32752A29773236009D1CC8 /* CompareButtonView.swift */; };
-		4A32752D297D4B6E009D1CC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A32752C297D4B6E009D1CC8 /* GoogleService-Info.plist */; };
 		4A32753A298AE46A009D1CC8 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4A327539298AE46A009D1CC8 /* FirebaseAnalytics */; };
 		4A32753C298AE46A009D1CC8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32753B298AE46A009D1CC8 /* FirebaseAuth */; };
 		4A32753E298AE46A009D1CC8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32753D298AE46A009D1CC8 /* FirebaseDatabase */; };
@@ -62,6 +61,7 @@
 		CE6A64E629696C1C00DC47E5 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A64E529696C1C00DC47E5 /* SwiftKeychainWrapper */; };
 		CE89A8762969F93200300C9D /* ManageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89A8752969F93200300C9D /* ManageProfileView.swift */; };
 		CE89A87A296AF2D300300C9D /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89A879296AF2D300300C9D /* LogHelper.swift */; };
+		CEA3091B298FBC8000AC8BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEA3091A298FBC7F00AC8BA9 /* GoogleService-Info.plist */; };
 		CEECA4FD29709E0F00CA4496 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECA4FC29709E0F00CA4496 /* ForgotPasswordView.swift */; };
 		CEECA4FF2974534700CA4496 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECA4FE2974534700CA4496 /* ResetPasswordView.swift */; };
 		CEECA5012974665800CA4496 /* VerifyEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECA5002974665800CA4496 /* VerifyEmailView.swift */; };
@@ -103,7 +103,6 @@
 		4A327526297729BE009D1CC8 /* HeaderWithSubTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderWithSubTextView.swift; sourceTree = "<group>"; };
 		4A32752829772B0A009D1CC8 /* WaveMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveMenuView.swift; sourceTree = "<group>"; };
 		4A32752A29773236009D1CC8 /* CompareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareButtonView.swift; sourceTree = "<group>"; };
-		4A32752C297D4B6E009D1CC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A4C6D022917C2F9001DB4F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4A4C6D052917C30D001DB4F7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResult.swift; sourceTree = "<group>"; };
@@ -141,6 +140,7 @@
 		4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGatherer.swift; sourceTree = "<group>"; };
 		CE89A8752969F93200300C9D /* ManageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageProfileView.swift; sourceTree = "<group>"; };
 		CE89A879296AF2D300300C9D /* LogHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
+		CEA3091A298FBC7F00AC8BA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEECA4FC29709E0F00CA4496 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		CEECA4FE2974534700CA4496 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		CEECA5002974665800CA4496 /* VerifyEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailView.swift; sourceTree = "<group>"; };
@@ -325,7 +325,7 @@
 				4AD26FBB28BBA5D40065FB01 /* ContentView.swift */,
 				4AD26FBD28BBA5D60065FB01 /* Assets.xcassets */,
 				4AD26FC228BBA5D60065FB01 /* Info.plist */,
-				4A32752C297D4B6E009D1CC8 /* GoogleService-Info.plist */,
+				CEA3091A298FBC7F00AC8BA9 /* GoogleService-Info.plist */,
 				4AD26FBF28BBA5D60065FB01 /* Preview Content */,
 			);
 			path = SinuS;
@@ -515,7 +515,7 @@
 			files = (
 				4AD26FC128BBA5D60065FB01 /* Preview Assets.xcassets in Resources */,
 				4AD26FBE28BBA5D60065FB01 /* Assets.xcassets in Resources */,
-				4A32752D297D4B6E009D1CC8 /* GoogleService-Info.plist in Resources */,
+				CEA3091B298FBC8000AC8BA9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,7 +769,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SinuS/Preview Content\"";
-				DEVELOPMENT_TEAM = 27MSAG6A3N;
+				DEVELOPMENT_TEAM = 479GB76B7L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SinuS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -794,7 +794,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SinuS/Preview Content\"";
-				DEVELOPMENT_TEAM = 27MSAG6A3N;
+				DEVELOPMENT_TEAM = 479GB76B7L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SinuS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
