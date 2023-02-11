@@ -10,14 +10,16 @@ import PhotosUI
 
 struct EditProfileView: View {
     let gatherer: DataManager
+    let network: NetworkManager
 
     @State private var selectedItem: PhotosPickerItem?
     @State private var selectedImageData: Data?
     @State private var name: String = ""
     @State private var email: String = ""
 
-    init(gatherer: DataManager) {
+    init(gatherer: DataManager, network: NetworkManager) {
         self.gatherer = gatherer
+        self.network = network
         _email = State(initialValue: self.currentEmail)
         _name = State(initialValue: self.currentName)
     }
@@ -105,7 +107,9 @@ struct EditProfileView: View {
                                Task {
                                    if let data = try? await newItem?.loadTransferable(type: Data.self) {
                                        selectedImageData = data
+                                       let _ = try await network.uploadFile(fileName: "", fileData: selectedImageData)
                                    }
+                                   
                                }
                            }
 
@@ -152,6 +156,6 @@ struct EditProfileView: View {
 
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfileView(gatherer: DataManager())
+        EditProfileView(gatherer: DataManager(), network: NetworkManager())
     }
 }
