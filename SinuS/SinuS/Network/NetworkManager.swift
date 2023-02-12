@@ -6,14 +6,11 @@
 //
 
 import Foundation
-import SwiftUI
+import SwiftKeychainWrapper
 
-public class NetworkManager: NSObject {
-    static let shared = NetworkManager()
-        
-    public override init() {}
-    
-    public func uploadFile (fileName: String, fileData: Data?) async throws -> (Data, URLResponse) {
+public class NetworkManager {
+
+    public func uploadFile (fileName: String, fileData: Data?) -> URLSessionUploadTask {
         let uploadApiUrl: URL? = URL(string: "https://lovewaves.antrum-technologies.nl/api/user/update")
 
         // Generate a unique boundary string using a UUID.
@@ -23,8 +20,9 @@ public class NetworkManager: NSObject {
 
         // Add the multipart/form-data raw http body data.
         bodyData.append("\r\n--\(uniqueBoundary)\r\n".data(using: .utf8)!)
-        bodyData.append("Content-Disposition: form-data; avatar=\"\(fileName)\"\r\n".data(using: .utf8)!)
-        // bodyData.append("Content-Type: image/jpg\r\n\r\n".data(using: .utf8)!)
+        bodyData.append("Content-Disposition: form-data; name=\"avatar\"; filename=\"\(fileName)\"\r\n"
+            .data(using: .utf8)!)
+        bodyData.append("Content-Type: image/jpg\r\n\r\n".data(using: .utf8)!)
 
         // Add the zip file data to the raw http body data.
         bodyData.append(fileData!)
@@ -36,36 +34,52 @@ public class NetworkManager: NSObject {
 
         let urlSession
             = URLSession(
-                configuration: urlSessionConfiguration,
-                delegate: self,
-                delegateQueue: nil)
+                configuration: urlSessionConfiguration)
 
         var urlRequest = URLRequest(url: uploadApiUrl!)
 
         // Set Content-Type Header to multipart/form-data with the unique boundary.
         urlRequest.setValue("multipart/form-data; boundary=\(uniqueBoundary)", forHTTPHeaderField: "Content-Type")
+        // Set bearer token
+        let bearerToken: String = KeychainWrapper.standard.string(forKey: "bearerToken") ?? ""
+        urlRequest.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
 
         urlRequest.httpMethod = "POST"
-        
-        let (data, urlResponse) = try await urlSession.upload(
-            for: urlRequest,
+
+        let retval = urlSession.uploadTask(
+            with: urlRequest,
             from: bodyData,
-            delegate: nil
+            completionHandler: { (responseData, response, error) in
+                // Check on some response headers (if it's HTTP)
+                if let httpResponse = response as? HTTPURLResponse {
+                    switch httpResponse.statusCode {
+                    case 200..<300:
+                        print("Success")
+                    case 400..<500:
+                        print("Request error")
+                    case 500..<600:
+                        print("Server error")
+                    case let otherCode:
+                        print("Other code: \(otherCode)")
+                    }
+                }
+
+                // Do something with the response data
+                if let
+                    responseData = responseData,
+                   let responseString = String(data: responseData, encoding: String.Encoding.utf8) {
+                    print("Server Response:")
+                    print(responseString)
+                }
+
+                // Do something with the error
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+            }
         )
+        retval.resume()
 
-        return (data, urlResponse)
+        return retval
     }
-}
-
-extension NetworkManager: URLSessionTaskDelegate {
-    public func urlSession(
-        _ session: URLSession,
-        task: URLSessionTask,
-        didSendBodyData bytesSent: Int64,
-        totalBytesSent: Int64,
-        totalBytesExpectedToSend: Int64) {
-
-        print("fractionCompleted  : \(Int(Float(totalBytesSent) / Float(totalBytesExpectedToSend) * 100))")
-    }
-
 }

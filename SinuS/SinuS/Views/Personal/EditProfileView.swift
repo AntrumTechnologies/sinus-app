@@ -10,16 +10,15 @@ import PhotosUI
 
 struct EditProfileView: View {
     let gatherer: DataManager
-    let network: NetworkManager
 
     @State private var selectedItem: PhotosPickerItem?
+    @State private var selectedImage: Image?
     @State private var selectedImageData: Data?
     @State private var name: String = ""
     @State private var email: String = ""
 
-    init(gatherer: DataManager, network: NetworkManager) {
+    init(gatherer: DataManager) {
         self.gatherer = gatherer
-        self.network = network
         _email = State(initialValue: self.currentEmail)
         _name = State(initialValue: self.currentName)
     }
@@ -54,6 +53,8 @@ struct EditProfileView: View {
     }
 
     var body: some View {
+        let network = NetworkManager()
+
         VStack {
             HStack {
                 Spacer()
@@ -78,8 +79,7 @@ struct EditProfileView: View {
                 HStack {
                     Spacer()
 
-                    self.image
-                        .resizable()
+                    self.selectedImage
                         .frame(width: 100, height: 100)
                         .clipShape(Circle())
                         .overlay {
@@ -90,28 +90,30 @@ struct EditProfileView: View {
                     Spacer()
 
                     PhotosPicker(
-                           selection: $selectedItem,
-                           matching: .images,
-                           photoLibrary: .shared()) {
-                               Label("Select a photo", systemImage: "photo")
-                                   .frame(width: 150, height: 30)
-                                   .background(.white)
-                                   .foregroundColor(Style.AppColor)
-                                   .cornerRadius(5)
-                                   .shadow(radius: 5)
-                           }
-                           .onSubmit {
-                               // do nothing
-                           }
-                           .onChange(of: selectedItem) { newItem in
-                               Task {
-                                   if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                                       selectedImageData = data
-                                       let _ = try await network.uploadFile(fileName: "", fileData: selectedImageData)
-                                   }
-                                   
-                               }
-                           }
+                        selection: $selectedItem,
+                        matching: .not(.videos),
+                        photoLibrary: .shared()) {
+                            Label("Select an avatar", systemImage: "photo")
+                                .frame(width: 150, height: 30)
+                                .background(.white)
+                                .foregroundColor(Style.ThirdAppColor)
+                                .cornerRadius(5)
+                                .shadow(radius: 5)
+                        }
+                        .onChange(of: selectedItem) { newItem in
+                            Task {
+                                if let data = try? await newItem?.loadTransferable(type: Data.self) {
+                                    selectedImageData = data
+                                     _ = network.uploadFile(
+                                        fileName: selectedItem?.itemIdentifier ?? "avatar.jpg",
+                                        fileData: data)
+
+                                    if let uiImage = UIImage(data: data) {
+                                        selectedImage = Image(uiImage: uiImage)
+                                    }
+                                }
+                            }
+                    }
 
                     Spacer()
                 }
@@ -156,6 +158,6 @@ struct EditProfileView: View {
 
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfileView(gatherer: DataManager(), network: NetworkManager())
+        EditProfileView(gatherer: DataManager())
     }
 }
