@@ -25,8 +25,8 @@ private struct GraphDataPoint: Codable {
  */
 public class DataManager {
     // endpoints
-    private static var userUrl = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/sinus"
-    private static var dataUrl = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/sinusvalue/"
+    private static var userUrl = "https://lovewaves.antrum-technologies.nl/api/sinus"
+    private static var dataUrl = "https://lovewaves.antrum-technologies.nl/api/sinusvalue/"
 
     private var users = [SinusUserData]()
     private var logHelper = LogHelper()
@@ -39,7 +39,7 @@ public class DataManager {
         email: String,
         password: String,
         confirmPassword: String) -> AuthenticationResult? {
-        let registerUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/register?"
+        let registerUrl = "https://lovewaves.antrum-technologies.nl/api/register?"
         let parameters: [String: Any] = [
             "name": name, "email": email, "password": password, "confirm_password": confirmPassword]
         let decoder = JSONDecoder()
@@ -71,7 +71,7 @@ public class DataManager {
         Login call to the backend.
      */
     public func login(email: String, password: String) -> AuthenticationResult? {
-        let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/login?"
+        let loginUrl = "https://lovewaves.antrum-technologies.nl/api/login?"
         let parameters: [String: Any] = ["email": email, "password": password]
         let decoder = JSONDecoder()
         var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, auth: false)
@@ -99,7 +99,7 @@ public class DataManager {
     }
 
     public func forgotPassword(email: String) -> AuthenticationResult? {
-        let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/forgot-password"
+        let loginUrl = "https://lovewaves.antrum-technologies.nl/api/forgot-password"
         let parameters: [String: Any] = ["email": email]
         let decoder = JSONDecoder()
         var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, auth: false)
@@ -127,7 +127,7 @@ public class DataManager {
     }
 
     public func resetPassword(token: String, email: String, password: String, confirmPassword: String) -> AuthenticationResult? {
-        let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/reset-password"
+        let loginUrl = "https://lovewaves.antrum-technologies.nl/api/reset-password"
         let parameters: [String: Any] = [
             "token": token,
             "email": email,
@@ -176,7 +176,7 @@ public class DataManager {
     }
 
     public func getCurrentUser() -> TotalUserData? {
-        let url = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/user"
+        let url = "https://lovewaves.antrum-technologies.nl/api/user"
         let decoder = JSONDecoder()
         let request = RestApiHelper.createRequest(type: "GET", url: url, auth: true)
 
@@ -246,7 +246,7 @@ public class DataManager {
         if let user = self.users.first(where: { user in
             return user.date_name == data.name
         }) {
-            let url = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/sinusvalue"
+            let url = "https://lovewaves.antrum-technologies.nl/api/sinusvalue"
 
             let formatter = DateFormatter()
             formatter.dateFormat = "y-MM-d"
@@ -307,7 +307,7 @@ public class DataManager {
     }
 
     public func unFollowUser(user_id: Int) {
-        let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/unfollow"
+        let urlString = "https://lovewaves.antrum-technologies.nl/api/unfollow"
         var request = RestApiHelper.createRequest(type: "PUT", url: urlString)
 
         let parameters: [String: Any] = ["user_id_to_unfollow": user_id ]
@@ -322,7 +322,7 @@ public class DataManager {
     }
 
     public func followUser(user_id: Int) {
-        let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/follow"
+        let urlString = "https://lovewaves.antrum-technologies.nl/api/follow"
         var request = RestApiHelper.createRequest(type: "PUT", url: urlString)
 
         let parameters: [String: Any] = ["user_id_to_follow": user_id ]
