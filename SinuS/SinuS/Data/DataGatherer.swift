@@ -159,6 +159,22 @@ public class DataManager {
         return result
     }
 
+    public func isTokenValid() -> Bool {
+        let url = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/user"
+        let decoder = JSONDecoder()
+        let request = RestApiHelper.createRequest(type: "GET", url: url, auth: true)
+
+        var result: TotalUserData?
+        let data = RestApiHelper.perfomRestCall(request: request)
+
+        do {
+            result = try decoder.decode(TotalUserData.self, from: data!)
+            return true
+        } catch {
+            return false
+        }
+    }
+
     public func getCurrentUser() -> TotalUserData? {
         let url = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/user"
         let decoder = JSONDecoder()
