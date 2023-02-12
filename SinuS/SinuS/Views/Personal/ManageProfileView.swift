@@ -13,11 +13,14 @@ struct ManageProfileView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Manage Profile:")
-                .font(.headline)
-                .padding(.leading, 15)
-                .padding(.top, 5)
-                .foregroundColor(Style.ThirdAppColor)
+            HStack {
+                Image(systemName: "person.fill")
+                    .padding(.leading, 15)
+                    .padding(.top, 5)
+                Text("Manage profile")
+                    .font(.headline)
+                    .padding(.top, 5)
+            }.foregroundColor(Style.AppColor)
 
             HStack {
                 Spacer()
@@ -35,6 +38,7 @@ struct ManageProfileView: View {
                 Spacer()
             }
 
+            Spacer()
         }
     }
 }

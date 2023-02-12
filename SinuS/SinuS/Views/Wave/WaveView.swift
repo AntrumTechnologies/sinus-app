@@ -54,17 +54,11 @@ struct WaveView: View {
         VStack {
             HeaderWithSubTextView(
                 name: self.user.name,
-                subtext: "Is dating \(self.data.sinusTarget)..",
+                subtext: self.data.sinusTarget,
                 avatar: Image("Placeholder"),
-                scaleFactor: 0.75)
+                scaleFactor: 1)
 
             ScrollView(.vertical) {
-
-                WaveMenuView(
-                    gatherer: self.gatherer,
-                    user: self.user,
-                    data: self.data)
-
                 Divider()
 
                 ChartView(points: self.points)

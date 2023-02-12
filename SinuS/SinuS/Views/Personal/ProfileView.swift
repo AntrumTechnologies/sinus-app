@@ -30,17 +30,20 @@ struct ProfileView: View {
      */
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Update Wave:")
-                .font(.headline)
-                .padding(.leading, 15)
-                .padding(.top, 5)
-                .foregroundColor(Style.ThirdAppColor)
+            HStack {
+                Image(systemName: "slider.vertical.3")
+                    .padding(.leading, 15)
+                    .padding(.top, 5)
+                Text("Update wave")
+                    .font(.headline)
+                    .padding(.top, 5)
+            }.foregroundColor(Style.AppColor)
 
             Spacer()
 
             VStack {
                 HStack {
-                    Text("Wave:")
+                    Text("Wave:").foregroundColor(Style.TextOnColoredBackground)
 
                     Spacer()
 
@@ -50,16 +53,15 @@ struct ProfileView: View {
                         }
                     }
                     .colorMultiply(Style.AppColor)
-                    .accentColor(Style.FifthAppColor)
+                    .accentColor(Style.TextOnColoredBackground)
                     .cornerRadius(5)
                     .shadow(radius: 10)
                 }.padding(.horizontal).padding(.top)
 
                 HStack {
                     DatePicker(selection: $date, displayedComponents: [.date], label: { Text("Date:") })
-                        .colorInvert()
                         .colorMultiply(Style.AppColor)
-                        .accentColor(Style.FourthAppColor)
+                        .accentColor(Style.TextOnColoredBackground)
                 }.padding(.horizontal)
 
                 HStack {
@@ -70,7 +72,7 @@ struct ProfileView: View {
                         in: 0...100,
                         step: 1).foregroundColor(.yellow)
                         .frame(width: 220)
-                        .accentColor(Style.FourthAppColor)
+                        .accentColor(Style.TextOnColoredBackground)
                 }.padding(.horizontal)
 
                 HStack {
@@ -87,8 +89,8 @@ struct ProfileView: View {
                     Button("OK", role: .cancel) { }
                 }
             }
-            .background(Style.SecondAppColor)
-            .foregroundColor(Style.AppColor)
+            .background(Style.AppBackground)
+            .foregroundColor(Style.TextOnColoredBackground)
             .cornerRadius(5)
             .shadow(radius: 5)
             .padding()

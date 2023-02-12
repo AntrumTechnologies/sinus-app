@@ -15,44 +15,86 @@ struct HeaderWithSubTextView: View {
 
     var body: some View {
         HStack {
-            self.avatar
-                .resizable()
-                .frame(
-                    width: 100 * self.scaleFactor,
-                    height: 100 * self.scaleFactor)
-                .clipShape(Circle())
-                .overlay {
-                    Circle().stroke(.white, lineWidth: 4)
-                        .shadow(radius: 10)
+            VStack(alignment: .leading) {
+                Spacer()
+                HStack {
+                    self.avatar
+                        .resizable()
+                        .frame(
+                            width: 80 * self.scaleFactor,
+                            height: 80 * self.scaleFactor)
+                        .clipShape(Circle())
+                        .overlay {
+                            Circle().stroke(Style.TextOnColoredBackground, lineWidth: 4)
+                                .shadow(radius: 10)
+                        }
+                        .padding()
+
+                    Spacer()
+                    VStack {
+                        Spacer()
+                        Text(self.name)
+                            .font(.system(size: 35 * self.scaleFactor))
+                            .foregroundColor(Style.TextOnColoredBackground)
+
+                        Spacer()
+                        HStack(spacing: 0) {
+                            Text("Is dating")
+                                .foregroundColor(Style.TextOnColoredBackground)
+
+                            self.avatar
+                                .resizable()
+                                .frame(
+                                    width: 40 * self.scaleFactor,
+                                    height: 40 * self.scaleFactor)
+                                .clipShape(Circle())
+                                .overlay {
+                                    Circle().stroke(Style.TextOnColoredBackground, lineWidth: 4)
+                                        .shadow(radius: 10)
+                                }
+                                .padding()
+
+                            Text(self.subtext)
+                                .foregroundColor(Style.TextOnColoredBackground)
+                        }
+
+                        Spacer()
+                    }
+
+                    Spacer()
                 }
-                .padding()
 
-            Spacer()
+                Button(action: {
+                    // self.gatherer.followUser(user_id: self.user.user_id)
+                }
+                ) {
+                    HStack {
+                        Text("Follow")
+                    }
+                    .frame(width: 100, height: 30)
+                    .foregroundColor(.white)
+                    .background(Style.AppColor)
+                    .cornerRadius(5)
+                    .padding(.leading, 5)
+                }
 
-            VStack {
-                Text(self.name)
-                    .font(.system(size: 35 * self.scaleFactor))
-                    .foregroundColor(.white)
-                Text(self.subtext)
-                    .foregroundColor(.white)
-                    .padding(.top, 1)
+                Spacer()
             }
 
             Spacer()
-
         }
-        .frame(width: 350, height: 100)
-        .background(Style.ThirdAppColor)
+        .frame(width: 350, height: 180)
+        .background(Style.AppBackground)
         .cornerRadius(5)
         .shadow(radius: 10)
-        .padding(.top, 15)
+        .padding([.top, .bottom], 15)
     }
 }
 
 struct HeaderWithSubTextView_Previews: PreviewProvider {
     static var previews: some View {
         HeaderWithSubTextView(name: "Test",
-                              subtext: "is dateing someone",
+                              subtext: "Someone",
                               avatar: Image("Placeholder"),
                               scaleFactor: 1)
     }

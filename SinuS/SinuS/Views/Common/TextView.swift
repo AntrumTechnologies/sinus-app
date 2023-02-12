@@ -15,7 +15,7 @@ struct TextView: View {
             .font(.headline)
             .padding(.leading, 15)
             .padding(.top, 5)
-            .foregroundColor(Style.ThirdAppColor)
+            .foregroundColor(Style.AppColor)
     }
 }
 

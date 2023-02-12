@@ -21,7 +21,7 @@ struct ProfileHeaderView: View {
                     height: 100 * self.scaleFactor)
                 .clipShape(Circle())
                 .overlay {
-                    Circle().stroke(Style.ThirdAppColor, lineWidth: 4)
+                    Circle().stroke(Style.AppColor, lineWidth: 4)
                         .shadow(radius: 10)
                 }
 
@@ -29,7 +29,7 @@ struct ProfileHeaderView: View {
 
             Text(self.name)
                 .font(.system(size: 35 * self.scaleFactor))
-                .foregroundColor(Style.ThirdAppColor)
+                .foregroundColor(Style.AppColor)
 
             Spacer()
 

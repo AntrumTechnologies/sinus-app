@@ -22,43 +22,53 @@ struct NewWaveView: View {
      */
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Create new Wave:")
-                .font(.headline)
-                .padding(.leading, 15)
-                .padding(.top, 5)
-                .foregroundColor(Style.ThirdAppColor)
+            HStack {
+                Image(systemName: "square.and.pencil")
+                    .padding(.leading, 15)
+                    .padding(.top, 5)
+                Text("Create new wave")
+                    .font(.headline)
+                    .padding(.top, 5)
+            }.foregroundColor(Style.AppColor)
 
             Spacer()
 
             VStack {
                 HStack {
-                    Text("Wave name:")
+                    Text("Wave name")
                     Spacer()
                     TextField("", text: self.$username)
                         .disableAutocorrection(true)
-                        .border(Style.FifthAppColor, width: 0.5)
+                        .border(Style.TextOnColoredBackground, width: 0.5)
+
                         .frame(width: 220)
-                }.padding(.horizontal).padding(.top)
+                }
+                .padding(.horizontal)
+                .padding(.top)
+                .foregroundColor(Style.TextOnColoredBackground)
 
                 HStack {
-                    Text("Target:")
+                    Text("Target")
                     Spacer()
                     TextField("", text: self.$targetname)
                         .disableAutocorrection(true)
-                        .border(Style.FifthAppColor, width: 0.5)
+                        .border(Style.TextOnColoredBackground, width: 0.5)
                         .frame(width: 220)
-                }.padding(.horizontal)
+                }
+                .padding(.horizontal)
+                .foregroundColor(Style.TextOnColoredBackground)
 
                 Button("Add Wave!") {
                     self.manager.addUser(user: self.username, target: self.targetname)
                 }
                 .padding()
+                .foregroundColor(Style.TextOnColoredBackground)
                 .alert("User added!", isPresented: $showingAlert) {
                     Button("OK", role: .cancel) { }
                 }
             }
             .foregroundColor(Style.AppColor)
-            .background(Style.SecondAppColor)
+            .background(Style.AppBackground)
             .cornerRadius(5)
             .shadow(radius: 5)
             .padding()

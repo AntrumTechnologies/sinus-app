@@ -62,18 +62,18 @@ struct StatisticsView: View {
                 Image(systemName: "chart.bar.xaxis")
                     .padding(.leading, 15)
                     .padding(.top, 5)
-                Text("Statistics:")
+                Text("Statistics")
                     .font(.headline)
                     .padding(.top, 5)
             }
-            .foregroundColor(Style.ThirdAppColor)
+            .foregroundColor(Style.AppColor)
 
             VStack(alignment: .center) {
 
                 Divider()
 
                 HStack {
-                    Text("Current Score:")
+                    Text("Current score")
                         .padding(.leading, 20)
                     Spacer()
                     Text("\(self.currentScore) %")
@@ -84,7 +84,7 @@ struct StatisticsView: View {
                 Divider()
 
                 HStack {
-                    Text("Duration:")
+                    Text("Duration")
                         .padding(.leading, 20)
                     Spacer()
                     Text("\(self.duration) days")
@@ -96,7 +96,7 @@ struct StatisticsView: View {
                 Divider()
 
                 HStack {
-                    Text("Max value:")
+                    Text("Max value")
                         .padding(.leading, 20)
                     Spacer()
                     Text("\(self.max)")
@@ -108,7 +108,7 @@ struct StatisticsView: View {
                 Divider()
 
                 HStack {
-                    Text("Min value:")
+                    Text("Min value")
                         .padding(.leading, 20)
                     Spacer()
                     Text("\(self.min)")
@@ -120,7 +120,7 @@ struct StatisticsView: View {
                 Divider()
 
                 HStack {
-                    Text("Start date:")
+                    Text("Start date")
                         .padding(.leading, 20)
                     Spacer()
                     Text(self.startDate)
@@ -131,9 +131,8 @@ struct StatisticsView: View {
 
             }
             .frame(width: 350)
-            .foregroundColor(Style.AppColor)
-
-            .background(Style.SecondAppColor)
+            .foregroundColor(Style.TextOnColoredBackground)
+            .background(Style.AppBackground)
             .cornerRadius(5)
             .shadow(radius: 10)
             .foregroundColor(.white)

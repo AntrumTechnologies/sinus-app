@@ -45,10 +45,10 @@ struct FeedWaveGraphView: View {
 
     var body: some View {
         VStack {
-            self.path.stroke(.white, lineWidth: 2.0).padding(.top, 120)
+            self.path.stroke(Style.TextOnColoredBackground, lineWidth: 2.0).padding(.top, 120)
                 .frame(maxWidth: .infinity, maxHeight: 300)
         }
-        .background(Style.ThirdAppColor)
+        .background(Style.AppBackground)
         .frame(height: 200)
         .cornerRadius(5)
         .padding(.all)

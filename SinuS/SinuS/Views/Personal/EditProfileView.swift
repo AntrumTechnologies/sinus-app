@@ -81,7 +81,7 @@ struct EditProfileView: View {
                         .frame(width: 100, height: 100)
                         .clipShape(Circle())
                         .overlay {
-                            Circle().stroke(Style.ThirdAppColor, lineWidth: 4)
+                            Circle().stroke(Style.AppColor, lineWidth: 4)
                                 .shadow(radius: 10)
                         }
 
@@ -94,7 +94,7 @@ struct EditProfileView: View {
                                Label("Select a photo", systemImage: "photo")
                                    .frame(width: 150, height: 30)
                                    .background(.white)
-                                   .foregroundColor(Style.ThirdAppColor)
+                                   .foregroundColor(Style.AppColor)
                                    .cornerRadius(5)
                                    .shadow(radius: 5)
                            }
@@ -141,7 +141,7 @@ struct EditProfileView: View {
             Button("Save") {
 
             }
-            .foregroundColor(Style.ThirdAppColor)
+            .foregroundColor(Style.TextOnColoredBackground)
             .font(.headline)
             .shadow(radius: 5)
 
