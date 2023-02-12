@@ -10,6 +10,7 @@ import SwiftKeychainWrapper
 
 struct ManageProfileView: View {
     let manager: DataManager
+    let currentUser: UserData
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -31,7 +32,7 @@ struct ManageProfileView: View {
                     KeychainWrapper.standard.remove(forKey: "bearerToken")
                 })
 
-                NavigationLink(destination: EditProfileView(gatherer: self.manager), label: {
+                NavigationLink(destination: EditProfileView(gatherer: self.manager, currentUser: self.currentUser), label: {
                     MenuButton(image: Image(systemName: "gearshape.fill"), name: "Edit")
                 })
 
@@ -45,6 +46,6 @@ struct ManageProfileView: View {
 
 struct ManageProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ManageProfileView(manager: DataManager())
+        ManageProfileView(manager: DataManager(), currentUser: UserData.init(id: 0, name: "Jan", email: "Jan@Jan.nl", email_verified_at: "", created_at: "", updated_at: "", avatar: ""))
     }
 }

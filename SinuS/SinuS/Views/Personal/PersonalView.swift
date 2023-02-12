@@ -6,26 +6,27 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct PersonalView: View {
     let gatherer: DataManager
 
-    var name: String {
-        let currentUser = self.gatherer.getCurrentUser()
+    var currentUser: UserData? {
+        return self.gatherer.getCurrentUser()?.success
+    }
 
-        if currentUser == nil {
-            return "Unknown"
-        }
-
-        return currentUser!.success.name
+    var currentAvatar: KFImage {
+        let avatar: String = currentUser!.avatar ?? "avatars/placeholder.jpg"
+        let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/" + avatar)!
+        return KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
     }
 
     var body: some View {
         VStack {
             ScrollView(.vertical) {
                 ProfileHeaderView(
-                    name: self.name,
-                    avatar: Image("Placeholder"),
+                    name: self.currentUser!.name,
+                    avatar: self.currentAvatar,
                     scaleFactor: 1)
 
                 Divider()
@@ -42,7 +43,7 @@ struct PersonalView: View {
 
                 Divider()
 
-                ManageProfileView(manager: gatherer)
+                ManageProfileView(manager: gatherer, currentUser: self.currentUser!)
             }
 
         }
