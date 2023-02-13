@@ -10,14 +10,13 @@ import SwiftUI
 struct ClickResetPasswordLinkView: View {
     var body: some View {
         VStack {
-            Spacer()
-
-            Text("Please click on the link sent to your email")
-
-            Text("Go back")
-
-            Spacer()
+            Text("Please click on the link sent to your email to reset your password. Then go back to login again.").padding()
         }
+        .background(Style.AppBackground)
+        .foregroundColor(Style.TextOnColoredBackground)
+        .cornerRadius(5)
+        .shadow(radius: 5)
+        .padding()
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Style.AppColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
@@ -30,7 +29,7 @@ struct ClickResetPasswordLinkView: View {
                             .frame(width: 25, height: 25)
                             .foregroundColor(.white)
                             .padding(.bottom)
-                        Text("Love Waves")
+                        Text("Love waves")
                             .foregroundColor(.white)
                             .font(.system(size: 25))
                             .padding(.bottom)

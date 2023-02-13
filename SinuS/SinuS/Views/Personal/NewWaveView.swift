@@ -39,9 +39,13 @@ struct NewWaveView: View {
                     Spacer()
                     TextField("", text: self.$username)
                         .disableAutocorrection(true)
-                        .border(Style.TextOnColoredBackground, width: 0.5)
-
-                        .frame(width: 220)
+                        .frame(width: 200)
+                        .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
+                        .cornerRadius(5)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(lineWidth: 1.0)
+                        )
                 }
                 .padding(.horizontal)
                 .padding(.top)
@@ -52,8 +56,13 @@ struct NewWaveView: View {
                     Spacer()
                     TextField("", text: self.$targetname)
                         .disableAutocorrection(true)
-                        .border(Style.TextOnColoredBackground, width: 0.5)
-                        .frame(width: 220)
+                        .frame(width: 200)
+                        .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
+                        .cornerRadius(5)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(lineWidth: 1.0)
+                        )
                 }
                 .padding(.horizontal)
                 .foregroundColor(Style.TextOnColoredBackground)

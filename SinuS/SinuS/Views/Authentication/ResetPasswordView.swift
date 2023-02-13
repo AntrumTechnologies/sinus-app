@@ -28,8 +28,13 @@ struct ResetPasswordView: View {
                     TextField("", text: self.$email)
                         .disabled(true)
                         .disableAutocorrection(true)
-                        .border(Color.white, width: 0.5)
                         .frame(width: 220)
+                        .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
+                        .cornerRadius(5)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(lineWidth: 1.0)
+                        )
                 }.padding(.horizontal).padding(.top)
             }
 
@@ -39,8 +44,13 @@ struct ResetPasswordView: View {
                 Spacer()
                 TextField("", text: self.$password)
                     .disableAutocorrection(true)
-                    .border(Color.white, width: 0.5)
                     .frame(width: 220)
+                    .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
+                    .cornerRadius(5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(lineWidth: 1.0)
+                    )
             }.padding(.horizontal).padding(.top)
 
             // Confirm password
@@ -49,8 +59,13 @@ struct ResetPasswordView: View {
                 Spacer()
                 TextField("", text: self.$confirmPassword)
                     .disableAutocorrection(true)
-                    .border(Color.white, width: 0.5)
                     .frame(width: 220)
+                    .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
+                    .cornerRadius(5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(lineWidth: 1.0)
+                    )
             }.padding(.horizontal).padding(.top)
 
             NavigationLink(destination: LoginView(), tag: true, selection: self.$showLogin) { EmptyView() }
@@ -83,11 +98,11 @@ struct ResetPasswordView: View {
             }
             .padding()
         }
-        .background(Style.AppColor)
+        .background(Style.AppBackground)
+        .foregroundColor(Style.TextOnColoredBackground)
         .cornerRadius(5)
         .shadow(radius: 5)
         .padding()
-        .foregroundColor(.white)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Style.AppColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
