@@ -45,21 +45,6 @@ struct EditProfileView: View {
         let network = NetworkManager()
 
         VStack {
-            HStack {
-                Spacer()
-                Image(systemName: "water.waves")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                    .foregroundColor(.white)
-                    .padding(.bottom)
-                Text("Edit Profile")
-                    .foregroundColor(.white)
-                    .font(.system(size: 25))
-                    .padding(.bottom)
-                Spacer()
-            }
-            .background(Style.AppColor)
-
             Spacer()
 
             VStack {
@@ -70,7 +55,7 @@ struct EditProfileView: View {
                         .frame(width: 100, height: 100)
                         .clipShape(Circle())
                         .overlay {
-                            Circle().stroke(Style.AppColor, lineWidth: 4)
+                            Circle().stroke(Style.TextOnColoredBackground, lineWidth: 4)
                                 .shadow(radius: 10)
                         }
 
@@ -83,7 +68,7 @@ struct EditProfileView: View {
                             Label("Select new avatar", systemImage: "photo")
                                 .frame(width: 180, height: 30)
                                 .background(.white)
-                                .foregroundColor(Style.ThirdAppColor)
+                                .foregroundColor(Style.TextOnColoredBackground)
                                 .cornerRadius(5)
                                 .shadow(radius: 5)
                         }
@@ -106,7 +91,7 @@ struct EditProfileView: View {
                 }
 
                 HStack {
-                    Text("Name:")
+                    Text("Name")
                     Spacer()
                     TextField(self.currentUser.name, text: self.$name)
                         .disableAutocorrection(true)
@@ -120,7 +105,7 @@ struct EditProfileView: View {
                 }.padding(.horizontal).padding(.top)
 
                 HStack {
-                    Text("Email:")
+                    Text("Email")
                     Spacer()
                     TextField(self.currentUser.email, text: self.$email)
                         .disableAutocorrection(true)
@@ -135,7 +120,8 @@ struct EditProfileView: View {
 
             }
             .frame(height: 300)
-            .background(Style.AppColor)
+            .background(Style.AppBackground)
+            .foregroundColor(Style.TextOnColoredBackground)
             .cornerRadius(5)
             .shadow(radius: 5)
             .padding()
@@ -144,11 +130,26 @@ struct EditProfileView: View {
             Button("Save") {
 
             }
-            .foregroundColor(Style.TextOnColoredBackground)
+            .foregroundColor(Style.AppColor)
             .font(.headline)
             .shadow(radius: 5)
 
             Spacer()
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Style.AppColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    HStack {
+                        Text("Edit profile")
+                            .foregroundColor(.white)
+                            .font(.system(size: 25))
+                            .padding(.bottom)
+                    }
+                }
+            }
         }
     }
 }

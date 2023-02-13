@@ -160,7 +160,7 @@ public class DataManager {
     }
 
     public func isTokenValid() -> Bool {
-        let url = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/user"
+        let url = "https://lovewaves.antrum-technologies.nl/api/user"
         let decoder = JSONDecoder()
         let request = RestApiHelper.createRequest(type: "GET", url: url, auth: true)
 
