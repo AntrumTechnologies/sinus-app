@@ -25,8 +25,8 @@ private struct GraphDataPoint: Codable {
  */
 public class DataManager {
     // endpoints
-    private static var userUrl = "https://lovewaves.antrum-technologies.nl/api/sinus"
-    private static var dataUrl = "https://lovewaves.antrum-technologies.nl/api/sinusvalue/"
+    private static var userUrl = "https://www.lovewaves.antrum-technologies.nl/api/sinus"
+    private static var dataUrl = "https://www.lovewaves.antrum-technologies.nl/api/sinusvalue/"
 
     private var users = [SinusUserData]()
     private var logHelper = LogHelper()
