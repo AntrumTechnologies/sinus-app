@@ -31,13 +31,13 @@ struct ChartView: View {
                     .font(.headline)
                     .padding(.top, 5)
             }
-            .foregroundColor(Style.ThirdAppColor)
+            .foregroundColor(Style.SecondAppColor)
 
             ScrollView(.horizontal) {
                 Chart {
                     ForEach(points) { point in
                         LineMark(x: .value("Date", point.label.substring(from: point.label.index(point.label.endIndex, offsetBy: -5))), y: .value("Value", point.value))
-                            .foregroundStyle(Style.AppColor)
+                            .foregroundStyle(Style.SecondAppColor)
                     }
                 }
                 .frame(width: self.charWidth)
@@ -46,7 +46,7 @@ struct ChartView: View {
                 .padding()
                 .chartPlotStyle { plotArea in
                     plotArea
-                        .background(Style.SecondAppColor)
+                        .background(Style.ThirdAppColor)
                 }
                 .foregroundColor(.white)
                 .flipsForRightToLeftLayoutDirection(true)

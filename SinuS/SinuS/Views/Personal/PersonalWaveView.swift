@@ -30,8 +30,8 @@ struct PersonalWaveView: View {
 
         }
         .frame(width: 150, height: 150)
-        .foregroundColor(Style.AppColor)
-        .background(Style.SecondAppColor)
+        .foregroundColor(Style.SecondAppColor)
+        .background(Style.ThirdAppColor)
         .cornerRadius(5)
         .shadow(radius: 10)
         .foregroundColor(.white)

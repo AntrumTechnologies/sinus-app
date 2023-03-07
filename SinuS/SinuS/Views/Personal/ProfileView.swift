@@ -20,6 +20,7 @@ struct ProfileView: View {
     @State private var date = Date()
     @State private var showingAlert = false
     @State private var selection = ""
+    @State private var description: String = ""
 
     var options: [String] {
         return waves.map { "\($0.date_name)" }
@@ -34,7 +35,7 @@ struct ProfileView: View {
                 .font(.headline)
                 .padding(.leading, 15)
                 .padding(.top, 5)
-                .foregroundColor(Style.ThirdAppColor)
+                .foregroundColor(Style.AppColor)
 
             Spacer()
 
@@ -50,16 +51,16 @@ struct ProfileView: View {
                         }
                     }
                     .colorMultiply(Style.AppColor)
-                    .accentColor(Style.FifthAppColor)
+                    .accentColor(Style.ThirdAppColor)
                     .cornerRadius(5)
                     .shadow(radius: 10)
                 }.padding(.horizontal).padding(.top)
 
                 HStack {
-                    DatePicker(selection: $date, displayedComponents: [.date], label: { Text("Date:") })
+                    DatePicker(selection: $date, displayedComponents: [.date], label: { Text("Date:").foregroundColor(Style.SecondAppColor) })
                         .colorInvert()
                         .colorMultiply(Style.AppColor)
-                        .accentColor(Style.FourthAppColor)
+                        .accentColor(Style.ThirdAppColor)
                 }.padding(.horizontal)
 
                 HStack {
@@ -70,12 +71,19 @@ struct ProfileView: View {
                         in: 0...100,
                         step: 1).foregroundColor(.yellow)
                         .frame(width: 220)
-                        .accentColor(Style.FourthAppColor)
+                        .accentColor(Style.ThirdAppColor)
+                    
+                    Spacer()
+                    
+                        Text("\(Int(self.value))")
+                    
                 }.padding(.horizontal)
 
-                HStack {
-                    Text("\(Int(self.value))")
-                }.font(.system(size: 50))
+                VStack{
+                    Text("Description:")
+                    TextField("", text: self.$description).
+                }
+                
 
                 Button("Update") {
                     let update = SinusUpdate(name: self.selection, value: Int(self.value), date: self.date)
@@ -87,8 +95,8 @@ struct ProfileView: View {
                     Button("OK", role: .cancel) { }
                 }
             }
-            .background(Style.SecondAppColor)
-            .foregroundColor(Style.AppColor)
+            .background(Style.ThirdAppColor)
+            .foregroundColor(Style.SecondAppColor)
             .cornerRadius(5)
             .shadow(radius: 5)
             .padding()

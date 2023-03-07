@@ -42,7 +42,7 @@ struct HeaderWithSubTextView: View {
 
         }
         .frame(width: 350, height: 100)
-        .background(Style.ThirdAppColor)
+        .background(Style.SecondAppColor)
         .cornerRadius(5)
         .shadow(radius: 10)
         .padding(.top, 15)

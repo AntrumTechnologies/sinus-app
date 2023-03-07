@@ -66,7 +66,7 @@ struct StatisticsView: View {
                     .font(.headline)
                     .padding(.top, 5)
             }
-            .foregroundColor(Style.ThirdAppColor)
+            .foregroundColor(Style.SecondAppColor)
 
             VStack(alignment: .center) {
 
@@ -131,9 +131,9 @@ struct StatisticsView: View {
 
             }
             .frame(width: 350)
-            .foregroundColor(Style.AppColor)
+            .foregroundColor(Style.SecondAppColor)
 
-            .background(Style.SecondAppColor)
+            .background(Style.ThirdAppColor)
             .cornerRadius(5)
             .shadow(radius: 10)
             .foregroundColor(.white)

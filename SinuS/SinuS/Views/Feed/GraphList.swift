@@ -35,7 +35,7 @@ struct GraphList: View {
                     NavigationLink(
                         destination: WaveView(gatherer: self.gatherer, user: user, data: data),
                         label: {
-                            FeedWaveView(userData: user, data: data)
+                            Concept1(userData: user, data: data)
                         })
                 }
                 .refreshable {

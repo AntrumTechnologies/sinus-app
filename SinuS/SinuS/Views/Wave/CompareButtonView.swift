@@ -19,7 +19,7 @@ struct CompareButtonView: View {
             }
             .frame(width: 150, height: 30)
             .foregroundColor(.white)
-            .background(Style.AppColor)
+            .background(Style.SecondAppColor)
             .cornerRadius(5)
             .shadow(radius: 10)
         })
