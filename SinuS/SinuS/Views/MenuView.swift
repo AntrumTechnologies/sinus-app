@@ -62,14 +62,11 @@ struct MenuView: View {
             ToolbarItem(placement: .principal) {
                 VStack {
                     HStack {
-                        Image(systemName: "water.waves")
+                        Image("Logo_cropped")
                             .resizable()
-                            .frame(width: 25, height: 25)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 40)
                             .foregroundColor(.white)
-                            .padding(.bottom)
-                        Text("Love Waves")
-                            .foregroundColor(.white)
-                            .font(.system(size: 25))
                             .padding(.bottom)
                     }
                 }
