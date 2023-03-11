@@ -41,6 +41,6 @@ struct PersonalWaveView: View {
 
 struct PersonalWaveView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonalWaveView(wave: SinusUserData(id: 1, name: "Name", user_id: 2, date_name: "Name", created_at: "", updated_at: "", deleted_at: "", archived: 0, following: false))
+        PersonalWaveView(wave: SinusUserData(id: 1, name: "Name", user_id: 2, date_name: "Name", created_at: "", updated_at: "", deleted_at: "", archived: 0, avatar: "", following: false))
     }
 }

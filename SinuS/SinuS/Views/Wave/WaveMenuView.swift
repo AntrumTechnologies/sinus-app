@@ -56,7 +56,7 @@ struct WaveMenuView_Previews: PreviewProvider {
             user: SinusUserData(
                 id: 1, name: "", user_id: 1, date_name: "",
                 created_at: "", updated_at: "", deleted_at: "",
-                archived: 1, following: false),
+                archived: 0, avatar: "", following: false),
             data: SinusData(
                 id: 1, values: [], labels: [], descriptions: [], sinusName: "",
                 sinusTarget: ""))

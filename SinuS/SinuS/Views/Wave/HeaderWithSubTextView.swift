@@ -121,7 +121,7 @@ struct HeaderWithSubTextView: View {
 struct HeaderWithSubTextView_Previews: PreviewProvider {
     static var previews: some View {
         HeaderWithSubTextView(
-            user: SinusUserData(id: 1, name: "", user_id: 1, date_name: "", created_at: "", updated_at: "", deleted_at: "", archived: 1, following: false),
+            user: SinusUserData(id: 1, name: "", user_id: 1, date_name: "", created_at: "", updated_at: "", deleted_at: "", archived: 1, avatar: "", following: false),
             subtext: "Someone",
             avatar: Image("Placeholder"),
             scaleFactor: 1,

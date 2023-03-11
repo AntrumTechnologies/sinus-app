@@ -69,6 +69,9 @@
 		CE6A64E629696C1C00DC47E5 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A64E529696C1C00DC47E5 /* SwiftKeychainWrapper */; };
 		CE89A8762969F93200300C9D /* ManageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89A8752969F93200300C9D /* ManageProfileView.swift */; };
 		CE89A87A296AF2D300300C9D /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89A879296AF2D300300C9D /* LogHelper.swift */; };
+		CE95360C29BCAA3800D9B0D4 /* PersonalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95360B29BCAA3800D9B0D4 /* PersonalModel.swift */; };
+		CE95360E29BCB3F100D9B0D4 /* Personal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95360D29BCB3F100D9B0D4 /* Personal.swift */; };
+		CE95361029BCB71600D9B0D4 /* PersonalWavesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95360F29BCB71600D9B0D4 /* PersonalWavesModel.swift */; };
 		CEB12A25299946C4000D5669 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CEB12A24299946C4000D5669 /* Kingfisher */; };
 		CEBF7655299818FA00D5E3AF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF7654299818FA00D5E3AF /* NetworkManager.swift */; };
 		CEECA4FD29709E0F00CA4496 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECA4FC29709E0F00CA4496 /* ForgotPasswordView.swift */; };
@@ -156,6 +159,9 @@
 		4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGatherer.swift; sourceTree = "<group>"; };
 		CE89A8752969F93200300C9D /* ManageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageProfileView.swift; sourceTree = "<group>"; };
 		CE89A879296AF2D300300C9D /* LogHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
+		CE95360B29BCAA3800D9B0D4 /* PersonalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalModel.swift; sourceTree = "<group>"; };
+		CE95360D29BCB3F100D9B0D4 /* Personal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personal.swift; sourceTree = "<group>"; };
+		CE95360F29BCB71600D9B0D4 /* PersonalWavesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalWavesModel.swift; sourceTree = "<group>"; };
 		CEBF7654299818FA00D5E3AF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CEECA4FC29709E0F00CA4496 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		CEECA4FE2974534700CA4496 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
@@ -306,6 +312,9 @@
 				4A15E00228C7CD5300422C05 /* UpdateWaveView.swift */,
 				CE89A8752969F93200300C9D /* ManageProfileView.swift */,
 				4AC5B3E0296AD6A4003D819C /* EditProfileView.swift */,
+				CE95360B29BCAA3800D9B0D4 /* PersonalModel.swift */,
+				CE95360D29BCB3F100D9B0D4 /* Personal.swift */,
+				CE95360F29BCB71600D9B0D4 /* PersonalWavesModel.swift */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -619,6 +628,7 @@
 				4A32752129772762009D1CC8 /* StatisticsView.swift in Sources */,
 				4AC5B3DC296ACF5A003D819C /* ProfileHeaderView.swift in Sources */,
 				CE89A8762969F93200300C9D /* ManageProfileView.swift in Sources */,
+				CE95361029BCB71600D9B0D4 /* PersonalWavesModel.swift in Sources */,
 				4A15E00128C7C91C00422C05 /* ProfileButton.swift in Sources */,
 				4A0B397728E06E9600D7EEC9 /* SinusUserData.swift in Sources */,
 				4AD26FBC28BBA5D40065FB01 /* ContentView.swift in Sources */,
@@ -627,6 +637,7 @@
 				CEECA4FD29709E0F00CA4496 /* ForgotPasswordView.swift in Sources */,
 				4A0B397428D6044300D7EEC9 /* WaveView.swift in Sources */,
 				4A32755129B7BA1E009D1CC8 /* HistoryView.swift in Sources */,
+				CE95360C29BCAA3800D9B0D4 /* PersonalModel.swift in Sources */,
 				4A32755329B7BD91009D1CC8 /* HistoryItemView.swift in Sources */,
 				4AC5B3D529698525003D819C /* PersonalView.swift in Sources */,
 				4A0B396A28D38DE000D7EEC9 /* MenuView.swift in Sources */,
@@ -655,6 +666,7 @@
 				4AD26FF128C6773E0065FB01 /* FeedWaveView.swift in Sources */,
 				4AD26FED28C676C10065FB01 /* LineChart.swift in Sources */,
 				4A0B396E28D3935900D7EEC9 /* NewWaveView.swift in Sources */,
+				CE95360E29BCB3F100D9B0D4 /* Personal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

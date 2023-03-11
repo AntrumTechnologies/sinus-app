@@ -99,6 +99,7 @@ struct LineChart2_Previews: PreviewProvider {
             updated_at: "",
             deleted_at: "",
             archived: 0,
+            avatar: "",
             following: false),
             data: SinusData(
                 id: 1,

@@ -10,56 +10,41 @@ import Kingfisher
 
 struct PersonalView: View {
     let gatherer: DataManager
-
-    var currentUser: UserData? {
-        return self.gatherer.getCurrentUser()
-    }
-
-    var currentAvatar: KFImage {
-        let avatar: String = currentUser!.avatar ?? "avatars/placeholder.jpg"
-        let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/" + avatar)!
-        return KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
-    }
-    
-    @State private var internalWaves : [SinusUserData] = []
-    var waves: [SinusUserData] {
-        if (self.internalWaves.count == 0)
-        {
-            self.internalWaves = gatherer.gatherUsers(postfix: "/created")
-        }
-        
-        return self.internalWaves
-    }
+    @ObservedObject var personalDataModel = PersonalModel()
+    @ObservedObject var personalWavesModel = PersonalWavesModel()
     
     var body: some View {
-        
-        
-        
-        
         VStack {
             ScrollView(.vertical) {
                 ProfileHeaderView(
-                    name: self.currentUser!.name,
-                    avatar: self.currentAvatar,
+                    name: personalDataModel.personalData.name,
+                    avatar: personalDataModel.currentAvatar,
                     scaleFactor: 1)
-
+                
                 Divider()
-
-                CreatedRowView(gatherer: gatherer, waves: self.waves)
-
+                
+                CreatedRowView(gatherer: gatherer, waves: personalWavesModel.personalWaves)
+                
                 Divider()
-
-                UpdateWaveView(manager: gatherer, waves: self.waves)
-
+                
+                UpdateWaveView(manager: gatherer, waves: personalWavesModel.personalWaves)
+                
                 Divider()
-
+                
                 NewWaveView(manager: gatherer)
-
+                
                 Divider()
-
-                ManageProfileView(manager: gatherer, currentUser: self.currentUser!)
+                
+                ManageProfileView(manager: gatherer, currentUser: personalDataModel.personalData)
             }
-
+        }
+        .task {
+            await self.personalDataModel.reload()
+            await self.personalWavesModel.reload()
+        }
+        .refreshable {
+            await self.personalDataModel.reload()
+            await self.personalWavesModel.reload()
         }
     }
 }
