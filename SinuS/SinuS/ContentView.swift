@@ -13,14 +13,15 @@ struct ContentView: View {
     let manager: DataManager
 
     static var AuthenticationToken: String = KeychainWrapper.standard.string(forKey: "bearerToken") ?? ""
-
+    static var LoggedIn: Bool = false
+    
     var body: some View {
         NavigationView {
             if manager.isTokenValid() == false {
                 PreAuthenticationView()
-            } else {
+           } else {
                 MenuView()
-              }
+           }
         }
     }
 }

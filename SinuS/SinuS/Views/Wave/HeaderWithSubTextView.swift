@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct HeaderWithSubTextView: View {
-    let user: SinusUserData
-    let subtext: String
-    let avatar: Image
-    let scaleFactor: Double
-    let gatherer: DataManager
+    @State private var user: SinusUserData
+    var subtext: String
+    var avatar: Image
+    var scaleFactor: Double
+    var gatherer: DataManager
     
     @State private var internalFollowing: Bool = false
 
+    init(user: SinusUserData, subtext: String, avatar: Image, scaleFactor: Double, gatherer: DataManager) {
+        self.user = user
+        self.subtext = subtext
+        self.avatar = avatar
+        self.scaleFactor = scaleFactor
+        self.gatherer = gatherer
+    }
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -67,34 +75,36 @@ struct HeaderWithSubTextView: View {
                     Spacer()
                 }
 
-                Button(action: {
-                    if (self.user.following ?? true) {
-                        print("Unfollow")
-                        self.gatherer.unFollowUser(user_id: self.user.user_id)
-                        self.internalFollowing = false
-                    }
-                    else{
-                        print("Follow")
-                        self.gatherer.followUser(user_id: self.user.user_id)
-                        self.internalFollowing = true
-                    }
-                }
-                ) {
-                    HStack {
-                        if (self.user.following ?? true || self.internalFollowing) {
-                            Text("Unfollow")
+                if (ContentView.LoggedIn) {
+                    Button(action: {
+                        if (self.user.following ?? true) {
+                            print("Unfollow")
+                            self.gatherer.unFollowUser(user_id: self.user.user_id)
                         }
                         else{
-                            Text("Follow")
+                            print("Follow")
+                            self.gatherer.followUser(user_id: self.user.user_id)
                         }
+    //
+    //                    // update user
+                        self.gatherer.getSingleUser(user_id: self.user.user_id)
                     }
-                    .frame(width: 100, height: 30)
-                    .foregroundColor(.white)
-                    .background(Style.AppColor)
-                    .cornerRadius(5)
-                    .padding(.leading, 5)
+                    ) {
+                        HStack {
+                            if (self.user.following ?? true) {
+                                Text("Unfollow")
+                            }
+                            else{
+                                Text("Follow")
+                            }
+                        }
+                        .frame(width: 100, height: 30)
+                        .foregroundColor(.white)
+                        .background(Style.AppColor)
+                        .cornerRadius(5)
+                        .padding(.leading, 5)
+                    }
                 }
-
                 Spacer()
             }
 

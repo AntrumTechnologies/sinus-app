@@ -18,6 +18,7 @@ struct MenuView: View {
     private var feedViewModelExplore: FeedViewModel
 
     init() {
+        ContentView.LoggedIn = true
         self.feedViewModelFollowing = FeedViewModel()
         self.feedViewModelExplore = FeedViewModel()
     }

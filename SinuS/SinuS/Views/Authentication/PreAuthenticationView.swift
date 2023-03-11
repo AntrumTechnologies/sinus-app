@@ -18,6 +18,7 @@ struct PreAuthenticationView: View {
     }
 
     init() {
+        ContentView.LoggedIn = false
         self.feedViewModelExplore = FeedViewModel()
     }
 

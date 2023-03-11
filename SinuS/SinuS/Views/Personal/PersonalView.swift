@@ -10,16 +10,16 @@ import Kingfisher
 
 struct PersonalView: View {
     let gatherer: DataManager
-//
-//    var currentUser: UserData? {
-//        return self.gatherer.getCurrentUser()?.success
-//    }
 
-//    var currentAvatar: KFImage {
-//        let avatar: String = currentUser!.avatar ?? "avatars/placeholder.jpg"
-//        let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/" + avatar)!
-//        return KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
-//    }
+    var currentUser: UserData? {
+        return self.gatherer.getCurrentUser()
+    }
+
+    var currentAvatar: KFImage {
+        let avatar: String = currentUser!.avatar ?? "avatars/placeholder.jpg"
+        let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/" + avatar)!
+        return KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
+    }
     
     @State private var internalWaves : [SinusUserData] = []
     var waves: [SinusUserData] {
@@ -38,26 +38,26 @@ struct PersonalView: View {
         
         VStack {
             ScrollView(.vertical) {
-//                ProfileHeaderView(
-//                    name: self.currentUser!.name,
-//                    avatar: Image(systemName: "water.waves"),
-//                    scaleFactor: 1)
+                ProfileHeaderView(
+                    name: self.currentUser!.name,
+                    avatar: self.currentAvatar,
+                    scaleFactor: 1)
 
                 Divider()
 
                 CreatedRowView(gatherer: gatherer, waves: self.waves)
 
                 Divider()
-//
+
                 UpdateWaveView(manager: gatherer, waves: self.waves)
-//
-//                Divider()
 
-//                NewWaveView(manager: gatherer)
-//
-//                Divider()
+                Divider()
 
-                //ManageProfileView(manager: gatherer, currentUser: self.currentUser!)
+                NewWaveView(manager: gatherer)
+
+                Divider()
+
+                ManageProfileView(manager: gatherer, currentUser: self.currentUser!)
             }
 
         }

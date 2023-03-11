@@ -167,27 +167,28 @@ public class DataManager {
         let decoder = JSONDecoder()
         let request = RestApiHelper.createRequest(type: "GET", url: url, auth: true)
 
-        var result: TotalUserData?
+        var result: UserData?
         let data = RestApiHelper.perfomRestCall(request: request)
 
         do {
-            result = try decoder.decode(TotalUserData.self, from: data!)
+            result = try decoder.decode(UserData.self, from: data!)
             return true
         } catch {
+            print("Error info: \(error)")
             return false
         }
     }
 
-    public func getCurrentUser() -> TotalUserData? {
+    public func getCurrentUser() -> UserData? {
         let url = "https://lovewaves.antrum-technologies.nl/api/user"
         let decoder = JSONDecoder()
         let request = RestApiHelper.createRequest(type: "GET", url: url, auth: true)
 
-        var result: TotalUserData?
+        var result: UserData?
         let data = RestApiHelper.perfomRestCall(request: request)
 
         do {
-            result = try decoder.decode(TotalUserData.self, from: data!)
+            result = try decoder.decode(UserData.self, from: data!)
         } catch {
             let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
             let errMsg = "Unable to login: \(returnedData)"
@@ -308,6 +309,38 @@ public class DataManager {
         self.users = internalUsers
         return internalUsers
     }
+    
+    public func getSingleUser(user_id: Int) -> SinusUserData {
+        let decoder = JSONDecoder()
+        let sem = DispatchSemaphore.init(value: 0)
+        let url = DataManager.userUrl + "/\(user_id)"
+        
+        var user: SinusUserData?
+        let request = RestApiHelper.createRequest(type: "GET", url: url)
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, _, _ -> Void in
+            do {
+                print(data)
+                user = try decoder.decode(SinusUserData.self, from: data!)
+                print(user)
+                defer { sem.signal()
+                    
+                }
+            } catch {
+                let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
+                let errMsg = "Unable to decode points in gatherUsers: \(returnedData)"
+                self.logHelper.logMsg(level: "error", message: errMsg)
+                print(errMsg)
+            }
+        })
+
+        task.resume()
+        sem.wait()
+        
+        return user!
+    }
+    
 
 
     public func unFollowUser(user_id: Int) {
