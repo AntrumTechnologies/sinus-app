@@ -70,7 +70,7 @@ struct CompareView: View {
             .padding()
             .chartPlotStyle { plotArea in
                 plotArea
-                    .background(Style.SecondAppColor)
+                    .background(Style.AppBackground)
             }
             .foregroundColor(.white)
 
@@ -85,7 +85,7 @@ struct CompareView: View {
                     }
                 }
                 .frame(height: 40)
-                .background(Style.ThirdAppColor)
+                .background(Style.AppBackground)
                 .cornerRadius(5)
                 .shadow(radius: 10)
 
@@ -117,7 +117,7 @@ struct CompareView: View {
                     }
                 }
                 .frame(width: 100, height: 40)
-                .background(Style.ThirdAppColor)
+                .background(Style.AppBackground)
                 .cornerRadius(5)
                 .shadow(radius: 10)
 
@@ -136,6 +136,7 @@ struct CompareView_Previews: PreviewProvider {
             id: 1,
             values: [ 20, 30],
             labels: [ "label", "Lavel" ],
+            descriptions: [],
             sinusName: "Name",
             sinusTarget: "Name"),
                     gatherer: DataManager())

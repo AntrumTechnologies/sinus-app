@@ -53,18 +53,13 @@ struct WaveView: View {
     var body: some View {
         VStack {
             HeaderWithSubTextView(
-                name: self.user.name,
-                subtext: "Is dating \(self.data.sinusTarget)..",
+                user: self.user,
+                subtext: self.data.sinusTarget,
                 avatar: Image("Placeholder"),
-                scaleFactor: 0.75)
+                scaleFactor: 1,
+                gatherer: self.gatherer)
 
             ScrollView(.vertical) {
-
-                WaveMenuView(
-                    gatherer: self.gatherer,
-                    user: self.user,
-                    data: self.data)
-
                 Divider()
 
                 ChartView(points: self.points)
@@ -76,6 +71,11 @@ struct WaveView: View {
                 Divider()
 
                 StatisticsView(data: self.data)
+                
+                Divider()
+                
+                HistoryView(descriptions: self.data.descriptions, dates: self.data.labels)
+                
 
             }
         }
@@ -98,11 +98,12 @@ struct LineChart2_Previews: PreviewProvider {
             created_at: "",
             updated_at: "",
             deleted_at: "",
-            archived: 0),
+            archived: 0,
+            following: false),
             data: SinusData(
                 id: 1,
                 values: [ 20, 30],
-                labels: [ "label", "Lavel" ],
+                labels: [ "label", "Lavel" ],descriptions: [],
                 sinusName: "Name",
                 sinusTarget: "Name"))
     }

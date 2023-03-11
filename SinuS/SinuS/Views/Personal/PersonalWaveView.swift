@@ -30,8 +30,8 @@ struct PersonalWaveView: View {
 
         }
         .frame(width: 150, height: 150)
-        .foregroundColor(Style.SecondAppColor)
-        .background(Style.ThirdAppColor)
+        .foregroundColor(Style.TextOnColoredBackground)
+        .background(Style.AppBackground)
         .cornerRadius(5)
         .shadow(radius: 10)
         .foregroundColor(.white)
@@ -41,6 +41,6 @@ struct PersonalWaveView: View {
 
 struct PersonalWaveView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonalWaveView(wave: SinusUserData(id: 1, name: "Name", user_id: 2, date_name: "Name", created_at: "", updated_at: "", deleted_at: "", archived: 0))
+        PersonalWaveView(wave: SinusUserData(id: 1, name: "Name", user_id: 2, date_name: "Name", created_at: "", updated_at: "", deleted_at: "", archived: 0, following: false))
     }
 }

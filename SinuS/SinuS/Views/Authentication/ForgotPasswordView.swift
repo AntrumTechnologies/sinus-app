@@ -22,8 +22,13 @@ struct ForgotPasswordView: View {
                 Spacer()
                 TextField("", text: self.$email)
                     .disableAutocorrection(true)
-                    .border(Color.white, width: 0.5)
                     .frame(width: 220)
+                    .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
+                    .cornerRadius(5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(lineWidth: 1.0)
+                    )
             }.padding(.horizontal).padding(.top)
 
             NavigationLink(destination: ClickResetPasswordLinkView(), tag: true, selection: self.$nextView) { EmptyView() }
@@ -44,11 +49,11 @@ struct ForgotPasswordView: View {
             }
             .padding()
         }
-        .background(Style.AppColor)
+        .background(Style.AppBackground)
+        .foregroundColor(Style.TextOnColoredBackground)
         .cornerRadius(5)
         .shadow(radius: 5)
         .padding()
-        .foregroundColor(.white)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Style.AppColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)

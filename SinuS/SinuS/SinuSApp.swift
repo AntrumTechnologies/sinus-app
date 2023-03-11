@@ -104,7 +104,7 @@ struct SinuSApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(manager: DataManager())
         }
     }
 }

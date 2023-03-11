@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ProfileHeaderView: View {
     let name: String
-    let avatar: Image
+    let avatar: KFImage
     let scaleFactor: Double
 
     var body: some View {
@@ -41,7 +42,7 @@ struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileHeaderView(
             name: "Test",
-            avatar: Image("Placeholder"),
+            avatar: KFImage(URL(string: "https://example.com")),
             scaleFactor: 1)
     }
 }

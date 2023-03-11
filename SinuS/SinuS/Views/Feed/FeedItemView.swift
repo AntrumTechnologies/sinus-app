@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Concept1: View {
+struct FeedItemView: View {
     var userData: SinusUserData
     var data: SinusData
 
@@ -62,32 +62,27 @@ struct Concept1: View {
                         height: 50)
                     .clipShape(Circle())
                     .overlay {
-                        Circle().stroke(Style.SecondAppColor, lineWidth: 4)
+                        Circle().stroke(Style.TextOnColoredBackground, lineWidth: 4)
                             .shadow(radius: 10)
                     }
                     .padding()
+                
                 Text(self.userData.name)
                 Image(systemName: "arrow.right")
                     .foregroundColor(Style.AppColor)
                 Text(self.userData.date_name)
                 Spacer()
-
-//                Spacer()
-//                self.icon
-//                    .foregroundColor(self.color)
-//                Text(String(self.percentage) + "%").foregroundColor(self.color).bold()
-//                Spacer()
             }
-            .foregroundColor(Style.SecondAppColor)
-            WavePreviewView(percentage: self.percentage, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut varius ligula non egestas maximus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus lobortis accumsan tortor, sed scelerisque odio pulvinar ut. Aenean quis ullamcorper ex, at tempor arcu. Aliquam non pellentesque enim. Suspendisse sodales leo in dapibus tincidunt. Aliquam sed leo porttitor, aliquam felis ut, iaculis orci. Suspendisse aliquet, nunc eget malesuada egestas, risus nisl bibendum mauris, ac porta risus ligula vel nibh. Donec volutpat laoreet orci, non finibus metus semper quis.")
+            .foregroundColor(Style.TextOnColoredBackground)
+            WavePreviewView(percentage: self.percentage, description: self.data.descriptions.last!)
 
         }
     }
 }
 
-struct Concept1_Previews: PreviewProvider {
+struct FeedItemView_Previews: PreviewProvider {
     static var previews: some View {
-        Concept1(userData: SinusUserData(
+        FeedItemView(userData: SinusUserData(
             id: 1,
             name: "Name",
             user_id: 1,
@@ -95,11 +90,13 @@ struct Concept1_Previews: PreviewProvider {
             created_at: "",
             updated_at: "",
             deleted_at: "",
-            archived: 0),
+            archived: 0,
+            following: false),
             data: SinusData(
                 id: 1,
                 values: [ 20, 30],
                 labels: [ "label", "Lavel" ],
+                descriptions: [],
                 sinusName: "Name",
                 sinusTarget: "Name"))
     }

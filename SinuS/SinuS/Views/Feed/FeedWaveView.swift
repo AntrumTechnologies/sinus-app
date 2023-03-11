@@ -59,10 +59,8 @@ struct FeedWaveView: View {
             HStack {
                 Spacer()
                 Image(systemName: "person.fill")
-                    .foregroundColor(.red)
                 Text(self.userData.name)
                 Image(systemName: "arrow.right")
-                    .foregroundColor(.red)
                 Text(self.userData.date_name)
                 Spacer()
 
@@ -71,7 +69,7 @@ struct FeedWaveView: View {
                     .foregroundColor(self.color)
                 Text(String(self.percentage) + "%").foregroundColor(self.color).bold()
                 Spacer()
-            }
+            }.foregroundColor(Style.AppColor)
 
             Spacer()
             FeedWaveGraphView(pointA: self.pointA, pointB: self.pointB)
@@ -92,11 +90,13 @@ struct Row_Previews: PreviewProvider {
             created_at: "",
             updated_at: "",
             deleted_at: "",
-            archived: 0),
+            archived: 0,
+            following: false),
             data: SinusData(
                 id: 1,
                 values: [ 20, 30],
                 labels: [ "label", "Lavel" ],
+                descriptions: [ "label", "Lavel" ],
                 sinusName: "Name",
                 sinusTarget: "Name"))
     }

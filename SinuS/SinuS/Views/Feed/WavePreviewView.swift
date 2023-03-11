@@ -31,8 +31,10 @@ struct WavePreviewView: View {
 
     var body: some View {
         VStack {
-            
-            Text(self.description).foregroundColor(Style.SecondAppColor)
+            VStack{
+                Text(self.description).foregroundColor(Style.AppColor)
+                
+            }
             
             HStack {
                 VStack{
@@ -55,7 +57,6 @@ struct WavePreviewView: View {
             }
 
         }
-        .frame(height: 250)
     }
 }
 

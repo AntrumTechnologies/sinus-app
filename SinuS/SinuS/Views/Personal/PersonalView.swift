@@ -6,43 +6,58 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct PersonalView: View {
     let gatherer: DataManager
+//
+//    var currentUser: UserData? {
+//        return self.gatherer.getCurrentUser()?.success
+//    }
 
-    var name: String {
-        let currentUser = self.gatherer.getCurrentUser()
-
-        if currentUser == nil {
-            return "Unknown"
+//    var currentAvatar: KFImage {
+//        let avatar: String = currentUser!.avatar ?? "avatars/placeholder.jpg"
+//        let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/" + avatar)!
+//        return KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
+//    }
+    
+    @State private var internalWaves : [SinusUserData] = []
+    var waves: [SinusUserData] {
+        if (self.internalWaves.count == 0)
+        {
+            self.internalWaves = gatherer.gatherUsers(postfix: "/created")
         }
-
-        return currentUser!.success.name
+        
+        return self.internalWaves
     }
-
+    
     var body: some View {
+        
+        
+        
+        
         VStack {
             ScrollView(.vertical) {
-                ProfileHeaderView(
-                    name: self.name,
-                    avatar: Image("Placeholder"),
-                    scaleFactor: 1)
+//                ProfileHeaderView(
+//                    name: self.currentUser!.name,
+//                    avatar: Image(systemName: "water.waves"),
+//                    scaleFactor: 1)
 
                 Divider()
 
-                CreatedRowView(gatherer: gatherer, waves: gatherer.gatherUsers(postfix: "/created"))
+                CreatedRowView(gatherer: gatherer, waves: self.waves)
 
                 Divider()
+//
+                UpdateWaveView(manager: gatherer, waves: self.waves)
+//
+//                Divider()
 
-                ProfileView(manager: gatherer, waves: gatherer.gatherUsers(postfix: "/created"))
+//                NewWaveView(manager: gatherer)
+//
+//                Divider()
 
-                Divider()
-
-                NewWaveView(manager: gatherer)
-
-                Divider()
-
-                ManageProfileView(manager: gatherer)
+                //ManageProfileView(manager: gatherer, currentUser: self.currentUser!)
             }
 
         }

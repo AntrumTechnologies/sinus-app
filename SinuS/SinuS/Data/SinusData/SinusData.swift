@@ -11,10 +11,11 @@ import Foundation
     Class holding all data required to create a sinus graph.
  */
 public class SinusData: ObservableObject {
-    init(id: Int, values: [Int], labels: [String], sinusName: String, sinusTarget: String) {
+    init(id: Int, values: [Int], labels: [String], descriptions: [String], sinusName: String, sinusTarget: String) {
         self.id = id
         self.values = values
         self.labels = labels
+        self.descriptions = descriptions
         self.sinusName = sinusName
         self.sinusTarget = sinusTarget
     }
@@ -34,6 +35,8 @@ public class SinusData: ObservableObject {
      */
     var labels: [String]
 
+    var descriptions: [String]
+    
     /**
         Label containing the date.
      */

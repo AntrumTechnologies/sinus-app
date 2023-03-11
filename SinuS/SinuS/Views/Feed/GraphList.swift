@@ -35,7 +35,7 @@ struct GraphList: View {
                     NavigationLink(
                         destination: WaveView(gatherer: self.gatherer, user: user, data: data),
                         label: {
-                            Concept1(userData: user, data: data)
+                            FeedItemView(userData: user, data: data)
                         })
                 }
                 .refreshable {
@@ -45,6 +45,8 @@ struct GraphList: View {
 
             }
         }
+        .background(Style.AppBackground)
+        .scrollContentBackground(.hidden)
     }
 }
 
@@ -82,7 +84,7 @@ private func getCharts() -> [SinusData] {
         let values = generatePoints()
         let labels = getLabels()
         let item = SinusData(
-            id: val, values: values, labels: labels, sinusName: "Lukas " + String(val), sinusTarget: "Target")
+            id: val, values: values, labels: labels,descriptions: [], sinusName: "Lukas " + String(val), sinusTarget: "Target")
         list.append(item)
     }
     return list

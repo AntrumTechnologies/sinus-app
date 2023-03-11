@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import Get
+import SwiftKeychainWrapper
 
 /**
     Internal struct to hold data/date's
@@ -18,6 +20,7 @@ private struct GraphDataPoint: Codable {
     let latitude: Double?
     let longitude: Double?
     let tags: String?
+    let description: String?
 }
 
 /**
@@ -25,8 +28,8 @@ private struct GraphDataPoint: Codable {
  */
 public class DataManager {
     // endpoints
-    private static var userUrl = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/sinus"
-    private static var dataUrl = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/sinusvalue/"
+    private static var userUrl = "https://www.lovewaves.antrum-technologies.nl/api/sinus"
+    private static var dataUrl = "https://www.lovewaves.antrum-technologies.nl/api/sinusvalue/"
 
     private var users = [SinusUserData]()
     private var logHelper = LogHelper()
@@ -39,7 +42,7 @@ public class DataManager {
         email: String,
         password: String,
         confirmPassword: String) -> AuthenticationResult? {
-        let registerUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/register?"
+        let registerUrl = "https://lovewaves.antrum-technologies.nl/api/register?"
         let parameters: [String: Any] = [
             "name": name, "email": email, "password": password, "confirm_password": confirmPassword]
         let decoder = JSONDecoder()
@@ -71,7 +74,7 @@ public class DataManager {
         Login call to the backend.
      */
     public func login(email: String, password: String) -> AuthenticationResult? {
-        let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/login?"
+        let loginUrl = "https://lovewaves.antrum-technologies.nl/api/login?"
         let parameters: [String: Any] = ["email": email, "password": password]
         let decoder = JSONDecoder()
         var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, auth: false)
@@ -99,7 +102,7 @@ public class DataManager {
     }
 
     public func forgotPassword(email: String) -> AuthenticationResult? {
-        let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/forgot-password"
+        let loginUrl = "https://lovewaves.antrum-technologies.nl/api/forgot-password"
         let parameters: [String: Any] = ["email": email]
         let decoder = JSONDecoder()
         var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, auth: false)
@@ -127,7 +130,7 @@ public class DataManager {
     }
 
     public func resetPassword(token: String, email: String, password: String, confirmPassword: String) -> AuthenticationResult? {
-        let loginUrl = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/reset-password"
+        let loginUrl = "https://lovewaves.antrum-technologies.nl/api/reset-password"
         let parameters: [String: Any] = [
             "token": token,
             "email": email,
@@ -159,8 +162,24 @@ public class DataManager {
         return result
     }
 
+    public func isTokenValid() -> Bool {
+        let url = "https://lovewaves.antrum-technologies.nl/api/user"
+        let decoder = JSONDecoder()
+        let request = RestApiHelper.createRequest(type: "GET", url: url, auth: true)
+
+        var result: TotalUserData?
+        let data = RestApiHelper.perfomRestCall(request: request)
+
+        do {
+            result = try decoder.decode(TotalUserData.self, from: data!)
+            return true
+        } catch {
+            return false
+        }
+    }
+
     public func getCurrentUser() -> TotalUserData? {
-        let url = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/user"
+        let url = "https://lovewaves.antrum-technologies.nl/api/user"
         let decoder = JSONDecoder()
         let request = RestApiHelper.createRequest(type: "GET", url: url, auth: true)
 
@@ -220,7 +239,7 @@ public class DataManager {
     /**
         Updates the graphs for a user by adding a new point.
      */
-    public func sendData(data: SinusUpdate) {
+    public func updateWave(data: SinusUpdate) {
         let sem = DispatchSemaphore.init(value: 0)
 
         if users.count < 1 {
@@ -230,7 +249,7 @@ public class DataManager {
         if let user = self.users.first(where: { user in
             return user.date_name == data.name
         }) {
-            let url = "https://lukassinus2.vanbroeckhuijsenvof.nl/api/sinusvalue"
+            let url = "https://lovewaves.antrum-technologies.nl/api/sinusvalue"
 
             let formatter = DateFormatter()
             formatter.dateFormat = "y-MM-d"
@@ -273,8 +292,9 @@ public class DataManager {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, _, _ -> Void in
             do {
-                defer { sem.signal() }
                 internalUsers = try decoder.decode([SinusUserData].self, from: data!)
+                
+                    defer { sem.signal() }
             } catch {
                 let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
                 let errMsg = "Unable to decode points in gatherUsers: \(returnedData)"
@@ -285,13 +305,13 @@ public class DataManager {
 
         task.resume()
         sem.wait()
-
         self.users = internalUsers
         return internalUsers
     }
 
+
     public func unFollowUser(user_id: Int) {
-        let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/unfollow"
+        let urlString = "https://lovewaves.antrum-technologies.nl/api/unfollow"
         var request = RestApiHelper.createRequest(type: "PUT", url: urlString)
 
         let parameters: [String: Any] = ["user_id_to_unfollow": user_id ]
@@ -306,7 +326,7 @@ public class DataManager {
     }
 
     public func followUser(user_id: Int) {
-        let urlString = "https://www.lukassinus2.vanbroeckhuijsenvof.nl/api/follow"
+        let urlString = "https://lovewaves.antrum-technologies.nl/api/follow"
         var request = RestApiHelper.createRequest(type: "PUT", url: urlString)
 
         let parameters: [String: Any] = ["user_id_to_follow": user_id ]
@@ -342,11 +362,13 @@ public class DataManager {
 
         var values = [Int]()
         var labels = [String]()
+        var descriptions = [String]()
         points.forEach { point in
             values.append(point.value)
             labels.append(point.date)
+            descriptions.append(point.description ?? "No comment")
         }
 
-        return SinusData(id: user.id, values: values, labels: labels, sinusName: user.name, sinusTarget: user.date_name)
+        return SinusData(id: user.id, values: values, labels: labels, descriptions: descriptions, sinusName: user.name, sinusTarget: user.date_name)
     }
 }

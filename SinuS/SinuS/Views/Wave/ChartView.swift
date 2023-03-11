@@ -27,17 +27,17 @@ struct ChartView: View {
                 Image(systemName: "chart.xyaxis.line")
                     .padding(.leading, 15)
                     .padding(.top, 5)
-                Text("Chart:")
+                Text("Chart")
                     .font(.headline)
                     .padding(.top, 5)
             }
-            .foregroundColor(Style.SecondAppColor)
+            .foregroundColor(Style.AppColor)
 
             ScrollView(.horizontal) {
                 Chart {
                     ForEach(points) { point in
                         LineMark(x: .value("Date", point.label.substring(from: point.label.index(point.label.endIndex, offsetBy: -5))), y: .value("Value", point.value))
-                            .foregroundStyle(Style.SecondAppColor)
+                            .foregroundStyle(Style.TextOnColoredBackground)
                     }
                 }
                 .frame(width: self.charWidth)
@@ -46,9 +46,9 @@ struct ChartView: View {
                 .padding()
                 .chartPlotStyle { plotArea in
                     plotArea
-                        .background(Style.ThirdAppColor)
+                        .background(Style.AppBackground)
                 }
-                .foregroundColor(.white)
+                .foregroundColor(Style.TextOnColoredBackground)
                 .flipsForRightToLeftLayoutDirection(true)
             }
 

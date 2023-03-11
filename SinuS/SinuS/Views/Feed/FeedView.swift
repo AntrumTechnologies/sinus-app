@@ -26,11 +26,9 @@ struct FeedView: View {
     var body: some View {
 
         if feedViewModel.isLoading {
-            // GraphList(viewModel: feedViewModel)
              LoadingView()
          } else {
              GraphList(gatherer: self.gatherer, viewModel: self.feedViewModel, onlyFollowing: self.onlyFollowing)
-             // LoadingView()
          }
     }
 }
