@@ -34,10 +34,14 @@ struct ChartView: View {
             .foregroundColor(Style.AppColor)
 
             ScrollView(.horizontal) {
-                Chart {
+                /*Chart {
+                    var i: Int = 0
                     ForEach(points) { point in
-                        LineMark(x: .value("Date", point.label.substring(from: point.label.index(point.label.endIndex, offsetBy: -5))), y: .value("Value", point.value))
-                            .foregroundStyle(Style.TextOnColoredBackground)
+                        if i == 0 {
+                            LineMark(x: .value("Date", point.label.substring(from: point.label.index(point.label.endIndex, offsetBy: -5))), y: .value("Value", point.value))
+                                .foregroundStyle(Style.TextOnColoredBackground)
+                            i = 1
+                        }
                     }
                 }
                 .frame(width: self.charWidth)
@@ -49,7 +53,7 @@ struct ChartView: View {
                         .background(Style.AppBackground)
                 }
                 .foregroundColor(Style.TextOnColoredBackground)
-                .flipsForRightToLeftLayoutDirection(true)
+                .flipsForRightToLeftLayoutDirection(true)*/
             }
 
         }

@@ -10,7 +10,7 @@ import SwiftKeychainWrapper
 
 struct ManageProfileView: View {
     let manager: DataManager
-    let currentUser: Personal
+    let currentUser: Profile
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -46,6 +46,6 @@ struct ManageProfileView: View {
 
 struct ManageProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ManageProfileView(manager: DataManager(), currentUser: Personal.init(id: 0, name: "Jan", email: "Jan@Jan.nl", email_verified_at: "", created_at: "", updated_at: "", avatar: ""))
+        ManageProfileView(manager: DataManager(), currentUser: Profile.init(id: 0, name: "Jan", email: "Jan@Jan.nl", email_verified_at: "", created_at: "", updated_at: "", avatar: ""))
     }
 }

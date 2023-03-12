@@ -14,13 +14,8 @@ import SwiftUI
 struct MenuView: View {
     @State private var selection = 1
 
-    private var feedViewModelFollowing: FeedViewModel
-    private var feedViewModelExplore: FeedViewModel
-
     init() {
         ContentView.LoggedIn = true
-        self.feedViewModelFollowing = FeedViewModel()
-        self.feedViewModelExplore = FeedViewModel()
     }
 
     /**
@@ -31,17 +26,17 @@ struct MenuView: View {
         VStack {
             TabView(selection: self.$selection) {
                 Group {
-                    FeedView(feedViewModel: self.feedViewModelExplore, gatherer: manager, onlyFollowing: false)
+                    FeedView(gatherer: manager, onlyFollowing: false)
                         .tabItem {
                             Label("Explore", systemImage: "network")
                         }
                         .tag(1)
-                    FeedView(feedViewModel: self.feedViewModelFollowing, gatherer: manager, onlyFollowing: true)
+                    FeedView(gatherer: manager, onlyFollowing: true)
                         .tabItem {
                             Label("Following", systemImage: "person.2.fill")
                         }
                         .tag(2)
-                    PersonalView(gatherer: manager)
+                    ProfileView(gatherer: manager)
                         .tabItem {
                             Label("Profile", systemImage: "person")
                         }

@@ -1,5 +1,5 @@
 //
-//  CreatedRowView.swift
+//  CreatedWavesView.swift
 //  SinuS
 //
 //  Created by Loe Hendriks on 07/01/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CreatedRowView: View {
+struct CreatedWavesView: View {
     let gatherer: DataManager
     let waves: [SinusUserData]
 
@@ -25,11 +25,10 @@ struct CreatedRowView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(waves, id: \.id) { wave in
-                        let data = gatherer.gatherSingleData(user: wave)
                         NavigationLink(
-                            destination: WaveView(gatherer: self.gatherer, user: wave, data: data),
+                            destination: WaveView(gatherer: self.gatherer, user: wave),
                             label: {
-                                PersonalWaveView(wave: wave)
+                                SingleWaveView(wave: wave)
                             })
                     }
                 }
@@ -40,12 +39,12 @@ struct CreatedRowView: View {
     }
 }
 
-struct CreatedRowView_Previews: PreviewProvider {
+struct CreatedWavesView_Previews: PreviewProvider {
     static var previews: some View {
         let waves = [
             SinusUserData(id: 1, name: "Name", user_id: 2, date_name: "Target1", created_at: "", updated_at: "", deleted_at: "", archived: 0, avatar: "", following: false),
         ]
 
-        CreatedRowView(gatherer: DataManager(), waves: waves)
+        CreatedWavesView(gatherer: DataManager(), waves: waves)
     }
 }

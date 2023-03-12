@@ -10,8 +10,6 @@ import SwiftUI
 struct PreAuthenticationView: View {
     @State private var selection = Tab.feed
 
-    private var feedViewModelExplore: FeedViewModel
-
     private enum Tab: Hashable {
         case feed
         case login
@@ -19,7 +17,6 @@ struct PreAuthenticationView: View {
 
     init() {
         ContentView.LoggedIn = false
-        self.feedViewModelExplore = FeedViewModel()
     }
 
     var body: some View {
@@ -28,7 +25,7 @@ struct PreAuthenticationView: View {
         VStack {
             TabView(selection: self.$selection) {
                 Group {
-                    FeedView(feedViewModel: self.feedViewModelExplore, gatherer: manager, onlyFollowing: false)
+                    FeedView(gatherer: manager, onlyFollowing: false)
                         .tabItem {
                             Label("Explore", systemImage: "network")
                         }

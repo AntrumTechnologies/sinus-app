@@ -7,8 +7,8 @@
 
 import Foundation
 
-public struct SinusUserData: Codable {
-    let id: Int
+public struct SinusUserData: Identifiable, Codable {
+    public let id: Int
     let name: String
     let user_id: Int
     let date_name: String

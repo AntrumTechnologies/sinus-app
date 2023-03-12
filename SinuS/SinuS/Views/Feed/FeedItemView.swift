@@ -9,53 +9,12 @@ import SwiftUI
 
 struct FeedItemView: View {
     var userData: SinusUserData
-    var data: SinusData
-
-    private var pointA: Int {
-        if data.values.count > 1 {
-            return data.values[data.values.count - 2]
-        }
-        return 0
-    }
-
-    private var pointB: Int {
-        if data.values.count > 1 {
-            return data.values[data.values.count - 1]
-        }
-        return 0
-    }
-
-    private var percentage: Int {
-        return pointB - pointA
-    }
-
-    private var color: Color {
-        if self.percentage > 0 {
-            return .green
-        } else if self.percentage < 0 {
-            return .red
-        }
-        return .gray
-    }
-
-    private var icon: Image {
-        if self.percentage > 0 {
-            return Image(systemName: "arrowtriangle.up.fill")
-        } else if self.percentage < 0 {
-            return Image(systemName: "arrowtriangle.down.fill")
-        }
-        return Image(systemName: "square.fill")
-    }
-
-    private var avatar: Image {
-        return Image("Placeholder")
-    }
+    @ObservedObject var feedItemModel = FeedItemModel()
 
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-
-                self.avatar
+                self.feedItemModel.avatar
                     .resizable()
                     .frame(
                         width: 50,
@@ -74,8 +33,12 @@ struct FeedItemView: View {
                 Spacer()
             }
             .foregroundColor(Style.TextOnColoredBackground)
-            WavePreviewView(percentage: self.percentage, description: self.data.descriptions.last!)
-
+            WavePreviewView(
+                percentage: self.feedItemModel.percentage,
+                description: self.feedItemModel.waveData.descriptions.last!)
+        }
+        .task {
+            await self.feedItemModel.reload(userData: userData)
         }
     }
 }
@@ -92,13 +55,6 @@ struct FeedItemView_Previews: PreviewProvider {
             deleted_at: "",
             archived: 0,
             avatar: "",
-            following: false),
-            data: SinusData(
-                id: 1,
-                values: [ 20, 30],
-                labels: [ "label", "Lavel" ],
-                descriptions: [],
-                sinusName: "Name",
-                sinusTarget: "Name"))
+            following: false))
     }
 }

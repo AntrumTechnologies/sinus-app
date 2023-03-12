@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Personal: Identifiable, Codable {
+struct Profile: Identifiable, Codable {
     var id: Int
     var name: String
     var email: String

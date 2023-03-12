@@ -11,7 +11,7 @@ import Kingfisher
 
 struct EditProfileView: View {
     let gatherer: DataManager
-    let currentUser: Personal
+    let currentUser: Profile
 
     @State private var selectedItem: PhotosPickerItem?
     @State private var selectedImage: Image?
@@ -19,7 +19,7 @@ struct EditProfileView: View {
     @State private var name: String = ""
     @State private var email: String = ""
 
-    init(gatherer: DataManager, currentUser: Personal) {
+    init(gatherer: DataManager, currentUser: Profile) {
         self.gatherer = gatherer
         self.currentUser = currentUser
         _name = State(initialValue: self.currentUser.name)
@@ -156,6 +156,6 @@ struct EditProfileView: View {
 
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfileView(gatherer: DataManager(), currentUser: Personal.init(id: 0, name: "Jan", email: "Jan@Jan.nl", email_verified_at: "", created_at: "", updated_at: "", avatar: ""))
+        EditProfileView(gatherer: DataManager(), currentUser: Profile.init(id: 0, name: "Jan", email: "Jan@Jan.nl", email_verified_at: "", created_at: "", updated_at: "", avatar: ""))
     }
 }

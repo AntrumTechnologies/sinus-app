@@ -121,7 +121,7 @@ struct UpdateWaveView: View {
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
+struct UpdateWaveView_Previews: PreviewProvider {
     static var previews: some View {
         let waves = [
             SinusUserData(

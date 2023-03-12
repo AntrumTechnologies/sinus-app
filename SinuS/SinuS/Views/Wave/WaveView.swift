@@ -17,44 +17,20 @@ struct ChartPoint: Identifiable {
 struct WaveView: View {
     private let gatherer: DataManager
     private let user: SinusUserData
-    private let data: SinusData
+    @ObservedObject var waveModel = FeedItemModel()
+    
     private static var following = false
 
-    init(gatherer: DataManager, user: SinusUserData, data: SinusData) {
+    init(gatherer: DataManager, user: SinusUserData) {
         self.gatherer = gatherer
         self.user = user
-        self.data = data
-    }
-
-    var points: [ChartPoint] {
-        var list = [ChartPoint]()
-        print(self.data.values.count)
-        if self.data.values.count > 1 {
-            for val in 0...self.self.data.values.count - 1 {
-                list.append(ChartPoint(label: self.data.labels[val], value: self.data.values[val]))
-            }
-
-        }
-
-        return list
-    }
-
-    private var color: Color {
-        if self.data.values.count > 1 {
-            if self.data.values.last! > self.data.values[self.data.values.count - 2] {
-                return Color.green
-            } else if self.data.values.last! < self.data.values[self.data.values.count - 2] {
-                return Color.red
-            }
-        }
-        return Color.gray
     }
 
     var body: some View {
         VStack {
             HeaderWithSubTextView(
                 user: self.user,
-                subtext: self.data.sinusTarget,
+                subtext: self.waveModel.waveData.sinusTarget,
                 avatar: Image("Placeholder"),
                 scaleFactor: 1,
                 gatherer: self.gatherer)
@@ -62,22 +38,28 @@ struct WaveView: View {
             ScrollView(.vertical) {
                 Divider()
 
-                ChartView(points: self.points)
+                ChartView(points: self.waveModel.chartPoints)
                     .frame(height: 450)
 
-                CompareButtonView(gatherer: self.gatherer, data: self.data)
+                CompareButtonView(gatherer: self.gatherer, data: self.waveModel.waveData)
                     .padding(.bottom)
 
                 Divider()
 
-                StatisticsView(data: self.data)
+                StatisticsView(data: self.waveModel.waveData)
                 
                 Divider()
                 
-                HistoryView(descriptions: self.data.descriptions, dates: self.data.labels)
+                HistoryView(descriptions: self.waveModel.waveData.descriptions, dates: self.waveModel.waveData.labels)
                 
 
             }
+        }
+        .task {
+            await self.waveModel.reload(userData: user)
+        }
+        .refreshable {
+            await self.waveModel.reload(userData: user)
         }
         .toolbar(.visible, for: ToolbarPlacement.navigationBar)
         .toolbarBackground(Style.AppColor, for: .navigationBar)
@@ -100,12 +82,6 @@ struct LineChart2_Previews: PreviewProvider {
             deleted_at: "",
             archived: 0,
             avatar: "",
-            following: false),
-            data: SinusData(
-                id: 1,
-                values: [ 20, 30],
-                labels: [ "label", "Lavel" ],descriptions: [],
-                sinusName: "Name",
-                sinusTarget: "Name"))
+            following: false))
     }
 }

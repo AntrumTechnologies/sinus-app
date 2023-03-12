@@ -8,8 +8,8 @@
 import SwiftUI
 import SwiftKeychainWrapper
 
-class PersonalWavesModel: ObservableObject {
-    @MainActor @Published var personalWaves: [SinusUserData] = []
+class CreatedWavesModel: ObservableObject {
+    @MainActor @Published var createdWaves: [SinusUserData] = []
     
     @MainActor func reload() async {
         let url = URL(string: "https://lovewaves.antrum-technologies.nl/api/sinus/created")!
@@ -24,7 +24,7 @@ class PersonalWavesModel: ObservableObject {
         
         do {
             (data, _) = try await urlSession.data(for: request)
-            self.personalWaves = try JSONDecoder().decode([SinusUserData].self, from: data!)
+            self.createdWaves = try JSONDecoder().decode([SinusUserData].self, from: data!)
         } catch {
             debugPrint("Error loading: \(error) \((String(bytes: data!, encoding: .utf8) ?? ""))")
         }
