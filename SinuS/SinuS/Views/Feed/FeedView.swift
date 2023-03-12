@@ -10,7 +10,7 @@ import SwiftUI
 struct FeedView: View {
     var gatherer: DataManager
     let onlyFollowing: Bool
-    @ObservedObject var feedDataModel = FeedModel()
+    @StateObject var feedDataModel = FeedModel()
 
     var body: some View {
         List(feedDataModel.feedModel) { userData in

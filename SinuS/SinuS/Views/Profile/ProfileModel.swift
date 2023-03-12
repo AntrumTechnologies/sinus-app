@@ -33,7 +33,7 @@ import SwiftKeychainWrapper
         var data: Data? = nil
         
         do {
-            (data, _) = try await urlSession.data(from: url)
+            (data, _) = try await urlSession.data(for: request)
             self.profileData = try JSONDecoder().decode(Profile.self, from: data!)
             
             // Create avatar image

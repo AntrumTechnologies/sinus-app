@@ -60,7 +60,7 @@ struct MenuView: View {
                         Image("Logo_cropped")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(height: 40)
+                            .frame(height: 30)
                             .foregroundColor(.white)
                             .padding(.bottom)
                     }

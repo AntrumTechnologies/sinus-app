@@ -45,7 +45,7 @@ struct UpdateWaveView: View {
 
                     Spacer()
 
-                    Picker("", selection: self.$selection) {
+                    Picker("Choose...", selection: self.$selection) {
                         ForEach(options, id: \.self) {
                             Text($0)
                         }

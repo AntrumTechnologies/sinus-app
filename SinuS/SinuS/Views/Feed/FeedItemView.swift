@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FeedItemView: View {
     var userData: SinusUserData
-    @ObservedObject var feedItemModel = FeedItemModel()
+    @StateObject var feedItemModel = FeedItemModel()
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -35,7 +35,7 @@ struct FeedItemView: View {
             .foregroundColor(Style.TextOnColoredBackground)
             WavePreviewView(
                 percentage: self.feedItemModel.percentage,
-                description: self.feedItemModel.waveData.descriptions.last!)
+                description: self.feedItemModel.waveData.descriptions.last ?? "")
         }
         .task {
             await self.feedItemModel.reload(userData: userData)
