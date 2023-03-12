@@ -34,13 +34,11 @@ struct ChartView: View {
             .foregroundColor(Style.AppColor)
 
             ScrollView(.horizontal) {
-                /*Chart {
-                    var i: Int = 0
+                Chart {
                     ForEach(points) { point in
-                        if i == 0 {
+                        if point.value != 0 {
                             LineMark(x: .value("Date", point.label.substring(from: point.label.index(point.label.endIndex, offsetBy: -5))), y: .value("Value", point.value))
                                 .foregroundStyle(Style.TextOnColoredBackground)
-                            i = 1
                         }
                     }
                 }
@@ -53,7 +51,7 @@ struct ChartView: View {
                         .background(Style.AppBackground)
                 }
                 .foregroundColor(Style.TextOnColoredBackground)
-                .flipsForRightToLeftLayoutDirection(true)*/
+                .flipsForRightToLeftLayoutDirection(true)
             }
 
         }
