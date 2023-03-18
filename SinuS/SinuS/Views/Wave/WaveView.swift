@@ -17,7 +17,7 @@ struct ChartPoint: Identifiable {
 struct WaveView: View {
     private let gatherer: DataManager
     private let user: SinusUserData
-    @ObservedObject var waveModel = FeedItemModel()
+    @ObservedObject var waveModel = FeedItemModel(retrievable: ExternalRestRetriever())
     
     private static var following = false
 

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FeedItemView: View {
     var userData: SinusUserData
-    @StateObject var feedItemModel = FeedItemModel()
+    @StateObject var feedItemModel = FeedItemModel(retrievable: ExternalRestRetriever())
 
     var body: some View {
         VStack(alignment: .leading) {

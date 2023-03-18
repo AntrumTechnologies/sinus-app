@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftKeychainWrapper
 
 @MainActor class FeedItemModel: ObservableObject {
+    let retrievable: RestRetrievable
+    
     @Published var waveData: SinusData
     @Published var chartPoints: [ChartPoint]
     @Published var pointA: Int
@@ -18,7 +20,8 @@ import SwiftKeychainWrapper
     @Published var icon: Image
     @Published var avatar: Image
     
-    init() {
+    init(retrievable: RestRetrievable) {
+        self.retrievable = retrievable
         self.waveData = SinusData(id: 0, values: [0], labels: [""], descriptions: ["Description"], sinusName: "", sinusTarget: "")
         self.chartPoints = [ChartPoint(label: "", value: 0)]
         self.pointA = 0
@@ -51,7 +54,7 @@ import SwiftKeychainWrapper
         var data: Data? = nil
         
         do {
-            (data, _) = try await urlSession.data(for: request)
+            data = await self.retrievable.Retrieve(request: request)
             let graphDataPoints = try JSONDecoder().decode([GraphDataPoint].self, from: data!)
             
             var values = [Int]()

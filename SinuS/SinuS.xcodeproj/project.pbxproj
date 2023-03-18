@@ -37,6 +37,9 @@
 		4A32755129B7BA1E009D1CC8 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32755029B7BA1E009D1CC8 /* HistoryView.swift */; };
 		4A32755329B7BD91009D1CC8 /* HistoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32755229B7BD91009D1CC8 /* HistoryItemView.swift */; };
 		4A32755629BC8F06009D1CC8 /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32755529BC8F06009D1CC8 /* Get */; };
+		4A32755929C5B3BA009D1CC8 /* RestRetrievable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32755829C5B3BA009D1CC8 /* RestRetrievable.swift */; };
+		4A32755B29C5B4CE009D1CC8 /* ExternalRestRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32755A29C5B4CE009D1CC8 /* ExternalRestRetriever.swift */; };
+		4A32755F29C5B83E009D1CC8 /* FeedItemModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32755E29C5B83E009D1CC8 /* FeedItemModelTests.swift */; };
 		4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D022917C2F9001DB4F7 /* LoginView.swift */; };
 		4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D052917C30D001DB4F7 /* RegisterView.swift */; };
 		4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */; };
@@ -120,6 +123,9 @@
 		4A32754E29B7B68C009D1CC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A32755029B7BA1E009D1CC8 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		4A32755229B7BD91009D1CC8 /* HistoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemView.swift; sourceTree = "<group>"; };
+		4A32755829C5B3BA009D1CC8 /* RestRetrievable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestRetrievable.swift; sourceTree = "<group>"; };
+		4A32755A29C5B4CE009D1CC8 /* ExternalRestRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalRestRetriever.swift; sourceTree = "<group>"; };
+		4A32755E29C5B83E009D1CC8 /* FeedItemModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemModelTests.swift; sourceTree = "<group>"; };
 		4A4C6D022917C2F9001DB4F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4A4C6D052917C30D001DB4F7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResult.swift; sourceTree = "<group>"; };
@@ -229,6 +235,22 @@
 				4A32752229772888009D1CC8 /* TextView.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		4A32755C29C5B79A009D1CC8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4A32755829C5B3BA009D1CC8 /* RestRetrievable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		4A32755D29C5B824009D1CC8 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				4A32755E29C5B83E009D1CC8 /* FeedItemModelTests.swift */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		4A4C6CFE2917C2A8001DB4F7 /* Authentication */ = {
@@ -341,6 +363,7 @@
 		4AD26FB828BBA5D40065FB01 /* SinuS */ = {
 			isa = PBXGroup;
 			children = (
+				4A32755C29C5B79A009D1CC8 /* Protocols */,
 				CEECA5042974928C00CA4496 /* SinuS.entitlements */,
 				CEBF764D299815F700D5E3AF /* Network */,
 				4AC5B3DD296AD537003D819C /* Style */,
@@ -367,6 +390,7 @@
 		4AD26FCA28BBA5D60065FB01 /* SinuSTests */ = {
 			isa = PBXGroup;
 			children = (
+				4A32755D29C5B824009D1CC8 /* Feed */,
 				4AD26FCB28BBA5D60065FB01 /* SinuSTests.swift */,
 				4AD26FCD28BBA5D60065FB01 /* Info.plist */,
 			);
@@ -410,6 +434,7 @@
 				4A4C6D092917CDD5001DB4F7 /* Authentication */,
 				4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */,
 				4AC5B3D2296849DD003D819C /* RestApiHelper.swift */,
+				4A32755A29C5B4CE009D1CC8 /* ExternalRestRetriever.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -661,6 +686,8 @@
 				4A32752129772762009D1CC8 /* StatisticsView.swift in Sources */,
 				4AC5B3DC296ACF5A003D819C /* ProfileHeaderView.swift in Sources */,
 				CE89A8762969F93200300C9D /* ManageProfileView.swift in Sources */,
+				4A32755B29C5B4CE009D1CC8 /* ExternalRestRetriever.swift in Sources */,
+				4A32755929C5B3BA009D1CC8 /* RestRetrievable.swift in Sources */,
 				CE95361029BCB71600D9B0D4 /* CreatedWavesModel.swift in Sources */,
 				4A15E00128C7C91C00422C05 /* ProfileButton.swift in Sources */,
 				4A0B397728E06E9600D7EEC9 /* SinusUserData.swift in Sources */,
@@ -706,6 +733,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A32755F29C5B83E009D1CC8 /* FeedItemModelTests.swift in Sources */,
 				4AD26FCC28BBA5D60065FB01 /* SinuSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
