@@ -172,6 +172,15 @@ public class DataManager {
 
         do {
             result = try decoder.decode(UserData.self, from: data!)
+            
+            // Update fcm_token with deviceToken if not equal
+            let deviceToken: String = KeychainWrapper.standard.string(forKey: "deviceToken") ?? ""
+            if (deviceToken != "" && result?.fcm_token != deviceToken) {
+                print("Updating FCM token...")
+            } else {
+                print("FCM token is up-to-date")
+            }
+            
             return true
         } catch {
             print("Error info: \(error)")
