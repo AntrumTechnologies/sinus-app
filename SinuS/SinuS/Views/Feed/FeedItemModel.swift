@@ -75,14 +75,12 @@ import SwiftKeychainWrapper
                 sinusName: userData.name,
                 sinusTarget: userData.date_name)
             
-            print("values \(self.waveData.values.count)")
             self.chartPoints = [ChartPoint]()
             if self.waveData.values.count > 0 {
                 for val in 0...self.waveData.values.count - 1 {
                     self.chartPoints.append(ChartPoint(label: self.waveData.labels[val], value: self.waveData.values[val]))
                 }
             }
-            print("points \(self.chartPoints.count)")
             
             if self.waveData.values.count > 1 {
                 self.pointA = self.waveData.values[self.waveData.values.count - 2]

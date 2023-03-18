@@ -76,7 +76,7 @@ struct UpdateWaveView: View {
                     Spacer()
                     Slider(
                         value: self.$value,
-                        in: 0...100,
+                        in: 1...100,
                         step: 1).foregroundColor(.yellow)
                         .frame(width: 220)
                         .accentColor(Style.TextOnColoredBackground)
