@@ -42,14 +42,13 @@ struct HistoryView: View {
                 .foregroundColor(Style.AppColor)
             
             VStack(alignment: .leading){
-                
-                List(self.history_items, id: \.date) { item in
+                ForEach(self.history_items, id: \.date) { item in
                     HistoryItemView(date: item.date, description: item.description)
                 }
             }
             .background(Style.AppBackground)
             .scrollContentBackground(.hidden)
-            .frame(width: 350, height: 300)
+            .frame(width: 350)
             .cornerRadius(5)
             .shadow(radius: 10)
             .padding()

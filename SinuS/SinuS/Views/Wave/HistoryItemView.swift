@@ -20,14 +20,15 @@ struct HistoryItemView: View {
                         .foregroundColor(Style.AppColor)
                 }
                 Spacer()
-            }.padding(.top)
+            }
             
             Spacer()
             
             Text(description)
                 .foregroundColor(Style.TextOnColoredBackground)
-                .padding(.bottom)
-        }
+            
+            Divider()
+        }.padding(.leading).padding(.trailing).padding(.top)
     }
 }
 

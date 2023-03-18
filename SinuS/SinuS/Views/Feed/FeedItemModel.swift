@@ -57,7 +57,7 @@ import SwiftKeychainWrapper
             data = await self.retrievable.Retrieve(request: request)
             print("user: \(userData.id) data: \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")
             
-            let graphDataPoints = try JSONDecoder().decode([GraphDataPoint].self, from: data!)
+            let graphDataPoints = try JSONDecoder().decode([GraphDataPoint].self, from: data ?? Data())
             var values = [Int]()
             var labels = [String]()
             var descriptions = [String]()
@@ -112,7 +112,7 @@ import SwiftKeychainWrapper
                 self.icon = Image(systemName: "square.fill")
             }
         } catch {
-            debugPrint("Error loading \(url) caused error \(error) with response \((String(bytes: data!, encoding: .utf8) ?? ""))")
+            debugPrint("Error loading \(url) caused error \(error) with response \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")
         }
     }
 }
