@@ -59,7 +59,12 @@ struct WavePreviewView: View {
                 }
             }
             else{
-                NoDataView(scale: 0.8, useLogo: true)
+                VStack (alignment: .center){
+                    Text("Has created a wave but has no dates yet..")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Style.AppColor)
+                }.frame(width: 300)
+                
             }
 
         }
