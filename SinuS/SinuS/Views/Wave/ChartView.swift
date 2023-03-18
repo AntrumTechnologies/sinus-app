@@ -39,11 +39,19 @@ struct ChartView: View {
                         if point.value != 0 {
                             LineMark(x: .value("Date", point.label.substring(from: point.label.index(point.label.endIndex, offsetBy: -5))), y: .value("Value", point.value))
                                 .foregroundStyle(Style.TextOnColoredBackground)
+                                .symbol() {
+                                    Circle()
+                                        .fill(Style.TextOnColoredBackground)
+                                        .frame(width: 20)
+                                        .overlay(
+                                            Text("\(point.value)")
+                                                .font(.system(size: 10))
+                                                .foregroundColor(.white))
+                                }
                         }
                     }
-                }
-                .frame(width: self.charWidth)
-                // .frame(maxWidth: .infinity, maxHeight: 600)
+                }.chartYScale(domain: 0...100)
+                .frame(width: self.charWidth, height: 200)
                 .shadow(radius: 10)
                 .padding()
                 .chartPlotStyle { plotArea in
@@ -51,8 +59,7 @@ struct ChartView: View {
                         .background(Style.AppBackground)
                 }
                 .foregroundColor(Style.TextOnColoredBackground)
-                .flipsForRightToLeftLayoutDirection(true)
-            }
+                .flipsForRightToLeftLayoutDirection(true)            }
 
         }
     }

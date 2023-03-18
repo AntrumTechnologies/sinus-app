@@ -40,7 +40,6 @@ struct WaveView: View {
 
                 if (self.waveModel.chartPoints.count > 0) {
                     ChartView(points: self.waveModel.chartPoints)
-                        .frame(height: 450)
                     
                     CompareButtonView(gatherer: self.gatherer, data: self.waveModel.waveData)
                         .padding(.bottom)

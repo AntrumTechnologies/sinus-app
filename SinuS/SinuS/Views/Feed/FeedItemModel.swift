@@ -55,8 +55,9 @@ import SwiftKeychainWrapper
         
         do {
             data = await self.retrievable.Retrieve(request: request)
-            let graphDataPoints = try JSONDecoder().decode([GraphDataPoint].self, from: data!)
+            print("user: \(userData.id) data: \((String(bytes: data!, encoding: .utf8) ?? ""))")
             
+            let graphDataPoints = try JSONDecoder().decode([GraphDataPoint].self, from: data!)
             var values = [Int]()
             var labels = [String]()
             var descriptions = [String]()
@@ -74,12 +75,14 @@ import SwiftKeychainWrapper
                 sinusName: userData.name,
                 sinusTarget: userData.date_name)
             
+            print("values \(self.waveData.values.count)")
             self.chartPoints = [ChartPoint]()
-            if self.waveData.values.count > 1 {
+            if self.waveData.values.count > 0 {
                 for val in 0...self.waveData.values.count - 1 {
                     self.chartPoints.append(ChartPoint(label: self.waveData.labels[val], value: self.waveData.values[val]))
                 }
             }
+            print("points \(self.chartPoints.count)")
             
             if self.waveData.values.count > 1 {
                 self.pointA = self.waveData.values[self.waveData.values.count - 2]

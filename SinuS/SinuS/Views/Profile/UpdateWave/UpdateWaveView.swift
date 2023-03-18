@@ -18,9 +18,18 @@ struct UpdateWaveView: View {
     @State private var selection = ""
     @State private var description: String = ""
     @State private var message: String = ""
-
+    
     var options: [String] {
         return waves.map { "\($0.date_name)" }
+    }
+    
+    var selectedWave: SinusUserData {
+        if (self.selection == "") {
+            return self.waves.first!
+        }
+            
+        var wave = self.waves.filter{ $0.date_name == self.selection }.first
+        return wave!
     }
 
     /**
@@ -71,6 +80,8 @@ struct UpdateWaveView: View {
                         step: 1).foregroundColor(.yellow)
                         .frame(width: 220)
                         .accentColor(Style.TextOnColoredBackground)
+                    Spacer()
+                    Text("\(Int(self.value))")
                 }.padding(.horizontal)
 
                 VStack (alignment: .leading){
@@ -88,18 +99,20 @@ struct UpdateWaveView: View {
                 
 
                 Button("Update") {
+                    let resign = #selector(UIResponder.resignFirstResponder)
+                    UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+                    
                     if (self.description.count < 300)
                     {
-                        self.message = "Value added!"
-                        let update = SinusUpdate(
-                            name: self.selection,
-                            value: Int(self.value),
-                            date: self.date,
-                            description: self.description)
-                        
-                        
-                        manager.updateWave(data: update)
-                        showingAlert = true
+                        Task {
+                            do {
+                                self.message = await manager.updateWave(sinus_id: self.selectedWave.id, date: self.date, value: Int(self.value), descripting: self.description)
+                                showingAlert = true
+                            }
+                            catch{
+                                print(error)
+                            }
+                        }
                     }
                     else{
                         self.message = "Description is to long!"

@@ -240,7 +240,45 @@ public class DataManager {
     /**
         Updates the graphs for a user by adding a new point.
      */
-    public func updateWave(data: SinusUpdate) {
+    
+    
+    public func updateWave(sinus_id: Int, date: Date, value: Int, descripting: String) async -> String {
+    //https://lovewaves.antrum-technologies.nl/api/sinusvalue?sinus_id=1&date=2023-01-05&value=45&description=Het was nog leuker.
+        
+        
+        let url = "https://lovewaves.antrum-technologies.nl/api/sinusvalue"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "y-MM-d"
+        let parameters: [String: Any] = [
+            "sinus_id": sinus_id,
+            "date": formatter.string(from: date),
+            "value": value,
+            "description": descripting]
+        
+        var request = RestApiHelper.createRequest(type: "PUT", url: url)
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+            return error.localizedDescription
+        }
+
+        
+        let urlSession = URLSession.shared
+        var data: Data? = nil
+        
+        do {
+            (data, _) = try await urlSession.data(for: request)
+        }
+        catch {
+            debugPrint("Error loading \(request.url) caused error \(error) with response \((String(bytes: data!, encoding: .utf8) ?? ""))")
+        }
+        
+        let message = String(bytes: data!, encoding: .utf8) ?? ""
+        return message.replacingOccurrences(of: "\"", with: "")
+    }
+    
+    public func updateWave2(data: SinusUpdate) async {
         let sem = DispatchSemaphore.init(value: 0)
 
         if users.count < 1 {
@@ -266,14 +304,19 @@ public class DataManager {
                 print(error.localizedDescription)
                 return
             }
+            
+            
+                let urlSession = URLSession.shared
+                var data: Data? = nil
+            
+            do {
+                (data, _) = try await urlSession.data(for: request)
+            }
+            catch {
+                debugPrint("Error loading \(request.url) caused error \(error) with response \((String(bytes: data!, encoding: .utf8) ?? ""))")
+            }
+            print(String(bytes: data!, encoding: .utf8) ?? "")
 
-            let session = URLSession.shared
-            let task = session.dataTask(with: request, completionHandler: { _, _, _ -> Void in
-                defer { sem.signal() }
-            })
-
-            task.resume()
-            sem.wait()
         }
     }
 
