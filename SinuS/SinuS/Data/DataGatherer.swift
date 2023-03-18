@@ -202,8 +202,7 @@ public class DataManager {
     /**
         Creates a new user.
      */
-    public func addUser(user: String, target: String) -> Bool {
-        let sem = DispatchSemaphore.init(value: 0)
+    public func addUser(user: String, target: String) async -> String {
         let parameters: [String: Any] = ["name": user, "date_name": target]
         var request = RestApiHelper.createRequest(type: "PUT", url: DataManager.userUrl)
 
@@ -211,30 +210,47 @@ public class DataManager {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         } catch let error {
             print(error.localizedDescription)
-            return false
+            return error.localizedDescription
         }
 
-        let session = URLSession.shared
-        var success = false
-
-        let task = session.dataTask(with: request, completionHandler: { _, response, error -> Void in
-            defer { sem.signal() }
-            print(response as Any)
-
-            if error.debugDescription == "" {
-                success = true
-            } else {
-                let errMsg = "Unable to addUser: \(error.debugDescription)"
-                self.logHelper.logMsg(level: "error", message: errMsg)
-                print(errMsg)
-            }
-        })
-
-        task.resume()
-        sem.wait()
-
-        print(success)
-        return success
+        
+        let urlSession = URLSession.shared
+        var data: Data? = nil
+        
+        do {
+            (data, _) = try await urlSession.data(for: request)
+        }
+        catch {
+            debugPrint("Error loading \(request.url) caused error \(error) with response \((String(bytes: data!, encoding: .utf8) ?? ""))")
+        }
+        
+        let message = String(bytes: data!, encoding: .utf8) ?? ""
+        return message.replacingOccurrences(of: "\"", with: "")
+        
+        
+        
+        
+//        let session = URLSession.shared
+//        var success = false
+//
+//        let task = session.dataTask(with: request, completionHandler: { _, response, error -> Void in
+//            defer { sem.signal() }
+//            print(response as Any)
+//
+//            if error.debugDescription == "" {
+//                success = true
+//            } else {
+//                let errMsg = "Unable to addUser: \(error.debugDescription)"
+//                self.logHelper.logMsg(level: "error", message: errMsg)
+//                print(errMsg)
+//            }
+//        })
+//
+//        task.resume()
+//        sem.wait()
+//
+//        print(success)
+//        return success
     }
 
     /**
@@ -243,9 +259,6 @@ public class DataManager {
     
     
     public func updateWave(sinus_id: Int, date: Date, value: Int, descripting: String) async -> String {
-    //https://lovewaves.antrum-technologies.nl/api/sinusvalue?sinus_id=1&date=2023-01-05&value=45&description=Het was nog leuker.
-        
-        
         let url = "https://lovewaves.antrum-technologies.nl/api/sinusvalue"
         let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-d"
@@ -278,48 +291,6 @@ public class DataManager {
         return message.replacingOccurrences(of: "\"", with: "")
     }
     
-    public func updateWave2(data: SinusUpdate) async {
-        let sem = DispatchSemaphore.init(value: 0)
-
-        if users.count < 1 {
-            _ = self.gatherUsers()
-        }
-
-        if let user = self.users.first(where: { user in
-            return user.date_name == data.name
-        }) {
-            let url = "https://lovewaves.antrum-technologies.nl/api/sinusvalue"
-
-            let formatter = DateFormatter()
-            formatter.dateFormat = "y-MM-d"
-            print(formatter.string(from: data.date))
-
-            let parameters: [String: Any] = ["sinus_id": user.id, "date":
-                    formatter.string(from: data.date), "value": data.value]
-            var request = RestApiHelper.createRequest(type: "PUT", url: url)
-
-            do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-            } catch let error {
-                print(error.localizedDescription)
-                return
-            }
-            
-            
-                let urlSession = URLSession.shared
-                var data: Data? = nil
-            
-            do {
-                (data, _) = try await urlSession.data(for: request)
-            }
-            catch {
-                debugPrint("Error loading \(request.url) caused error \(error) with response \((String(bytes: data!, encoding: .utf8) ?? ""))")
-            }
-            print(String(bytes: data!, encoding: .utf8) ?? "")
-
-        }
-    }
-
     /**
         Gathers the list of users.
      */

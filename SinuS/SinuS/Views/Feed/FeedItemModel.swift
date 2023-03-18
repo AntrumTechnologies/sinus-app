@@ -55,7 +55,7 @@ import SwiftKeychainWrapper
         
         do {
             data = await self.retrievable.Retrieve(request: request)
-            print("user: \(userData.id) data: \((String(bytes: data!, encoding: .utf8) ?? ""))")
+            print("user: \(userData.id) data: \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")
             
             let graphDataPoints = try JSONDecoder().decode([GraphDataPoint].self, from: data!)
             var values = [Int]()

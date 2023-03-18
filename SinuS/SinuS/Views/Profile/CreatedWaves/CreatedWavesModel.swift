@@ -26,7 +26,7 @@ class CreatedWavesModel: ObservableObject {
             (data, _) = try await urlSession.data(for: request)
             self.createdWaves = try JSONDecoder().decode([SinusUserData].self, from: data!)
         } catch {
-            debugPrint("Error loading: \(error) \((String(bytes: data!, encoding: .utf8) ?? ""))")
+            debugPrint("Error loading: \(error) \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")
         }
     }
 }

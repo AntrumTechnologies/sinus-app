@@ -17,7 +17,7 @@ class ExternalRestRetriever : RestRetrievable {
             (data, _) = try await urlSession.data(for: request)
         }
         catch {
-            debugPrint("Error loading \(request.url) caused error \(error) with response \((String(bytes: data!, encoding: .utf8) ?? ""))")
+            debugPrint("Error loading \(request.url) caused error \(error) with response \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")
         }
         
         return data

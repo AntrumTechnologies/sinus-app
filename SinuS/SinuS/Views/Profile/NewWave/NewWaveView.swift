@@ -12,10 +12,12 @@ import SwiftUI
  */
 struct NewWaveView: View {
     let manager: DataManager
+    let currentUsername: String
 
     @State private var username: String = ""
     @State private var targetname: String = ""
     @State private var showingAlert = false
+    @State private var message: String = ""
 
     /**
         The view.
@@ -37,7 +39,7 @@ struct NewWaveView: View {
                 HStack {
                     Text("Wave name")
                     Spacer()
-                    TextField("", text: self.$username)
+                    TextField(self.currentUsername, text: self.$username)
                         .disableAutocorrection(true)
                         .frame(width: 200)
                         .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
@@ -68,11 +70,20 @@ struct NewWaveView: View {
                 .foregroundColor(Style.TextOnColoredBackground)
 
                 Button("Add Wave!") {
-                    self.manager.addUser(user: self.username, target: self.targetname)
+                    Task {
+                        do {
+                            self.message = await self.manager.addUser(user: self.username, target: self.targetname)
+                            showingAlert = true
+                        }
+                        catch {
+                            print(error)
+                        }
+                        
+                    }
                 }
                 .padding()
                 .foregroundColor(Style.TextOnColoredBackground)
-                .alert("User added!", isPresented: $showingAlert) {
+                .alert(self.message, isPresented: $showingAlert) {
                     Button("OK", role: .cancel) { }
                 }
             }
@@ -89,6 +100,6 @@ struct NewWaveView: View {
 
 struct NewUserView_Previews: PreviewProvider {
     static var previews: some View {
-        NewWaveView(manager: DataManager())
+        NewWaveView(manager: DataManager(), currentUsername: "")
     }
 }

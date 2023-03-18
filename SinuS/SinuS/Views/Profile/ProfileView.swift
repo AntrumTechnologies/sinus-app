@@ -31,7 +31,7 @@ struct ProfileView: View {
                 
                 Divider()
                 
-                NewWaveView(manager: gatherer)
+                NewWaveView(manager: gatherer, currentUsername: profileDataModel.profileData.name)
                 
                 Divider()
                 
