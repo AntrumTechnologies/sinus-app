@@ -40,6 +40,7 @@
 		4A32755929C5B3BA009D1CC8 /* RestRetrievable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32755829C5B3BA009D1CC8 /* RestRetrievable.swift */; };
 		4A32755B29C5B4CE009D1CC8 /* ExternalRestRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32755A29C5B4CE009D1CC8 /* ExternalRestRetriever.swift */; };
 		4A32755F29C5B83E009D1CC8 /* FeedItemModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32755E29C5B83E009D1CC8 /* FeedItemModelTests.swift */; };
+		4A32756129C5BFDD009D1CC8 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32756029C5BFDD009D1CC8 /* NoDataView.swift */; };
 		4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D022917C2F9001DB4F7 /* LoginView.swift */; };
 		4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D052917C30D001DB4F7 /* RegisterView.swift */; };
 		4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */; };
@@ -126,6 +127,7 @@
 		4A32755829C5B3BA009D1CC8 /* RestRetrievable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestRetrievable.swift; sourceTree = "<group>"; };
 		4A32755A29C5B4CE009D1CC8 /* ExternalRestRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalRestRetriever.swift; sourceTree = "<group>"; };
 		4A32755E29C5B83E009D1CC8 /* FeedItemModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemModelTests.swift; sourceTree = "<group>"; };
+		4A32756029C5BFDD009D1CC8 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		4A4C6D022917C2F9001DB4F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4A4C6D052917C30D001DB4F7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResult.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 		4A32751D2977215F009D1CC8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4A32756029C5BFDD009D1CC8 /* NoDataView.swift */,
 				4A32752229772888009D1CC8 /* TextView.swift */,
 			);
 			path = Common;
@@ -692,6 +695,7 @@
 				4A15E00128C7C91C00422C05 /* ProfileButton.swift in Sources */,
 				4A0B397728E06E9600D7EEC9 /* SinusUserData.swift in Sources */,
 				4AD26FBC28BBA5D40065FB01 /* ContentView.swift in Sources */,
+				4A32756129C5BFDD009D1CC8 /* NoDataView.swift in Sources */,
 				CEBF7655299818FA00D5E3AF /* NetworkManager.swift in Sources */,
 				4A0B397428D6044300D7EEC9 /* WaveView.swift in Sources */,
 				CEECA4FD29709E0F00CA4496 /* ForgotPasswordView.swift in Sources */,

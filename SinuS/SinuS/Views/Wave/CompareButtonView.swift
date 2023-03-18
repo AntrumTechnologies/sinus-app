@@ -31,7 +31,8 @@ struct CompareButtonView_Previews: PreviewProvider {
         CompareButtonView(
             gatherer: DataManager(),
             data: SinusData(
-                id: 1, values: [], labels: [], descriptions: [], sinusName: "",
+                id: 1, values: [], labels: [],
+                descriptions: [], sinusName: "",
                 sinusTarget: ""))
     }
 }

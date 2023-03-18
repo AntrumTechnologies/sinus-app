@@ -38,20 +38,24 @@ struct WaveView: View {
             ScrollView(.vertical) {
                 Divider()
 
-                ChartView(points: self.waveModel.chartPoints)
-                    .frame(height: 450)
-
-                CompareButtonView(gatherer: self.gatherer, data: self.waveModel.waveData)
-                    .padding(.bottom)
-
-                Divider()
-
-                StatisticsView(data: self.waveModel.waveData)
-                
-                Divider()
-                
-                HistoryView(descriptions: self.waveModel.waveData.descriptions, dates: self.waveModel.waveData.labels)
-                
+                if (self.waveModel.chartPoints.count > 0) {
+                    ChartView(points: self.waveModel.chartPoints)
+                        .frame(height: 450)
+                    
+                    CompareButtonView(gatherer: self.gatherer, data: self.waveModel.waveData)
+                        .padding(.bottom)
+                    
+                    Divider()
+                    
+                    StatisticsView(data: self.waveModel.waveData)
+                    
+                    Divider()
+                    
+                    HistoryView(descriptions: self.waveModel.waveData.descriptions, dates: self.waveModel.waveData.labels)
+                }
+                else{
+                    NoDataView(scale: 1, useLogo: true)
+                }
 
             }
         }

@@ -10,6 +10,7 @@ import SwiftUI
 struct WavePreviewView: View {
     let percentage: Int
     let description: String
+    let hasData: Bool
 
     private var color: Color {
         if self.percentage > 0 {
@@ -31,29 +32,34 @@ struct WavePreviewView: View {
 
     var body: some View {
         VStack {
-            VStack{
-                Text(self.description).foregroundColor(Style.AppColor)
-                
-            }
-            
-            HStack {
+            if (self.hasData) {
                 VStack{
-                    Wave(strength: 10, frequency: 20)
-                        .stroke(self.color, lineWidth: 5)
+                    Text(self.description).foregroundColor(Style.AppColor)
+                    
                 }
-                .frame(height: 75)
-
+                
                 HStack {
-                    self.icon
-                        .foregroundColor(.white)
-                    Text(String(self.percentage) + "%").foregroundColor(.white).bold()
-
+                    VStack{
+                        Wave(strength: 10, frequency: 20)
+                            .stroke(self.color, lineWidth: 5)
+                    }
+                    .frame(height: 75)
+                    
+                    HStack {
+                        self.icon
+                            .foregroundColor(.white)
+                        Text(String(self.percentage) + "%").foregroundColor(.white).bold()
+                        
+                    }
+                    .frame(width: 75, height: 50)
+                    .background(self.color)
+                    .cornerRadius(5)
+                    .shadow(radius: 10)
+                    
                 }
-                .frame(width: 75, height: 50)
-                .background(self.color)
-                .cornerRadius(5)
-                .shadow(radius: 10)
-
+            }
+            else{
+                NoDataView(scale: 0.8, useLogo: true)
             }
 
         }
@@ -62,6 +68,6 @@ struct WavePreviewView: View {
 
 struct WavePreviewView_Previews: PreviewProvider {
     static var previews: some View {
-        WavePreviewView(percentage: 10, description: "")
+        WavePreviewView(percentage: 10, description: "", hasData: true)
     }
 }

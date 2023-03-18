@@ -35,7 +35,8 @@ struct FeedItemView: View {
             .foregroundColor(Style.TextOnColoredBackground)
             WavePreviewView(
                 percentage: self.feedItemModel.percentage,
-                description: self.feedItemModel.waveData.descriptions.last ?? "")
+                description: self.feedItemModel.waveData.descriptions.last ?? "",
+                hasData: self.feedItemModel.chartPoints.count > 0)
         }
         .task {
             await self.feedItemModel.reload(userData: userData)

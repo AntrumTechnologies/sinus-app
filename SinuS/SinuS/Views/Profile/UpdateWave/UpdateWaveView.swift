@@ -96,6 +96,8 @@ struct UpdateWaveView: View {
                             value: Int(self.value),
                             date: self.date,
                             description: self.description)
+                        
+                        
                         manager.updateWave(data: update)
                         showingAlert = true
                     }
@@ -104,7 +106,7 @@ struct UpdateWaveView: View {
                     }
                 }
                 .padding()
-                .alert(self.description, isPresented: $showingAlert) {
+                .alert(self.message, isPresented: $showingAlert) {
                     Button("OK", role: .cancel) { }
                 }
             }
