@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import UserNotifications
+import SwiftKeychainWrapper
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     let gcmMessageIDKey = "gcm.message_id"
@@ -49,9 +50,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-
-      let deviceToken: [String: String] = ["token": fcmToken ?? ""]
+        let deviceToken: String = fcmToken ?? ""
         print("Device token: ", deviceToken) // This token can be used for testing notifications on FCM
+        KeychainWrapper.standard.set(deviceToken, forKey: "deviceToken")
     }
 }
 
@@ -104,7 +105,7 @@ struct SinuSApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(manager: DataManager())
         }
     }
 }

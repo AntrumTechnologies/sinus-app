@@ -19,7 +19,7 @@ struct CompareButtonView: View {
             }
             .frame(width: 150, height: 30)
             .foregroundColor(.white)
-            .background(Style.AppColor)
+            .background(Style.TextOnColoredBackground)
             .cornerRadius(5)
             .shadow(radius: 10)
         })
@@ -31,7 +31,8 @@ struct CompareButtonView_Previews: PreviewProvider {
         CompareButtonView(
             gatherer: DataManager(),
             data: SinusData(
-                id: 1, values: [], labels: [], sinusName: "",
+                id: 1, values: [], labels: [],
+                descriptions: [], sinusName: "",
                 sinusTarget: ""))
     }
 }

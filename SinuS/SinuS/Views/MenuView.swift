@@ -14,12 +14,8 @@ import SwiftUI
 struct MenuView: View {
     @State private var selection = 1
 
-    private var feedViewModelFollowing: FeedViewModel
-    private var feedViewModelExplore: FeedViewModel
-
     init() {
-        self.feedViewModelFollowing = FeedViewModel()
-        self.feedViewModelExplore = FeedViewModel()
+        ContentView.LoggedIn = true
     }
 
     /**
@@ -30,17 +26,17 @@ struct MenuView: View {
         VStack {
             TabView(selection: self.$selection) {
                 Group {
-                    FeedView(feedViewModel: self.feedViewModelExplore, gatherer: manager, onlyFollowing: false)
+                    FeedView(gatherer: manager, onlyFollowing: false)
                         .tabItem {
                             Label("Explore", systemImage: "network")
                         }
                         .tag(1)
-                    FeedView(feedViewModel: self.feedViewModelFollowing, gatherer: manager, onlyFollowing: true)
+                    FeedView(gatherer: manager, onlyFollowing: true)
                         .tabItem {
                             Label("Following", systemImage: "person.2.fill")
                         }
                         .tag(2)
-                    PersonalView(gatherer: manager)
+                    ProfileView(gatherer: manager)
                         .tabItem {
                             Label("Profile", systemImage: "person")
                         }
@@ -50,6 +46,7 @@ struct MenuView: View {
                 .toolbarBackground(Style.AppColor, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .toolbarColorScheme(.dark, for: .tabBar)
+
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -60,14 +57,11 @@ struct MenuView: View {
             ToolbarItem(placement: .principal) {
                 VStack {
                     HStack {
-                        Image(systemName: "water.waves")
+                        Image("Logo_cropped")
                             .resizable()
-                            .frame(width: 25, height: 25)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 30)
                             .foregroundColor(.white)
-                            .padding(.bottom)
-                        Text("Love Waves")
-                            .foregroundColor(.white)
-                            .font(.system(size: 25))
                             .padding(.bottom)
                     }
                 }

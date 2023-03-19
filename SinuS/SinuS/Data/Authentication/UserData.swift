@@ -15,4 +15,5 @@ public struct UserData: Codable {
     let created_at: String?
     let updated_at: String?
     let avatar: String?
+    let fcm_token: String?
 }

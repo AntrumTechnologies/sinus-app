@@ -10,14 +10,25 @@ import SwiftUI
 struct VerifyEmailView: View {
     var body: some View {
         VStack {
-            Spacer()
+            Text("Please verify your email address by clicking on the link in your email. Then tap the button below.").padding()
 
-            Text("Please verify your email address by clicking on the link in your email")
+            Button("Check now if email is verified") {
+                // self.manager.checkEmailVerified()
+            }
+            .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
+            .cornerRadius(5)
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(lineWidth: 1.0)
+            )
 
-            Text("Resend email")
-
-            Spacer()
+            Text("")
         }
+        .background(Style.AppBackground)
+        .foregroundColor(Style.TextOnColoredBackground)
+        .cornerRadius(5)
+        .shadow(radius: 5)
+        .padding()
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Style.AppColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
@@ -30,7 +41,7 @@ struct VerifyEmailView: View {
                             .frame(width: 25, height: 25)
                             .foregroundColor(.white)
                             .padding(.bottom)
-                        Text("Love Waves")
+                        Text("Love waves")
                             .foregroundColor(.white)
                             .font(.system(size: 25))
                             .padding(.bottom)

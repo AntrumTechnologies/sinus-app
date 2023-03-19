@@ -16,7 +16,7 @@ public class RestApiHelper {
 
         let task = session.dataTask(with: request, completionHandler: { data, _, _ -> Void in
             defer { semaphore.signal() }
-
+            print(data)
             returnObject = data!
         })
 

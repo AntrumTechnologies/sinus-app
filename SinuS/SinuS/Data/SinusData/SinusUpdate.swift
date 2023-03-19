@@ -26,4 +26,9 @@ public struct SinusUpdate {
          The date corrosponding to the value.
      */
     let date: Date
+    
+    /**
+        The description of the updated value.
+     */
+    let description: String
 }

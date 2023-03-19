@@ -70,6 +70,25 @@ struct LineChart_Previews: PreviewProvider {
     static var previews: some View {
         let values = generatePoints()
         let labels = getLabels()
-        LineChart(data: SinusData(id: 1, values: values, labels: labels, sinusName: "Lukas", sinusTarget: "Target"))
+        LineChart(data: SinusData(id: 1, values: values, labels: labels, descriptions: [],sinusName: "Lukas", sinusTarget: "Target"))
     }
+}
+
+public func generatePoints() -> [Int] {
+    var points = [Int]()
+    points.append(0)
+    points.append(12)
+    points.append(99)
+
+    return points
+}
+
+public func getLabels() -> [String] {
+    var labels = [String]()
+
+    for val in 1...3 {
+        labels.append(String(val) + "-01")
+    }
+
+    return labels
 }

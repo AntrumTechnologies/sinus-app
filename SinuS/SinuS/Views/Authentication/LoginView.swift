@@ -28,8 +28,13 @@ struct LoginView: View {
                     Spacer()
                     TextField("", text: self.$email)
                         .disableAutocorrection(true)
-                        .border(Color.white, width: 1)
                         .frame(width: 220)
+                        .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
+                        .cornerRadius(5)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(lineWidth: 1.0)
+                        )
                 }.padding(.horizontal).padding(.top)
 
                 // Password
@@ -38,8 +43,13 @@ struct LoginView: View {
                     Spacer()
                     SecureField("", text: self.$password)
                         .disableAutocorrection(true)
-                        .border(Color.white, width: 1)
                         .frame(width: 220)
+                        .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
+                        .cornerRadius(5)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(lineWidth: 1.0)
+                        )
                 }.padding(.horizontal).padding(.top)
 
                 NavigationLink(destination: MenuView(), tag: true, selection: self.$showMenu) { EmptyView() }
@@ -63,7 +73,6 @@ struct LoginView: View {
 
                         self.showMenu = true
                     }
-
                 }
                 .alert(isPresented: $showAlert) {
                     return Alert(title: Text("Failed to login"),
@@ -73,7 +82,8 @@ struct LoginView: View {
                 }
                 .padding()
             }
-            .background(Style.AppColor)
+            .background(Style.AppBackground)
+            .foregroundColor(Style.TextOnColoredBackground)
             .cornerRadius(5)
             .shadow(radius: 5)
             .padding()
@@ -82,7 +92,7 @@ struct LoginView: View {
             NavigationLink(destination: ForgotPasswordView(), label: {
                 Text("Forgot password?")
             })
-            .foregroundColor(.black)
+            .foregroundColor(Style.AppColor)
             .padding()
 
             Spacer()
@@ -93,7 +103,6 @@ struct LoginView: View {
                 })
             }
             .padding()
-
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)

@@ -24,9 +24,9 @@ struct SmallFrame: View {
                 .bold()
             Text(text)
         }
-        .foregroundColor(.white)
+        .foregroundColor(Style.TextOnColoredBackground)
         .frame(width: 150, height: 75)
-        .background(Style.ThirdAppColor)
+        .background(Style.AppBackground)
         .cornerRadius(5)
         .shadow(radius: 5)
     }

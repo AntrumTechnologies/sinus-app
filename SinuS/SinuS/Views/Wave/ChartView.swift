@@ -27,30 +27,39 @@ struct ChartView: View {
                 Image(systemName: "chart.xyaxis.line")
                     .padding(.leading, 15)
                     .padding(.top, 5)
-                Text("Chart:")
+                Text("Chart")
                     .font(.headline)
                     .padding(.top, 5)
             }
-            .foregroundColor(Style.ThirdAppColor)
+            .foregroundColor(Style.AppColor)
 
             ScrollView(.horizontal) {
                 Chart {
                     ForEach(points) { point in
-                        LineMark(x: .value("Date", point.label.substring(from: point.label.index(point.label.endIndex, offsetBy: -5))), y: .value("Value", point.value))
-                            .foregroundStyle(Style.AppColor)
+                        if point.value != 0 {
+                            LineMark(x: .value("Date", point.label), y: .value("Value", point.value))
+                                .foregroundStyle(Style.TextOnColoredBackground)
+                                .symbol() {
+                                    Circle()
+                                        .fill(Style.TextOnColoredBackground)
+                                        .frame(width: 20)
+                                        .overlay(
+                                            Text("\(point.value)")
+                                                .font(.system(size: 10))
+                                                .foregroundColor(.white))
+                                }
+                        }
                     }
-                }
-                .frame(width: self.charWidth)
-                // .frame(maxWidth: .infinity, maxHeight: 600)
+                }.chartYScale(domain: 0...100)
+                .frame(width: self.charWidth, height: 200)
                 .shadow(radius: 10)
                 .padding()
                 .chartPlotStyle { plotArea in
                     plotArea
-                        .background(Style.SecondAppColor)
+                        .background(Style.AppBackground)
                 }
-                .foregroundColor(.white)
-                .flipsForRightToLeftLayoutDirection(true)
-            }
+                .foregroundColor(Style.TextOnColoredBackground)
+                .flipsForRightToLeftLayoutDirection(true)            }
 
         }
     }

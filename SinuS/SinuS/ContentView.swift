@@ -10,22 +10,26 @@ import SwiftKeychainWrapper
 import Firebase
 
 struct ContentView: View {
-    static var AuthenticationToken: String = KeychainWrapper.standard.string(forKey: "bearerToken") ?? ""
+    let manager: DataManager
 
+    static var AuthenticationToken: String = KeychainWrapper.standard.string(forKey: "bearerToken") ?? ""
+    static var LoggedIn: Bool = false
+    
     var body: some View {
         NavigationView {
-            if KeychainWrapper.standard.string(forKey: "bearerToken") == nil {
-                LoginView()
-            } else {
+            if manager.isTokenValid() == false {
+                PreAuthenticationView()
+           } else {
                 MenuView()
-              }
+           }
         }
+        .preferredColorScheme(.light)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(manager: DataManager())
     }
 }
 
