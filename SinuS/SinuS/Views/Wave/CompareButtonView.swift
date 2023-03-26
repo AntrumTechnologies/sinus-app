@@ -12,7 +12,7 @@ struct CompareButtonView: View {
     let data: SinusData
 
     var body: some View {
-        NavigationLink(destination: CompareView(initialData: data, gatherer: self.gatherer), label: {
+        NavigationLink(destination: CompareConfigurationView(originData: self.data), label: {
             HStack {
                 Image(systemName: "questionmark.square")
                 Text("Compare")
