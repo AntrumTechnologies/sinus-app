@@ -50,7 +50,7 @@ struct UpdateWaveView: View {
 
             VStack {
                 HStack {
-                    Text("Wave:").foregroundColor(Style.TextOnColoredBackground)
+                    Text("Wave").foregroundColor(Style.TextOnColoredBackground)
 
                     Spacer()
 
@@ -66,17 +66,17 @@ struct UpdateWaveView: View {
                 }.padding(.horizontal).padding(.top)
 
                 HStack {
-                    DatePicker(selection: $date, displayedComponents: [.date], label: { Text("Date:") })
+                    DatePicker(selection: $date, displayedComponents: [.date], label: { Text("Date") })
                         .colorMultiply(Style.AppColor)
                         .accentColor(Style.TextOnColoredBackground)
                 }.padding(.horizontal)
 
                 HStack {
-                    Text("Value:")
+                    Text("Value")
                     Spacer()
                     Slider(
                         value: self.$value,
-                        in: 1...100,
+                        in: 0...100,
                         step: 1).foregroundColor(.yellow)
                         .frame(width: 220)
                         .accentColor(Style.TextOnColoredBackground)
@@ -85,7 +85,7 @@ struct UpdateWaveView: View {
                 }.padding(.horizontal)
 
                 VStack (alignment: .leading){
-                    Text("Description:")
+                    Text("Description")
                     TextField("", text: self.$description, axis: .vertical)
                         .disableAutocorrection(true)
                         .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
@@ -115,7 +115,7 @@ struct UpdateWaveView: View {
                         }
                     }
                     else{
-                        self.message = "Description is to long!"
+                        self.message = "Description can not be longer than 300 characters"
                     }
                 }
                 .padding()

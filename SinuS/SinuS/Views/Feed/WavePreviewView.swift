@@ -40,8 +40,16 @@ struct WavePreviewView: View {
                 
                 HStack {
                     VStack{
-                        Wave(strength: 10, frequency: 20)
-                            .stroke(self.color, lineWidth: 5)
+                        if (self.percentage < 0) {
+                            Wave(strength: 10, frequency: 14)
+                                .stroke(self.color, lineWidth: 5)
+                        } else if (self.percentage > 0) {
+                            Wave(strength: -10, frequency: 14)
+                                .stroke(self.color, lineWidth: 5)
+                        } else {
+                            Wave(strength: 2, frequency: 10)
+                                .stroke(self.color, lineWidth: 5)
+                        }
                     }
                     .frame(height: 75)
                     
@@ -60,7 +68,7 @@ struct WavePreviewView: View {
             }
             else{
                 VStack (alignment: .center){
-                    Text("Has created a wave but has no dates yet..")
+                    Text("Has created a wave but has no dates yet")
                         .multilineTextAlignment(.center)
                         .foregroundColor(Style.AppColor)
                 }.frame(width: 300)

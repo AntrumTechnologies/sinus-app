@@ -10,22 +10,28 @@ import SwiftUI
 struct HistoryItemView: View {
     let date: String
     let description: String
+    let value: Int
     
     var body: some View {
         VStack{
             HStack{
                 HStack{
-                    Image(systemName: "water.waves")
                     Text(date)
+                        .foregroundColor(Style.TextOnColoredBackground)
+                }
+                
+                Spacer()
+                
+                HStack{
+                    Text(String(value))
                         .foregroundColor(Style.AppColor)
                 }
-                Spacer()
             }
             
             Spacer()
             
             Text(description)
-                .foregroundColor(Style.TextOnColoredBackground)
+                .foregroundColor(Style.AppColor)
             
             Divider()
         }.padding(.leading).padding(.trailing).padding(.top)
@@ -34,6 +40,6 @@ struct HistoryItemView: View {
 
 struct HistoryItemView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryItemView(date: "", description: "")
+        HistoryItemView(date: "1970-01-01", description: "Foobar", value: 10)
     }
 }

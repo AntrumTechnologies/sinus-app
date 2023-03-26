@@ -14,8 +14,7 @@ struct NewWaveView: View {
     let manager: DataManager
     let currentUsername: String
 
-    @State private var username: String = ""
-    @State private var targetname: String = ""
+    @State private var waveName: String = ""
     @State private var showingAlert = false
     @State private var message: String = ""
 
@@ -39,7 +38,7 @@ struct NewWaveView: View {
                 HStack {
                     Text("Wave name")
                     Spacer()
-                    TextField(self.currentUsername, text: self.$username)
+                    TextField("", text: self.$waveName)
                         .disableAutocorrection(true)
                         .frame(width: 200)
                         .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
@@ -53,26 +52,10 @@ struct NewWaveView: View {
                 .padding(.top)
                 .foregroundColor(Style.TextOnColoredBackground)
 
-                HStack {
-                    Text("Target")
-                    Spacer()
-                    TextField("", text: self.$targetname)
-                        .disableAutocorrection(true)
-                        .frame(width: 200)
-                        .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
-                        .cornerRadius(5)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(lineWidth: 1.0)
-                        )
-                }
-                .padding(.horizontal)
-                .foregroundColor(Style.TextOnColoredBackground)
-
-                Button("Add Wave!") {
+                Button("Add wave") {
                     Task {
                         do {
-                            self.message = await self.manager.addUser(user: self.username, target: self.targetname)
+                            self.message = await self.manager.addWave(waveName: self.waveName)
                             showingAlert = true
                         }
                         catch {

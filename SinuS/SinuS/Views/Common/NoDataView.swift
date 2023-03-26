@@ -27,7 +27,7 @@ struct NoDataView: View {
             }
             
             
-            Text("Has created a wave but has no dates yet..")
+            Text("Has created a wave but has no dates yet")
                 .foregroundColor(.white)
                 .padding(.bottom)
                 .font(.system(size: 20 * self.scale))

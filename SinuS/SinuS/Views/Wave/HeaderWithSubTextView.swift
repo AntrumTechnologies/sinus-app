@@ -6,17 +6,18 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct HeaderWithSubTextView: View {
     @State private var user: SinusUserData
     var subtext: String
-    var avatar: Image
+    var avatar: KFImage
     var scaleFactor: Double
     var gatherer: DataManager
     
     @State private var internalFollowing: Bool = false
 
-    init(user: SinusUserData, subtext: String, avatar: Image, scaleFactor: Double, gatherer: DataManager) {
+    init(user: SinusUserData, subtext: String, avatar: KFImage, scaleFactor: Double, gatherer: DataManager) {
         self.user = user
         self.subtext = subtext
         self.avatar = avatar
@@ -50,22 +51,7 @@ struct HeaderWithSubTextView: View {
 
                         Spacer()
                         HStack(spacing: 0) {
-                            Text("Is dating")
-                                .foregroundColor(Style.TextOnColoredBackground)
-
-                            self.avatar
-                                .resizable()
-                                .frame(
-                                    width: 40 * self.scaleFactor,
-                                    height: 40 * self.scaleFactor)
-                                .clipShape(Circle())
-                                .overlay {
-                                    Circle().stroke(Style.TextOnColoredBackground, lineWidth: 4)
-                                        .shadow(radius: 10)
-                                }
-                                .padding()
-
-                            Text(self.subtext)
+                            Text("is dating \(self.subtext)")
                                 .foregroundColor(Style.TextOnColoredBackground)
                         }
 
@@ -85,8 +71,7 @@ struct HeaderWithSubTextView: View {
                             print("Follow")
                             self.gatherer.followUser(user_id: self.user.user_id)
                         }
-    //
-    //                    // update user
+                        
                         self.gatherer.getSingleUser(user_id: self.user.user_id)
                     }
                     ) {
@@ -110,21 +95,10 @@ struct HeaderWithSubTextView: View {
 
             Spacer()
         }
-        .frame(width: 350, height: 180)
+        .frame(width: 350, height: 150)
         .background(Style.AppBackground)
         .cornerRadius(5)
         .shadow(radius: 10)
         .padding([.top, .bottom], 15)
-    }
-}
-
-struct HeaderWithSubTextView_Previews: PreviewProvider {
-    static var previews: some View {
-        HeaderWithSubTextView(
-            user: SinusUserData(id: 1, name: "", user_id: 1, date_name: "", created_at: "", updated_at: "", deleted_at: "", archived: 1, avatar: "", following: false),
-            subtext: "Someone",
-            avatar: Image("Placeholder"),
-            scaleFactor: 1,
-            gatherer: DataManager())
     }
 }

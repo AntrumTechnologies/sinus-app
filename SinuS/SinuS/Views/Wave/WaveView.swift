@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Charts
+import Kingfisher
 
 struct ChartPoint: Identifiable {
     let id = UUID()
@@ -17,6 +18,7 @@ struct ChartPoint: Identifiable {
 struct WaveView: View {
     private let gatherer: DataManager
     private let user: SinusUserData
+    private let avatar: KFImage
     @ObservedObject var waveModel = FeedItemModel(retrievable: ExternalRestRetriever())
     
     private static var following = false
@@ -24,6 +26,11 @@ struct WaveView: View {
     init(gatherer: DataManager, user: SinusUserData) {
         self.gatherer = gatherer
         self.user = user
+        // Create avatar image
+        // TODO: do not run avatar download on main thread, use a local placeholder avatar instead
+        let avatar: String = user.avatar ?? "avatars/placeholder.jpg"
+        let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/" + avatar)!
+        self.avatar = KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
     }
 
     var body: some View {
@@ -31,7 +38,7 @@ struct WaveView: View {
             HeaderWithSubTextView(
                 user: self.user,
                 subtext: self.waveModel.waveData.sinusTarget,
-                avatar: Image("Placeholder"),
+                avatar: self.avatar,
                 scaleFactor: 1,
                 gatherer: self.gatherer)
 
@@ -50,7 +57,10 @@ struct WaveView: View {
                     
                     Divider()
                     
-                    HistoryView(descriptions: self.waveModel.waveData.descriptions, dates: self.waveModel.waveData.labels)
+                    HistoryView(
+                        descriptions: self.waveModel.waveData.descriptions,
+                        dates: self.waveModel.waveData.labels,
+                        values: self.waveModel.waveData.values)
                 }
                 else{
                     NoDataView(scale: 1, useLogo: true)

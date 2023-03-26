@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftKeychainWrapper
+import Kingfisher
 
 @MainActor class FeedItemModel: ObservableObject {
     let retrievable: RestRetrievable
@@ -18,7 +19,7 @@ import SwiftKeychainWrapper
     @Published var percentage: Int
     @Published var color: Color
     @Published var icon: Image
-    @Published var avatar: Image
+    @Published var avatar: KFImage
     
     init(retrievable: RestRetrievable) {
         self.retrievable = retrievable
@@ -29,7 +30,9 @@ import SwiftKeychainWrapper
         self.percentage = 0
         self.color = .gray
         self.icon = Image(systemName: "square.fill")
-        self.avatar = Image("Placeholder")
+        // TODO: do not run avatar download on main thread, use a local placeholder avatar instead
+        let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/avatars/placeholder.jpg")!
+        self.avatar = KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
     }
     
     private struct GraphDataPoint: Codable {
@@ -110,6 +113,13 @@ import SwiftKeychainWrapper
                 self.icon = Image(systemName: "arrowtriangle.down.fill")
             } else {
                 self.icon = Image(systemName: "square.fill")
+            }
+            
+            // Create avatar image
+            let avatar: String = userData.avatar ?? ""
+            if (avatar != "") {
+                let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/" + avatar)!
+                self.avatar = KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
             }
         } catch {
             debugPrint("Error loading \(url) caused error \(error) with response \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")

@@ -14,17 +14,15 @@ struct SingleWaveView: View {
         VStack(alignment: .center) {
 
             Spacer()
-            Image(systemName: "water.waves")
+            Image("Logo_cropped")
                 .resizable()
-                .frame(
-                    width: 50,
-                    height: 50,
-                    alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 50)
+                .foregroundColor(.white)
+                .padding(.bottom)
 
             Spacer()
 
-            Text("Date:")
-                .font(.headline)
             Text(self.wave.date_name)
             Spacer()
 

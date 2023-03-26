@@ -211,8 +211,8 @@ public class DataManager {
     /**
         Creates a new user.
      */
-    public func addUser(user: String, target: String) async -> String {
-        let parameters: [String: Any] = ["name": user, "date_name": target]
+    public func addWave(waveName: String) async -> String {
+        let parameters: [String: Any] = ["wave_name": waveName]
         var request = RestApiHelper.createRequest(type: "PUT", url: DataManager.userUrl)
 
         do {
@@ -235,31 +235,6 @@ public class DataManager {
         
         let message = String(bytes: data!, encoding: .utf8) ?? ""
         return message.replacingOccurrences(of: "\"", with: "")
-        
-        
-        
-        
-//        let session = URLSession.shared
-//        var success = false
-//
-//        let task = session.dataTask(with: request, completionHandler: { _, response, error -> Void in
-//            defer { sem.signal() }
-//            print(response as Any)
-//
-//            if error.debugDescription == "" {
-//                success = true
-//            } else {
-//                let errMsg = "Unable to addUser: \(error.debugDescription)"
-//                self.logHelper.logMsg(level: "error", message: errMsg)
-//                print(errMsg)
-//            }
-//        })
-//
-//        task.resume()
-//        sem.wait()
-//
-//        print(success)
-//        return success
     }
 
     /**

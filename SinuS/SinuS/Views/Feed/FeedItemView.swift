@@ -17,11 +17,11 @@ struct FeedItemView: View {
                 self.feedItemModel.avatar
                     .resizable()
                     .frame(
-                        width: 50,
-                        height: 50)
+                        width: 80,
+                        height: 80)
                     .clipShape(Circle())
                     .overlay {
-                        Circle().stroke(Style.TextOnColoredBackground, lineWidth: 4)
+                        Circle().stroke(Style.AppColor, lineWidth: 3)
                             .shadow(radius: 10)
                     }
                     .padding()
