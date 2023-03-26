@@ -275,6 +275,32 @@ public class DataManager {
         return message.replacingOccurrences(of: "\"", with: "")
     }
     
+    public func deleteWave(sinus_id: Int) async -> String {
+        let url = "https://lovewaves.antrum-technologies.nl/api/sinus/delete"
+        let parameters: [String: Any] = ["id": sinus_id]
+        
+        var request = RestApiHelper.createRequest(type: "PUT", url: url)
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+            return error.localizedDescription
+        }
+        
+        let urlSession = URLSession.shared
+        var data: Data? = nil
+        
+        do {
+            (data, _) = try await urlSession.data(for: request)
+        }
+        catch {
+            debugPrint("Error loading \(request.url) caused error \(error) with response \((String(bytes: data!, encoding: .utf8) ?? ""))")
+        }
+        
+        let message = String(bytes: data!, encoding: .utf8) ?? ""
+        return message.replacingOccurrences(of: "\"", with: "")
+    }
+    
     /**
         Gathers the list of users.
      */

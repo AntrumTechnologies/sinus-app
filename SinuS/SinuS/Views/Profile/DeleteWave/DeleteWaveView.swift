@@ -63,7 +63,13 @@ struct DeleteWaveView: View {
                     UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
                     
                     Task {
-                        // Delete/Archive selected wave
+                        do {
+                            self.message = await manager.deleteWave(sinus_id: self.selectedWave.id)
+                            showingAlert = true
+                        }
+                        catch{
+                            print(error)
+                        }
                     }
                 }
                 .padding()
