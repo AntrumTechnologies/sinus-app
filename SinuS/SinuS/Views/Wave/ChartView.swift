@@ -36,19 +36,17 @@ struct ChartView: View {
             ScrollView(.horizontal) {
                 Chart {
                     ForEach(points) { point in
-                        if point.value != 0 {
-                            LineMark(x: .value("Date", point.label), y: .value("Value", point.value))
-                                .foregroundStyle(Style.TextOnColoredBackground)
-                                .symbol() {
-                                    Circle()
-                                        .fill(Style.TextOnColoredBackground)
-                                        .frame(width: 20)
-                                        .overlay(
-                                            Text("\(point.value)")
-                                                .font(.system(size: 10))
-                                                .foregroundColor(.white))
-                                }
-                        }
+                        LineMark(x: .value("Date", point.label), y: .value("Value", point.value))
+                            .foregroundStyle(Style.TextOnColoredBackground)
+                            .symbol() {
+                                Circle()
+                                    .fill(Style.TextOnColoredBackground)
+                                    .frame(width: 20)
+                                    .overlay(
+                                        Text("\(point.value)")
+                                            .font(.system(size: 10))
+                                            .foregroundColor(.white))
+                            }
                     }
                 }.chartYScale(domain: 0...100)
                 .frame(width: self.charWidth, height: 250)

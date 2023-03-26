@@ -24,7 +24,7 @@ struct HistoryItemView: View {
                 
                 HStack{
                     Text(String(value))
-                        .foregroundColor(Style.AppColor)
+                        .foregroundColor(Style.TextOnColoredBackground)
                 }
             }
             

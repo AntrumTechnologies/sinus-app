@@ -18,6 +18,7 @@ struct SingleWaveView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 50)
+                .cornerRadius(5)
                 .foregroundColor(.white)
                 .padding(.bottom)
 
