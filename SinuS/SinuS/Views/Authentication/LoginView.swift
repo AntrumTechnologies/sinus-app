@@ -63,9 +63,8 @@ struct LoginView: View {
                         self.showAlert.toggle()
                     } else {
                         // Set global authentication token.
-                        ContentView.AuthenticationToken = res!.success
                         let saveSuccessful: Bool = KeychainWrapper.standard.set(
-                            ContentView.AuthenticationToken,
+                            res!.success,
                             forKey: "bearerToken")
                         if !saveSuccessful {
                             print("Could not save bearerToken")

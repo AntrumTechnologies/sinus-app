@@ -8,18 +8,24 @@
 import SwiftUI
 
 struct VerifyEmailView: View {
+    @State private var nextView: Bool? = false
+    
     var body: some View {
         VStack {
-            Text("Please verify your email address by clicking on the link in your email. Then tap the button below.").padding()
+            Text("Please verify your email address by clicking on the link in your inbox.")
+                .padding()
+                .multilineTextAlignment(.center)
 
-            Button("Check now if email is verified") {
-                // self.manager.checkEmailVerified()
+            NavigationLink(destination: ContentView(), tag: true, selection: self.$nextView) { EmptyView() }
+            
+            Button("Continue") {
+                self.nextView = true
             }
-            .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
-            .cornerRadius(5)
+            .padding(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
+            .cornerRadius(3)
             .overlay(
                 RoundedRectangle(cornerRadius: 5)
-                    .stroke(lineWidth: 1.0)
+                    .stroke(lineWidth: 0.5)
             )
 
             Text("")
@@ -29,6 +35,7 @@ struct VerifyEmailView: View {
         .cornerRadius(5)
         .shadow(radius: 5)
         .padding()
+        .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Style.AppColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)

@@ -95,8 +95,7 @@ struct RegisterView: View {
                     self.showAlert.toggle()
                 } else {
                     // Set global authentication token.
-                    ContentView.AuthenticationToken = authenticationResult!.success
-                    let saveSuccessful: Bool = KeychainWrapper.standard.set(ContentView.AuthenticationToken, forKey: "bearerToken")
+                    let saveSuccessful: Bool = KeychainWrapper.standard.set(authenticationResult!.success, forKey: "bearerToken")
                     if !saveSuccessful {
                         print("Could not save bearerToken")
                     }

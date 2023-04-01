@@ -45,7 +45,7 @@ struct ForgotPasswordView: View {
 
             }
             .alert(isPresented: $showAlert) {
-                return Alert(title: Text("Error"), message: Text("Failed to request forgot password link for \(self.email)"), dismissButton: .default(Text("OK")))
+                return Alert(title: Text("Error"), message: Text("Failed to request password reset link for \(self.email)"), dismissButton: .default(Text("OK")))
             }
             .padding()
         }

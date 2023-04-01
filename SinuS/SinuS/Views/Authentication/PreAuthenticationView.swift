@@ -16,7 +16,7 @@ struct PreAuthenticationView: View {
     }
 
     init() {
-        ContentView.LoggedIn = false
+        
     }
 
     var body: some View {

@@ -83,8 +83,7 @@ struct ResetPasswordView: View {
                     UserDefaults.standard.removeObject(forKey: "forgotPasswordEmail")
 
                     // Set global authentication token.
-                    ContentView.AuthenticationToken = authenticationResult!.success
-                    let saveSuccessful: Bool = KeychainWrapper.standard.set(ContentView.AuthenticationToken, forKey: "bearerToken")
+                    let saveSuccessful: Bool = KeychainWrapper.standard.set(authenticationResult!.success, forKey: "bearerToken")
                     if !saveSuccessful {
                         print("Could not save bearerToken")
                     }
@@ -94,7 +93,7 @@ struct ResetPasswordView: View {
 
             }
             .alert(isPresented: $showAlert) {
-                return Alert(title: Text("Failed to reset password"), message: Text("Unable to reset password: \(self.email)"), dismissButton: .default(Text("OK")))
+                return Alert(title: Text("Failed to reset password"), message: Text("Unable to reset password for \(self.email)"), dismissButton: .default(Text("OK")))
             }
             .padding()
         }
