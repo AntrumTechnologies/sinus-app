@@ -61,7 +61,8 @@ struct HeaderWithSubTextView: View {
                     Spacer()
                 }
 
-                if (ContentView.LoggedIn) {
+                // TODO(PATBRO): yet determine how we know user is logged in here
+                if (true) {
                     Button(action: {
                         if (self.user.following ?? true) {
                             print("Unfollow")

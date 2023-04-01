@@ -10,18 +10,18 @@ import SwiftKeychainWrapper
 import Firebase
 
 struct ContentView: View {
-    let manager: DataManager
-
-    static var AuthenticationToken: String = KeychainWrapper.standard.string(forKey: "bearerToken") ?? ""
-    static var LoggedIn: Bool = false
+    @ObservedObject var contentModel = ContentViewModel(retrievable: ExternalRestRetriever())
     
     var body: some View {
         NavigationView {
-            if manager.isTokenValid() == false {
+            if self.contentModel.contentViewModel.loggedIn == false {
                 PreAuthenticationView()
            } else {
                 MenuView()
            }
+        }
+        .task {
+            await self.contentModel.reload()
         }
         .preferredColorScheme(.light)
     }
@@ -29,7 +29,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(manager: DataManager())
+        ContentView()
     }
 }
 

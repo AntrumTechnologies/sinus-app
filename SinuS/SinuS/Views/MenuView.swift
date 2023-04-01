@@ -15,7 +15,7 @@ struct MenuView: View {
     @State private var selection = 1
 
     init() {
-        ContentView.LoggedIn = true
+        
     }
 
     /**

@@ -81,6 +81,8 @@
 		CE95361029BCB71600D9B0D4 /* CreatedWavesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95360F29BCB71600D9B0D4 /* CreatedWavesModel.swift */; };
 		CEB12A25299946C4000D5669 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CEB12A24299946C4000D5669 /* Kingfisher */; };
 		CEBF7655299818FA00D5E3AF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF7654299818FA00D5E3AF /* NetworkManager.swift */; };
+		CEDADA4429D819A400340CAA /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDADA4329D819A400340CAA /* ContentViewModel.swift */; };
+		CEDADA4629D81A3D00340CAA /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDADA4529D81A3D00340CAA /* Content.swift */; };
 		CEECA4FD29709E0F00CA4496 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECA4FC29709E0F00CA4496 /* ForgotPasswordView.swift */; };
 		CEECA4FF2974534700CA4496 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECA4FE2974534700CA4496 /* ResetPasswordView.swift */; };
 		CEECA5012974665800CA4496 /* VerifyEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECA5002974665800CA4496 /* VerifyEmailView.swift */; };
@@ -177,6 +179,8 @@
 		CE95360D29BCB3F100D9B0D4 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		CE95360F29BCB71600D9B0D4 /* CreatedWavesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedWavesModel.swift; sourceTree = "<group>"; };
 		CEBF7654299818FA00D5E3AF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CEDADA4329D819A400340CAA /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		CEDADA4529D81A3D00340CAA /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		CEECA4FC29709E0F00CA4496 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		CEECA4FE2974534700CA4496 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		CEECA5002974665800CA4496 /* VerifyEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailView.swift; sourceTree = "<group>"; };
@@ -414,6 +418,8 @@
 				4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */,
 				4A32754E29B7B68C009D1CC8 /* GoogleService-Info.plist */,
 				4AD26FBB28BBA5D40065FB01 /* ContentView.swift */,
+				CEDADA4329D819A400340CAA /* ContentViewModel.swift */,
+				CEDADA4529D81A3D00340CAA /* Content.swift */,
 				4AD26FBD28BBA5D60065FB01 /* Assets.xcassets */,
 				4AD26FC228BBA5D60065FB01 /* Info.plist */,
 				4AD26FBF28BBA5D60065FB01 /* Preview Content */,
@@ -764,6 +770,7 @@
 				4A0B397928E081CF00D7EEC9 /* RelationshipStatus.swift in Sources */,
 				4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */,
 				4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */,
+				CEDADA4629D81A3D00340CAA /* Content.swift in Sources */,
 				4A32754929AA4088009D1CC8 /* FeedItemView.swift in Sources */,
 				4A0B397B28E0846900D7EEC9 /* RelationStatusView.swift in Sources */,
 				4A327547298EA697009D1CC8 /* PreAuthenticationView.swift in Sources */,
@@ -771,6 +778,7 @@
 				4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */,
 				4AC5B3D3296849DD003D819C /* RestApiHelper.swift in Sources */,
 				CEECA50329748DA600CA4496 /* ClickResetPasswordLinkView.swift in Sources */,
+				CEDADA4429D819A400340CAA /* ContentViewModel.swift in Sources */,
 				4AD26FED28C676C10065FB01 /* LineChart.swift in Sources */,
 				4A0B396E28D3935900D7EEC9 /* NewWaveView.swift in Sources */,
 				CE95360E29BCB3F100D9B0D4 /* Profile.swift in Sources */,
