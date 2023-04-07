@@ -48,6 +48,7 @@
 		4A32757629E002F6009D1CC8 /* FollowingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757529E002F6009D1CC8 /* FollowingModel.swift */; };
 		4A32757A29E02258009D1CC8 /* UpdateWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757929E02258009D1CC8 /* UpdateWaveModel.swift */; };
 		4A32757C29E02362009D1CC8 /* WaveUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757B29E02362009D1CC8 /* WaveUpdate.swift */; };
+		4A32758029E026FF009D1CC8 /* NewWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757F29E026FF009D1CC8 /* NewWaveModel.swift */; };
 		4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D022917C2F9001DB4F7 /* LoginView.swift */; };
 		4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D052917C30D001DB4F7 /* RegisterView.swift */; };
 		4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */; };
@@ -144,6 +145,7 @@
 		4A32757529E002F6009D1CC8 /* FollowingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingModel.swift; sourceTree = "<group>"; };
 		4A32757929E02258009D1CC8 /* UpdateWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWaveModel.swift; sourceTree = "<group>"; };
 		4A32757B29E02362009D1CC8 /* WaveUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveUpdate.swift; sourceTree = "<group>"; };
+		4A32757F29E026FF009D1CC8 /* NewWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWaveModel.swift; sourceTree = "<group>"; };
 		4A4C6D022917C2F9001DB4F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4A4C6D052917C30D001DB4F7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResult.swift; sourceTree = "<group>"; };
@@ -383,6 +385,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		4A32757D29E026E7009D1CC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A32757F29E026FF009D1CC8 /* NewWaveModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A32757E29E026EE009D1CC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A0B396D28D3935900D7EEC9 /* NewWaveView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4A4C6D092917CDD5001DB4F7 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,7 +571,8 @@
 		CE7B525529BD176400913C3C /* NewWave */ = {
 			isa = PBXGroup;
 			children = (
-				4A0B396D28D3935900D7EEC9 /* NewWaveView.swift */,
+				4A32757E29E026EE009D1CC8 /* View */,
+				4A32757D29E026E7009D1CC8 /* Model */,
 			);
 			path = NewWave;
 			sourceTree = "<group>";
@@ -774,6 +793,7 @@
 				4AABA28528CFACC500070E6E /* SinusUpdate.swift in Sources */,
 				4AC34A85296AEBAD0063FA84 /* CompareView.swift in Sources */,
 				4AC34A88296F1CA30063FA84 /* FeedModel.swift in Sources */,
+				4A32758029E026FF009D1CC8 /* NewWaveModel.swift in Sources */,
 				4A15E00328C7CD5300422C05 /* UpdateWaveView.swift in Sources */,
 				4AC5B3D82969876B003D819C /* CreatedWavesView.swift in Sources */,
 				4A32754D29AFD1B3009D1CC8 /* Wave.swift in Sources */,

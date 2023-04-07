@@ -11,13 +11,13 @@ import SwiftUI
     View which allows users to create new graphs.
  */
 struct NewWaveView: View {
-    let manager: DataManager
     let currentUsername: String
 
     @State private var waveName: String = ""
     @State private var showingAlert = false
     @State private var message: String = ""
-
+    
+    var newWaveModel = NewWaveModel(retrievable: ExternalRestRetriever())
     /**
         The view.
      */
@@ -53,9 +53,12 @@ struct NewWaveView: View {
                 .foregroundColor(Style.TextOnColoredBackground)
 
                 Button("Add wave") {
+                    let resign = #selector(UIResponder.resignFirstResponder)
+                    UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+                    
                     Task {
                         do {
-                            self.message = await self.manager.addWave(waveName: self.waveName)
+                            self.message = await self.newWaveModel.createNewWave(name: self.waveName)
                             showingAlert = true
                         }
                         catch {
@@ -83,6 +86,6 @@ struct NewWaveView: View {
 
 struct NewUserView_Previews: PreviewProvider {
     static var previews: some View {
-        NewWaveView(manager: DataManager(), currentUsername: "")
+        NewWaveView(currentUsername: "")
     }
 }

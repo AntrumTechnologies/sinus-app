@@ -18,7 +18,7 @@ struct UpdateWaveView: View {
     @State private var description: String = ""
     @State private var message: String = ""
     
-    var updateWaveModel = UpdateWaveModel()
+    var updateWaveModel = UpdateWaveModel(retrievable: ExternalRestRetriever())
     
     var options: [String] {
         return waves.map { "\($0.date_name)" }
