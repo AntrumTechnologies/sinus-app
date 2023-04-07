@@ -27,13 +27,14 @@ import SwiftKeychainWrapper
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         let bearerToken: String = KeychainWrapper.standard.string(forKey: "bearerToken") ?? ""
         request.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
-        
+        print("Bearer \(bearerToken)")
         var data: Data? = nil
         
         do {
             data = await self.retrievable.Retrieve(request: request)
             contentViewModel.user = try JSONDecoder().decode(Profile.self, from: data ?? Data())
             // Successfully retrieved user data, thus user is logged in
+            print("User is logged in")
             contentViewModel.loggedIn = true
         } catch {
             debugPrint("Error loading \(url) caused error \(error) with response \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")

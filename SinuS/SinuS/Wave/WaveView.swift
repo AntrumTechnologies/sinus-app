@@ -20,6 +20,8 @@ struct WaveView: View {
     private let user: SinusUserData
     private let avatar: KFImage
     @ObservedObject var waveModel = FeedItemModel(retrievable: ExternalRestRetriever())
+    @ObservedObject var followingModel = FollowingModel()
+    @ObservedObject var contentModel = ContentViewModel(retrievable: ExternalRestRetriever())
     
     private static var following = false
 
@@ -35,12 +37,15 @@ struct WaveView: View {
 
     var body: some View {
         VStack {
-            HeaderWithSubTextView(
+            HeaderView(
                 user: self.user,
                 subtext: self.waveModel.waveData.sinusTarget,
                 avatar: self.avatar,
                 scaleFactor: 1,
-                gatherer: self.gatherer)
+                gatherer: self.gatherer,
+                following: self.followingModel.isFollowing,
+                loggedIn: self.contentModel.contentViewModel.loggedIn,
+                followingModel: self.followingModel)
 
             ScrollView(.vertical) {
                 Divider()
@@ -70,9 +75,16 @@ struct WaveView: View {
         }
         .task {
             await self.waveModel.reload(userData: user)
+            await self.followingModel.reload(user: self.user)
+            await self.contentModel.reload()
         }
         .refreshable {
-            await self.waveModel.reload(userData: user)
+            Task{
+                await self.followingModel.reload(user: self.user)
+                await self.waveModel.reload(userData: user)
+                await self.contentModel.reload()
+            }
+          
         }
         .toolbar(.visible, for: ToolbarPlacement.navigationBar)
         .toolbarBackground(Style.AppColor, for: .navigationBar)
