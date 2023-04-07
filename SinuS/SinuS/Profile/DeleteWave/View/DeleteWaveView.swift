@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct DeleteWaveView: View {
-    let manager: DataManager
     let waves: [SinusUserData]
     
     @State private var selection = ""
     @State private var message: String = ""
     @State private var showingAlert = false
+    
+    var deleteWaveModel = DeleteWaveModel(retrievable: ExternalRestRetriever())
     
     var options: [String] {
         return waves.map { "\($0.date_name)" }
@@ -64,7 +65,7 @@ struct DeleteWaveView: View {
                     
                     Task {
                         do {
-                            self.message = await manager.deleteWave(sinus_id: self.selectedWave.id)
+                            self.message = await self.deleteWaveModel.deleteWave(wave_id: self.selectedWave.id)
                             showingAlert = true
                         }
                         catch{
@@ -92,6 +93,6 @@ struct DeleteWaveView: View {
 
 struct DeleteWaveView_Previews: PreviewProvider {
     static var previews: some View {
-        DeleteWaveView(manager: DataManager(), waves: [])
+        DeleteWaveView(waves: [])
     }
 }

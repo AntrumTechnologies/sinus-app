@@ -49,6 +49,7 @@
 		4A32757A29E02258009D1CC8 /* UpdateWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757929E02258009D1CC8 /* UpdateWaveModel.swift */; };
 		4A32757C29E02362009D1CC8 /* WaveUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757B29E02362009D1CC8 /* WaveUpdate.swift */; };
 		4A32758029E026FF009D1CC8 /* NewWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757F29E026FF009D1CC8 /* NewWaveModel.swift */; };
+		4A32758429E029D7009D1CC8 /* DeleteWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32758329E029D7009D1CC8 /* DeleteWaveModel.swift */; };
 		4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D022917C2F9001DB4F7 /* LoginView.swift */; };
 		4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D052917C30D001DB4F7 /* RegisterView.swift */; };
 		4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */; };
@@ -146,6 +147,7 @@
 		4A32757929E02258009D1CC8 /* UpdateWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWaveModel.swift; sourceTree = "<group>"; };
 		4A32757B29E02362009D1CC8 /* WaveUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveUpdate.swift; sourceTree = "<group>"; };
 		4A32757F29E026FF009D1CC8 /* NewWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWaveModel.swift; sourceTree = "<group>"; };
+		4A32758329E029D7009D1CC8 /* DeleteWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWaveModel.swift; sourceTree = "<group>"; };
 		4A4C6D022917C2F9001DB4F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4A4C6D052917C30D001DB4F7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResult.swift; sourceTree = "<group>"; };
@@ -303,7 +305,8 @@
 		4A32756C29D05811009D1CC8 /* DeleteWave */ = {
 			isa = PBXGroup;
 			children = (
-				4A32756D29D05830009D1CC8 /* DeleteWaveView.swift */,
+				4A32758229E029C4009D1CC8 /* View */,
+				4A32758129E029B7009D1CC8 /* Model */,
 			);
 			path = DeleteWave;
 			sourceTree = "<group>";
@@ -397,6 +400,22 @@
 			isa = PBXGroup;
 			children = (
 				4A0B396D28D3935900D7EEC9 /* NewWaveView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A32758129E029B7009D1CC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A32758329E029D7009D1CC8 /* DeleteWaveModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A32758229E029C4009D1CC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A32756D29D05830009D1CC8 /* DeleteWaveView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -780,6 +799,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A32758429E029D7009D1CC8 /* DeleteWaveModel.swift in Sources */,
 				CEECA5012974665800CA4496 /* VerifyEmailView.swift in Sources */,
 				4A32757C29E02362009D1CC8 /* WaveUpdate.swift in Sources */,
 				4A32756729D04049009D1CC8 /* CompareModel.swift in Sources */,

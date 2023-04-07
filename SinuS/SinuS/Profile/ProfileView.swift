@@ -33,7 +33,7 @@ struct ProfileView: View {
                 
                 NewWaveView(currentUsername: profileDataModel.profileData.name)
                 
-                DeleteWaveView(manager: gatherer, waves: createdWavesModel.createdWaves)
+                DeleteWaveView(waves: createdWavesModel.createdWaves)
                 
                 Divider()
                 
