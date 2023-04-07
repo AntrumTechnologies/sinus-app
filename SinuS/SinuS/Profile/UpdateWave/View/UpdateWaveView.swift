@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct UpdateWaveView: View {
-    let manager: DataManager
     let waves: [SinusUserData]
 
     @State private var value = 50.0
@@ -18,6 +17,8 @@ struct UpdateWaveView: View {
     @State private var selection = ""
     @State private var description: String = ""
     @State private var message: String = ""
+    
+    var updateWaveModel = UpdateWaveModel()
     
     var options: [String] {
         return waves.map { "\($0.date_name)" }
@@ -106,7 +107,8 @@ struct UpdateWaveView: View {
                     {
                         Task {
                             do {
-                                self.message = await manager.updateWave(sinus_id: self.selectedWave.id, date: self.date, value: Int(self.value), descripting: self.description)
+                                let update = WaveUpdate(wave_id: self.selectedWave.id, date: self.date, value: Int(self.value), description: self.description)
+                                self.message = await self.updateWaveModel.updateWave(update: update)
                                 showingAlert = true
                             }
                             catch{
@@ -145,6 +147,6 @@ struct UpdateWaveView_Previews: PreviewProvider {
         
         ]
 
-        UpdateWaveView(manager: DataManager(), waves: waves)
+        UpdateWaveView(waves: waves)
     }
 }

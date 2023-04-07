@@ -22,7 +22,6 @@
 		4A32752129772762009D1CC8 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32752029772762009D1CC8 /* StatisticsView.swift */; };
 		4A32752329772888009D1CC8 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32752229772888009D1CC8 /* TextView.swift */; };
 		4A327527297729BE009D1CC8 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A327526297729BE009D1CC8 /* HeaderView.swift */; };
-		4A32752929772B0A009D1CC8 /* WaveMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32752829772B0A009D1CC8 /* WaveMenuView.swift */; };
 		4A32752B29773236009D1CC8 /* CompareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32752A29773236009D1CC8 /* CompareButtonView.swift */; };
 		4A32753A298AE46A009D1CC8 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4A327539298AE46A009D1CC8 /* FirebaseAnalytics */; };
 		4A32753C298AE46A009D1CC8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32753B298AE46A009D1CC8 /* FirebaseAuth */; };
@@ -47,6 +46,8 @@
 		4A32756B29D05161009D1CC8 /* LegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32756A29D05161009D1CC8 /* LegendView.swift */; };
 		4A32756E29D05830009D1CC8 /* DeleteWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32756D29D05830009D1CC8 /* DeleteWaveView.swift */; };
 		4A32757629E002F6009D1CC8 /* FollowingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757529E002F6009D1CC8 /* FollowingModel.swift */; };
+		4A32757A29E02258009D1CC8 /* UpdateWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757929E02258009D1CC8 /* UpdateWaveModel.swift */; };
+		4A32757C29E02362009D1CC8 /* WaveUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757B29E02362009D1CC8 /* WaveUpdate.swift */; };
 		4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D022917C2F9001DB4F7 /* LoginView.swift */; };
 		4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D052917C30D001DB4F7 /* RegisterView.swift */; };
 		4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */; };
@@ -123,7 +124,6 @@
 		4A32752029772762009D1CC8 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		4A32752229772888009D1CC8 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		4A327526297729BE009D1CC8 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		4A32752829772B0A009D1CC8 /* WaveMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveMenuView.swift; sourceTree = "<group>"; };
 		4A32752A29773236009D1CC8 /* CompareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareButtonView.swift; sourceTree = "<group>"; };
 		4A327546298EA697009D1CC8 /* PreAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreAuthenticationView.swift; sourceTree = "<group>"; };
 		4A32754829AA4088009D1CC8 /* FeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemView.swift; sourceTree = "<group>"; };
@@ -142,6 +142,8 @@
 		4A32756A29D05161009D1CC8 /* LegendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendView.swift; sourceTree = "<group>"; };
 		4A32756D29D05830009D1CC8 /* DeleteWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWaveView.swift; sourceTree = "<group>"; };
 		4A32757529E002F6009D1CC8 /* FollowingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingModel.swift; sourceTree = "<group>"; };
+		4A32757929E02258009D1CC8 /* UpdateWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWaveModel.swift; sourceTree = "<group>"; };
+		4A32757B29E02362009D1CC8 /* WaveUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveUpdate.swift; sourceTree = "<group>"; };
 		4A4C6D022917C2F9001DB4F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4A4C6D052917C30D001DB4F7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResult.swift; sourceTree = "<group>"; };
@@ -240,7 +242,6 @@
 				4A0B397328D6044200D7EEC9 /* WaveView.swift */,
 				4A32751E2977244E009D1CC8 /* ChartView.swift */,
 				4A32752029772762009D1CC8 /* StatisticsView.swift */,
-				4A32752829772B0A009D1CC8 /* WaveMenuView.swift */,
 				4A32752A29773236009D1CC8 /* CompareButtonView.swift */,
 				4A32755029B7BA1E009D1CC8 /* HistoryView.swift */,
 				4A32755229B7BD91009D1CC8 /* HistoryItemView.swift */,
@@ -361,6 +362,23 @@
 			children = (
 				CE7B525C29BE159500913C3C /* FeedItemModel.swift */,
 				4A32757529E002F6009D1CC8 /* FollowingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A32757729E0223D009D1CC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A15E00228C7CD5300422C05 /* UpdateWaveView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A32757829E02249009D1CC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A32757929E02258009D1CC8 /* UpdateWaveModel.swift */,
+				4A32757B29E02362009D1CC8 /* WaveUpdate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -543,7 +561,8 @@
 		CE7B525629BD176F00913C3C /* UpdateWave */ = {
 			isa = PBXGroup;
 			children = (
-				4A15E00228C7CD5300422C05 /* UpdateWaveView.swift */,
+				4A32757829E02249009D1CC8 /* Model */,
+				4A32757729E0223D009D1CC8 /* View */,
 			);
 			path = UpdateWave;
 			sourceTree = "<group>";
@@ -743,6 +762,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEECA5012974665800CA4496 /* VerifyEmailView.swift in Sources */,
+				4A32757C29E02362009D1CC8 /* WaveUpdate.swift in Sources */,
 				4A32756729D04049009D1CC8 /* CompareModel.swift in Sources */,
 				4A32756E29D05830009D1CC8 /* DeleteWaveView.swift in Sources */,
 				CEECA4FF2974534700CA4496 /* ResetPasswordView.swift in Sources */,
@@ -786,9 +806,9 @@
 				4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */,
 				4A0B397028D3937100D7EEC9 /* AdminView.swift in Sources */,
 				4A327527297729BE009D1CC8 /* HeaderView.swift in Sources */,
+				4A32757A29E02258009D1CC8 /* UpdateWaveModel.swift in Sources */,
 				4A32751F2977244E009D1CC8 /* ChartView.swift in Sources */,
 				CE89A87A296AF2D300300C9D /* LogHelper.swift in Sources */,
-				4A32752929772B0A009D1CC8 /* WaveMenuView.swift in Sources */,
 				4AC5B3DA296989B0003D819C /* SingleWaveView.swift in Sources */,
 				4A0B396C28D38F0700D7EEC9 /* MenuButton.swift in Sources */,
 				4A32754B29AFD157009D1CC8 /* WavePreviewView.swift in Sources */,

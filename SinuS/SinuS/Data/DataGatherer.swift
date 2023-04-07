@@ -364,38 +364,6 @@ public class DataManager {
         
         return user!
     }
-    
-
-
-    public func unFollowUser(user_id: Int) {
-        let urlString = "https://lovewaves.antrum-technologies.nl/api/unfollow"
-        var request = RestApiHelper.createRequest(type: "PUT", url: urlString)
-
-        let parameters: [String: Any] = ["user_id_to_unfollow": user_id ]
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-        } catch let error {
-            print(error.localizedDescription)
-            return
-        }
-
-        _ = RestApiHelper.perfomRestCall(request: request)
-    }
-
-    public func followUser(user_id: Int) {
-        let urlString = "https://lovewaves.antrum-technologies.nl/api/follow"
-        var request = RestApiHelper.createRequest(type: "PUT", url: urlString)
-
-        let parameters: [String: Any] = ["user_id_to_follow": user_id ]
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-        } catch let error {
-            print(error.localizedDescription)
-            return
-        }
-
-        _ = RestApiHelper.perfomRestCall(request: request)
-    }
 
     /**
         Retrieves the Sinus data for a single user.

@@ -27,7 +27,7 @@ struct ProfileView: View {
                 
                 Divider()
                 
-                UpdateWaveView(manager: gatherer, waves: createdWavesModel.createdWaves)
+                UpdateWaveView(waves: createdWavesModel.createdWaves)
                 
                 Divider()
                 
