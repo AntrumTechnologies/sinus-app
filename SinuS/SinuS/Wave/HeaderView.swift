@@ -12,7 +12,6 @@ struct HeaderView: View {
     var subtext: String
     var avatar: KFImage
     var scaleFactor: Double
-    var gatherer: DataManager
     var following: Bool
     var loggedIn: Bool
     let followingModel: FollowingModel
@@ -20,12 +19,11 @@ struct HeaderView: View {
     
 
     
-    init(user: SinusUserData, subtext: String, avatar: KFImage, scaleFactor: Double, gatherer: DataManager, following: Bool, loggedIn: Bool, followingModel: FollowingModel) {
+    init(user: SinusUserData, subtext: String, avatar: KFImage, scaleFactor: Double, following: Bool, loggedIn: Bool, followingModel: FollowingModel) {
         self.user = user
         self.subtext = subtext
         self.avatar = avatar
         self.scaleFactor = scaleFactor
-        self.gatherer = gatherer
         self.following = following
         self.loggedIn = loggedIn
         self.followingModel = followingModel

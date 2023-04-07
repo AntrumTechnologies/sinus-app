@@ -16,7 +16,6 @@ struct ChartPoint: Identifiable {
 }
 
 struct WaveView: View {
-    private let gatherer: DataManager
     private let user: SinusUserData
     private let avatar: KFImage
     @ObservedObject var waveModel = FeedItemModel(retrievable: ExternalRestRetriever())
@@ -25,8 +24,7 @@ struct WaveView: View {
     
     private static var following = false
 
-    init(gatherer: DataManager, user: SinusUserData) {
-        self.gatherer = gatherer
+    init(user: SinusUserData) {
         self.user = user
         // Create avatar image
         // TODO: do not run avatar download on main thread, use a local placeholder avatar instead
@@ -42,7 +40,6 @@ struct WaveView: View {
                 subtext: self.waveModel.waveData.sinusTarget,
                 avatar: self.avatar,
                 scaleFactor: 1,
-                gatherer: self.gatherer,
                 following: self.followingModel.isFollowing,
                 loggedIn: self.contentModel.contentViewModel.loggedIn,
                 followingModel: self.followingModel)
@@ -53,7 +50,7 @@ struct WaveView: View {
                 if (self.waveModel.chartPoints.count > 0) {
                     ChartView(points: self.waveModel.chartPoints)
                     
-                    CompareButtonView(gatherer: self.gatherer, data: self.waveModel.waveData)
+                    CompareButtonView(data: self.waveModel.waveData)
                         .padding(.bottom)
                     
                     Divider()
@@ -96,7 +93,6 @@ struct WaveView: View {
 struct LineChart2_Previews: PreviewProvider {
     static var previews: some View {
         WaveView(
-            gatherer: DataManager(),
             user: SinusUserData(
             id: 1,
             name: "Lukas",

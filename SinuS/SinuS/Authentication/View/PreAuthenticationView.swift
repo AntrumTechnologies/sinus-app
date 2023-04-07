@@ -20,12 +20,10 @@ struct PreAuthenticationView: View {
     }
 
     var body: some View {
-        let manager = DataManager()
-
         VStack {
             TabView(selection: self.$selection) {
                 Group {
-                    FeedView(gatherer: manager, onlyFollowing: false)
+                    FeedView(onlyFollowing: false)
                         .tabItem {
                             Label("Explore", systemImage: "network")
                         }

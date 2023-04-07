@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CompareButtonView: View {
-    let gatherer: DataManager
     let data: SinusData
 
     var body: some View {
@@ -29,7 +28,6 @@ struct CompareButtonView: View {
 struct CompareButtonView_Previews: PreviewProvider {
     static var previews: some View {
         CompareButtonView(
-            gatherer: DataManager(),
             data: SinusData(
                 id: 1, values: [], labels: [],
                 descriptions: [], sinusName: "",

@@ -8,16 +8,13 @@
 import SwiftUI
 
 struct FeedView: View {
-    var gatherer: DataManager
     let onlyFollowing: Bool
-    @StateObject var feedDataModel = FeedModel()
+    @StateObject var feedDataModel = FeedModel(retrievable: ExternalRestRetriever())
 
     var body: some View {
         List(feedDataModel.feedModel) { userData in
             NavigationLink(
-                destination: WaveView(
-                    gatherer: self.gatherer,
-                    user: userData),
+                destination: WaveView(user: userData),
                 label: {
                     FeedItemView(userData: userData)
                 })
@@ -33,6 +30,6 @@ struct FeedView: View {
 
 struct FeedView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedView(gatherer: DataManager(), onlyFollowing: false)
+        FeedView(onlyFollowing: false)
     }
 }

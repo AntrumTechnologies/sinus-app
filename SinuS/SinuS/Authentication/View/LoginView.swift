@@ -10,12 +10,13 @@ import SwiftKeychainWrapper
 import Firebase
 
 struct LoginView: View {
-    let manager = DataManager()
 
     @State private var showMenu: Bool? = false
     @State private var email: String = UserDefaults.standard.string(forKey: "email") ?? ""
     @State private var password: String = ""
     @State private var showAlert = false
+    
+    var authenticationModel = AuthenticationModel(retrievable: ExternalRestRetriever())
 
     var body: some View {
         VStack {
@@ -56,7 +57,7 @@ struct LoginView: View {
 
                 // Login Button
                 Button("Login") {
-                    let res = self.manager.login(email: self.email, password: self.password)
+                    let res = self.authenticationModel.login(email: self.email, password: self.password)
                     UserDefaults.standard.set(self.email, forKey: "email")
 
                     if res == nil {

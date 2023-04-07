@@ -9,8 +9,6 @@ import SwiftUI
 import SwiftKeychainWrapper
 
 struct ResetPasswordView: View {
-    let manager = DataManager()
-
     @State private var token: String = ""
     @State private var email: String = UserDefaults.standard.string(forKey: "forgotPasswordEmail") ?? ""
     @State private var password: String = ""
@@ -18,6 +16,8 @@ struct ResetPasswordView: View {
     @State private var showAlert = false
     @State private var showLogin: Bool? = false
 
+    var authenticationModel = AuthenticationModel(retrievable: ExternalRestRetriever())
+    
     var body: some View {
         VStack {
             if self.email != "" {
@@ -71,7 +71,7 @@ struct ResetPasswordView: View {
             NavigationLink(destination: LoginView(), tag: true, selection: self.$showLogin) { EmptyView() }
 
             Button("Submit") {
-                let authenticationResult = self.manager.resetPassword(
+                let authenticationResult = self.authenticationModel.resetPassword(
                     token: self.token,
                     email: self.email,
                     password: self.password,

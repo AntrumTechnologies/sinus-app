@@ -22,21 +22,20 @@ struct MenuView: View {
         The view.
      */
     var body: some View {
-        let manager = DataManager()
         VStack {
             TabView(selection: self.$selection) {
                 Group {
-                    FeedView(gatherer: manager, onlyFollowing: false)
+                    FeedView(onlyFollowing: false)
                         .tabItem {
                             Label("Explore", systemImage: "network")
                         }
                         .tag(1)
-                    FeedView(gatherer: manager, onlyFollowing: true)
+                    FeedView(onlyFollowing: true)
                         .tabItem {
                             Label("Following", systemImage: "person.2.fill")
                         }
                         .tag(2)
-                    ProfileView(gatherer: manager)
+                    ProfileView()
                         .tabItem {
                             Label("Profile", systemImage: "person")
                         }

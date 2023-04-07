@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ForgotPasswordView: View {
-    let manager = DataManager()
-
     @State private var email: String = UserDefaults.standard.string(forKey: "email") ?? ""
     @State private var showAlert = false
     @State private var nextView: Bool? = false
+    
+    var authenticationModel = AuthenticationModel(retrievable: ExternalRestRetriever())
 
     var body: some View {
         VStack {
@@ -34,7 +34,7 @@ struct ForgotPasswordView: View {
             NavigationLink(destination: ClickResetPasswordLinkView(), tag: true, selection: self.$nextView) { EmptyView() }
 
             Button("Submit") {
-                let authenticationResult = self.manager.forgotPassword(email: self.email)
+                let authenticationResult = self.authenticationModel.forgotPassword(email: self.email)
 
                 if authenticationResult == nil {
                     self.showAlert.toggle()

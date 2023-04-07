@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftKeychainWrapper
 
 struct ManageProfileView: View {
-    let manager: DataManager
     let currentUser: Profile
 
     var body: some View {
@@ -32,7 +31,7 @@ struct ManageProfileView: View {
                     KeychainWrapper.standard.remove(forKey: "bearerToken")
                 })
 
-                NavigationLink(destination: EditProfileView(gatherer: self.manager, currentUser: self.currentUser), label: {
+                NavigationLink(destination: EditProfileView(currentUser: self.currentUser), label: {
                     MenuButton(image: Image(systemName: "gearshape.fill"), name: "Edit")
                 })
 
@@ -46,6 +45,6 @@ struct ManageProfileView: View {
 
 struct ManageProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ManageProfileView(manager: DataManager(), currentUser: Profile.init(id: 0, name: "Jan", email: "Jan@Jan.nl", email_verified_at: "", created_at: "", updated_at: "", avatar: ""))
+        ManageProfileView(currentUser: Profile.init(id: 0, name: "Jan", email: "Jan@Jan.nl", email_verified_at: "", created_at: "", updated_at: "", avatar: ""))
     }
 }

@@ -19,10 +19,12 @@ private struct GraphDataPoint: Codable {
 }
 
 @MainActor class CompareModel: ObservableObject {
+    let retrievable: RestRetrievable
     @Published var originPoints: [ChartPoint]
     @Published var comparePoints: [ChartPoint]
     
-    init() {
+    init(retrievable: RestRetrievable) {
+        self.retrievable = retrievable
         self.originPoints = []
         self.comparePoints = []
     }
@@ -51,7 +53,7 @@ private struct GraphDataPoint: Codable {
         var data: Data? = nil
         var users: [SinusUserData] = []
         do {
-            (data, _) = try await urlSession.data(for: request)
+            data = await self.retrievable.Retrieve(request: request)
             users = try JSONDecoder().decode([SinusUserData].self, from: data!)
             
         } catch {
@@ -72,7 +74,7 @@ private struct GraphDataPoint: Codable {
         let userRequest = self.createRequest(url: userUrl)
         
         do {
-            (data, _) = try await urlSession.data(for: userRequest)
+            data = await self.retrievable.Retrieve(request: userRequest)
             let graphPoints = try JSONDecoder().decode([GraphDataPoint].self, from: data!)
             
             var compareList = [ChartPoint]()

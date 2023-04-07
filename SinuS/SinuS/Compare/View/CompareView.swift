@@ -13,7 +13,7 @@ struct CompareView: View {
     let compareName: String
     let merged: Bool
 
-    @ObservedObject var compareModel = CompareModel()
+    @ObservedObject var compareModel = CompareModel(retrievable: ExternalRestRetriever())
     
     private func charWidth(points: [ChartPoint]) -> CGFloat {
         let width = CGFloat(points.count) * 100

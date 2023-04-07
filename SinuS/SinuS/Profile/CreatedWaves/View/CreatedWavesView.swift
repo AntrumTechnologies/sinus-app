@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CreatedWavesView: View {
-    let gatherer: DataManager
     let waves: [SinusUserData]
 
     var body: some View {
@@ -26,7 +25,7 @@ struct CreatedWavesView: View {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(waves, id: \.id) { wave in
                         NavigationLink(
-                            destination: WaveView(gatherer: self.gatherer, user: wave),
+                            destination: WaveView(user: wave),
                             label: {
                                 SingleWaveView(wave: wave)
                             })
@@ -45,6 +44,6 @@ struct CreatedWavesView_Previews: PreviewProvider {
             SinusUserData(id: 1, name: "Name", user_id: 2, date_name: "Target1", created_at: "", updated_at: "", deleted_at: "", archived: 0, avatar: "", following: false),
         ]
 
-        CreatedWavesView(gatherer: DataManager(), waves: waves)
+        CreatedWavesView(waves: waves)
     }
 }

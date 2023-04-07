@@ -9,8 +9,6 @@ import SwiftUI
 import SwiftKeychainWrapper
 
 struct RegisterView: View {
-    let manager = DataManager()
-
     @State private var name: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
@@ -18,6 +16,8 @@ struct RegisterView: View {
     @State private var showAlert = false
     @State private var showMenu: Bool? = false
 
+    var authenticationModel = AuthenticationModel(retrievable: ExternalRestRetriever())
+    
     var body: some View {
         VStack {
 
@@ -85,7 +85,7 @@ struct RegisterView: View {
 
             // Register button
             Button("Register") {
-                let authenticationResult = self.manager.register(
+                let authenticationResult = self.authenticationModel.register(
                     name: self.name,
                     email: self.email,
                     password: self.password,

@@ -9,7 +9,12 @@ import SwiftUI
 import SwiftKeychainWrapper
 
 class CreatedWavesModel: ObservableObject {
+    let retrievable: RestRetrievable
     @MainActor @Published var createdWaves: [SinusUserData] = []
+    
+    init(retrievable: RestRetrievable) {
+        self.retrievable = retrievable
+    }
     
     @MainActor func reload() async {
         let url = URL(string: "https://lovewaves.antrum-technologies.nl/api/sinus/created")!
@@ -23,7 +28,7 @@ class CreatedWavesModel: ObservableObject {
         var data: Data? = nil
         
         do {
-            (data, _) = try await urlSession.data(for: request)
+            data = await self.retrievable.Retrieve(request: request)
             self.createdWaves = try JSONDecoder().decode([SinusUserData].self, from: data!)
         } catch {
             debugPrint("Error loading: \(error) \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")

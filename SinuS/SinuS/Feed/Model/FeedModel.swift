@@ -11,11 +11,11 @@ import SwiftKeychainWrapper
 @MainActor class FeedModel: ObservableObject {
     @Published private var _feedData: [SinusUserData]
     @Published private var _isLoading: Bool = true
-    private var _gatherer: DataManager
-
-    init() {
-        _gatherer = DataManager()
+    let retrievable: RestRetrievable
+    
+    init(retrievable: RestRetrievable) {
         _feedData = []
+        self.retrievable = retrievable
     }
 
     var isLoading: Bool {
@@ -46,8 +46,10 @@ import SwiftKeychainWrapper
         var data: Data? = nil
         
         do {
-            (data, _) = try await urlSession.data(for: request)
-            self._feedData = try JSONDecoder().decode([SinusUserData].self, from: data!)
+            data = await self.retrievable.Retrieve(request: request)
+            if (data != nil) {
+                self._feedData = try JSONDecoder().decode([SinusUserData].self, from: data!)
+            }
         } catch {
             debugPrint("Error loading \(url) caused error \(error) with response \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")
         }
