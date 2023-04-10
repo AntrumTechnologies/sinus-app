@@ -25,11 +25,19 @@ struct ManageProfileView: View {
             HStack {
                 Spacer()
 
-                NavigationLink(destination: PreAuthenticationView(), label: {
+                NavigationLink(destination: ContentView(), label: {
                     MenuButton(image: Image(systemName: "figure.walk.departure"), name: "Logout")
                 }).simultaneousGesture(TapGesture().onEnded {
+                    let bearerToken = KeychainWrapper.standard.string(forKey: "bearerToken")
                     KeychainWrapper.standard.remove(forKey: "bearerToken")
+                    if (bearerToken == KeychainWrapper.standard.string(forKey: "bearerToken")) {
+                        print("FAILED TO DELETE BEARER TOKEN")
+                    } else {
+                        print("DELETED BEARER TOKEN")
+                    }
                 })
+                
+                Spacer()
 
                 NavigationLink(destination: EditProfileView(currentUser: self.currentUser), label: {
                     MenuButton(image: Image(systemName: "gearshape.fill"), name: "Edit")
@@ -39,6 +47,8 @@ struct ManageProfileView: View {
             }
 
             Spacer()
+            
+            Text("")
         }
     }
 }

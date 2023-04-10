@@ -128,7 +128,6 @@ struct UpdateWaveView: View {
             .background(Style.AppBackground)
             .foregroundColor(Style.TextOnColoredBackground)
             .cornerRadius(5)
-            .shadow(radius: 5)
             .padding()
             .foregroundColor(.white)
 

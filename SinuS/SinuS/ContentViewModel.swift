@@ -27,7 +27,9 @@ import SwiftKeychainWrapper
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         let bearerToken: String = KeychainWrapper.standard.string(forKey: "bearerToken") ?? ""
         request.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
-        print("Bearer \(bearerToken)")
+        // Session is also stored in cookie, remove for this request
+        request.httpShouldHandleCookies = false
+        
         var data: Data? = nil
         
         do {
@@ -36,7 +38,9 @@ import SwiftKeychainWrapper
             // Successfully retrieved user data, thus user is logged in
             print("User is logged in")
             contentViewModel.loggedIn = true
+            print("User has valid token")
         } catch {
+            print("User has NOT a valid token")
             debugPrint("Error loading \(url) caused error \(error) with response \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")
         }
         

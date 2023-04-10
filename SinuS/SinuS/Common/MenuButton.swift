@@ -21,14 +21,14 @@ struct MenuButton: View {
         VStack {
             image
                 .resizable()
-                .frame(width: 35, height: 35)
+                .frame(width: 25, height: 25)
             Text(name)
         }
-        .frame(width: 150, height: 75)
+        .frame(width: 120, height: 60)
         .background(Style.AppBackground)
         .cornerRadius(5)
-        .shadow(radius: 10)
-        .foregroundColor(.white)
+        .shadow(radius: 3)
+        .foregroundColor(Style.TextOnColoredBackground)
     }
 }
 

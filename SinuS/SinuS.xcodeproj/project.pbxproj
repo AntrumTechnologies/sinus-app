@@ -7,15 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A0B396A28D38DE000D7EEC9 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B396928D38DE000D7EEC9 /* MenuView.swift */; };
 		4A0B396C28D38F0700D7EEC9 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B396B28D38F0700D7EEC9 /* MenuButton.swift */; };
 		4A0B396E28D3935900D7EEC9 /* NewWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B396D28D3935900D7EEC9 /* NewWaveView.swift */; };
-		4A0B397028D3937100D7EEC9 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B396F28D3937100D7EEC9 /* AdminView.swift */; };
 		4A0B397228D3ABF200D7EEC9 /* SmallFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397128D3ABF100D7EEC9 /* SmallFrame.swift */; };
 		4A0B397428D6044300D7EEC9 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397328D6044200D7EEC9 /* WaveView.swift */; };
 		4A0B397728E06E9600D7EEC9 /* SinusUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397628E06E9600D7EEC9 /* SinusUserData.swift */; };
 		4A0B397928E081CF00D7EEC9 /* RelationshipStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397828E081CF00D7EEC9 /* RelationshipStatus.swift */; };
-		4A0B397B28E0846900D7EEC9 /* RelationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397A28E0846900D7EEC9 /* RelationStatusView.swift */; };
 		4A15E00128C7C91C00422C05 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A15E00028C7C91C00422C05 /* ProfileButton.swift */; };
 		4A15E00328C7CD5300422C05 /* UpdateWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A15E00228C7CD5300422C05 /* UpdateWaveView.swift */; };
 		4A32751F2977244E009D1CC8 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32751E2977244E009D1CC8 /* ChartView.swift */; };
@@ -46,7 +43,6 @@
 		4A32756B29D05161009D1CC8 /* LegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32756A29D05161009D1CC8 /* LegendView.swift */; };
 		4A32756E29D05830009D1CC8 /* DeleteWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32756D29D05830009D1CC8 /* DeleteWaveView.swift */; };
 		4A32757629E002F6009D1CC8 /* FollowingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757529E002F6009D1CC8 /* FollowingModel.swift */; };
-		4A32757A29E02258009D1CC8 /* UpdateWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757929E02258009D1CC8 /* UpdateWaveModel.swift */; };
 		4A32757C29E02362009D1CC8 /* WaveUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757B29E02362009D1CC8 /* WaveUpdate.swift */; };
 		4A32758029E026FF009D1CC8 /* NewWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757F29E026FF009D1CC8 /* NewWaveModel.swift */; };
 		4A32758429E029D7009D1CC8 /* DeleteWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32758329E029D7009D1CC8 /* DeleteWaveModel.swift */; };
@@ -76,6 +72,7 @@
 		4AD26FD728BBA5D60065FB01 /* SinuSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FD628BBA5D60065FB01 /* SinuSUITests.swift */; };
 		4AD26FEB28BBAEA40065FB01 /* SinusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FEA28BBAEA40065FB01 /* SinusData.swift */; };
 		4AD26FED28C676C10065FB01 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FEC28C676C10065FB01 /* LineChart.swift */; };
+		CE1DD3CF29E454C7009C01A2 /* UpdateWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1DD3CE29E454C7009C01A2 /* UpdateWaveModel.swift */; };
 		CE6A64E629696C1C00DC47E5 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A64E529696C1C00DC47E5 /* SwiftKeychainWrapper */; };
 		CE7B525D29BE159500913C3C /* FeedItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B525C29BE159500913C3C /* FeedItemModel.swift */; };
 		CE89A8762969F93200300C9D /* ManageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89A8752969F93200300C9D /* ManageProfileView.swift */; };
@@ -111,15 +108,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4A0B396928D38DE000D7EEC9 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		4A0B396B28D38F0700D7EEC9 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		4A0B396D28D3935900D7EEC9 /* NewWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWaveView.swift; sourceTree = "<group>"; };
-		4A0B396F28D3937100D7EEC9 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
 		4A0B397128D3ABF100D7EEC9 /* SmallFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallFrame.swift; sourceTree = "<group>"; };
 		4A0B397328D6044200D7EEC9 /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		4A0B397628E06E9600D7EEC9 /* SinusUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusUserData.swift; sourceTree = "<group>"; };
 		4A0B397828E081CF00D7EEC9 /* RelationshipStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipStatus.swift; sourceTree = "<group>"; };
-		4A0B397A28E0846900D7EEC9 /* RelationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationStatusView.swift; sourceTree = "<group>"; };
 		4A15E00028C7C91C00422C05 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		4A15E00228C7CD5300422C05 /* UpdateWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWaveView.swift; sourceTree = "<group>"; };
 		4A32751E2977244E009D1CC8 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
@@ -144,7 +138,6 @@
 		4A32756A29D05161009D1CC8 /* LegendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendView.swift; sourceTree = "<group>"; };
 		4A32756D29D05830009D1CC8 /* DeleteWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWaveView.swift; sourceTree = "<group>"; };
 		4A32757529E002F6009D1CC8 /* FollowingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingModel.swift; sourceTree = "<group>"; };
-		4A32757929E02258009D1CC8 /* UpdateWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWaveModel.swift; sourceTree = "<group>"; };
 		4A32757B29E02362009D1CC8 /* WaveUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveUpdate.swift; sourceTree = "<group>"; };
 		4A32757F29E026FF009D1CC8 /* NewWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWaveModel.swift; sourceTree = "<group>"; };
 		4A32758329E029D7009D1CC8 /* DeleteWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWaveModel.swift; sourceTree = "<group>"; };
@@ -180,6 +173,7 @@
 		4AD26FD828BBA5D60065FB01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AD26FEA28BBAEA40065FB01 /* SinusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusData.swift; sourceTree = "<group>"; };
 		4AD26FEC28C676C10065FB01 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		CE1DD3CE29E454C7009C01A2 /* UpdateWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWaveModel.swift; sourceTree = "<group>"; };
 		CE7B525C29BE159500913C3C /* FeedItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemModel.swift; sourceTree = "<group>"; };
 		CE89A8752969F93200300C9D /* ManageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageProfileView.swift; sourceTree = "<group>"; };
 		CE89A879296AF2D300300C9D /* LogHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
@@ -256,11 +250,8 @@
 		4A32751D2977215F009D1CC8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				4A0B396928D38DE000D7EEC9 /* MenuView.swift */,
 				4A0B396B28D38F0700D7EEC9 /* MenuButton.swift */,
-				4A0B396F28D3937100D7EEC9 /* AdminView.swift */,
 				4A0B397128D3ABF100D7EEC9 /* SmallFrame.swift */,
-				4A0B397A28E0846900D7EEC9 /* RelationStatusView.swift */,
 				4A32756029C5BFDD009D1CC8 /* NoDataView.swift */,
 				4A32752229772888009D1CC8 /* TextView.swift */,
 			);
@@ -383,8 +374,8 @@
 		4A32757829E02249009D1CC8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4A32757929E02258009D1CC8 /* UpdateWaveModel.swift */,
 				4A32757B29E02362009D1CC8 /* WaveUpdate.swift */,
+				CE1DD3CE29E454C7009C01A2 /* UpdateWaveModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -826,6 +817,7 @@
 				4A32758429E029D7009D1CC8 /* DeleteWaveModel.swift in Sources */,
 				CEECA5012974665800CA4496 /* VerifyEmailView.swift in Sources */,
 				4A32757C29E02362009D1CC8 /* WaveUpdate.swift in Sources */,
+				CE1DD3CF29E454C7009C01A2 /* UpdateWaveModel.swift in Sources */,
 				4A32756729D04049009D1CC8 /* CompareModel.swift in Sources */,
 				4A32756E29D05830009D1CC8 /* DeleteWaveView.swift in Sources */,
 				CEECA4FF2974534700CA4496 /* ResetPasswordView.swift in Sources */,
@@ -866,11 +858,8 @@
 				CE7B525D29BE159500913C3C /* FeedItemModel.swift in Sources */,
 				4A32755329B7BD91009D1CC8 /* HistoryItemView.swift in Sources */,
 				4AC5B3D529698525003D819C /* ProfileView.swift in Sources */,
-				4A0B396A28D38DE000D7EEC9 /* MenuView.swift in Sources */,
 				4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */,
-				4A0B397028D3937100D7EEC9 /* AdminView.swift in Sources */,
 				4A327527297729BE009D1CC8 /* HeaderView.swift in Sources */,
-				4A32757A29E02258009D1CC8 /* UpdateWaveModel.swift in Sources */,
 				4A32751F2977244E009D1CC8 /* ChartView.swift in Sources */,
 				CE89A87A296AF2D300300C9D /* LogHelper.swift in Sources */,
 				4AC5B3DA296989B0003D819C /* SingleWaveView.swift in Sources */,
@@ -883,7 +872,6 @@
 				4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */,
 				CEDADA4629D81A3D00340CAA /* Content.swift in Sources */,
 				4A32754929AA4088009D1CC8 /* FeedItemView.swift in Sources */,
-				4A0B397B28E0846900D7EEC9 /* RelationStatusView.swift in Sources */,
 				4A327547298EA697009D1CC8 /* PreAuthenticationView.swift in Sources */,
 				4AC5B3E3296ADB51003D819C /* UserData.swift in Sources */,
 				4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */,
@@ -1058,6 +1046,7 @@
 				DEVELOPMENT_TEAM = 479GB76B7L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SinuS/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1083,6 +1072,7 @@
 				DEVELOPMENT_TEAM = 479GB76B7L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SinuS/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

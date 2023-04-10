@@ -41,7 +41,7 @@ import SwiftKeychainWrapper
             let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/" + avatar)!
             self.currentAvatar = KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
         } catch {
-            debugPrint("Error loading \(url) caused error \(error) with response \((String(bytes: data!, encoding: .utf8) ?? ""))")
+            debugPrint("Error loading \(url) caused error \(error)")
         }
     }
 }

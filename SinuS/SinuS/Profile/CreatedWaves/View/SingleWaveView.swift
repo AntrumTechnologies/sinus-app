@@ -14,13 +14,12 @@ struct SingleWaveView: View {
         VStack(alignment: .center) {
 
             Spacer()
-            Image("Logo_cropped")
+            Image("Logo_white")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 50)
+                .frame(width: 100)
                 .cornerRadius(5)
-                .foregroundColor(.white)
-                .padding(.bottom)
+                .padding()
 
             Spacer()
 
@@ -32,9 +31,10 @@ struct SingleWaveView: View {
         .foregroundColor(Style.TextOnColoredBackground)
         .background(Style.AppBackground)
         .cornerRadius(5)
-        .shadow(radius: 10)
         .foregroundColor(.white)
-        .padding(.leading, 15)
+        .padding([.bottom, .top], 3)
+        .padding(.leading, 20)
+        .padding(.trailing, 10)
     }
 }
 

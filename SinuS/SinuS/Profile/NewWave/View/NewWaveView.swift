@@ -76,7 +76,6 @@ struct NewWaveView: View {
             .foregroundColor(Style.AppColor)
             .background(Style.AppBackground)
             .cornerRadius(5)
-            .shadow(radius: 5)
             .padding()
 
             Spacer()

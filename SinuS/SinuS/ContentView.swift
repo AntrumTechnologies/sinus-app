@@ -10,20 +10,73 @@ import SwiftKeychainWrapper
 import Firebase
 
 struct ContentView: View {
+    @State private var selection = 1
     @ObservedObject var contentModel = ContentViewModel(retrievable: ExternalRestRetriever())
     
     var body: some View {
         NavigationView {
-            if self.contentModel.contentViewModel.loggedIn == false {
-                PreAuthenticationView()
-           } else {
-                MenuView()
-           }
+            VStack {
+                TabView(selection: self.$selection) {
+                    Group {
+                        if self.contentModel.contentViewModel.loggedIn == true {
+                            FeedView(onlyFollowing: false)
+                                .tabItem {
+                                    Label("Explore", systemImage: "network")
+                                }
+                                .tag(1)
+                            FeedView(onlyFollowing: true)
+                                .tabItem {
+                                    Label("Following", systemImage: "person.2.fill")
+                                }
+                                .tag(2)
+                            ProfileView()
+                                .tabItem {
+                                    Label("Profile", systemImage: "person")
+                                }
+                                .tag(3)
+                        } else {
+                            FeedView(onlyFollowing: false)
+                                .tabItem {
+                                    Label("Explore", systemImage: "network")
+                                }
+                                .tag(1)
+                            LoginView()
+                                .tabItem {
+                                    Label("Login", systemImage: "person.badge.key.fill")
+                                }
+                                .tag(2)
+                        }
+                    }
+                    .toolbar(.visible, for: .tabBar)
+                    .toolbarBackground(Style.AppColor, for: .tabBar)
+                    .toolbarBackground(.visible, for: .tabBar)
+                    .toolbarColorScheme(.dark, for: .tabBar)
+                }
+            }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(Style.AppColor, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        HStack {
+                            Image("Logo_no_bg")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 30)
+                                .foregroundColor(.white)
+                                .padding([.bottom, .top])
+                        }
+                    }
+                }
+            }
         }
         .task {
             await self.contentModel.reload()
         }
         .preferredColorScheme(.light)
+        .navigationBarBackButtonHidden(true) // Hides back button when logging in again in same instance of app
     }
 }
 

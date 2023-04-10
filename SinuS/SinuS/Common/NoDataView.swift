@@ -16,7 +16,7 @@ struct NoDataView: View {
             
             if (self.useLogo) {
                 HStack {
-                    Image("Logo_cropped")
+                    Image("Logo_no_bg")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 55 * self.scale)

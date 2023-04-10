@@ -53,7 +53,7 @@ struct LoginView: View {
                         )
                 }.padding(.horizontal).padding(.top)
 
-                NavigationLink(destination: MenuView(), tag: true, selection: self.$showMenu) { EmptyView() }
+                NavigationLink(destination: ContentView(), tag: true, selection: self.$showMenu) { EmptyView() }
 
                 // Login Button
                 Button("Login") {

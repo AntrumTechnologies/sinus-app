@@ -51,7 +51,11 @@ import SwiftKeychainWrapper
                 self._feedData = try JSONDecoder().decode([SinusUserData].self, from: data!)
             }
         } catch {
-            debugPrint("Error loading \(url) caused error \(error) with response \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")
+            if (data == nil) {
+                debugPrint("Error loading \(url) caused error \(error)")
+            } else {
+                debugPrint("Error loading \(url) caused error \(error) with response \((String(bytes: data!, encoding: .utf8) ?? ""))")
+            }
         }
         
         _isLoading = false

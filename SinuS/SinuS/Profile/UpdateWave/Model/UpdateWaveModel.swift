@@ -2,11 +2,10 @@
 //  UpdateWaveModel.swift
 //  SinuS
 //
-//  Created by Loe Hendriks on 07/04/2023.
+//  Created by Patrick van Broeckhuijsen on 10/04/2023.
 //
 
 import Foundation
-import SwiftKeychainWrapper
 
 class UpdateWaveModel: ObservableObject {
     let retrievable: RestRetrievable
