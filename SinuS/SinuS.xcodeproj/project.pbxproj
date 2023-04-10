@@ -25,7 +25,6 @@
 		4A32753E298AE46A009D1CC8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32753D298AE46A009D1CC8 /* FirebaseDatabase */; };
 		4A327540298AE46A009D1CC8 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32753F298AE46A009D1CC8 /* FirebaseMessaging */; };
 		4A327542298AE46A009D1CC8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4A327541298AE46A009D1CC8 /* FirebaseStorage */; };
-		4A327547298EA697009D1CC8 /* PreAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A327546298EA697009D1CC8 /* PreAuthenticationView.swift */; };
 		4A32754929AA4088009D1CC8 /* FeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32754829AA4088009D1CC8 /* FeedItemView.swift */; };
 		4A32754B29AFD157009D1CC8 /* WavePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32754A29AFD157009D1CC8 /* WavePreviewView.swift */; };
 		4A32754D29AFD1B3009D1CC8 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32754C29AFD1B3009D1CC8 /* Wave.swift */; };
@@ -121,7 +120,6 @@
 		4A32752229772888009D1CC8 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		4A327526297729BE009D1CC8 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		4A32752A29773236009D1CC8 /* CompareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareButtonView.swift; sourceTree = "<group>"; };
-		4A327546298EA697009D1CC8 /* PreAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreAuthenticationView.swift; sourceTree = "<group>"; };
 		4A32754829AA4088009D1CC8 /* FeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemView.swift; sourceTree = "<group>"; };
 		4A32754A29AFD157009D1CC8 /* WavePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WavePreviewView.swift; sourceTree = "<group>"; };
 		4A32754C29AFD1B3009D1CC8 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
@@ -320,7 +318,6 @@
 				CEECA4FE2974534700CA4496 /* ResetPasswordView.swift */,
 				CEECA5002974665800CA4496 /* VerifyEmailView.swift */,
 				CEECA50229748DA600CA4496 /* ClickResetPasswordLinkView.swift */,
-				4A327546298EA697009D1CC8 /* PreAuthenticationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -872,7 +869,6 @@
 				4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */,
 				CEDADA4629D81A3D00340CAA /* Content.swift in Sources */,
 				4A32754929AA4088009D1CC8 /* FeedItemView.swift in Sources */,
-				4A327547298EA697009D1CC8 /* PreAuthenticationView.swift in Sources */,
 				4AC5B3E3296ADB51003D819C /* UserData.swift in Sources */,
 				4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */,
 				4A32757629E002F6009D1CC8 /* FollowingModel.swift in Sources */,

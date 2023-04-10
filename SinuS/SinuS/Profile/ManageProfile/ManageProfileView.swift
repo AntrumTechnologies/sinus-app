@@ -28,13 +28,8 @@ struct ManageProfileView: View {
                 NavigationLink(destination: ContentView(), label: {
                     MenuButton(image: Image(systemName: "figure.walk.departure"), name: "Logout")
                 }).simultaneousGesture(TapGesture().onEnded {
-                    let bearerToken = KeychainWrapper.standard.string(forKey: "bearerToken")
                     KeychainWrapper.standard.remove(forKey: "bearerToken")
-                    if (bearerToken == KeychainWrapper.standard.string(forKey: "bearerToken")) {
-                        print("FAILED TO DELETE BEARER TOKEN")
-                    } else {
-                        print("DELETED BEARER TOKEN")
-                    }
+                    // TODO: delete token from server as well
                 })
                 
                 Spacer()

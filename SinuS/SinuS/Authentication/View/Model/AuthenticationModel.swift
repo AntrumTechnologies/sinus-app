@@ -17,10 +17,10 @@ class AuthenticationModel: ObservableObject {
     }
     
     public func register(
-           name: String,
-           email: String,
-           password: String,
-           confirmPassword: String) -> AuthenticationResult? {
+            name: String,
+            email: String,
+            password: String,
+            confirmPassword: String) -> AuthenticationResult? {
            let registerUrl = "https://lovewaves.antrum-technologies.nl/api/register?"
            let parameters: [String: Any] = [
                "name": name, "email": email, "password": password, "confirm_password": confirmPassword]
@@ -148,15 +148,6 @@ class AuthenticationModel: ObservableObject {
 
             do {
                 result = try decoder.decode(UserData.self, from: data!)
-                
-                // Update fcm_token with deviceToken if not equal
-                let deviceToken: String = KeychainWrapper.standard.string(forKey: "deviceToken") ?? ""
-                if (deviceToken != "" && result?.fcm_token != deviceToken) {
-                    print("Updating FCM token...")
-                } else {
-                    print("FCM token is up-to-date")
-                }
-                
                 return true
             } catch {
                 print("Error info: \(error)")
