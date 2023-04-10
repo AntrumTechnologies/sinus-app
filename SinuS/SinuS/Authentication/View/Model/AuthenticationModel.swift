@@ -142,12 +142,10 @@ class AuthenticationModel: ObservableObject {
             let url = "https://lovewaves.antrum-technologies.nl/api/user"
             let decoder = JSONDecoder()
             let request = RestApiHelper.createRequest(type: "GET", url: url, auth: true)
-
-            var result: UserData?
             let data = RestApiHelper.perfomRestCall(request: request)
 
             do {
-                result = try decoder.decode(UserData.self, from: data!)
+                _ = try decoder.decode(UserData.self, from: data!)
                 return true
             } catch {
                 print("Error info: \(error)")
