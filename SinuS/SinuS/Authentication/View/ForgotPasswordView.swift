@@ -34,18 +34,22 @@ struct ForgotPasswordView: View {
             NavigationLink(destination: ClickResetPasswordLinkView(), tag: true, selection: self.$nextView) { EmptyView() }
 
             Button("Submit") {
-                let authenticationResult = self.authenticationModel.forgotPassword(email: self.email)
-
-                if authenticationResult == nil {
-                    self.showAlert.toggle()
-                } else {
-                    UserDefaults.standard.set(self.email, forKey: "forgotPasswordEmail")
-                    self.nextView = true
+                let resign = #selector(UIResponder.resignFirstResponder)
+                UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+                
+                Task {
+                    do {
+                        let res = try await self.authenticationModel.forgotPassword(email: self.email)
+                        UserDefaults.standard.set(self.email, forKey: "forgotPasswordEmail")
+                        self.nextView = true
+                    }
+                    catch {
+                        self.showAlert.toggle()
+                    }
                 }
-
             }
             .alert(isPresented: $showAlert) {
-                return Alert(title: Text("Error"), message: Text("Failed to request password reset link for \(self.email)"), dismissButton: .default(Text("OK")))
+                Alert(title: Text("Error"), message: Text("Failed to request password reset link for \(self.email)"), dismissButton: .default(Text("OK")))
             }
             .padding()
         }

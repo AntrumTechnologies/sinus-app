@@ -1038,16 +1038,19 @@
 				CODE_SIGN_ENTITLEMENTS = SinuS/SinuS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SinuS/Preview Content\"";
 				DEVELOPMENT_TEAM = 479GB76B7L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SinuS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Love waves";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.antrum.lovewaves;
 				PRODUCT_NAME = "Love waves";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1064,16 +1067,19 @@
 				CODE_SIGN_ENTITLEMENTS = SinuS/SinuS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SinuS/Preview Content\"";
 				DEVELOPMENT_TEAM = 479GB76B7L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SinuS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Love waves";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.antrum.lovewaves;
 				PRODUCT_NAME = "Love waves";
 				PROVISIONING_PROFILE_SPECIFIER = "";

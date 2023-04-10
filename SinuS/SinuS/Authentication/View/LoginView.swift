@@ -57,27 +57,24 @@ struct LoginView: View {
 
                 // Login Button
                 Button("Login") {
-                    let res = self.authenticationModel.login(email: self.email, password: self.password)
-                    UserDefaults.standard.set(self.email, forKey: "email")
-
-                    if res == nil {
-                        self.showAlert.toggle()
-                    } else {
-                        // Set global authentication token.
-                        let saveSuccessful: Bool = KeychainWrapper.standard.set(
-                            res!.success,
-                            forKey: "bearerToken")
-                        if !saveSuccessful {
-                            print("Could not save bearerToken")
+                    let resign = #selector(UIResponder.resignFirstResponder)
+                    UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+                    
+                    Task {
+                        do {
+                            let res = try await self.authenticationModel.login(email: self.email, password: self.password)
+                            KeychainWrapper.standard.set(res!.success, forKey: "bearerToken")
+                            self.showMenu = true
                         }
-
-                        self.showMenu = true
+                        catch {
+                            self.showAlert.toggle()
+                        }
                     }
                 }
                 .alert(isPresented: $showAlert) {
-                    return Alert(title: Text("Failed to login"),
-                                 message: Text(self.email),
-                                 dismissButton: .default(Text("OK")))
+                    Alert(title: Text("Failed to login"),
+                          message: Text(self.email),
+                          dismissButton: .default(Text("OK")))
 
                 }
                 .padding()

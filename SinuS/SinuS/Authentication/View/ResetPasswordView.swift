@@ -68,29 +68,26 @@ struct ResetPasswordView: View {
                     )
             }.padding(.horizontal).padding(.top)
 
-            NavigationLink(destination: LoginView(), tag: true, selection: self.$showLogin) { EmptyView() }
+            NavigationLink(destination: ContentView(), tag: true, selection: self.$showLogin) { EmptyView() }
 
             Button("Submit") {
-                let authenticationResult = self.authenticationModel.resetPassword(
-                    token: self.token,
-                    email: self.email,
-                    password: self.password,
-                    confirmPassword: self.confirmPassword)
-
-                if authenticationResult == nil {
-                    self.showAlert.toggle()
-                } else {
-                    UserDefaults.standard.removeObject(forKey: "forgotPasswordEmail")
-
-                    // Set global authentication token.
-                    let saveSuccessful: Bool = KeychainWrapper.standard.set(authenticationResult!.success, forKey: "bearerToken")
-                    if !saveSuccessful {
-                        print("Could not save bearerToken")
+                let resign = #selector(UIResponder.resignFirstResponder)
+                UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+                
+                Task {
+                    do {
+                        let res = try await self.authenticationModel.resetPassword(
+                            token: self.token,
+                            email: self.email,
+                            password: self.password,
+                            confirmPassword: self.confirmPassword)
+                        KeychainWrapper.standard.set(res!.success, forKey: "bearerToken")
+                        self.showLogin = true
                     }
-
-                    self.showLogin = true
+                    catch {
+                        self.showAlert.toggle()
+                    }
                 }
-
             }
             .alert(isPresented: $showAlert) {
                 return Alert(title: Text("Failed to reset password"), message: Text("Unable to reset password for \(self.email)"), dismissButton: .default(Text("OK")))

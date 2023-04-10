@@ -85,27 +85,26 @@ struct RegisterView: View {
 
             // Register button
             Button("Register") {
-                let authenticationResult = self.authenticationModel.register(
-                    name: self.name,
-                    email: self.email,
-                    password: self.password,
-                    confirmPassword: self.confirmPassword)
-
-                if authenticationResult == nil {
-                    self.showAlert.toggle()
-                } else {
-                    // Set global authentication token.
-                    let saveSuccessful: Bool = KeychainWrapper.standard.set(authenticationResult!.success, forKey: "bearerToken")
-                    if !saveSuccessful {
-                        print("Could not save bearerToken")
+                let resign = #selector(UIResponder.resignFirstResponder)
+                UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+                
+                Task {
+                    do {
+                        let res = try await self.authenticationModel.register(
+                            name: self.name,
+                            email: self.email,
+                            password: self.password,
+                            confirmPassword: self.confirmPassword)
+                        KeychainWrapper.standard.set(res!.success, forKey: "bearerToken")
+                        self.showMenu = true
                     }
-
-                    self.showMenu = true
+                    catch {
+                        self.showAlert.toggle()
+                    }
                 }
-
             }
             .alert(isPresented: $showAlert) {
-                return Alert(title: Text("Failed to register"), message: Text("Unable to register user: \(self.email)"), dismissButton: .default(Text("OK")))
+                Alert(title: Text("Failed to register"), message: Text("Unable to register user: \(self.email)"), dismissButton: .default(Text("OK")))
             }
             .padding()
         }
