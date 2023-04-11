@@ -48,9 +48,9 @@ struct ChartView: View {
                                             .foregroundColor(.white))
                             }
                     }
-                }.chartYScale(domain: 0...100)
+                }
+                .chartYScale(domain: 0...100)
                 .frame(width: self.charWidth, height: 250)
-                .shadow(radius: 10)
                 .padding()
                 .chartPlotStyle { plotArea in
                     plotArea

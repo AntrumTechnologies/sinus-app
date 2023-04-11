@@ -57,7 +57,6 @@ struct HistoryView: View {
             .scrollContentBackground(.hidden)
             .frame(width: 350)
             .cornerRadius(5)
-            .shadow(radius: 10)
             .padding()
             
         }

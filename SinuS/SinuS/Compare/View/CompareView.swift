@@ -57,10 +57,13 @@ struct CompareView: View {
                                     Circle()
                                         .fill(.white)
                                         .frame(width: 20)
-                                        .overlay(
-                                            Text("\(point.value)")
-                                                .font(.system(size: 10))
-                                                .foregroundColor(Style.TextOnColoredBackground))
+                                        .overlay{
+                                            ZStack {
+                                                Text("\(point.value)")
+                                                    .font(.system(size: 10))
+                                                    .foregroundColor(Style.TextOnColoredBackground)
+                                            }
+                                        }
                                 }
                        }
                         
@@ -72,16 +75,18 @@ struct CompareView: View {
                                         Circle()
                                             .fill(Style.TextOnColoredBackground)
                                             .frame(width: 20)
-                                            .overlay(
-                                                Text("\(point.value)")
-                                                    .font(.system(size: 10))
-                                                    .foregroundColor(.white))
+                                            .overlay{
+                                                ZStack {
+                                                    Text("\(point.value)")
+                                                        .font(.system(size: 10))
+                                                        .foregroundColor(.white)
+                                                }
+                                            }
                                     }
                            }
                         }
                     }.chartYScale(domain: 0...100)
                         .frame(width: self.charWidth(points: self.merged ? self.longestList: self.compareModel.comparePoints), height: 250)
-                    .shadow(radius: 10)
                     .padding()
                     .chartPlotStyle { plotArea in
                         plotArea

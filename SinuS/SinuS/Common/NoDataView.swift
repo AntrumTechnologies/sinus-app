@@ -35,7 +35,6 @@ struct NoDataView: View {
         .frame(width: 350 * self.scale)
         .background(Style.AppColor)
         .cornerRadius(5)
-        .shadow(radius: 10)
         .padding()
     }
 }

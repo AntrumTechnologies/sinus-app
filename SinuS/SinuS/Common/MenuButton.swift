@@ -27,7 +27,6 @@ struct MenuButton: View {
         .frame(width: 120, height: 60)
         .background(Style.AppBackground)
         .cornerRadius(5)
-        .shadow(radius: 3)
         .foregroundColor(Style.TextOnColoredBackground)
     }
 }

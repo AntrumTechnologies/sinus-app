@@ -62,7 +62,6 @@ struct WavePreviewView: View {
                     .frame(width: 75, height: 50)
                     .background(self.color)
                     .cornerRadius(5)
-                    .shadow(radius: 10)
                     
                 }
             }

@@ -97,7 +97,6 @@ struct HeaderView: View {
             .frame(width: 350, height: 150)
             .background(Style.AppBackground)
             .cornerRadius(5)
-            .shadow(radius: 10)
             .padding([.top, .bottom], 15)
         }
     }

@@ -134,7 +134,6 @@ struct StatisticsView: View {
             .foregroundColor(Style.TextOnColoredBackground)
             .background(Style.AppBackground)
             .cornerRadius(5)
-            .shadow(radius: 10)
             .foregroundColor(.white)
             .padding()
         }

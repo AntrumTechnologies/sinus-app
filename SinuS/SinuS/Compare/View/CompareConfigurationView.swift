@@ -42,7 +42,6 @@ struct CompareConfigurationView: View {
                 .frame(width: 300, height: 40)
                 .background(Style.AppColor)
                 .cornerRadius(5)
-                .shadow(radius: 10)
                 
                 HStack {
                     Text("View options:")
@@ -58,7 +57,6 @@ struct CompareConfigurationView: View {
                 .frame(width: 300, height: 40)
                 .background(Style.AppColor)
                 .cornerRadius(5)
-                .shadow(radius: 10)
                 
                 Text("In the comparison wave graph the dates are replaced by index points to give a better overview for comparing. Both waves will start at the same index point.")
                     .padding()
@@ -74,7 +72,6 @@ struct CompareConfigurationView: View {
                     .foregroundColor(.white)
                     .background(Style.AppColor)
                     .cornerRadius(5)
-                    .shadow(radius: 10)
                 })
                 .padding()
             }
@@ -82,7 +79,6 @@ struct CompareConfigurationView: View {
             .background(Style.AppBackground)
             .foregroundColor(Style.TextOnColoredBackground)
             .cornerRadius(5)
-            .shadow(radius: 5)
             .padding()
             .foregroundColor(.white)
             .toolbar(.visible, for: ToolbarPlacement.navigationBar)

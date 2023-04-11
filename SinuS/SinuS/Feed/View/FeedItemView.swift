@@ -22,7 +22,6 @@ struct FeedItemView: View {
                     .clipShape(Circle())
                     .overlay {
                         Circle().stroke(Style.AppColor, lineWidth: 3)
-                            .shadow(radius: 10)
                     }
                     .padding()
                 

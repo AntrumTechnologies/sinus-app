@@ -28,7 +28,6 @@ struct SmallFrame: View {
         .frame(width: 150, height: 75)
         .background(Style.AppBackground)
         .cornerRadius(5)
-        .shadow(radius: 5)
     }
 }
 

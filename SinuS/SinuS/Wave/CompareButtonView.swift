@@ -18,9 +18,8 @@ struct CompareButtonView: View {
             }
             .frame(width: 150, height: 30)
             .foregroundColor(.white)
-            .background(Style.TextOnColoredBackground)
+            .background(Style.AppColor)
             .cornerRadius(5)
-            .shadow(radius: 10)
         })
     }
 }

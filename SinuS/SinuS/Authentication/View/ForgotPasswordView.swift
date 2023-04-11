@@ -56,7 +56,6 @@ struct ForgotPasswordView: View {
         .background(Style.AppBackground)
         .foregroundColor(Style.TextOnColoredBackground)
         .cornerRadius(5)
-        .shadow(radius: 5)
         .padding()
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Style.AppColor, for: .navigationBar)
