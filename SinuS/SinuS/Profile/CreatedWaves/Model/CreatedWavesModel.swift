@@ -29,7 +29,9 @@ class CreatedWavesModel: ObservableObject {
         
         do {
             data = await self.retrievable.Retrieve(request: request)
-            self.createdWaves = try JSONDecoder().decode([SinusUserData].self, from: data!)
+            if (data != nil) {
+                self.createdWaves = try JSONDecoder().decode([SinusUserData].self, from: data!)
+            }
         } catch {
             debugPrint("Error loading: \(error) \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")
         }

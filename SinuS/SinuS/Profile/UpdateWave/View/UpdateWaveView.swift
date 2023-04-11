@@ -19,6 +19,7 @@ struct UpdateWaveView: View {
     @State private var message: String = ""
     
     var updateWaveModel = UpdateWaveModel(retrievable: ExternalRestRetriever())
+    let logHelper = LogHelper()
     
     var options: [String] {
         return waves.map { "\($0.date_name)" }
@@ -103,6 +104,14 @@ struct UpdateWaveView: View {
                     let resign = #selector(UIResponder.resignFirstResponder)
                     UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
                     
+                    if (self.waves.count < 1) {
+                        let msg = "Update called while user does not have any waves"
+                        self.logHelper.logMsg(message: msg)
+                        self.message = msg
+                        showingAlert = true
+                        return
+                    }
+                    
                     if (self.description.count < 300)
                     {
                         Task {
@@ -118,6 +127,7 @@ struct UpdateWaveView: View {
                     }
                     else{
                         self.message = "Description can not be longer than 300 characters"
+                        showingAlert = true;
                     }
                 }
                 .padding()
