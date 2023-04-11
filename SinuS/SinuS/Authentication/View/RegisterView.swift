@@ -55,7 +55,7 @@ struct RegisterView: View {
             HStack {
                 Text("Password")
                 Spacer()
-                TextField("", text: self.$password)
+                SecureField("", text: self.$password)
                     .disableAutocorrection(true)
                     .frame(width: 220)
                     .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
@@ -70,7 +70,7 @@ struct RegisterView: View {
             HStack {
                 Text("Confirm password")
                 Spacer()
-                TextField("", text: self.$confirmPassword)
+                SecureField("", text: self.$confirmPassword)
                     .disableAutocorrection(true)
                     .frame(width: 220)
                     .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
