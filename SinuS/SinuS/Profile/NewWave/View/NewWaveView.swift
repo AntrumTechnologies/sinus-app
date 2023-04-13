@@ -60,6 +60,7 @@ struct NewWaveView: View {
                         do {
                             self.message = await self.newWaveModel.createNewWave(name: self.waveName)
                             showingAlert = true
+                            self.waveName = ""
                         }
                         catch {
                             print(error)
