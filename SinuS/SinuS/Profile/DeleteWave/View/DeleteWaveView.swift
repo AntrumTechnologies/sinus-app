@@ -30,62 +30,63 @@ struct DeleteWaveView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Image(systemName: "trash")
-                    .padding(.leading, 15)
-                    .padding(.top, 5)
-                Text("Delete wave")
-                    .font(.headline)
-                    .padding(.top, 5)
-            }.foregroundColor(Style.AppColor)
-            
-            Spacer()
-            
-            VStack {
+        if (options.count != 0) {
+            VStack(alignment: .leading) {
                 HStack {
-                    Text("Wave").foregroundColor(Style.TextOnColoredBackground)
-                    
-                    Spacer()
-                    
-                    Picker("Choose...", selection: self.$selection) {
-                        ForEach(options, id: \.self) {
-                            Text($0)
-                        }
-                    }
-                    .colorMultiply(Style.AppColor)
-                    .accentColor(Style.TextOnColoredBackground)
-                    .cornerRadius(5)
-                    .shadow(radius: 10)
-                }.padding(.horizontal).padding(.top)
+                    Image(systemName: "trash")
+                        .padding(.leading, 15)
+                        .padding(.top, 5)
+                    Text("Delete wave")
+                        .font(.headline)
+                        .padding(.top, 5)
+                }.foregroundColor(Style.AppColor)
                 
-                Button("Delete") {
-                    let resign = #selector(UIResponder.resignFirstResponder)
-                    UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
-                    
-                    Task {
-                        do {
-                            self.message = await self.deleteWaveModel.deleteWave(wave_id: self.selectedWave.id)
-                            showingAlert = true
+                Spacer()
+                
+                VStack {
+                    HStack {
+                        Text("Wave").foregroundColor(Style.TextOnColoredBackground)
+                        
+                        Spacer()
+                        
+                        Picker("Choose...", selection: self.$selection) {
+                            ForEach(options, id: \.self) {
+                                Text($0)
+                            }
                         }
-                        catch{
-                            print(error)
+                        .colorMultiply(Style.AppColor)
+                        .accentColor(Style.TextOnColoredBackground)
+                        .cornerRadius(5)
+                        .shadow(radius: 10)
+                    }.padding(.horizontal).padding(.top)
+                    
+                    Button("Delete") {
+                        let resign = #selector(UIResponder.resignFirstResponder)
+                        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+                        
+                        Task {
+                            do {
+                                self.message = await self.deleteWaveModel.deleteWave(wave_id: self.selectedWave.id)
+                                showingAlert = true
+                            }
+                            catch{
+                                print(error)
+                            }
                         }
                     }
+                    .padding()
+                    .alert(self.message, isPresented: $showingAlert) {
+                        Button("OK", role: .cancel) { }
+                    }
                 }
+                .background(Style.AppBackground)
+                .foregroundColor(Style.TextOnColoredBackground)
+                .cornerRadius(5)
                 .padding()
-                .alert(self.message, isPresented: $showingAlert) {
-                    Button("OK", role: .cancel) { }
-                }
+                .foregroundColor(.white)
+                
+                Spacer()
             }
-            .background(Style.AppBackground)
-            .foregroundColor(Style.TextOnColoredBackground)
-            .cornerRadius(5)
-            .padding()
-            .foregroundColor(.white)
-            
-            Spacer()
-            
         }
     }
 }

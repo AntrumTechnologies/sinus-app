@@ -136,10 +136,21 @@ struct CompareView: View {
         .refreshable{
             await self.compareModel.reload(originData: self.originData, compareName: self.compareName)
         }
-        .toolbar(.visible, for: ToolbarPlacement.navigationBar)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Style.AppColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    HStack {
+                        Text("Compare")
+                            .foregroundColor(.white)
+                            .font(.system(size: 25))
+                            .padding(.bottom)
+                    }
+                }
+            }
+        }
     }
 }
 

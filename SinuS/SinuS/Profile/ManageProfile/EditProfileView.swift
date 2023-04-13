@@ -91,29 +91,13 @@ struct EditProfileView: View {
                 HStack {
                     Text("Name")
                     Spacer()
-                    TextField(self.currentUser.name, text: self.$name)
-                        .disableAutocorrection(true)
-                        .frame(width: 220)
-                        .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
-                        .cornerRadius(5)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(lineWidth: 1.0)
-                        )
+                    Text(self.currentUser.name)
                 }.padding(.horizontal).padding(.top)
 
                 HStack {
                     Text("Email")
                     Spacer()
-                    TextField(self.currentUser.email, text: self.$email)
-                        .disableAutocorrection(true)
-                        .frame(width: 220)
-                        .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
-                        .cornerRadius(5)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(lineWidth: 1.0)
-                        )
+                    Text(self.currentUser.email)
                 }.padding(.horizontal).padding(.top)
 
             }
@@ -124,13 +108,6 @@ struct EditProfileView: View {
             .shadow(radius: 5)
             .padding()
             .foregroundColor(.white)
-
-            Button("Save") {
-
-            }
-            .foregroundColor(Style.AppColor)
-            .font(.headline)
-            .shadow(radius: 5)
 
             Spacer()
         }

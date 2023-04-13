@@ -38,111 +38,113 @@ struct UpdateWaveView: View {
         The view.
      */
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Image(systemName: "slider.vertical.3")
-                    .padding(.leading, 15)
-                    .padding(.top, 5)
-                Text("Update wave")
-                    .font(.headline)
-                    .padding(.top, 5)
-            }.foregroundColor(Style.AppColor)
-
-            Spacer()
-
-            VStack {
+        if (options.count != 0) {
+            VStack(alignment: .leading) {
                 HStack {
-                    Text("Wave").foregroundColor(Style.TextOnColoredBackground)
-
-                    Spacer()
-
-                    Picker("Choose...", selection: self.$selection) {
-                        ForEach(options, id: \.self) {
-                            Text($0)
+                    Image(systemName: "slider.vertical.3")
+                        .padding(.leading, 15)
+                        .padding(.top, 5)
+                    Text("Update wave")
+                        .font(.headline)
+                        .padding(.top, 5)
+                }.foregroundColor(Style.AppColor)
+                
+                Spacer()
+                
+                VStack {
+                    HStack {
+                        Text("Wave").foregroundColor(Style.TextOnColoredBackground)
+                        
+                        Spacer()
+                        
+                        Picker("Choose...", selection: self.$selection) {
+                            ForEach(options, id: \.self) {
+                                Text($0)
+                            }
                         }
-                    }
-                    .colorMultiply(Style.AppColor)
-                    .accentColor(Style.TextOnColoredBackground)
-                    .cornerRadius(5)
-                    .shadow(radius: 10)
-                }.padding(.horizontal).padding(.top)
-
-                HStack {
-                    DatePicker(selection: $date, displayedComponents: [.date], label: { Text("Date") })
                         .colorMultiply(Style.AppColor)
                         .accentColor(Style.TextOnColoredBackground)
-                }.padding(.horizontal)
-
-                HStack {
-                    Text("Value")
-                    Spacer()
-                    Slider(
-                        value: self.$value,
-                        in: 0...100,
-                        step: 1).foregroundColor(.yellow)
-                        .frame(width: 220)
-                        .accentColor(Style.TextOnColoredBackground)
-                    Spacer()
-                    Text("\(Int(self.value))")
-                }.padding(.horizontal)
-
-                VStack (alignment: .leading){
-                    Text("Description")
-                    TextField("", text: self.$description, axis: .vertical)
-                        .disableAutocorrection(true)
-                        .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
                         .cornerRadius(5)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(lineWidth: 1.0)
-                        )
-        
-                }.padding(.horizontal)
-                
-
-                Button("Update") {
-                    let resign = #selector(UIResponder.resignFirstResponder)
-                    UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+                        .shadow(radius: 10)
+                    }.padding(.horizontal).padding(.top)
                     
-                    if (self.waves.count < 1) {
-                        let msg = "Update called while user does not have any waves"
-                        self.logHelper.logMsg(message: msg)
-                        self.message = msg
-                        showingAlert = true
-                        return
-                    }
+                    HStack {
+                        DatePicker(selection: $date, displayedComponents: [.date], label: { Text("Date") })
+                            .colorMultiply(Style.AppColor)
+                            .accentColor(Style.TextOnColoredBackground)
+                    }.padding(.horizontal)
                     
-                    if (self.description.count < 300)
-                    {
-                        Task {
-                            do {
-                                let update = WaveUpdate(wave_id: self.selectedWave.id, date: self.date, value: Int(self.value), description: self.description)
-                                self.message = await self.updateWaveModel.updateWave(update: update)
-                                showingAlert = true
+                    HStack {
+                        Text("Value")
+                        Spacer()
+                        Slider(
+                            value: self.$value,
+                            in: 0...100,
+                            step: 1).foregroundColor(.yellow)
+                            .frame(width: 220)
+                            .accentColor(Style.TextOnColoredBackground)
+                        Spacer()
+                        Text("\(Int(self.value))")
+                    }.padding(.horizontal)
+                    
+                    VStack (alignment: .leading){
+                        Text("Description")
+                        TextField("", text: self.$description, axis: .vertical)
+                            .disableAutocorrection(true)
+                            .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
+                            .cornerRadius(5)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(lineWidth: 1.0)
+                            )
+                        
+                    }.padding(.horizontal)
+                    
+                    
+                    Button("Update") {
+                        let resign = #selector(UIResponder.resignFirstResponder)
+                        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+                        
+                        if (self.waves.count < 1) {
+                            let msg = "Update called while user does not have any waves"
+                            self.logHelper.logMsg(message: msg)
+                            self.message = msg
+                            showingAlert = true
+                            return
+                        }
+                        
+                        if (self.description.count < 300) {
+                            Task {
+                                do {
+                                    let update = WaveUpdate(wave_id: self.selectedWave.id, date: self.date, value: Int(self.value), description: self.description)
+                                    self.message = await self.updateWaveModel.updateWave(update: update)
+                                    showingAlert = true
+                                    self.description = ""
+                                }
+                                catch{
+                                    print(error)
+                                }
                             }
-                            catch{
-                                print(error)
-                            }
+                        } else {
+                            self.message = "Description can not be longer than 300 characters"
+                            showingAlert = true;
                         }
                     }
-                    else{
-                        self.message = "Description can not be longer than 300 characters"
-                        showingAlert = true;
+                    .padding()
+                    .alert(self.message, isPresented: $showingAlert) {
+                        Button("OK", role: .cancel) { }
                     }
                 }
+                .background(Style.AppBackground)
+                .foregroundColor(Style.TextOnColoredBackground)
+                .cornerRadius(5)
                 .padding()
-                .alert(self.message, isPresented: $showingAlert) {
-                    Button("OK", role: .cancel) { }
-                }
+                .foregroundColor(.white)
+                
+                Spacer()
             }
-            .background(Style.AppBackground)
-            .foregroundColor(Style.TextOnColoredBackground)
-            .cornerRadius(5)
-            .padding()
-            .foregroundColor(.white)
-
-            Spacer()
-
+            
+            Divider()
         }
     }
 }

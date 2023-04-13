@@ -23,8 +23,6 @@ class CreatedWavesModel: ObservableObject {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         let bearerToken: String = KeychainWrapper.standard.string(forKey: "bearerToken") ?? ""
         request.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
-        
-        let urlSession = URLSession.shared
         var data: Data? = nil
         
         do {

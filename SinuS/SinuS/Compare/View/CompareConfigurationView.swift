@@ -14,27 +14,25 @@ struct CompareConfigurationView: View {
     @State public var differenceSelection = "Merged"
     
     var body: some View {
-        VStack (alignment: .leading) {
+        VStack(alignment: .leading) {
+            Spacer()
+            
             HStack {
                 Image(systemName: "gear")
-                    .padding(.leading, 15)
                     .padding(.top, 5)
                 Text("Comparison options")
                     .font(.headline)
                     .padding(.top, 5)
             }
             .foregroundColor(Style.AppColor)
-            .padding(.top)
-            
-            Spacer()
             
             VStack{
                 HStack {
-                    Text("Select wave to compare to:")
+                    Text("Compare to:")
                     Spacer()
                 }.padding()
                 
-                Picker("Select a wave to compare to", selection: $compareSelection) {
+                Picker("Select wave to compare to", selection: $compareSelection) {
                     ForEach(self.configurationModel.compareOptions, id: \.self) {
                         Text($0)
                     }
@@ -58,10 +56,8 @@ struct CompareConfigurationView: View {
                 .background(Style.AppColor)
                 .cornerRadius(5)
                 
-                Text("In the comparison wave graph the dates are replaced by index points to give a better overview for comparing. Both waves will start at the same index point.")
+                Text("While comparing the dates are replaced by index points for better comparison. Both waves will start at the same index point.")
                     .padding()
-                
-                Spacer()
                 
                 NavigationLink(destination: CompareView(originData: self.originData, compareName: compareSelection, merged: self.differenceSelection == "Merged"), label: {
                     HStack {
@@ -79,13 +75,24 @@ struct CompareConfigurationView: View {
             .background(Style.AppBackground)
             .foregroundColor(Style.TextOnColoredBackground)
             .cornerRadius(5)
-            .padding()
-            .foregroundColor(.white)
-            .toolbar(.visible, for: ToolbarPlacement.navigationBar)
-            .toolbarBackground(Style.AppColor, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
             
+            Spacer()
+            
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Style.AppColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    HStack {
+                        Text("Compare")
+                            .foregroundColor(.white)
+                            .font(.system(size: 25))
+                            .padding(.bottom)
+                    }
+                }
+            }
         }
         .task{
             await self.configurationModel.reload()

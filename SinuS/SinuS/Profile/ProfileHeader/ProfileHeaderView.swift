@@ -18,8 +18,8 @@ struct ProfileHeaderView: View {
             self.avatar
                 .resizable()
                 .frame(
-                    width: 100 * self.scaleFactor,
-                    height: 100 * self.scaleFactor)
+                    width: 100,
+                    height: 100)
                 .clipShape(Circle())
                 .overlay {
                     Circle().stroke(Style.AppColor, lineWidth: 4)

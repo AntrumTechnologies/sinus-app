@@ -11,29 +11,33 @@ struct CreatedWavesView: View {
     let waves: [SinusUserData]
 
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Image(systemName: "water.waves")
-                    .padding(.leading, 15)
-                    .padding(.top, 5)
-                Text("Your waves")
-                    .font(.headline)
-                    .padding(.top, 5)
-            }.foregroundColor(Style.AppColor)
-
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: 0) {
-                    ForEach(waves, id: \.id) { wave in
-                        NavigationLink(
-                            destination: WaveView(user: wave),
-                            label: {
-                                SingleWaveView(wave: wave)
-                            })
+        if (waves.count != 0) {
+            VStack(alignment: .leading) {
+                HStack {
+                    Image(systemName: "water.waves")
+                        .padding(.leading, 15)
+                        .padding(.top, 5)
+                    Text("Your waves")
+                        .font(.headline)
+                        .padding(.top, 5)
+                }.foregroundColor(Style.AppColor)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(alignment: .top, spacing: 0) {
+                        ForEach(waves, id: \.id) { wave in
+                            NavigationLink(
+                                destination: WaveView(user: wave),
+                                label: {
+                                    SingleWaveView(wave: wave)
+                                })
+                        }
                     }
+                    
                 }
-
+                .frame(height: 185)
             }
-            .frame(height: 185)
+            
+            Divider()
         }
     }
 }
