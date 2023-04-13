@@ -31,7 +31,7 @@ import Kingfisher
         self.color = .gray
         self.icon = Image(systemName: "square.fill")
         // TODO: do not run avatar download on main thread, use a local placeholder avatar instead
-        let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/avatars/placeholder.jpg")!
+        let url: URL = URL(string: "\(LoveWavesApp.baseUrl)/avatars/placeholder.jpg")!
         self.avatar = KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
     }
     
@@ -46,7 +46,7 @@ import Kingfisher
     }
     
     @MainActor func reload(userData: SinusUserData) async {
-        let url = URL(string: "https://lovewaves.antrum-technologies.nl/api/sinusvalue/\(userData.id)")!
+        let url = URL(string: "\(LoveWavesApp.baseUrl)/api/sinusvalue/\(userData.id)")!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -118,7 +118,7 @@ import Kingfisher
             // Create avatar image
             let avatar: String = userData.avatar ?? ""
             if (avatar != "") {
-                let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/" + avatar)!
+                let url: URL = URL(string: "\(LoveWavesApp.baseUrl)/" + avatar)!
                 self.avatar = KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
             }
         } catch {

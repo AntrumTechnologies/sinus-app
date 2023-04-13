@@ -35,7 +35,7 @@ import SwiftKeychainWrapper
             postfix = "/following"
         }
         
-        let url = URL(string: "https://lovewaves.antrum-technologies.nl/api/sinus\(postfix)")!
+        let url = URL(string: "\(LoveWavesApp.baseUrl)/api/sinus\(postfix)")!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")

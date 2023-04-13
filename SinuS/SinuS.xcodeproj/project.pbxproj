@@ -63,7 +63,7 @@
 		4AC5B3E1296AD6A4003D819C /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5B3E0296AD6A4003D819C /* EditProfileView.swift */; };
 		4AC5B3E3296ADB51003D819C /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5B3E2296ADB51003D819C /* UserData.swift */; };
 		4AC5B3E5296ADE0D003D819C /* TotalUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5B3E4296ADE0D003D819C /* TotalUserData.swift */; };
-		4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */; };
+		4AD26FBA28BBA5D40065FB01 /* LoveWavesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FB928BBA5D40065FB01 /* LoveWavesApp.swift */; };
 		4AD26FBC28BBA5D40065FB01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FBB28BBA5D40065FB01 /* ContentView.swift */; };
 		4AD26FBE28BBA5D60065FB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AD26FBD28BBA5D60065FB01 /* Assets.xcassets */; };
 		4AD26FC128BBA5D60065FB01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AD26FC028BBA5D60065FB01 /* Preview Assets.xcassets */; };
@@ -158,7 +158,7 @@
 		4AC5B3E2296ADB51003D819C /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		4AC5B3E4296ADE0D003D819C /* TotalUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalUserData.swift; sourceTree = "<group>"; };
 		4AD26FB628BBA5D40065FB01 /* Love waves.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Love waves.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinuSApp.swift; sourceTree = "<group>"; };
+		4AD26FB928BBA5D40065FB01 /* LoveWavesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveWavesApp.swift; sourceTree = "<group>"; };
 		4AD26FBB28BBA5D40065FB01 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4AD26FBD28BBA5D60065FB01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AD26FC028BBA5D60065FB01 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -530,7 +530,7 @@
 				4AC5B3DD296AD537003D819C /* Style */,
 				4A32751C2977204F009D1CC8 /* Wave */,
 				CEECA5042974928C00CA4496 /* SinuS.entitlements */,
-				4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */,
+				4AD26FB928BBA5D40065FB01 /* LoveWavesApp.swift */,
 				4A32754E29B7B68C009D1CC8 /* GoogleService-Info.plist */,
 				4AD26FBB28BBA5D40065FB01 /* ContentView.swift */,
 				CEDADA4329D819A400340CAA /* ContentViewModel.swift */,
@@ -870,7 +870,7 @@
 				CEDADA4629D81A3D00340CAA /* Content.swift in Sources */,
 				4A32754929AA4088009D1CC8 /* FeedItemView.swift in Sources */,
 				4AC5B3E3296ADB51003D819C /* UserData.swift in Sources */,
-				4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */,
+				4AD26FBA28BBA5D40065FB01 /* LoveWavesApp.swift in Sources */,
 				4A32757629E002F6009D1CC8 /* FollowingModel.swift in Sources */,
 				4AC5B3D3296849DD003D819C /* RestApiHelper.swift in Sources */,
 				CEECA50329748DA600CA4496 /* ClickResetPasswordLinkView.swift in Sources */,
@@ -1038,7 +1038,7 @@
 				CODE_SIGN_ENTITLEMENTS = SinuS/SinuS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"SinuS/Preview Content\"";
 				DEVELOPMENT_TEAM = 479GB76B7L;
 				ENABLE_PREVIEWS = YES;
@@ -1050,12 +1050,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.antrum.lovewaves;
 				PRODUCT_NAME = "Love waves";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1067,7 +1070,7 @@
 				CODE_SIGN_ENTITLEMENTS = SinuS/SinuS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"SinuS/Preview Content\"";
 				DEVELOPMENT_TEAM = 479GB76B7L;
 				ENABLE_PREVIEWS = YES;
@@ -1079,12 +1082,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.antrum.lovewaves;
 				PRODUCT_NAME = "Love waves";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

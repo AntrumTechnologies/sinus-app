@@ -1,6 +1,6 @@
 //
-//  SinuSApp.swift
-//  SinuS
+//  LoveWavesApp.swift
+//  Love waves
 //
 //  Created by Loe Hendriks on 28/08/2022.
 //
@@ -98,10 +98,37 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
 }
 
+enum Env: String {
+    case debug
+    case testFlight
+    case appStore
+}
+
 @main
-struct SinuSApp: App {
+struct LoveWavesApp: App {
     // register app delegate for Firebase setup
      @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    static let version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+    static let build: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+    
+    static var env: Env {
+        if Bundle.main.object(forInfoDictionaryKey: "Environment") as! String == "debug" {
+            return .debug
+        } else if Bundle.main.object(forInfoDictionaryKey: "Environment") as! String == "testFlight" {
+            return .testFlight
+        } else {
+            return .appStore
+        }
+    }
+    
+    static var baseUrl: String {
+        if (env == Env.debug) {
+            return "https://devlovewaves.antrum-technologies.nl"
+        } else {
+            return "\(LoveWavesApp.baseUrl)"
+        }
+    }
 
     var body: some Scene {
         WindowGroup {

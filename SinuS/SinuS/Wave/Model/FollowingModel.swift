@@ -22,7 +22,7 @@ import SwiftKeychainWrapper
         if (self.isFollowing)
         {
             // unfollow user
-            let urlString = "https://lovewaves.antrum-technologies.nl/api/unfollow"
+            let urlString = "\(LoveWavesApp.baseUrl)/api/unfollow"
             request = RestApiHelper.createRequest(type: "PUT", url: urlString)
             let parameters: [String: Any] = ["user_id_to_unfollow": user.user_id ]
             do {
@@ -34,7 +34,7 @@ import SwiftKeychainWrapper
         }
         else{
             // follow user
-            let urlString = "https://lovewaves.antrum-technologies.nl/api/follow"
+            let urlString = "\(LoveWavesApp.baseUrl)/api/follow"
             request = RestApiHelper.createRequest(type: "PUT", url: urlString)
             let parameters: [String: Any] = ["user_id_to_follow": user.user_id ]
             
@@ -61,7 +61,7 @@ import SwiftKeychainWrapper
     
 
     @MainActor func reload(user: SinusUserData) async {
-        let url = URL(string: "https://lovewaves.antrum-technologies.nl/api/sinus/\(user.id)")!
+        let url = URL(string: "\(LoveWavesApp.baseUrl)/api/sinus/\(user.id)")!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")

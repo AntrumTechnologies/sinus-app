@@ -16,7 +16,7 @@ class DeleteWaveModel: ObservableObject {
     }
     
     func deleteWave(wave_id: Int) async -> String {
-        let url = "https://lovewaves.antrum-technologies.nl/api/sinus/delete"
+        let url = await "\(LoveWavesApp.baseUrl)/api/sinus/delete"
         let parameters: [String: Any] = ["id": wave_id]
         
         var request = RestApiHelper.createRequest(type: "PUT", url: url)

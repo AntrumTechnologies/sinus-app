@@ -8,7 +8,7 @@
 import Foundation
 
 public class LogHelper {
-    private static var logUrl = "https://lovewaves.antrum-technologies.nl/api/log"
+    private static var logUrl = "\(LoveWavesApp.baseUrl)/api/log"
 
     public func logMsg(level: String = "debug", message: String) {
         let parameters: [String: Any] = ["level": level, "message": message]

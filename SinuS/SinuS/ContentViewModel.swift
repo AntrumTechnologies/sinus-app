@@ -21,7 +21,7 @@ import SwiftKeychainWrapper
     @MainActor func reload() async {
         contentViewModel.loggedIn = false // Prevent loggedIn always being true after running once
         // Attempt to retrieve user data in order to verify whether user is logged in
-        let url = URL(string: "https://lovewaves.antrum-technologies.nl/api/user")!
+        let url = URL(string: "\(LoveWavesApp.baseUrl)/api/user")!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -48,7 +48,7 @@ import SwiftKeychainWrapper
         let deviceToken: String = KeychainWrapper.standard.string(forKey: "deviceToken") ?? ""
         if (deviceToken != "" && contentViewModel.user.fcm_token != deviceToken) {
             print("Updating FCM token...")
-            request = URLRequest(url: URL(string: "https://lovewaves.antrum-technologies.nl/api/user/update")!)
+            request = URLRequest(url: URL(string: "\(LoveWavesApp.baseUrl)/api/user/update")!)
             request.httpMethod = "PUT"
             
             let parameters: [String: Any] = ["fcm_token": deviceToken]

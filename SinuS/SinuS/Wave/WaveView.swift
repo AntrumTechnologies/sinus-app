@@ -29,7 +29,7 @@ struct WaveView: View {
         // Create avatar image
         // TODO: do not run avatar download on main thread, use a local placeholder avatar instead
         let avatar: String = user.avatar ?? "avatars/placeholder.jpg"
-        let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/" + avatar)!
+        let url: URL = URL(string: "\(LoveWavesApp.baseUrl)/" + avatar)!
         self.avatar = KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
     }
 

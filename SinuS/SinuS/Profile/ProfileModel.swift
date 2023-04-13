@@ -17,12 +17,12 @@ import SwiftKeychainWrapper
         self.profileData = Profile(id: 0, name: "", email: "", email_verified_at: "", created_at: "", updated_at: "", avatar: "", fcm_token: "")
         
         // TODO: do not run avatar download on main thread, use a local placeholder avatar instead
-        let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/avatars/placeholder.jpg")!
+        let url: URL = URL(string: "\(LoveWavesApp.baseUrl)/avatars/placeholder.jpg")!
         self.currentAvatar = KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
     }
     
     @MainActor func reload() async {
-        let url = URL(string: "https://lovewaves.antrum-technologies.nl/api/user")!
+        let url = URL(string: "\(LoveWavesApp.baseUrl)/api/user")!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -38,7 +38,7 @@ import SwiftKeychainWrapper
             
             // Create avatar image
             let avatar: String = self.profileData.avatar ?? "avatars/placeholder.jpg"
-            let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/" + avatar)!
+            let url: URL = URL(string: "\(LoveWavesApp.baseUrl)/" + avatar)!
             self.currentAvatar = KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
         } catch {
             debugPrint("Error loading \(url) caused error \(error)")

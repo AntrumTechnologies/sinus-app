@@ -16,7 +16,7 @@ class UpdateWaveModel: ObservableObject {
     
     
     func updateWave(update: WaveUpdate) async -> String {
-        let url = "https://lovewaves.antrum-technologies.nl/api/sinusvalue"
+        let url = await "\(LoveWavesApp.baseUrl)/api/sinusvalue"
         
         // Convert date to string
         let formatter = DateFormatter()

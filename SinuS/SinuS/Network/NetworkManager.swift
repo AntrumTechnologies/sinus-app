@@ -11,7 +11,7 @@ import SwiftKeychainWrapper
 public class NetworkManager {
 
     public func uploadFile (fileName: String, fileData: Data?) -> URLSessionUploadTask {
-        let uploadApiUrl: URL? = URL(string: "https://lovewaves.antrum-technologies.nl/api/user/update")
+        let uploadApiUrl: URL? = URL(string: "\(LoveWavesApp.baseUrl)/api/user/update")
 
         // Generate a unique boundary string using a UUID.
         let uniqueBoundary = UUID().uuidString

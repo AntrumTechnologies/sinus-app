@@ -35,7 +35,7 @@ struct EditProfileView: View {
 
     var currentAvatar: KFImage {
         let avatar: String = currentUser.avatar ?? "avatars/placeholder.jpg"
-        let url: URL = URL(string: "https://lovewaves.antrum-technologies.nl/" + avatar)!
+        let url: URL = URL(string: "\(LoveWavesApp.baseUrl)/" + avatar)!
         return KFImage.url(url).setProcessor(DownsamplingImageProcessor(size: CGSize(width: 100, height: 100)))
     }
 

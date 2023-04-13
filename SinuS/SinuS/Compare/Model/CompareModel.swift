@@ -46,7 +46,7 @@ private struct GraphDataPoint: Codable {
         let target = nameAndTarget[1]
 
         // Get all users
-        let url = URL(string: "https://lovewaves.antrum-technologies.nl/api/sinus")!
+        let url = URL(string: "\(LoveWavesApp.baseUrl)/api/sinus")!
         let request = self.createRequest(url: url)
         
         let urlSession = URLSession.shared

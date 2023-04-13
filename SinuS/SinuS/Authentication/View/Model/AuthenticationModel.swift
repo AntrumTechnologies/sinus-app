@@ -21,7 +21,7 @@ class AuthenticationModel: ObservableObject {
             email: String,
             password: String,
             confirmPassword: String) async throws -> AuthenticationResult? {
-           let registerUrl = "https://lovewaves.antrum-technologies.nl/api/register?"
+           let registerUrl = await "\(LoveWavesApp.baseUrl)/api/register?"
            let parameters: [String: Any] = [
                "name": name, "email": email, "password": password, "confirm_password": confirmPassword]
            let decoder = JSONDecoder()
@@ -50,7 +50,7 @@ class AuthenticationModel: ObservableObject {
        }
     
     public func login(email: String, password: String) async throws -> AuthenticationResult? {
-           let loginUrl = "https://lovewaves.antrum-technologies.nl/api/login?"
+           let loginUrl = await "\(LoveWavesApp.baseUrl)/api/login?"
            let parameters: [String: Any] = ["email": email, "password": password]
            let decoder = JSONDecoder()
            var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, auth: false)
@@ -78,7 +78,7 @@ class AuthenticationModel: ObservableObject {
        }
     
     public func forgotPassword(email: String) async throws -> AuthenticationResult? {
-            let loginUrl = "https://lovewaves.antrum-technologies.nl/api/forgot-password"
+            let loginUrl = await "\(LoveWavesApp.baseUrl)/api/forgot-password"
             let parameters: [String: Any] = ["email": email]
             let decoder = JSONDecoder()
             var request = RestApiHelper.createRequest(type: "POST", url: loginUrl, auth: false)
@@ -106,7 +106,7 @@ class AuthenticationModel: ObservableObject {
         }
 
         public func resetPassword(token: String, email: String, password: String, confirmPassword: String) async throws -> AuthenticationResult? {
-            let loginUrl = "https://lovewaves.antrum-technologies.nl/api/reset-password"
+            let loginUrl = await "\(LoveWavesApp.baseUrl)/api/reset-password"
             let parameters: [String: Any] = [
                 "token": token,
                 "email": email,
@@ -139,7 +139,7 @@ class AuthenticationModel: ObservableObject {
         }
 
         public func isTokenValid() async -> Bool {
-            let url = "https://lovewaves.antrum-technologies.nl/api/user"
+            let url = await "\(LoveWavesApp.baseUrl)/api/user"
             let decoder = JSONDecoder()
             let request = RestApiHelper.createRequest(type: "GET", url: url, auth: true)
             let data = RestApiHelper.perfomRestCall(request: request)
