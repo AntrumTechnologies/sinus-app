@@ -10,9 +10,15 @@ import SwiftKeychainWrapper
 
 class DeleteWaveModel: ObservableObject {
     let retrievable: RestRetrievable
+    public var waves: [SinusUserData]
     
     init(retrievable: RestRetrievable) {
         self.retrievable = retrievable
+        self.waves = []
+    }
+    
+    func setWaves(waves: [SinusUserData]) {
+        self.waves = waves
     }
     
     func deleteWave(wave_id: Int) async -> String {
@@ -36,6 +42,8 @@ class DeleteWaveModel: ObservableObject {
         catch {
             debugPrint("Error loading \(request.url) caused error \(error) with response \((String(bytes: data!, encoding: .utf8) ?? ""))")
         }
+        
+        self.waves = waves.filter {$0.id != wave_id}
         
         let message = String(bytes: data!, encoding: .utf8) ?? ""
         return message.replacingOccurrences(of: "\"", with: "")

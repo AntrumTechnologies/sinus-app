@@ -113,21 +113,23 @@ struct LoveWavesApp: App {
     static let build: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
     
     static var env: Env {
-        if Bundle.main.object(forInfoDictionaryKey: "Environment") as! String == "debug" {
-            return .debug
-        } else if Bundle.main.object(forInfoDictionaryKey: "Environment") as! String == "testFlight" {
-            return .testFlight
-        } else {
-            return .appStore
-        }
+        return .testFlight
+        
+//        if Bundle.main.object(forInfoDictionaryKey: "Environment") as! String == "debug" {
+//            return .debug
+//        } else if Bundle.main.object(forInfoDictionaryKey: "Environment") as! String == "testFlight" {
+//            return .testFlight
+//        } else {
+//            return .appStore
+//        }
     }
     
     static var baseUrl: String {
-        if (env == Env.debug) {
-            return "https://devlovewaves.antrum-technologies.nl"
-        } else {
-            return "\(LoveWavesApp.baseUrl)"
-        }
+//        if (env == Env.debug) {
+            return "https://lovewaves.antrum-technologies.nl"
+//        } else {
+//            return "\(LoveWavesApp.baseUrl)"
+//        }
     }
 
     var body: some Scene {

@@ -29,7 +29,7 @@ struct LoginView: View {
                     Spacer()
                     TextField("", text: self.$email)
                         .disableAutocorrection(true)
-                        .frame(width: 220)
+                        .frame(width: 190)
                         .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
                         .cornerRadius(5)
                         .overlay(
@@ -44,7 +44,7 @@ struct LoginView: View {
                     Spacer()
                     SecureField("", text: self.$password)
                         .disableAutocorrection(true)
-                        .frame(width: 220)
+                        .frame(width: 190)
                         .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
                         .cornerRadius(5)
                         .overlay(

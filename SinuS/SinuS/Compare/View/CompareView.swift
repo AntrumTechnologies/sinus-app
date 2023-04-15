@@ -116,7 +116,6 @@ struct CompareView: View {
                             
                         }.chartYScale(domain: 0...100)
                             .frame(width: self.charWidth(points: self.compareModel.originPoints), height: 250)
-                            .shadow(radius: 10)
                             .padding()
                             .chartPlotStyle { plotArea in
                                 plotArea

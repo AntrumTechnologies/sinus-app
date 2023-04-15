@@ -8,25 +8,31 @@
 import SwiftUI
 
 struct DeleteWaveView: View {
-    let waves: [SinusUserData]
+    //var waves: [SinusUserData]
     
     @State private var selection = ""
     @State private var message: String = ""
     @State private var showingAlert = false
+    @State private var isPresentingConfirm: Bool = false
     
     var deleteWaveModel = DeleteWaveModel(retrievable: ExternalRestRetriever())
     
     var options: [String] {
-        return waves.map { "\($0.date_name)" }
+        return deleteWaveModel.waves.map { "\($0.date_name)" }
     }
     
     var selectedWave: SinusUserData {
         if (self.selection == "") {
-            return self.waves.first!
+            return self.deleteWaveModel.waves.first!
         }
             
-        var wave = self.waves.filter{ $0.date_name == self.selection }.first
+        var wave = self.deleteWaveModel.waves.filter{ $0.date_name == self.selection }.first
         return wave!
+    }
+    
+    init(waves: [SinusUserData]) {
+        self.deleteWaveModel.setWaves(waves: waves)
+       // self.waves = waves
     }
     
     var body: some View {
@@ -63,20 +69,27 @@ struct DeleteWaveView: View {
                     Button("Delete") {
                         let resign = #selector(UIResponder.resignFirstResponder)
                         UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
-                        
-                        Task {
-                            do {
-                                self.message = await self.deleteWaveModel.deleteWave(wave_id: self.selectedWave.id)
-                                showingAlert = true
-                            }
-                            catch{
-                                print(error)
-                            }
-                        }
+                        isPresentingConfirm = true
                     }
                     .padding()
+                    .confirmationDialog("Are you sure?",
+                    isPresented: $isPresentingConfirm) {
+                        Button("Delete Wave", role: .destructive) {
+                            Task {
+                                do {
+                                    self.message = await self.deleteWaveModel.deleteWave(wave_id: self.selectedWave.id)
+                                    showingAlert = true
+                                }
+                                catch{
+                                    print(error)
+                                }
+                            }
+                        }
+                    } message: {
+                      Text("You cannot undo this action")
+                    }
                     .alert(self.message, isPresented: $showingAlert) {
-                        Button("OK", role: .cancel) { }
+                        Button("OK", role: .cancel) {}
                     }
                 }
                 .background(Style.AppBackground)

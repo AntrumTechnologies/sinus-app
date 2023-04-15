@@ -21,6 +21,7 @@ struct WaveView: View {
     @ObservedObject var waveModel = FeedItemModel(retrievable: ExternalRestRetriever())
     @ObservedObject var followingModel = FollowingModel()
     @ObservedObject var contentModel = ContentViewModel(retrievable: ExternalRestRetriever())
+    @Environment(\.presentationMode) var presentationMode
     
     private static var following = false
 
@@ -87,6 +88,8 @@ struct WaveView: View {
         .toolbarBackground(Style.AppColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarColorScheme(.dark, for: .navigationBar)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button("Back"){self.presentationMode.wrappedValue.dismiss()})
     }
 }
 
