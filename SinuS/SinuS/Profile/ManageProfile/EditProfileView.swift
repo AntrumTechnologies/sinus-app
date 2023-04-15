@@ -58,6 +58,8 @@ struct EditProfileView: View {
                         }
 
                     Spacer()
+                    
+                    
 
                     PhotosPicker(
                         selection: $selectedItem,

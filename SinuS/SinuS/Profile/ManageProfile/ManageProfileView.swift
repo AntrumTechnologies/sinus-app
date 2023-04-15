@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftKeychainWrapper
+import PhotoSelectAndCrop
 
 struct ManageProfileView: View {
     let currentUser: Profile
@@ -34,7 +35,7 @@ struct ManageProfileView: View {
                 
                 Spacer()
 
-                NavigationLink(destination: EditProfileView(currentUser: self.currentUser), label: {
+                NavigationLink(destination: CropView( user: self.currentUser), label: {
                     MenuButton(image: Image(systemName: "gearshape.fill"), name: "Edit")
                 })
 

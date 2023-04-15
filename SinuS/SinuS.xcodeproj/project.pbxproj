@@ -46,6 +46,9 @@
 		4A32758029E026FF009D1CC8 /* NewWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757F29E026FF009D1CC8 /* NewWaveModel.swift */; };
 		4A32758429E029D7009D1CC8 /* DeleteWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32758329E029D7009D1CC8 /* DeleteWaveModel.swift */; };
 		4A32758729E02E3B009D1CC8 /* AuthenticationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32758629E02E3B009D1CC8 /* AuthenticationModel.swift */; };
+		4A32758F29EAA15E009D1CC8 /* PhotoSelectAndCrop in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32758E29EAA15E009D1CC8 /* PhotoSelectAndCrop */; };
+		4A32759129EAA217009D1CC8 /* CropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32759029EAA216009D1CC8 /* CropView.swift */; };
+		4A32759329EAA2AA009D1CC8 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32759229EAA2AA009D1CC8 /* DetailsView.swift */; };
 		4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D022917C2F9001DB4F7 /* LoginView.swift */; };
 		4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D052917C30D001DB4F7 /* RegisterView.swift */; };
 		4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */; };
@@ -140,6 +143,8 @@
 		4A32757F29E026FF009D1CC8 /* NewWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWaveModel.swift; sourceTree = "<group>"; };
 		4A32758329E029D7009D1CC8 /* DeleteWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWaveModel.swift; sourceTree = "<group>"; };
 		4A32758629E02E3B009D1CC8 /* AuthenticationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModel.swift; sourceTree = "<group>"; };
+		4A32759029EAA216009D1CC8 /* CropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
+		4A32759229EAA2AA009D1CC8 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		4A4C6D022917C2F9001DB4F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4A4C6D052917C30D001DB4F7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResult.swift; sourceTree = "<group>"; };
@@ -194,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A32753A298AE46A009D1CC8 /* FirebaseAnalytics in Frameworks */,
+				4A32758F29EAA15E009D1CC8 /* PhotoSelectAndCrop in Frameworks */,
 				4A32753C298AE46A009D1CC8 /* FirebaseAuth in Frameworks */,
 				CEB12A25299946C4000D5669 /* Kingfisher in Frameworks */,
 				4A32755629BC8F06009D1CC8 /* Get in Frameworks */,
@@ -622,6 +628,8 @@
 			children = (
 				4AC5B3E0296AD6A4003D819C /* EditProfileView.swift */,
 				CE89A8752969F93200300C9D /* ManageProfileView.swift */,
+				4A32759029EAA216009D1CC8 /* CropView.swift */,
+				4A32759229EAA2AA009D1CC8 /* DetailsView.swift */,
 			);
 			path = ManageProfile;
 			sourceTree = "<group>";
@@ -668,6 +676,7 @@
 				4A327541298AE46A009D1CC8 /* FirebaseStorage */,
 				CEB12A24299946C4000D5669 /* Kingfisher */,
 				4A32755529BC8F06009D1CC8 /* Get */,
+				4A32758E29EAA15E009D1CC8 /* PhotoSelectAndCrop */,
 			);
 			productName = SinuS;
 			productReference = 4AD26FB628BBA5D40065FB01 /* Love waves.app */;
@@ -745,6 +754,7 @@
 				4A327538298AE46A009D1CC8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CEB12A23299946C4000D5669 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				4A32755429BC8F06009D1CC8 /* XCRemoteSwiftPackageReference "Get" */,
+				4A32758D29EAA15D009D1CC8 /* XCRemoteSwiftPackageReference "PhotoSelectAndCrop" */,
 			);
 			productRefGroup = 4AD26FB728BBA5D40065FB01 /* Products */;
 			projectDirPath = "";
@@ -863,6 +873,7 @@
 				4A0B396C28D38F0700D7EEC9 /* MenuButton.swift in Sources */,
 				4A32754B29AFD157009D1CC8 /* WavePreviewView.swift in Sources */,
 				4AC5B3DF296AD546003D819C /* Style.swift in Sources */,
+				4A32759129EAA217009D1CC8 /* CropView.swift in Sources */,
 				4A0B397228D3ABF200D7EEC9 /* SmallFrame.swift in Sources */,
 				4A0B397928E081CF00D7EEC9 /* RelationshipStatus.swift in Sources */,
 				4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */,
@@ -872,6 +883,7 @@
 				4AC5B3E3296ADB51003D819C /* UserData.swift in Sources */,
 				4AD26FBA28BBA5D40065FB01 /* LoveWavesApp.swift in Sources */,
 				4A32757629E002F6009D1CC8 /* FollowingModel.swift in Sources */,
+				4A32759329EAA2AA009D1CC8 /* DetailsView.swift in Sources */,
 				4AC5B3D3296849DD003D819C /* RestApiHelper.swift in Sources */,
 				CEECA50329748DA600CA4496 /* ClickResetPasswordLinkView.swift in Sources */,
 				CEDADA4429D819A400340CAA /* ContentViewModel.swift in Sources */,
@@ -1238,6 +1250,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		4A32758D29EAA15D009D1CC8 /* XCRemoteSwiftPackageReference "PhotoSelectAndCrop" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Rillieux/PhotoSelectAndCrop";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		CE6A64E429696C1C00DC47E5 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
@@ -1286,6 +1306,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4A32755429BC8F06009D1CC8 /* XCRemoteSwiftPackageReference "Get" */;
 			productName = Get;
+		};
+		4A32758E29EAA15E009D1CC8 /* PhotoSelectAndCrop */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A32758D29EAA15D009D1CC8 /* XCRemoteSwiftPackageReference "PhotoSelectAndCrop" */;
+			productName = PhotoSelectAndCrop;
 		};
 		CE6A64E529696C1C00DC47E5 /* SwiftKeychainWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
