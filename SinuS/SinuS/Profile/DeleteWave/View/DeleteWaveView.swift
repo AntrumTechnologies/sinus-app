@@ -22,6 +22,11 @@ struct DeleteWaveView: View {
     }
     
     var selectedWave: SinusUserData {
+        // Prevent unwrapping nil if selection was made but all waves are deleted
+        if (options.count == 0) {
+            self.selection = ""
+        }
+        
         if (self.selection == "") {
             return self.deleteWaveModel.waves.first!
         }
