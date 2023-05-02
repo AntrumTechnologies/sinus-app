@@ -69,15 +69,17 @@ struct CropView: View {
                 
                 Button("Update Image") {
                     Task {
-                        let data = self.image.croppedImage!.jpegData(compressionQuality: 0.8)
-                            selectedImageData = data
-                             _ = network.uploadFile(
-                                fileName: "avatar.jpg",
-                                fileData: data)
+                        if (self.image.croppedImage != nil) {
+                            let data = self.image.croppedImage!.jpegData(compressionQuality: 0.8)
+                                selectedImageData = data
+                                 _ = network.uploadFile(
+                                    fileName: "avatar.jpg",
+                                    fileData: data)
 
-                        if let uiImage = UIImage(data: data!) {
-                                selectedImage = Image(uiImage: uiImage)
-                            }
+                            if let uiImage = UIImage(data: data!) {
+                                    selectedImage = Image(uiImage: uiImage)
+                                }
+                        }
                     }
                 }
                 .foregroundColor(Style.TextOnColoredBackground)
