@@ -12,19 +12,34 @@ struct FeedView: View {
     @StateObject var feedDataModel = FeedModel(retrievable: ExternalRestRetriever())
 
     var body: some View {
-        List(feedDataModel.feedModel) { userData in
-            NavigationLink(
-                destination: WaveView(user: userData),
-                label: {
-                    FeedItemView(userData: userData)
-                })
+        VStack{
+            HStack{
+                if (self.onlyFollowing){
+                    Text("Following").foregroundColor(Style.TextOnColoredBackground)
+                    Text("Explore").foregroundColor(.gray)
+                }
+                else{
+                    Text("Following").foregroundColor(.gray)
+                    Text("Explore").foregroundColor(Style.TextOnColoredBackground)
+                }
+                
+            }.padding(.top)
+            
+            List(feedDataModel.feedModel) { userData in
+                NavigationLink(
+                    destination: WaveView(user: userData),
+                    label: {
+                        FeedItemView(userData: userData)
+                    })
+            }
+            .task {
+                 await self.feedDataModel.reload(onlyFollowing: self.onlyFollowing)
+             }
+             .refreshable {
+                 await self.feedDataModel.reload(onlyFollowing: self.onlyFollowing)
+             }
+            
         }
-        .task {
-             await self.feedDataModel.reload(onlyFollowing: self.onlyFollowing)
-         }
-         .refreshable {
-             await self.feedDataModel.reload(onlyFollowing: self.onlyFollowing)
-         }
     }
 }
 

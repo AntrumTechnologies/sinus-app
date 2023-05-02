@@ -10,30 +10,30 @@ import SwiftKeychainWrapper
 import Firebase
 
 struct ContentView: View {
-    @State private var selection = 1
+    @State private var selection = 3
     @ObservedObject var contentModel = ContentViewModel(retrievable: ExternalRestRetriever())
-    
+
     var body: some View {
         NavigationView {
             VStack {
                 TabView(selection: self.$selection) {
                     Group {
                         if self.contentModel.contentViewModel.loggedIn == true {
-                            FeedView(onlyFollowing: false)
+                            SearchView()
                                 .tabItem {
-                                    Label("Explore", systemImage: "network")
-                                }
-                                .tag(1)
-                            FeedView(onlyFollowing: true)
-                                .tabItem {
-                                    Label("Following", systemImage: "person.2.fill")
+                                    Label("Search", systemImage: "magnifyingglass")
                                 }
                                 .tag(2)
+                            FeedCombinationView()
+                                .tabItem {
+                                    Label("Feed", systemImage: "person.2.fill")
+                                }
+                                .tag(3)
                             ProfileView()
                                 .tabItem {
                                     Label("Profile", systemImage: "person")
                                 }
-                                .tag(3)
+                                .tag(4)
                         } else {
                             FeedView(onlyFollowing: false)
                                 .tabItem {
@@ -76,7 +76,7 @@ struct ContentView: View {
             await self.contentModel.reload()
         }
         .preferredColorScheme(.light)
-        .navigationBarBackButtonHidden(true) // Hides back button when logging in again in same instance of app
+        .navigationBarBackButtonHidden(true)
     }
 }
 
