@@ -6,14 +6,15 @@
 //
 
 import Foundation
-class NewWaveModel: ObservableObject {
+
+@MainActor class NewWaveModel: ObservableObject {
     let retrievable: RestRetrievable
     
     init(retrievable: RestRetrievable) {
         self.retrievable = retrievable
     }
     
-    func createNewWave(name: String) async -> String {
+    @MainActor func createNewWave(name: String) async -> String {
         var url = "https://www.lovewaves.antrum-technologies.nl/api/sinus"
         let parameters: [String: Any] = ["wave_name": name]
         var request = RestApiHelper.createRequest(type: "PUT", url: url)

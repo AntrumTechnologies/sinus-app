@@ -9,8 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct ProfileView: View {
-    @StateObject var profileDataModel = ProfileModel()
-    @StateObject var createdWavesModel = CreatedWavesModel(retrievable: ExternalRestRetriever())
+    @StateObject var profileDataModel = ProfileModel(retrievable: ExternalRestRetriever())
     
     var body: some View {
         VStack {
@@ -22,13 +21,13 @@ struct ProfileView: View {
                 
                 Divider()
                 
-                CreatedWavesView(waves: createdWavesModel.createdWaves)
+                CreatedWavesView(waves: profileDataModel.createdWaves)
                 
-                UpdateWaveView(waves: createdWavesModel.createdWaves)
+                UpdateWaveView(waves: profileDataModel.createdWaves)
                 
                 NewWaveView(currentUsername: profileDataModel.profileData.name)
                 
-                DeleteWaveView(waves: createdWavesModel.createdWaves)
+                DeleteWaveView(waves: profileDataModel.createdWaves)
                 
                 Divider()
                 
@@ -37,11 +36,9 @@ struct ProfileView: View {
         }
         .task {
             await self.profileDataModel.reload()
-            await self.createdWavesModel.reload()
         }
         .refreshable {
             await self.profileDataModel.reload()
-            await self.createdWavesModel.reload()
         }
     }
 }

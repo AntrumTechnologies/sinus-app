@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct DeleteWaveView: View {
-    //var waves: [SinusUserData]
+    private var waves: [SinusUserData]
     
     @State private var selection = ""
     @State private var message: String = ""
     @State private var showingAlert = false
     @State private var isPresentingConfirm: Bool = false
+    @State private var noWaves: Bool = false
     
-    var deleteWaveModel = DeleteWaveModel(retrievable: ExternalRestRetriever())
+    @StateObject var deleteWaveModel = DeleteWaveModel(retrievable: ExternalRestRetriever())
     
     var options: [String] {
-        return deleteWaveModel.waves.map { "\($0.date_name)" }
+        return waves.map { "\($0.date_name)" }
     }
     
     var selectedWave: SinusUserData {
@@ -28,21 +29,19 @@ struct DeleteWaveView: View {
         }
         
         if (self.selection == "") {
-            return self.deleteWaveModel.waves.first!
+            return self.waves.first!
         }
-            
-        var wave = self.deleteWaveModel.waves.filter{ $0.date_name == self.selection }.first
-        return wave!
+        
+        return self.waves.filter{ $0.date_name == self.selection }.first!
     }
     
     init(waves: [SinusUserData]) {
-        self.deleteWaveModel.setWaves(waves: waves)
-       // self.waves = waves
+        self.waves = waves
     }
     
     var body: some View {
-        if (options.count != 0) {
-            VStack(alignment: .leading) {
+        VStack(alignment: .leading) {
+            if (self.waves.count != 0) {
                 HStack {
                     Image(systemName: "trash")
                         .padding(.leading, 15)
@@ -78,7 +77,7 @@ struct DeleteWaveView: View {
                     }
                     .padding()
                     .confirmationDialog("Are you sure?",
-                    isPresented: $isPresentingConfirm) {
+                                        isPresented: $isPresentingConfirm) {
                         Button("Delete Wave", role: .destructive) {
                             Task {
                                 do {
@@ -91,7 +90,7 @@ struct DeleteWaveView: View {
                             }
                         }
                     } message: {
-                      Text("You cannot undo this action")
+                        Text("You cannot undo this action")
                     }
                     .alert(self.message, isPresented: $showingAlert) {
                         Button("OK", role: .cancel) {}
@@ -105,6 +104,9 @@ struct DeleteWaveView: View {
                 
                 Spacer()
             }
+        }
+        .task {
+            await self.deleteWaveModel.reload(waves: self.waves)
         }
     }
 }

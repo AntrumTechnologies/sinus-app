@@ -8,7 +8,7 @@
 import Foundation
 import SwiftKeychainWrapper
 
-class DeleteWaveModel: ObservableObject {
+@MainActor class DeleteWaveModel: ObservableObject {
     let retrievable: RestRetrievable
     public var waves: [SinusUserData]
     
@@ -19,10 +19,16 @@ class DeleteWaveModel: ObservableObject {
     
     func setWaves(waves: [SinusUserData]) {
         self.waves = waves
+        print("number of waves: \(waves.count)")
     }
     
-    func deleteWave(wave_id: Int) async -> String {
-        let url = await "\(LoveWavesApp.baseUrl)/api/sinus/delete"
+    @MainActor func reload(waves: [SinusUserData]) async {
+        self.waves = waves
+        print("number of waves: \(waves.count)")
+    }
+    
+    @MainActor func deleteWave(wave_id: Int) async -> String {
+        let url = "\(LoveWavesApp.baseUrl)/api/sinus/delete"
         let parameters: [String: Any] = ["id": wave_id]
         
         var request = RestApiHelper.createRequest(type: "PUT", url: url)
@@ -37,7 +43,7 @@ class DeleteWaveModel: ObservableObject {
         var data: Data? = nil
         
         do {
-            data = await self.retrievable.Retrieve(request: request)
+            data = try await self.retrievable.Retrieve(request: request)
         }
         catch {
             debugPrint("Error loading \(request.url) caused error \(error) with response \((String(bytes: data!, encoding: .utf8) ?? ""))")
@@ -47,6 +53,5 @@ class DeleteWaveModel: ObservableObject {
         
         let message = String(bytes: data!, encoding: .utf8) ?? ""
         return message.replacingOccurrences(of: "\"", with: "")
-        
     }
 }

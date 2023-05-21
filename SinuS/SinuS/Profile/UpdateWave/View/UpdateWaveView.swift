@@ -34,9 +34,10 @@ struct UpdateWaveView: View {
         return wave!
     }
 
-    /**
-        The view.
-     */
+    init(waves: [SinusUserData]) {
+        self.waves = waves
+    }
+    
     var body: some View {
         if (options.count != 0) {
             VStack(alignment: .leading) {

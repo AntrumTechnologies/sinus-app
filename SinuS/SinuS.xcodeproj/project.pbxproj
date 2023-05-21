@@ -85,7 +85,6 @@
 		CE89A87A296AF2D300300C9D /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89A879296AF2D300300C9D /* LogHelper.swift */; };
 		CE95360C29BCAA3800D9B0D4 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95360B29BCAA3800D9B0D4 /* ProfileModel.swift */; };
 		CE95360E29BCB3F100D9B0D4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95360D29BCB3F100D9B0D4 /* Profile.swift */; };
-		CE95361029BCB71600D9B0D4 /* CreatedWavesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95360F29BCB71600D9B0D4 /* CreatedWavesModel.swift */; };
 		CEB12A25299946C4000D5669 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CEB12A24299946C4000D5669 /* Kingfisher */; };
 		CEBF7655299818FA00D5E3AF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF7654299818FA00D5E3AF /* NetworkManager.swift */; };
 		CEDADA4429D819A400340CAA /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDADA4329D819A400340CAA /* ContentViewModel.swift */; };
@@ -190,7 +189,6 @@
 		CE89A879296AF2D300300C9D /* LogHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
 		CE95360B29BCAA3800D9B0D4 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		CE95360D29BCB3F100D9B0D4 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		CE95360F29BCB71600D9B0D4 /* CreatedWavesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedWavesModel.swift; sourceTree = "<group>"; };
 		CEBF7654299818FA00D5E3AF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CEDADA4329D819A400340CAA /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		CEDADA4529D81A3D00340CAA /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
@@ -432,14 +430,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		4A32758829E0301F009D1CC8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CE95360F29BCB71600D9B0D4 /* CreatedWavesModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		4A32758929E03027009D1CC8 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -628,7 +618,6 @@
 			isa = PBXGroup;
 			children = (
 				4A32758929E03027009D1CC8 /* View */,
-				4A32758829E0301F009D1CC8 /* Model */,
 			);
 			path = CreatedWaves;
 			sourceTree = "<group>";
@@ -889,7 +878,6 @@
 				4A32755B29C5B4CE009D1CC8 /* ExternalRestRetriever.swift in Sources */,
 				4A32755929C5B3BA009D1CC8 /* RestRetrievable.swift in Sources */,
 				4A32756529D03683009D1CC8 /* CompareConfigurationModel.swift in Sources */,
-				CE95361029BCB71600D9B0D4 /* CreatedWavesModel.swift in Sources */,
 				4A15E00128C7C91C00422C05 /* ProfileButton.swift in Sources */,
 				4A0B397728E06E9600D7EEC9 /* SinusUserData.swift in Sources */,
 				4AD26FBC28BBA5D40065FB01 /* ContentView.swift in Sources */,

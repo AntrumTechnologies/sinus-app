@@ -9,6 +9,10 @@ import SwiftUI
 
 struct CreatedWavesView: View {
     let waves: [SinusUserData]
+    
+    init(waves: [SinusUserData]) {
+        self.waves = waves
+    }
 
     var body: some View {
         if (waves.count != 0) {

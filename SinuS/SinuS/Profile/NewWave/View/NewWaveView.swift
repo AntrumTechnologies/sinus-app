@@ -17,7 +17,7 @@ struct NewWaveView: View {
     @State private var showingAlert = false
     @State private var message: String = ""
     
-    var newWaveModel = NewWaveModel(retrievable: ExternalRestRetriever())
+    @StateObject var newWaveModel = NewWaveModel(retrievable: ExternalRestRetriever())
     /**
         The view.
      */
