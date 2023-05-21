@@ -9,21 +9,24 @@ import SwiftUI
 
 struct FeedView: View {
     let onlyFollowing: Bool
+    let loggedIn: Bool
     @StateObject var feedDataModel = FeedModel(retrievable: ExternalRestRetriever())
 
     var body: some View {
-        VStack{
-            HStack{
-                if (self.onlyFollowing){
-                    Text("Following").foregroundColor(Style.TextOnColoredBackground)
-                    Text("Explore").foregroundColor(.gray)
+        VStack {
+            if (loggedIn) {
+                HStack {
+                    if (self.onlyFollowing){
+                        Text("Following").foregroundColor(Style.TextOnColoredBackground)
+                        Text("Explore").foregroundColor(.gray)
+                    }
+                    else{
+                        Text("Following").foregroundColor(.gray)
+                        Text("Explore").foregroundColor(Style.TextOnColoredBackground)
+                    }
                 }
-                else{
-                    Text("Following").foregroundColor(.gray)
-                    Text("Explore").foregroundColor(Style.TextOnColoredBackground)
-                }
-                
-            }.padding(.top)
+                .padding(.top)
+            }
             
             List(feedDataModel.feedModel) { userData in
                 NavigationLink(
@@ -33,18 +36,17 @@ struct FeedView: View {
                     })
             }
             .task {
-                 await self.feedDataModel.reload(onlyFollowing: self.onlyFollowing)
-             }
-             .refreshable {
-                 await self.feedDataModel.reload(onlyFollowing: self.onlyFollowing)
-             }
-            
+                await self.feedDataModel.reload(onlyFollowing: self.onlyFollowing)
+            }
+            .refreshable {
+                await self.feedDataModel.reload(onlyFollowing: self.onlyFollowing)
+            }
         }
     }
 }
 
 struct FeedView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedView(onlyFollowing: false)
+        FeedView(onlyFollowing: false, loggedIn: true)
     }
 }
