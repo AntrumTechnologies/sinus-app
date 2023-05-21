@@ -12,6 +12,9 @@ import Kingfisher
 struct CropView: View {
     let currentUser: Profile
     
+    @State private var message: String = ""
+    @State private var showingAlert = false
+    
     @State private var isEditMode: Bool = true
     @State private var selectedImage: Image?
     @State private var selectedImageData: Data?
@@ -59,15 +62,14 @@ struct CropView: View {
                           isEditMode: $isEditMode,
                           renderingMode: renderingMode,
                           colors: colors)
-                    .background(Style.AppColor)
-                    .cornerRadius(5)
-                    .frame(width: 250, height: 290)
-                    .padding()
-                
+                .background(Style.AppColor)
+                .cornerRadius(5)
+                .frame(width: 250, height: 290)
+                .padding()
                 
                 Spacer()
                 
-                Button("Update Image") {
+                Button("Update avatar") {
                     Task {
                         if (self.image.croppedImage != nil) {
                             let data = self.image.croppedImage!.jpegData(compressionQuality: 0.8)
@@ -77,10 +79,15 @@ struct CropView: View {
                                     fileData: data)
 
                             if let uiImage = UIImage(data: data!) {
-                                    selectedImage = Image(uiImage: uiImage)
-                                }
+                                selectedImage = Image(uiImage: uiImage)
+                                self.message = "Successfully updated avatar"
+                                showingAlert = true
+                            }
                         }
                     }
+                }
+                .alert(self.message, isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) {}
                 }
                 .foregroundColor(Style.TextOnColoredBackground)
                 .padding()
