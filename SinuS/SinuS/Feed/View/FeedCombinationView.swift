@@ -11,7 +11,7 @@ struct FeedCombinationView: View {
     @State private var selection = 1
     
     let minDragTranslationForSwipe: CGFloat = 50
-    let numTabs = 3
+    let numTabs = 2
     
     var body: some View {
         VStack {
@@ -21,7 +21,7 @@ struct FeedCombinationView: View {
                         .tabItem {
                             Label("Following", systemImage: "person.2.fill")
                         }
-                        .tag(1)
+                        .tag(0)
                         .highPriorityGesture(DragGesture().onEnded({
                             self.handleSwipe(translation: $0.translation.width)
                         }))
@@ -29,7 +29,7 @@ struct FeedCombinationView: View {
                         .tabItem {
                             Label("Explore", systemImage: "network")
                         }
-                        .tag(2)
+                        .tag(1)
                         .highPriorityGesture(DragGesture().onEnded({
                             self.handleSwipe(translation: $0.translation.width)
                         }))
