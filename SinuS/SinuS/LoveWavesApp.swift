@@ -125,11 +125,11 @@ struct LoveWavesApp: App {
     }
     
     static var baseUrl: String {
-//        if (env == Env.debug) {
+        if (env == Env.debug) {
+            return "https://devlovewaves.antrum-technologies.nl"
+        } else {
             return "https://lovewaves.antrum-technologies.nl"
-//        } else {
-//            return "\(LoveWavesApp.baseUrl)"
-//        }
+        }
     }
 
     var body: some Scene {
