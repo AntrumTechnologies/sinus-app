@@ -40,7 +40,7 @@ struct NewWaveView: View {
                     Spacer()
                     TextField("", text: self.$waveName)
                         .disableAutocorrection(true)
-                        .frame(width: 200)
+                        .frame(width: 200, height: 30)
                         .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
                         .cornerRadius(5)
                         .overlay(

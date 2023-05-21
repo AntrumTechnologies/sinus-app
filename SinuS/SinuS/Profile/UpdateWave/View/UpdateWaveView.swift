@@ -92,6 +92,7 @@ struct UpdateWaveView: View {
                         Text("Description")
                         TextField("", text: self.$description, axis: .vertical)
                             .disableAutocorrection(true)
+                            .frame(height: 30)
                             .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
                             .cornerRadius(5)
                             .overlay(

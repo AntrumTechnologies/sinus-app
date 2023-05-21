@@ -15,10 +15,11 @@ struct SearchView: View {
     var body: some View {
         VStack {
             HStack{
-                TextField(" Filter", text: self.$filter, axis: .vertical)
+                TextField("Search...", text: self.$filter, axis: .vertical)
                     .disableAutocorrection(true)
                     .cornerRadius(5)
-                    .frame(height: 50)
+                    .frame(height: 30)
+                    .padding(EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6))
                     .overlay(
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(lineWidth: 1.0)
@@ -34,7 +35,7 @@ struct SearchView: View {
                 } label: {
                     Image(systemName: "magnifyingglass")
                         .resizable()
-                        .frame(width: 30, height: 30)
+                        .frame(width: 20, height: 20)
                         .padding()
                 }
                 
@@ -48,14 +49,19 @@ struct SearchView: View {
             
             Spacer()
             
-            List(self.searchModel.filteredUsers) { user in
-                NavigationLink(
-                    destination: WaveView(user: user),
-                    label: {
-                        SearchItemView(user: user)
-                    })
-            }.scrollContentBackground(.hidden)
-            
+            if (self.searchModel.filteredUsers.count == 0) {
+                Text("No search results").foregroundColor(Style.AppColor)
+                
+                Spacer()
+            } else {
+                List(self.searchModel.filteredUsers) { user in
+                    NavigationLink(
+                        destination: WaveView(user: user),
+                        label: {
+                            SearchItemView(user: user)
+                        })
+                }.scrollContentBackground(.hidden)
+            }
         }
         .task {
             await self.searchModel.reload(filter: self.filter)
