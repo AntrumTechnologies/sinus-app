@@ -10,7 +10,7 @@ import SwiftKeychainWrapper
 
 struct ResetPasswordView: View {
     @State private var token: String = ""
-    @State private var email: String = UserDefaults.standard.string(forKey: "forgotPasswordEmail") ?? ""
+    @State private var email: String = UserDefaults.standard.string(forKey: "email") ?? ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     @State private var showAlert = false

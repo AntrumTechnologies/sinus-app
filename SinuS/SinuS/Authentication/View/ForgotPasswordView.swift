@@ -40,7 +40,7 @@ struct ForgotPasswordView: View {
                 Task {
                     do {
                         let res = try await self.authenticationModel.forgotPassword(email: self.email)
-                        UserDefaults.standard.set(self.email, forKey: "forgotPasswordEmail")
+                        UserDefaults.standard.set(self.email, forKey: "email")
                         self.nextView = true
                     }
                     catch {

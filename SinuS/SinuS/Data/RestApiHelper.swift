@@ -12,12 +12,13 @@ public class RestApiHelper {
     public static func perfomRestCall(request: URLRequest) -> Data? {
         let semaphore = DispatchSemaphore.init(value: 0)
         let session = URLSession.shared
-        var returnObject: Data?
+        var returnObject: Data? = nil
 
         let task = session.dataTask(with: request, completionHandler: { data, _, _ -> Void in
             defer { semaphore.signal() }
-            print(data)
-            returnObject = data!
+            if (data != nil) {
+                returnObject = data!
+            }
         })
 
         task.resume()

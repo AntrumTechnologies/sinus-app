@@ -38,15 +38,17 @@ class AuthenticationModel: ObservableObject {
            let data = RestApiHelper.perfomRestCall(request: request)
 
            do {
-               result = try decoder.decode(AuthenticationResult.self, from: data!)
+               if (data != nil) {
+                   result = try decoder.decode(AuthenticationResult.self, from: data!)
+                   return result
+               }
            } catch {
                let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
-               let errMsg = "Unable to register: \(returnedData)"
+               let errMsg = "Unable to register user"
                self.logHelper.logMsg(level: "error", message: errMsg)
-               throw AuthenticationErrors.FailedToRegister
            }
 
-           return result
+            throw AuthenticationErrors.FailedToRegister
        }
     
     public func login(email: String, password: String) async throws -> AuthenticationResult? {
@@ -66,15 +68,17 @@ class AuthenticationModel: ObservableObject {
            let data = RestApiHelper.perfomRestCall(request: request)
 
            do {
-               result = try decoder.decode(AuthenticationResult.self, from: data!)
+               if (data != nil) {
+                   result = try decoder.decode(AuthenticationResult.self, from: data!)
+                   return result
+               }
            } catch {
                let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
                let errMsg = "Unable to login: \(returnedData)"
                self.logHelper.logMsg(level: "error", message: errMsg)
-               throw AuthenticationErrors.FailedToLogin
            }
 
-           return result
+            throw AuthenticationErrors.FailedToLogin
        }
     
     public func forgotPassword(email: String) async throws -> AuthenticationResult? {
@@ -94,15 +98,17 @@ class AuthenticationModel: ObservableObject {
             let data = RestApiHelper.perfomRestCall(request: request)
 
             do {
-                result = try decoder.decode(AuthenticationResult.self, from: data!)
+                if (data != nil) {
+                    result = try decoder.decode(AuthenticationResult.self, from: data!)
+                    return result
+                }
             } catch {
                 let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
                 let errMsg = "Unable to process forgot password request: \(returnedData)"
                 self.logHelper.logMsg(level: "error", message: errMsg)
-                throw AuthenticationErrors.FailedToResetPassword
             }
 
-            return result
+            throw AuthenticationErrors.FailedToResetPassword
         }
 
         public func resetPassword(token: String, email: String, password: String, confirmPassword: String) async throws -> AuthenticationResult? {
@@ -127,15 +133,17 @@ class AuthenticationModel: ObservableObject {
             let data = RestApiHelper.perfomRestCall(request: request)
 
             do {
-                result = try decoder.decode(AuthenticationResult.self, from: data!)
+                if (data != nil) {
+                    result = try decoder.decode(AuthenticationResult.self, from: data!)
+                    return result
+                }
             } catch {
                 let returnedData = (String(bytes: data!, encoding: .utf8) ?? "")
                 let errMsg = "Unable to reset password: \(returnedData)"
                 self.logHelper.logMsg(level: "error", message: errMsg)
-                throw AuthenticationErrors.FailedToResetPassword
             }
 
-            return result
+            throw AuthenticationErrors.FailedToResetPassword
         }
 
         public func isTokenValid() async -> Bool {
@@ -145,12 +153,15 @@ class AuthenticationModel: ObservableObject {
             let data = RestApiHelper.perfomRestCall(request: request)
 
             do {
-                _ = try decoder.decode(UserData.self, from: data!)
-                return true
+                if (data != nil) {
+                    _ = try decoder.decode(UserData.self, from: data!)
+                    return true
+                }
             } catch {
                 print("Error info: \(error)")
-                return false
             }
+            
+            return false
         }
     
     enum AuthenticationErrors: Error {

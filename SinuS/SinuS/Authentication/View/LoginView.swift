@@ -63,8 +63,11 @@ struct LoginView: View {
                     Task {
                         do {
                             let res = try await self.authenticationModel.login(email: self.email, password: self.password)
-                            KeychainWrapper.standard.set(res!.success, forKey: "bearerToken")
-                            self.showMenu = true
+                            if (res != nil) {
+                                KeychainWrapper.standard.set(res!.success, forKey: "bearerToken")
+                                KeychainWrapper.standard.set(self.email, forKey: "email")
+                                self.showMenu = true
+                            }
                         }
                         catch {
                             self.showAlert.toggle()
@@ -72,10 +75,9 @@ struct LoginView: View {
                     }
                 }
                 .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Failed to login"),
-                          message: Text(self.email),
+                    Alert(title: Text("Error"),
+                          message: Text("Failed to login using the provided credentials"),
                           dismissButton: .default(Text("OK")))
-
                 }
                 .padding()
             }

@@ -28,19 +28,23 @@ struct FeedView: View {
                 .padding(.top)
             }
             
-            List(feedDataModel.feedModel) { userData in
-                NavigationLink(
-                    destination: WaveView(user: userData),
-                    label: {
-                        FeedItemView(userData: userData)
-                    })
+            if (feedDataModel.feedModel.count == 0) {
+                Text("Nothing here").foregroundColor(Style.AppColor)
+            } else {
+                List(feedDataModel.feedModel) { userData in
+                    NavigationLink(
+                        destination: WaveView(user: userData),
+                        label: {
+                            FeedItemView(userData: userData)
+                        })
+                }
             }
-            .task {
-                await self.feedDataModel.reload(onlyFollowing: self.onlyFollowing)
-            }
-            .refreshable {
-                await self.feedDataModel.reload(onlyFollowing: self.onlyFollowing)
-            }
+        }
+        .task {
+            await self.feedDataModel.reload(onlyFollowing: self.onlyFollowing)
+        }
+        .refreshable {
+            await self.feedDataModel.reload(onlyFollowing: self.onlyFollowing)
         }
     }
 }
