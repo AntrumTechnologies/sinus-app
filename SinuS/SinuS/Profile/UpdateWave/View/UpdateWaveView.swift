@@ -156,7 +156,7 @@ struct UpdateWaveView_Previews: PreviewProvider {
         let waves = [
             SinusUserData(
                 id: 1, name: "Name", user_id: 2, date_name: "Target1",
-                created_at: "", updated_at: "", deleted_at: "", archived: 0, avatar: "", following: false),
+                created_at: "", updated_at: "", deleted_at: "", archived: 0, avatar: "", following: false, followers: 0),
         
         ]
 

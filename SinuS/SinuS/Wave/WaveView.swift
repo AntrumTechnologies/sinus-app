@@ -106,6 +106,7 @@ struct LineChart2_Previews: PreviewProvider {
             deleted_at: "",
             archived: 0,
             avatar: "",
-            following: false))
+            following: false,
+            followers: 0))
     }
 }

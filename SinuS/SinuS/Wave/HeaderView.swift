@@ -66,35 +66,51 @@ struct HeaderView: View {
                         Spacer()
                     }
                     
-                    if (self.loggedIn) {
-                        Button(action: {
-                            Task {
-                                await self.followingModel.followingAction(user: self.user)
-                            }
+                    HStack{
+                        HStack{
+                            Image(systemName: "person.2.fill")
+                            Text("\(self.user.followers ?? 0)")
                         }
-                        ) {
-                            HStack {
-                                
-                                if (self.following) {
-                                    Text("Unfollow")
-                                }
-                                else{
-                                    Text("Follow")
+                        .frame(width: 100, height: 30)
+                        .foregroundColor(.white)
+                        .background(Style.AppColor)
+                        .cornerRadius(5)
+                        .padding(.leading, 5)
+                        
+                        Spacer()
+                        
+                        if (self.loggedIn) {
+                            Button(action: {
+                                Task {
+                                    await self.followingModel.followingAction(user: self.user)
                                 }
                             }
-                            .frame(width: 100, height: 30)
-                            .foregroundColor(.white)
-                            .background(Style.AppColor)
-                            .cornerRadius(5)
-                            .padding(.leading, 5)
+                            ) {
+                                HStack {
+                                    
+                                    if (self.following) {
+                                        Text("Unfollow")
+                                    }
+                                    else{
+                                        Text("Follow")
+                                    }
+                                }
+                                .frame(width: 100, height: 30)
+                                .foregroundColor(.white)
+                                .background(Style.AppColor)
+                                .cornerRadius(5)
+                            }
                         }
                     }
-                    Spacer()
+                    .padding(.bottom, 5)
+                    
+                    
                 }
                 
                 Spacer()
+                
             }
-            .frame(width: 350, height: 150)
+            .frame(width: 350, height: 160)
             .background(Style.AppBackground)
             .cornerRadius(5)
             .padding([.top, .bottom], 15)

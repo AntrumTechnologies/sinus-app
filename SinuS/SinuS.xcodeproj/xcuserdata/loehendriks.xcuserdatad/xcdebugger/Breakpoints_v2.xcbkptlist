@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
             endingLineNumber = "168"
-            landmarkName = "SendData(data:)"
+            landmarkName = "isTokenValid()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -48,7 +48,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
             endingLineNumber = "166"
-            landmarkName = "SendData(data:)"
+            landmarkName = "isTokenValid()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -111,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
             endingLineNumber = "159"
-            landmarkName = "SendData(data:)"
+            landmarkName = "resetPassword(token:email:password:confirmPassword:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -127,7 +127,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "191"
             endingLineNumber = "191"
-            landmarkName = "SendData(data:)"
+            landmarkName = "getCurrentUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -143,8 +143,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "190"
             endingLineNumber = "190"
-            landmarkName = "SendData(data:)"
-            landmarkType = "7">
+            landmarkName = "DataManager"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "EF3ABA36-32B4-49DB-AB20-6D6E1349D3FC - 8afedfc76534d99"
@@ -191,7 +191,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "169"
             endingLineNumber = "169"
-            landmarkName = "SendData(data:)"
+            landmarkName = "isTokenValid()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -207,7 +207,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
             endingLineNumber = "167"
-            landmarkName = "SendData(data:)"
+            landmarkName = "isTokenValid()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -223,8 +223,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
             endingLineNumber = "103"
-            landmarkName = "Login(email:password:)"
-            landmarkType = "7">
+            landmarkName = "DataManager"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -239,7 +239,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
             endingLineNumber = "104"
-            landmarkName = "Login(email:password:)"
+            landmarkName = "forgotPassword(email:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -303,7 +303,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
             endingLineNumber = "102"
-            landmarkName = "Login(email:password:)"
+            landmarkName = "login(email:password:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -335,6 +335,385 @@
                   startingLineNumber = "102"
                   endingLineNumber = "102"
                   offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C827DCFC-9CF8-4DB0-9B75-D9089B1F3DB0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/Wave/Model/FollowingModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "reload(user:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "C827DCFC-9CF8-4DB0-9B75-D9089B1F3DB0 - 5efa4a94d889186"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Love_waves.FollowingModel.reload(user: Love_waves.SinusUserData) async -&gt; ()"
+                  moduleName = "Love waves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sinus-app/SinuS/SinuS/Wave/Model/FollowingModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "2052">
+               </Location>
+               <Location
+                  uuid = "C827DCFC-9CF8-4DB0-9B75-D9089B1F3DB0 - 329582332d8dffbe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for Love_waves.FollowingModel.reload(user: Love_waves.SinusUserData) async -&gt; ()"
+                  moduleName = "Love waves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sinus-app/SinuS/SinuS/Wave/Model/FollowingModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "C827DCFC-9CF8-4DB0-9B75-D9089B1F3DB0 - 286e3bd857ce2d80"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Love_waves.FollowingModel.reload(user: Love_waves.SinusUserData) async -&gt; ()"
+                  moduleName = "Love waves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sinus-app/SinuS/SinuS/Wave/Model/FollowingModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "376">
+               </Location>
+               <Location
+                  uuid = "C827DCFC-9CF8-4DB0-9B75-D9089B1F3DB0 - 25a98a80a5128f81"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for Love_waves.FollowingModel.reload(user: Love_waves.SinusUserData) async -&gt; ()"
+                  moduleName = "Love waves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sinus-app/SinuS/SinuS/Wave/Model/FollowingModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "284">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A7900C75-D683-4898-BDDC-FE1B55378D97"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/Wave/Model/FollowingModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "reload(user:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F402D011-FB53-43A0-B54E-6C0F3A5CB732"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/Feed/Model/FeedModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "FeedModel"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EC0C10D4-3B05-4ADC-8C1F-BB59BD15F849"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/ContentViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "reload()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EC0C10D4-3B05-4ADC-8C1F-BB59BD15F849 - 9f99c4476ea16a5b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Love_waves.ContentViewModel.reload() async -&gt; ()"
+                  moduleName = "Love waves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sinus-app/SinuS/SinuS/ContentViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "1804">
+               </Location>
+               <Location
+                  uuid = "EC0C10D4-3B05-4ADC-8C1F-BB59BD15F849 - 8f4a1119d43ef646"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for Love_waves.ContentViewModel.reload() async -&gt; ()"
+                  moduleName = "Love waves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sinus-app/SinuS/SinuS/ContentViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "EC0C10D4-3B05-4ADC-8C1F-BB59BD15F849 - df206c5fc8308655"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Love_waves.ContentViewModel.reload() async -&gt; ()"
+                  moduleName = "Love waves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sinus-app/SinuS/SinuS/ContentViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "384">
+               </Location>
+               <Location
+                  uuid = "EC0C10D4-3B05-4ADC-8C1F-BB59BD15F849 - 1f48f477a343d257"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for Love_waves.ContentViewModel.reload() async -&gt; ()"
+                  moduleName = "Love waves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sinus-app/SinuS/SinuS/ContentViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D23C5B83-E8E0-4B03-B3B7-34AA1974562F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/ContentViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "reload()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D87C48B8-AFB4-4594-9672-E502BAC41C14"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/Profile/UpdateWave/Model/UpdateWaveModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "updateWave(update:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D87C48B8-AFB4-4594-9672-E502BAC41C14 - cc92cfd73e465df1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Love_waves.UpdateWaveModel.updateWave(update: Love_waves.WaveUpdate) async -&gt; Swift.String"
+                  moduleName = "Love waves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sinus-app/SinuS/SinuS/Profile/UpdateWave/Model/UpdateWaveModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "D87C48B8-AFB4-4594-9672-E502BAC41C14 - 69c845bf98a6b7fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for Love_waves.UpdateWaveModel.updateWave(update: Love_waves.WaveUpdate) async -&gt; Swift.String"
+                  moduleName = "Love waves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sinus-app/SinuS/SinuS/Profile/UpdateWave/Model/UpdateWaveModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "D87C48B8-AFB4-4594-9672-E502BAC41C14 - 1201bb07f90789fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Love_waves.UpdateWaveModel.updateWave(update: Love_waves.WaveUpdate) async -&gt; Swift.String"
+                  moduleName = "Love waves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sinus-app/SinuS/SinuS/Profile/UpdateWave/Model/UpdateWaveModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "264">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FAB09D00-1464-459C-BA9F-0CBDDB3695CA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/Profile/NewWave/Model/NewWaveModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "createNewWave(name:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "117F73F9-768D-48C5-8B45-A81DF0AA6E25"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/Profile/NewWave/Model/NewWaveModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "createNewWave(name:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AA7D9E51-5FD4-40D9-8EBB-AC3CCD108FC4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/Profile/NewWave/Model/NewWaveModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "createNewWave(name:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B170B3D2-C5FF-4254-AA12-D8116C886823"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "uploadFile(fileName:fileData:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2A2431BE-5E45-4A17-962F-63A38F6C419E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SinuS/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "uploadFile(fileName:fileData:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2A2431BE-5E45-4A17-962F-63A38F6C419E - 52e8c7e4cd8f7b7d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Love_waves.NetworkManager.uploadFile(fileName: Swift.String, fileData: Swift.Optional&lt;Foundation.Data&gt;) -&gt; __C.NSURLSessionUploadTask"
+                  moduleName = "Love waves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sinus-app/SinuS/SinuS/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  uuid = "2A2431BE-5E45-4A17-962F-63A38F6C419E - 52e8c7e4cd8f7b7d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Love_waves.NetworkManager.uploadFile(fileName: Swift.String, fileData: Swift.Optional&lt;Foundation.Data&gt;) -&gt; __C.NSURLSessionUploadTask"
+                  moduleName = "Love waves"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/loehendriks/Documents/Software/sinus-app/SinuS/SinuS/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "412">
                </Location>
             </Locations>
          </BreakpointContent>

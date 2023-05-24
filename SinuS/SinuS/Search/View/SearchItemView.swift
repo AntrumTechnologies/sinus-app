@@ -38,6 +38,6 @@ struct SearchItemView: View {
 
 struct SearchItemView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchItemView(user: SinusUserData(id: 1, name: "", user_id: 1, date_name: "", created_at: nil, updated_at: nil, deleted_at: nil, archived: nil, avatar: nil, following: nil))
+        SearchItemView(user: SinusUserData(id: 1, name: "", user_id: 1, date_name: "", created_at: nil, updated_at: nil, deleted_at: nil, archived: nil, avatar: nil, following: nil, followers: 0))
     }
 }

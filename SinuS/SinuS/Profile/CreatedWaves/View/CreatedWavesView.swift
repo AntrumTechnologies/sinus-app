@@ -49,7 +49,7 @@ struct CreatedWavesView: View {
 struct CreatedWavesView_Previews: PreviewProvider {
     static var previews: some View {
         let waves = [
-            SinusUserData(id: 1, name: "Name", user_id: 2, date_name: "Target1", created_at: "", updated_at: "", deleted_at: "", archived: 0, avatar: "", following: false),
+            SinusUserData(id: 1, name: "Name", user_id: 2, date_name: "Target1", created_at: "", updated_at: "", deleted_at: "", archived: 0, avatar: "", following: false, followers: 0),
         ]
 
         CreatedWavesView(waves: waves)
