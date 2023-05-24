@@ -15,9 +15,24 @@ struct FeedCombinationView: View {
     
     var body: some View {
         VStack {
+            HStack {
+                if (self.selection == 0){
+                    Text("Following").foregroundColor(Style.TextOnColoredBackground)
+                    Button("Explore"){
+                        self.selection = 1
+                    }.foregroundColor(.gray)
+                }
+                else{
+                    Button("Following"){
+                        self.selection = 0
+                    }.foregroundColor(.gray)
+                    Text("Explore").foregroundColor(Style.TextOnColoredBackground)
+                }
+            }
+            .padding(.top)
             TabView(selection: self.$selection) {
                 Group{
-                    FeedView(onlyFollowing: true, loggedIn: true)
+                    FeedView(onlyFollowing: true)
                         .tabItem {
                             Label("Following", systemImage: "person.2.fill")
                         }
@@ -25,7 +40,7 @@ struct FeedCombinationView: View {
                         .highPriorityGesture(DragGesture().onEnded({
                             self.handleSwipe(translation: $0.translation.width)
                         }))
-                    FeedView(onlyFollowing: false, loggedIn: true)
+                    FeedView(onlyFollowing: false)
                         .tabItem {
                             Label("Explore", systemImage: "network")
                         }
@@ -40,7 +55,8 @@ struct FeedCombinationView: View {
             .background(Color(.systemGroupedBackground))
         }
         .toolbar(.hidden, for: .tabBar)
-        .toolbarBackground(.hidden, for: .tabBar)    
+        .toolbarBackground(.hidden, for: .tabBar)
+        .background(Style.AppBackground)
     }
     
     private func handleSwipe(translation: CGFloat) {

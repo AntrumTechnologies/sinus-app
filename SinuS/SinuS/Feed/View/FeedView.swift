@@ -9,24 +9,10 @@ import SwiftUI
 
 struct FeedView: View {
     let onlyFollowing: Bool
-    let loggedIn: Bool
     @StateObject var feedDataModel = FeedModel(retrievable: ExternalRestRetriever())
 
     var body: some View {
         VStack {
-            if (loggedIn) {
-                HStack {
-                    if (self.onlyFollowing){
-                        Text("Following").foregroundColor(Style.TextOnColoredBackground)
-                        Text("Explore").foregroundColor(.gray)
-                    }
-                    else{
-                        Text("Following").foregroundColor(.gray)
-                        Text("Explore").foregroundColor(Style.TextOnColoredBackground)
-                    }
-                }
-                .padding(.top)
-            }
             
             if (feedDataModel.feedModel.count == 0) {
                 Text("Nothing here").foregroundColor(Style.AppColor)
@@ -38,6 +24,8 @@ struct FeedView: View {
                             FeedItemView(userData: userData)
                         })
                 }
+                .background(Style.AppBackground)
+                .scrollContentBackground(.hidden)
             }
         }
         .task {
@@ -51,6 +39,6 @@ struct FeedView: View {
 
 struct FeedView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedView(onlyFollowing: false, loggedIn: true)
+        FeedView(onlyFollowing: false)
     }
 }

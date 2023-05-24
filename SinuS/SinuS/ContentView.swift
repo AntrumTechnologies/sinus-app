@@ -35,7 +35,7 @@ struct ContentView: View {
                                 }
                                 .tag(4)
                         } else {
-                            FeedView(onlyFollowing: false, loggedIn: false)
+                            FeedView(onlyFollowing: false)
                                 .tabItem {
                                     Label("Explore", systemImage: "network")
                                 }
