@@ -98,7 +98,7 @@ func application(_ application: UIApplication,
 
     // Check for specific URL components that you need.
     guard let path = components.path,
-    let params = components.queryItems else {
+    let _ = components.queryItems else {
         return false
     }
     print("path = \(path)")
