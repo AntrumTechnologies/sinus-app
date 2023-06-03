@@ -24,6 +24,7 @@ struct FeedView: View {
                             FeedItemView(userData: userData)
                         })
                 }
+                .padding(.top)
                 .background(Style.AppBackground)
                 .scrollContentBackground(.hidden)
             }

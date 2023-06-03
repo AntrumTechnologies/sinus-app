@@ -70,10 +70,12 @@ struct DeleteWaveView: View {
                         .shadow(radius: 10)
                     }.padding(.horizontal).padding(.top)
                     
-                    Button("Delete") {
+                    Button {
                         let resign = #selector(UIResponder.resignFirstResponder)
                         UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
                         isPresentingConfirm = true
+                    } label: {
+                        ButtonStyle(text: "Delete", width: 100)
                     }
                     .padding()
                     .confirmationDialog("Are you sure?",

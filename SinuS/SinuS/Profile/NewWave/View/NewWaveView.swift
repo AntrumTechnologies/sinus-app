@@ -52,7 +52,7 @@ struct NewWaveView: View {
                 .padding(.top)
                 .foregroundColor(Style.TextOnColoredBackground)
 
-                Button("Add wave") {
+                Button {
                     let resign = #selector(UIResponder.resignFirstResponder)
                     UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
                     
@@ -67,6 +67,8 @@ struct NewWaveView: View {
                         }
                         
                     }
+                } label: {
+                    ButtonStyle(text: "Add Wave", width: 100)
                 }
                 .padding()
                 .foregroundColor(Style.TextOnColoredBackground)

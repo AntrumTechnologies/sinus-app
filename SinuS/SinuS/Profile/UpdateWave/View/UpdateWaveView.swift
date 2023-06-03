@@ -103,7 +103,7 @@ struct UpdateWaveView: View {
                     }.padding(.horizontal)
                     
                     
-                    Button("Update") {
+                    Button {
                         let resign = #selector(UIResponder.resignFirstResponder)
                         UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
                         
@@ -131,12 +131,13 @@ struct UpdateWaveView: View {
                             self.message = "Description can not be longer than 300 characters"
                             showingAlert = true;
                         }
+                    } label: {
+                        ButtonStyle(text: "Update", width: 100)
                     }
                     .padding()
                     .alert(self.message, isPresented: $showingAlert) {
                         Button("OK", role: .cancel) { }
-                    }
-                }
+                    }                }
                 .background(Style.AppBackground)
                 .foregroundColor(Style.TextOnColoredBackground)
                 .cornerRadius(5)

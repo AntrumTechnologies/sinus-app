@@ -14,10 +14,27 @@ struct HeaderView: View {
     var scaleFactor: Double
     var following: Bool
     var loggedIn: Bool
-    let followingModel: FollowingModel
+    var followingModel: FollowingModel
     @State private var user: SinusUserData
     
-
+    private var followingBackGround : Color {
+        if (self.following) {
+            return .white
+        }
+        else {
+            return Style.AppColor
+        }
+    }
+    
+    private var followingForeGround : Color {
+        if (self.following) {
+            return Style.AppColor
+        }
+        else {
+            return .white
+        }
+        
+    }
     
     init(user: SinusUserData, subtext: String, avatar: KFImage, scaleFactor: Double, following: Bool, loggedIn: Bool, followingModel: FollowingModel) {
         self.user = user
@@ -72,8 +89,7 @@ struct HeaderView: View {
                             Text("\(self.user.followers ?? 0)")
                         }
                         .frame(width: 100, height: 30)
-                        .foregroundColor(.white)
-                        .background(Style.AppColor)
+                        .foregroundColor(Style.TextOnColoredBackground)
                         .cornerRadius(5)
                         .padding(.leading, 5)
                         
@@ -96,8 +112,8 @@ struct HeaderView: View {
                                     }
                                 }
                                 .frame(width: 100, height: 30)
-                                .foregroundColor(.white)
-                                .background(Style.AppColor)
+                                .foregroundColor(self.followingForeGround)
+                                .background(self.followingBackGround)
                                 .cornerRadius(5)
                             }
                         }

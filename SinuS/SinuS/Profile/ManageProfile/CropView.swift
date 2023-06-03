@@ -69,7 +69,7 @@ struct CropView: View {
                 
                 Spacer()
                 
-                Button("Update avatar") {
+                Button {
                     Task {
                         if (self.image.croppedImage != nil) {
                             let data = self.image.croppedImage!.jpegData(compressionQuality: 0.8)
@@ -85,6 +85,8 @@ struct CropView: View {
                             }
                         }
                     }
+                } label: {
+                    ButtonStyle(text: "Update Avatar", width: 175)
                 }
                 .alert(self.message, isPresented: $showingAlert) {
                     Button("OK", role: .cancel) {}

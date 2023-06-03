@@ -56,6 +56,7 @@
 		4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D022917C2F9001DB4F7 /* LoginView.swift */; };
 		4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D052917C30D001DB4F7 /* RegisterView.swift */; };
 		4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */; };
+		4A9A523D2A2B36D1000F32BC /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A523C2A2B36D1000F32BC /* ButtonStyle.swift */; };
 		4AABA28528CFACC500070E6E /* SinusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABA28428CFACC500070E6E /* SinusUpdate.swift */; };
 		4AC34A85296AEBAD0063FA84 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC34A84296AEBAD0063FA84 /* CompareView.swift */; };
 		4AC34A88296F1CA30063FA84 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC34A87296F1CA30063FA84 /* FeedModel.swift */; };
@@ -155,6 +156,7 @@
 		4A4C6D022917C2F9001DB4F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4A4C6D052917C30D001DB4F7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResult.swift; sourceTree = "<group>"; };
+		4A9A523C2A2B36D1000F32BC /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		4AABA28428CFACC500070E6E /* SinusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusUpdate.swift; sourceTree = "<group>"; };
 		4AC34A84296AEBAD0063FA84 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
 		4AC34A87296F1CA30063FA84 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				4AC5B3DE296AD546003D819C /* Style.swift */,
+				4A9A523C2A2B36D1000F32BC /* ButtonStyle.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A9A523D2A2B36D1000F32BC /* ButtonStyle.swift in Sources */,
 				4A32759E2A017753009D1CC8 /* FeedCombinationView.swift in Sources */,
 				4A32758429E029D7009D1CC8 /* DeleteWaveModel.swift in Sources */,
 				CEECA5012974665800CA4496 /* VerifyEmailView.swift in Sources */,

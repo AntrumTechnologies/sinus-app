@@ -13,7 +13,6 @@ struct NoDataView: View {
     
     var body: some View {
         VStack {
-            
             if (self.useLogo) {
                 HStack {
                     Image("Logo_no_bg")
@@ -25,7 +24,6 @@ struct NoDataView: View {
                 .frame(width: 200, height: 150)
                 .cornerRadius(5)
             }
-            
             
             Text("Has created a wave but has no dates yet")
                 .foregroundColor(.white)

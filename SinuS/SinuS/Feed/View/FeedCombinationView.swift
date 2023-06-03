@@ -14,22 +14,7 @@ struct FeedCombinationView: View {
     let numTabs = 2
     
     var body: some View {
-        VStack {
-            HStack {
-                if (self.selection == 0){
-                    Text("Following").foregroundColor(Style.TextOnColoredBackground)
-                    Button("Explore"){
-                        self.selection = 1
-                    }.foregroundColor(.gray)
-                }
-                else{
-                    Button("Following"){
-                        self.selection = 0
-                    }.foregroundColor(.gray)
-                    Text("Explore").foregroundColor(Style.TextOnColoredBackground)
-                }
-            }
-            .padding(.top)
+        ZStack {
             TabView(selection: self.$selection) {
                 Group{
                     FeedView(onlyFollowing: true)
@@ -53,6 +38,44 @@ struct FeedCombinationView: View {
             .animation(.easeOut(duration: 0.2), value: selection)
             .tabViewStyle(.page(indexDisplayMode: .never))
             .background(Color(.systemGroupedBackground))
+            
+            VStack {
+                HStack {
+                    if (self.selection == 0){
+                        Text("Following")
+                            .frame(width: 90, height: 30)
+                            .foregroundColor(.white)
+                            .background(Style.AppColor)
+                            .padding(.trailing, -5)
+                        
+                        Button("Explore"){
+                            self.selection = 1
+                        }
+                        .frame(width: 90, height: 30)
+                        .foregroundColor(Style.AppColor)
+                        .background(.white)
+                        .padding(.leading, -5)
+                    }
+                    else{
+                        Button("Following"){
+                            self.selection = 0
+                        }
+                        .frame(width: 90, height: 30)
+                        .foregroundColor(Style.AppColor)
+                        .background(.white)
+                        .padding(.trailing, -5)
+                        Text("Explore")
+                            .frame(width: 90, height: 30)
+                            .foregroundColor(.white)
+                            .background(Style.AppColor)
+                            .padding(.leading, -5)
+                    }
+                }
+                .cornerRadius(5)
+                .padding(.top, 10)
+                
+                Spacer()
+            }
         }
         .toolbar(.hidden, for: .tabBar)
         .toolbarBackground(.hidden, for: .tabBar)
