@@ -36,25 +36,28 @@ import SwiftKeychainWrapper
             data = await self.retrievable.Retrieve(request: request)
             contentViewModel.user = try JSONDecoder().decode(Profile.self, from: data ?? Data())
             // Successfully retrieved user data, thus user is logged in
-            print("User is logged in")
             contentViewModel.loggedIn = true
             print("User has valid token")
         } catch {
             print("User has NOT a valid token")
-            debugPrint("Error loading \(url) caused error \(error) with response \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")
+            //debugPrint("Error loading \(url) caused error \(error) with response \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")
         }
         
         // Check if FCM token is up-to-date and if not update it
         let deviceToken: String = KeychainWrapper.standard.string(forKey: "deviceToken") ?? ""
-        if (deviceToken != "" && contentViewModel.user.fcm_token != deviceToken) {
+        let fcmToken: String = contentViewModel.user.fcm_token ?? "";
+        if (deviceToken != "" && fcmToken != deviceToken) {
             print("Updating FCM token...")
-            request = URLRequest(url: URL(string: "\(LoveWavesApp.baseUrl)/api/user/update")!)
-            request.httpMethod = "PUT"
+            
+            var requestToken = RestApiHelper.createRequest(type: "POST", url: "https://lovewaves.antrum-technologies.nl/api/user/update")
+            requestToken.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            requestToken.addValue("application/json", forHTTPHeaderField: "Accept")
+            requestToken.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
             
             let parameters: [String: Any] = ["fcm_token": deviceToken]
-
+            
             do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+                requestToken.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
             } catch let error {
                 print("Error updating FCM token due to \(error.localizedDescription)")
                 return
@@ -67,7 +70,10 @@ import SwiftKeychainWrapper
                 let userData = try JSONDecoder().decode(Profile.self, from: data ?? Data())
             } catch {
                 debugPrint("Updating FCM token caused error \(error) with response \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")
+                return
             }
+            
+            print("FCM token updated")
         } else {
             print("FCM token is up-to-date")
         }
