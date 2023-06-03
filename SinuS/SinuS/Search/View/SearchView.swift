@@ -15,7 +15,7 @@ struct SearchView: View {
     var body: some View {
         VStack {
             HStack{
-                TextField("Search...", text: self.$filter, axis: .vertical)
+                TextField("Search...", text: self.$filter, axis: .horizontal)
                     .disableAutocorrection(true)
                     .cornerRadius(5)
                     .frame(height: 30)

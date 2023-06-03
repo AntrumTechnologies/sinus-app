@@ -15,7 +15,7 @@ struct FeedView: View {
         VStack {
             
             if (feedDataModel.feedModel.count == 0) {
-                Text("Nothing here").foregroundColor(Style.AppColor)
+                ProgressView().foregroundColor(Style.AppColor)
             } else {
                 List(feedDataModel.feedModel) { userData in
                     NavigationLink(
