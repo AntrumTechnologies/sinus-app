@@ -66,8 +66,8 @@ import SwiftKeychainWrapper
             var data: Data? = nil
             
             do {
-                data = await self.retrievable.Retrieve(request: request)
-                let userData = try JSONDecoder().decode(Profile.self, from: data ?? Data())
+                data = await self.retrievable.Retrieve(request: requestToken)
+                let _ = try JSONDecoder().decode(Profile.self, from: data ?? Data())
             } catch {
                 debugPrint("Updating FCM token caused error \(error) with response \((String(bytes: data ?? Data(), encoding: .utf8) ?? ""))")
                 return
