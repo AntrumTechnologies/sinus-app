@@ -10,7 +10,7 @@ import SwiftUI
 struct UpdateWaveView: View {
     let waves: [SinusUserData]
 
-    @State private var value = 50.0
+    @State private var value = 0.0
     @State private var isEditing = false
     @State private var date = Date()
     @State private var showingAlert = false
