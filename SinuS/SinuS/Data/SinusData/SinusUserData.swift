@@ -18,4 +18,5 @@ public struct SinusUserData: Identifiable, Codable {
     let archived: Int?
     let avatar: String?
     let following: Bool?
+    let followers: Int?
 }

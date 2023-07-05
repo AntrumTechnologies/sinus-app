@@ -8,9 +8,9 @@
 import Foundation
 
 class ExternalRestRetriever : RestRetrievable {
+    let urlSession = URLSession.shared
     
     public func Retrieve(request: URLRequest) async -> Data? {
-        let urlSession = URLSession.shared
         var data: Data? = nil
         
         do {

@@ -7,29 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A0B396A28D38DE000D7EEC9 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B396928D38DE000D7EEC9 /* MenuView.swift */; };
 		4A0B396C28D38F0700D7EEC9 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B396B28D38F0700D7EEC9 /* MenuButton.swift */; };
 		4A0B396E28D3935900D7EEC9 /* NewWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B396D28D3935900D7EEC9 /* NewWaveView.swift */; };
-		4A0B397028D3937100D7EEC9 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B396F28D3937100D7EEC9 /* AdminView.swift */; };
 		4A0B397228D3ABF200D7EEC9 /* SmallFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397128D3ABF100D7EEC9 /* SmallFrame.swift */; };
 		4A0B397428D6044300D7EEC9 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397328D6044200D7EEC9 /* WaveView.swift */; };
 		4A0B397728E06E9600D7EEC9 /* SinusUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397628E06E9600D7EEC9 /* SinusUserData.swift */; };
 		4A0B397928E081CF00D7EEC9 /* RelationshipStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397828E081CF00D7EEC9 /* RelationshipStatus.swift */; };
-		4A0B397B28E0846900D7EEC9 /* RelationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B397A28E0846900D7EEC9 /* RelationStatusView.swift */; };
 		4A15E00128C7C91C00422C05 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A15E00028C7C91C00422C05 /* ProfileButton.swift */; };
 		4A15E00328C7CD5300422C05 /* UpdateWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A15E00228C7CD5300422C05 /* UpdateWaveView.swift */; };
 		4A32751F2977244E009D1CC8 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32751E2977244E009D1CC8 /* ChartView.swift */; };
 		4A32752129772762009D1CC8 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32752029772762009D1CC8 /* StatisticsView.swift */; };
 		4A32752329772888009D1CC8 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32752229772888009D1CC8 /* TextView.swift */; };
-		4A327527297729BE009D1CC8 /* HeaderWithSubTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A327526297729BE009D1CC8 /* HeaderWithSubTextView.swift */; };
-		4A32752929772B0A009D1CC8 /* WaveMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32752829772B0A009D1CC8 /* WaveMenuView.swift */; };
+		4A327527297729BE009D1CC8 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A327526297729BE009D1CC8 /* HeaderView.swift */; };
 		4A32752B29773236009D1CC8 /* CompareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32752A29773236009D1CC8 /* CompareButtonView.swift */; };
 		4A32753A298AE46A009D1CC8 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4A327539298AE46A009D1CC8 /* FirebaseAnalytics */; };
 		4A32753C298AE46A009D1CC8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32753B298AE46A009D1CC8 /* FirebaseAuth */; };
 		4A32753E298AE46A009D1CC8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32753D298AE46A009D1CC8 /* FirebaseDatabase */; };
 		4A327540298AE46A009D1CC8 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32753F298AE46A009D1CC8 /* FirebaseMessaging */; };
 		4A327542298AE46A009D1CC8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4A327541298AE46A009D1CC8 /* FirebaseStorage */; };
-		4A327547298EA697009D1CC8 /* PreAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A327546298EA697009D1CC8 /* PreAuthenticationView.swift */; };
 		4A32754929AA4088009D1CC8 /* FeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32754829AA4088009D1CC8 /* FeedItemView.swift */; };
 		4A32754B29AFD157009D1CC8 /* WavePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32754A29AFD157009D1CC8 /* WavePreviewView.swift */; };
 		4A32754D29AFD1B3009D1CC8 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32754C29AFD1B3009D1CC8 /* Wave.swift */; };
@@ -41,9 +36,27 @@
 		4A32755B29C5B4CE009D1CC8 /* ExternalRestRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32755A29C5B4CE009D1CC8 /* ExternalRestRetriever.swift */; };
 		4A32755F29C5B83E009D1CC8 /* FeedItemModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32755E29C5B83E009D1CC8 /* FeedItemModelTests.swift */; };
 		4A32756129C5BFDD009D1CC8 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32756029C5BFDD009D1CC8 /* NoDataView.swift */; };
+		4A32756329D0344C009D1CC8 /* CompareConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32756229D0344C009D1CC8 /* CompareConfigurationView.swift */; };
+		4A32756529D03683009D1CC8 /* CompareConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32756429D03683009D1CC8 /* CompareConfigurationModel.swift */; };
+		4A32756729D04049009D1CC8 /* CompareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32756629D04049009D1CC8 /* CompareModel.swift */; };
+		4A32756B29D05161009D1CC8 /* LegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32756A29D05161009D1CC8 /* LegendView.swift */; };
+		4A32756E29D05830009D1CC8 /* DeleteWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32756D29D05830009D1CC8 /* DeleteWaveView.swift */; };
+		4A32757629E002F6009D1CC8 /* FollowingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757529E002F6009D1CC8 /* FollowingModel.swift */; };
+		4A32757C29E02362009D1CC8 /* WaveUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757B29E02362009D1CC8 /* WaveUpdate.swift */; };
+		4A32758029E026FF009D1CC8 /* NewWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32757F29E026FF009D1CC8 /* NewWaveModel.swift */; };
+		4A32758429E029D7009D1CC8 /* DeleteWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32758329E029D7009D1CC8 /* DeleteWaveModel.swift */; };
+		4A32758729E02E3B009D1CC8 /* AuthenticationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32758629E02E3B009D1CC8 /* AuthenticationModel.swift */; };
+		4A32758F29EAA15E009D1CC8 /* PhotoSelectAndCrop in Frameworks */ = {isa = PBXBuildFile; productRef = 4A32758E29EAA15E009D1CC8 /* PhotoSelectAndCrop */; };
+		4A32759129EAA217009D1CC8 /* CropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32759029EAA216009D1CC8 /* CropView.swift */; };
+		4A32759329EAA2AA009D1CC8 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32759229EAA2AA009D1CC8 /* DetailsView.swift */; };
+		4A32759629EF0FB4009D1CC8 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32759529EF0FB4009D1CC8 /* SearchView.swift */; };
+		4A32759A29EF1170009D1CC8 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32759929EF1170009D1CC8 /* SearchModel.swift */; };
+		4A32759C29EF18E1009D1CC8 /* SearchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32759B29EF18E1009D1CC8 /* SearchItemView.swift */; };
+		4A32759E2A017753009D1CC8 /* FeedCombinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A32759D2A017753009D1CC8 /* FeedCombinationView.swift */; };
 		4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D022917C2F9001DB4F7 /* LoginView.swift */; };
 		4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D052917C30D001DB4F7 /* RegisterView.swift */; };
 		4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */; };
+		4A9A523D2A2B36D1000F32BC /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A523C2A2B36D1000F32BC /* ButtonStyle.swift */; };
 		4AABA28528CFACC500070E6E /* SinusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABA28428CFACC500070E6E /* SinusUpdate.swift */; };
 		4AC34A85296AEBAD0063FA84 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC34A84296AEBAD0063FA84 /* CompareView.swift */; };
 		4AC34A88296F1CA30063FA84 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC34A87296F1CA30063FA84 /* FeedModel.swift */; };
@@ -58,7 +71,7 @@
 		4AC5B3E1296AD6A4003D819C /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5B3E0296AD6A4003D819C /* EditProfileView.swift */; };
 		4AC5B3E3296ADB51003D819C /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5B3E2296ADB51003D819C /* UserData.swift */; };
 		4AC5B3E5296ADE0D003D819C /* TotalUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5B3E4296ADE0D003D819C /* TotalUserData.swift */; };
-		4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */; };
+		4AD26FBA28BBA5D40065FB01 /* LoveWavesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FB928BBA5D40065FB01 /* LoveWavesApp.swift */; };
 		4AD26FBC28BBA5D40065FB01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FBB28BBA5D40065FB01 /* ContentView.swift */; };
 		4AD26FBE28BBA5D60065FB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AD26FBD28BBA5D60065FB01 /* Assets.xcassets */; };
 		4AD26FC128BBA5D60065FB01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AD26FC028BBA5D60065FB01 /* Preview Assets.xcassets */; };
@@ -66,16 +79,17 @@
 		4AD26FD728BBA5D60065FB01 /* SinuSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FD628BBA5D60065FB01 /* SinuSUITests.swift */; };
 		4AD26FEB28BBAEA40065FB01 /* SinusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FEA28BBAEA40065FB01 /* SinusData.swift */; };
 		4AD26FED28C676C10065FB01 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FEC28C676C10065FB01 /* LineChart.swift */; };
-		4AD26FF528C7BFC10065FB01 /* DataGatherer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */; };
+		CE1DD3CF29E454C7009C01A2 /* UpdateWaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1DD3CE29E454C7009C01A2 /* UpdateWaveModel.swift */; };
 		CE6A64E629696C1C00DC47E5 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = CE6A64E529696C1C00DC47E5 /* SwiftKeychainWrapper */; };
 		CE7B525D29BE159500913C3C /* FeedItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B525C29BE159500913C3C /* FeedItemModel.swift */; };
 		CE89A8762969F93200300C9D /* ManageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89A8752969F93200300C9D /* ManageProfileView.swift */; };
 		CE89A87A296AF2D300300C9D /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89A879296AF2D300300C9D /* LogHelper.swift */; };
 		CE95360C29BCAA3800D9B0D4 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95360B29BCAA3800D9B0D4 /* ProfileModel.swift */; };
 		CE95360E29BCB3F100D9B0D4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95360D29BCB3F100D9B0D4 /* Profile.swift */; };
-		CE95361029BCB71600D9B0D4 /* CreatedWavesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95360F29BCB71600D9B0D4 /* CreatedWavesModel.swift */; };
 		CEB12A25299946C4000D5669 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CEB12A24299946C4000D5669 /* Kingfisher */; };
 		CEBF7655299818FA00D5E3AF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF7654299818FA00D5E3AF /* NetworkManager.swift */; };
+		CEDADA4429D819A400340CAA /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDADA4329D819A400340CAA /* ContentViewModel.swift */; };
+		CEDADA4629D81A3D00340CAA /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDADA4529D81A3D00340CAA /* Content.swift */; };
 		CEECA4FD29709E0F00CA4496 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECA4FC29709E0F00CA4496 /* ForgotPasswordView.swift */; };
 		CEECA4FF2974534700CA4496 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECA4FE2974534700CA4496 /* ResetPasswordView.swift */; };
 		CEECA5012974665800CA4496 /* VerifyEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECA5002974665800CA4496 /* VerifyEmailView.swift */; };
@@ -100,24 +114,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4A0B396928D38DE000D7EEC9 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		4A0B396B28D38F0700D7EEC9 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		4A0B396D28D3935900D7EEC9 /* NewWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWaveView.swift; sourceTree = "<group>"; };
-		4A0B396F28D3937100D7EEC9 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
 		4A0B397128D3ABF100D7EEC9 /* SmallFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallFrame.swift; sourceTree = "<group>"; };
 		4A0B397328D6044200D7EEC9 /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		4A0B397628E06E9600D7EEC9 /* SinusUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusUserData.swift; sourceTree = "<group>"; };
 		4A0B397828E081CF00D7EEC9 /* RelationshipStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipStatus.swift; sourceTree = "<group>"; };
-		4A0B397A28E0846900D7EEC9 /* RelationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationStatusView.swift; sourceTree = "<group>"; };
 		4A15E00028C7C91C00422C05 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		4A15E00228C7CD5300422C05 /* UpdateWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWaveView.swift; sourceTree = "<group>"; };
 		4A32751E2977244E009D1CC8 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		4A32752029772762009D1CC8 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		4A32752229772888009D1CC8 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
-		4A327526297729BE009D1CC8 /* HeaderWithSubTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderWithSubTextView.swift; sourceTree = "<group>"; };
-		4A32752829772B0A009D1CC8 /* WaveMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveMenuView.swift; sourceTree = "<group>"; };
+		4A327526297729BE009D1CC8 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		4A32752A29773236009D1CC8 /* CompareButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareButtonView.swift; sourceTree = "<group>"; };
-		4A327546298EA697009D1CC8 /* PreAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreAuthenticationView.swift; sourceTree = "<group>"; };
 		4A32754829AA4088009D1CC8 /* FeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemView.swift; sourceTree = "<group>"; };
 		4A32754A29AFD157009D1CC8 /* WavePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WavePreviewView.swift; sourceTree = "<group>"; };
 		4A32754C29AFD1B3009D1CC8 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
@@ -128,9 +137,26 @@
 		4A32755A29C5B4CE009D1CC8 /* ExternalRestRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalRestRetriever.swift; sourceTree = "<group>"; };
 		4A32755E29C5B83E009D1CC8 /* FeedItemModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemModelTests.swift; sourceTree = "<group>"; };
 		4A32756029C5BFDD009D1CC8 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
+		4A32756229D0344C009D1CC8 /* CompareConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareConfigurationView.swift; sourceTree = "<group>"; };
+		4A32756429D03683009D1CC8 /* CompareConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareConfigurationModel.swift; sourceTree = "<group>"; };
+		4A32756629D04049009D1CC8 /* CompareModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareModel.swift; sourceTree = "<group>"; };
+		4A32756A29D05161009D1CC8 /* LegendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendView.swift; sourceTree = "<group>"; };
+		4A32756D29D05830009D1CC8 /* DeleteWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWaveView.swift; sourceTree = "<group>"; };
+		4A32757529E002F6009D1CC8 /* FollowingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingModel.swift; sourceTree = "<group>"; };
+		4A32757B29E02362009D1CC8 /* WaveUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveUpdate.swift; sourceTree = "<group>"; };
+		4A32757F29E026FF009D1CC8 /* NewWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWaveModel.swift; sourceTree = "<group>"; };
+		4A32758329E029D7009D1CC8 /* DeleteWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteWaveModel.swift; sourceTree = "<group>"; };
+		4A32758629E02E3B009D1CC8 /* AuthenticationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModel.swift; sourceTree = "<group>"; };
+		4A32759029EAA216009D1CC8 /* CropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
+		4A32759229EAA2AA009D1CC8 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		4A32759529EF0FB4009D1CC8 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		4A32759929EF1170009D1CC8 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		4A32759B29EF18E1009D1CC8 /* SearchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemView.swift; sourceTree = "<group>"; };
+		4A32759D2A017753009D1CC8 /* FeedCombinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCombinationView.swift; sourceTree = "<group>"; };
 		4A4C6D022917C2F9001DB4F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4A4C6D052917C30D001DB4F7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		4A4C6D072917CD95001DB4F7 /* AuthenticationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResult.swift; sourceTree = "<group>"; };
+		4A9A523C2A2B36D1000F32BC /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		4AABA28428CFACC500070E6E /* SinusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusUpdate.swift; sourceTree = "<group>"; };
 		4AC34A84296AEBAD0063FA84 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
 		4AC34A87296F1CA30063FA84 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
@@ -146,7 +172,7 @@
 		4AC5B3E2296ADB51003D819C /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		4AC5B3E4296ADE0D003D819C /* TotalUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalUserData.swift; sourceTree = "<group>"; };
 		4AD26FB628BBA5D40065FB01 /* Love waves.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Love waves.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinuSApp.swift; sourceTree = "<group>"; };
+		4AD26FB928BBA5D40065FB01 /* LoveWavesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveWavesApp.swift; sourceTree = "<group>"; };
 		4AD26FBB28BBA5D40065FB01 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4AD26FBD28BBA5D60065FB01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AD26FC028BBA5D60065FB01 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -159,14 +185,15 @@
 		4AD26FD828BBA5D60065FB01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AD26FEA28BBAEA40065FB01 /* SinusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinusData.swift; sourceTree = "<group>"; };
 		4AD26FEC28C676C10065FB01 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
-		4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGatherer.swift; sourceTree = "<group>"; };
+		CE1DD3CE29E454C7009C01A2 /* UpdateWaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateWaveModel.swift; sourceTree = "<group>"; };
 		CE7B525C29BE159500913C3C /* FeedItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemModel.swift; sourceTree = "<group>"; };
 		CE89A8752969F93200300C9D /* ManageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageProfileView.swift; sourceTree = "<group>"; };
 		CE89A879296AF2D300300C9D /* LogHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
 		CE95360B29BCAA3800D9B0D4 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		CE95360D29BCB3F100D9B0D4 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		CE95360F29BCB71600D9B0D4 /* CreatedWavesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedWavesModel.swift; sourceTree = "<group>"; };
 		CEBF7654299818FA00D5E3AF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CEDADA4329D819A400340CAA /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		CEDADA4529D81A3D00340CAA /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		CEECA4FC29709E0F00CA4496 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		CEECA4FE2974534700CA4496 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		CEECA5002974665800CA4496 /* VerifyEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailView.swift; sourceTree = "<group>"; };
@@ -180,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A32753A298AE46A009D1CC8 /* FirebaseAnalytics in Frameworks */,
+				4A32758F29EAA15E009D1CC8 /* PhotoSelectAndCrop in Frameworks */,
 				4A32753C298AE46A009D1CC8 /* FirebaseAuth in Frameworks */,
 				CEB12A25299946C4000D5669 /* Kingfisher in Frameworks */,
 				4A32755629BC8F06009D1CC8 /* Get in Frameworks */,
@@ -219,11 +247,11 @@
 		4A32751C2977204F009D1CC8 /* Wave */ = {
 			isa = PBXGroup;
 			children = (
-				4A327526297729BE009D1CC8 /* HeaderWithSubTextView.swift */,
+				4A32757429E002D2009D1CC8 /* Model */,
+				4A327526297729BE009D1CC8 /* HeaderView.swift */,
 				4A0B397328D6044200D7EEC9 /* WaveView.swift */,
 				4A32751E2977244E009D1CC8 /* ChartView.swift */,
 				4A32752029772762009D1CC8 /* StatisticsView.swift */,
-				4A32752829772B0A009D1CC8 /* WaveMenuView.swift */,
 				4A32752A29773236009D1CC8 /* CompareButtonView.swift */,
 				4A32755029B7BA1E009D1CC8 /* HistoryView.swift */,
 				4A32755229B7BD91009D1CC8 /* HistoryItemView.swift */,
@@ -234,6 +262,8 @@
 		4A32751D2977215F009D1CC8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4A0B396B28D38F0700D7EEC9 /* MenuButton.swift */,
+				4A0B397128D3ABF100D7EEC9 /* SmallFrame.swift */,
 				4A32756029C5BFDD009D1CC8 /* NoDataView.swift */,
 				4A32752229772888009D1CC8 /* TextView.swift */,
 			);
@@ -256,18 +286,185 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
-		4A4C6CFE2917C2A8001DB4F7 /* Authentication */ = {
+		4A32756829D04055009D1CC8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4AC34A84296AEBAD0063FA84 /* CompareView.swift */,
+				4A32756229D0344C009D1CC8 /* CompareConfigurationView.swift */,
+				4A32756A29D05161009D1CC8 /* LegendView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A32756929D04069009D1CC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A32756629D04049009D1CC8 /* CompareModel.swift */,
+				4A32756429D03683009D1CC8 /* CompareConfigurationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A32756C29D05811009D1CC8 /* DeleteWave */ = {
+			isa = PBXGroup;
+			children = (
+				4A32758229E029C4009D1CC8 /* View */,
+				4A32758129E029B7009D1CC8 /* Model */,
+			);
+			path = DeleteWave;
+			sourceTree = "<group>";
+		};
+		4A32756F29E0013B009D1CC8 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4A32757029E0014B009D1CC8 /* View */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		4A32757029E0014B009D1CC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A32758529E02E27009D1CC8 /* Model */,
 				4A4C6D022917C2F9001DB4F7 /* LoginView.swift */,
 				4A4C6D052917C30D001DB4F7 /* RegisterView.swift */,
 				CEECA4FC29709E0F00CA4496 /* ForgotPasswordView.swift */,
 				CEECA4FE2974534700CA4496 /* ResetPasswordView.swift */,
 				CEECA5002974665800CA4496 /* VerifyEmailView.swift */,
 				CEECA50229748DA600CA4496 /* ClickResetPasswordLinkView.swift */,
-				4A327546298EA697009D1CC8 /* PreAuthenticationView.swift */,
 			);
-			path = Authentication;
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A32757129E00173009D1CC8 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				4A32757329E00187009D1CC8 /* Model */,
+				4A32757229E0017F009D1CC8 /* View */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		4A32757229E0017F009D1CC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A32754829AA4088009D1CC8 /* FeedItemView.swift */,
+				4A32759D2A017753009D1CC8 /* FeedCombinationView.swift */,
+				4AC34A8D296F1E8B0063FA84 /* FeedView.swift */,
+				4AC34A8B296F1E400063FA84 /* LoadingView.swift */,
+				4A32754A29AFD157009D1CC8 /* WavePreviewView.swift */,
+				4A32754C29AFD1B3009D1CC8 /* Wave.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A32757329E00187009D1CC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4AC34A87296F1CA30063FA84 /* FeedModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A32757429E002D2009D1CC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE7B525C29BE159500913C3C /* FeedItemModel.swift */,
+				4A32757529E002F6009D1CC8 /* FollowingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A32757729E0223D009D1CC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A15E00228C7CD5300422C05 /* UpdateWaveView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A32757829E02249009D1CC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A32757B29E02362009D1CC8 /* WaveUpdate.swift */,
+				CE1DD3CE29E454C7009C01A2 /* UpdateWaveModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A32757D29E026E7009D1CC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A32757F29E026FF009D1CC8 /* NewWaveModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A32757E29E026EE009D1CC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A0B396D28D3935900D7EEC9 /* NewWaveView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A32758129E029B7009D1CC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A32758329E029D7009D1CC8 /* DeleteWaveModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A32758229E029C4009D1CC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A32756D29D05830009D1CC8 /* DeleteWaveView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A32758529E02E27009D1CC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A32758629E02E3B009D1CC8 /* AuthenticationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A32758929E03027009D1CC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4AC5B3D72969876B003D819C /* CreatedWavesView.swift */,
+				4AC5B3D9296989B0003D819C /* SingleWaveView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A32759429EF0FA2009D1CC8 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				4A32759829EF1159009D1CC8 /* Model */,
+				4A32759729EF1097009D1CC8 /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		4A32759729EF1097009D1CC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A32759529EF0FB4009D1CC8 /* SearchView.swift */,
+				4A32759B29EF18E1009D1CC8 /* SearchItemView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A32759829EF1159009D1CC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A32759929EF1170009D1CC8 /* SearchModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4A4C6D092917CDD5001DB4F7 /* Authentication */ = {
@@ -291,24 +488,11 @@
 			path = SinusData;
 			sourceTree = "<group>";
 		};
-		4A4C6D0B295D9D7A001DB4F7 /* Feed */ = {
-			isa = PBXGroup;
-			children = (
-				4AC34A8D296F1E8B0063FA84 /* FeedView.swift */,
-				4AC34A87296F1CA30063FA84 /* FeedModel.swift */,
-				4AC34A8B296F1E400063FA84 /* LoadingView.swift */,
-				4A32754829AA4088009D1CC8 /* FeedItemView.swift */,
-				CE7B525C29BE159500913C3C /* FeedItemModel.swift */,
-				4A32754A29AFD157009D1CC8 /* WavePreviewView.swift */,
-				4A32754C29AFD1B3009D1CC8 /* Wave.swift */,
-			);
-			path = Feed;
-			sourceTree = "<group>";
-		};
 		4AC34A83296AEB9E0063FA84 /* Compare */ = {
 			isa = PBXGroup;
 			children = (
-				4AC34A84296AEBAD0063FA84 /* CompareView.swift */,
+				4A32756929D04069009D1CC8 /* Model */,
+				4A32756829D04055009D1CC8 /* View */,
 			);
 			path = Compare;
 			sourceTree = "<group>";
@@ -323,6 +507,7 @@
 		4AC5B3D629698752003D819C /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				4A32756C29D05811009D1CC8 /* DeleteWave */,
 				CE7B525329BD15F600913C3C /* CreatedWaves */,
 				CE7B525629BD176F00913C3C /* UpdateWave */,
 				CE7B525729BD17E900913C3C /* ManageProfile */,
@@ -339,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				4AC5B3DE296AD546003D819C /* Style.swift */,
+				4A9A523C2A2B36D1000F32BC /* ButtonStyle.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -366,15 +552,24 @@
 		4AD26FB828BBA5D40065FB01 /* SinuS */ = {
 			isa = PBXGroup;
 			children = (
-				4A32755C29C5B79A009D1CC8 /* Protocols */,
-				CEECA5042974928C00CA4496 /* SinuS.entitlements */,
-				CEBF764D299815F700D5E3AF /* Network */,
-				4AC5B3DD296AD537003D819C /* Style */,
+				4A32759429EF0FA2009D1CC8 /* Search */,
+				4A32756F29E0013B009D1CC8 /* Authentication */,
+				4A32751D2977215F009D1CC8 /* Common */,
+				4AC34A83296AEB9E0063FA84 /* Compare */,
 				4AD26FE928BBAE930065FB01 /* Data */,
-				4AD26FE428BBA8C40065FB01 /* Views */,
-				4AD26FB928BBA5D40065FB01 /* SinuSApp.swift */,
+				4A0B397528D60A8B00D7EEC9 /* Deprecated */,
+				4A32757129E00173009D1CC8 /* Feed */,
+				CEBF764D299815F700D5E3AF /* Network */,
+				4AC5B3D629698752003D819C /* Profile */,
+				4A32755C29C5B79A009D1CC8 /* Protocols */,
+				4AC5B3DD296AD537003D819C /* Style */,
+				4A32751C2977204F009D1CC8 /* Wave */,
+				CEECA5042974928C00CA4496 /* SinuS.entitlements */,
+				4AD26FB928BBA5D40065FB01 /* LoveWavesApp.swift */,
 				4A32754E29B7B68C009D1CC8 /* GoogleService-Info.plist */,
 				4AD26FBB28BBA5D40065FB01 /* ContentView.swift */,
+				CEDADA4329D819A400340CAA /* ContentViewModel.swift */,
+				CEDADA4529D81A3D00340CAA /* Content.swift */,
 				4AD26FBD28BBA5D60065FB01 /* Assets.xcassets */,
 				4AD26FC228BBA5D60065FB01 /* Info.plist */,
 				4AD26FBF28BBA5D60065FB01 /* Preview Content */,
@@ -409,25 +604,6 @@
 			path = SinuSUITests;
 			sourceTree = "<group>";
 		};
-		4AD26FE428BBA8C40065FB01 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4A32751D2977215F009D1CC8 /* Common */,
-				4A32751C2977204F009D1CC8 /* Wave */,
-				4AC34A83296AEB9E0063FA84 /* Compare */,
-				4AC5B3D629698752003D819C /* Profile */,
-				4A4C6D0B295D9D7A001DB4F7 /* Feed */,
-				4A4C6CFE2917C2A8001DB4F7 /* Authentication */,
-				4A0B397528D60A8B00D7EEC9 /* Deprecated */,
-				4A0B396928D38DE000D7EEC9 /* MenuView.swift */,
-				4A0B396B28D38F0700D7EEC9 /* MenuButton.swift */,
-				4A0B396F28D3937100D7EEC9 /* AdminView.swift */,
-				4A0B397128D3ABF100D7EEC9 /* SmallFrame.swift */,
-				4A0B397A28E0846900D7EEC9 /* RelationStatusView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		4AD26FE928BBAE930065FB01 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,7 +611,6 @@
 				CE89A878296AF29E00300C9D /* Log */,
 				4A4C6D0A2917CDE5001DB4F7 /* SinusData */,
 				4A4C6D092917CDD5001DB4F7 /* Authentication */,
-				4AD26FF428C7BFC10065FB01 /* DataGatherer.swift */,
 				4AC5B3D2296849DD003D819C /* RestApiHelper.swift */,
 				4A32755A29C5B4CE009D1CC8 /* ExternalRestRetriever.swift */,
 			);
@@ -445,9 +620,7 @@
 		CE7B525329BD15F600913C3C /* CreatedWaves */ = {
 			isa = PBXGroup;
 			children = (
-				4AC5B3D72969876B003D819C /* CreatedWavesView.swift */,
-				CE95360F29BCB71600D9B0D4 /* CreatedWavesModel.swift */,
-				4AC5B3D9296989B0003D819C /* SingleWaveView.swift */,
+				4A32758929E03027009D1CC8 /* View */,
 			);
 			path = CreatedWaves;
 			sourceTree = "<group>";
@@ -463,7 +636,8 @@
 		CE7B525529BD176400913C3C /* NewWave */ = {
 			isa = PBXGroup;
 			children = (
-				4A0B396D28D3935900D7EEC9 /* NewWaveView.swift */,
+				4A32757E29E026EE009D1CC8 /* View */,
+				4A32757D29E026E7009D1CC8 /* Model */,
 			);
 			path = NewWave;
 			sourceTree = "<group>";
@@ -471,7 +645,8 @@
 		CE7B525629BD176F00913C3C /* UpdateWave */ = {
 			isa = PBXGroup;
 			children = (
-				4A15E00228C7CD5300422C05 /* UpdateWaveView.swift */,
+				4A32757829E02249009D1CC8 /* Model */,
+				4A32757729E0223D009D1CC8 /* View */,
 			);
 			path = UpdateWave;
 			sourceTree = "<group>";
@@ -481,6 +656,8 @@
 			children = (
 				4AC5B3E0296AD6A4003D819C /* EditProfileView.swift */,
 				CE89A8752969F93200300C9D /* ManageProfileView.swift */,
+				4A32759029EAA216009D1CC8 /* CropView.swift */,
+				4A32759229EAA2AA009D1CC8 /* DetailsView.swift */,
 			);
 			path = ManageProfile;
 			sourceTree = "<group>";
@@ -527,6 +704,7 @@
 				4A327541298AE46A009D1CC8 /* FirebaseStorage */,
 				CEB12A24299946C4000D5669 /* Kingfisher */,
 				4A32755529BC8F06009D1CC8 /* Get */,
+				4A32758E29EAA15E009D1CC8 /* PhotoSelectAndCrop */,
 			);
 			productName = SinuS;
 			productReference = 4AD26FB628BBA5D40065FB01 /* Love waves.app */;
@@ -604,6 +782,7 @@
 				4A327538298AE46A009D1CC8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CEB12A23299946C4000D5669 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				4A32755429BC8F06009D1CC8 /* XCRemoteSwiftPackageReference "Get" */,
+				4A32758D29EAA15D009D1CC8 /* XCRemoteSwiftPackageReference "PhotoSelectAndCrop" */,
 			);
 			productRefGroup = 4AD26FB728BBA5D40065FB01 /* Products */;
 			projectDirPath = "";
@@ -670,28 +849,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A9A523D2A2B36D1000F32BC /* ButtonStyle.swift in Sources */,
+				4A32759E2A017753009D1CC8 /* FeedCombinationView.swift in Sources */,
+				4A32758429E029D7009D1CC8 /* DeleteWaveModel.swift in Sources */,
 				CEECA5012974665800CA4496 /* VerifyEmailView.swift in Sources */,
+				4A32757C29E02362009D1CC8 /* WaveUpdate.swift in Sources */,
+				CE1DD3CF29E454C7009C01A2 /* UpdateWaveModel.swift in Sources */,
+				4A32756729D04049009D1CC8 /* CompareModel.swift in Sources */,
+				4A32756E29D05830009D1CC8 /* DeleteWaveView.swift in Sources */,
 				CEECA4FF2974534700CA4496 /* ResetPasswordView.swift in Sources */,
 				4A32752B29773236009D1CC8 /* CompareButtonView.swift in Sources */,
 				4AC5B3E5296ADE0D003D819C /* TotalUserData.swift in Sources */,
 				4AD26FEB28BBAEA40065FB01 /* SinusData.swift in Sources */,
+				4A32759629EF0FB4009D1CC8 /* SearchView.swift in Sources */,
 				4A32752329772888009D1CC8 /* TextView.swift in Sources */,
 				4AC5B3E1296AD6A4003D819C /* EditProfileView.swift in Sources */,
 				4AABA28528CFACC500070E6E /* SinusUpdate.swift in Sources */,
 				4AC34A85296AEBAD0063FA84 /* CompareView.swift in Sources */,
 				4AC34A88296F1CA30063FA84 /* FeedModel.swift in Sources */,
+				4A32758029E026FF009D1CC8 /* NewWaveModel.swift in Sources */,
 				4A15E00328C7CD5300422C05 /* UpdateWaveView.swift in Sources */,
+				4A32758729E02E3B009D1CC8 /* AuthenticationModel.swift in Sources */,
 				4AC5B3D82969876B003D819C /* CreatedWavesView.swift in Sources */,
 				4A32754D29AFD1B3009D1CC8 /* Wave.swift in Sources */,
 				4AC34A8E296F1E8B0063FA84 /* FeedView.swift in Sources */,
+				4A32756329D0344C009D1CC8 /* CompareConfigurationView.swift in Sources */,
 				4AC34A8C296F1E400063FA84 /* LoadingView.swift in Sources */,
-				4AD26FF528C7BFC10065FB01 /* DataGatherer.swift in Sources */,
 				4A32752129772762009D1CC8 /* StatisticsView.swift in Sources */,
 				4AC5B3DC296ACF5A003D819C /* ProfileHeaderView.swift in Sources */,
 				CE89A8762969F93200300C9D /* ManageProfileView.swift in Sources */,
+				4A32756B29D05161009D1CC8 /* LegendView.swift in Sources */,
 				4A32755B29C5B4CE009D1CC8 /* ExternalRestRetriever.swift in Sources */,
 				4A32755929C5B3BA009D1CC8 /* RestRetrievable.swift in Sources */,
-				CE95361029BCB71600D9B0D4 /* CreatedWavesModel.swift in Sources */,
+				4A32756529D03683009D1CC8 /* CompareConfigurationModel.swift in Sources */,
 				4A15E00128C7C91C00422C05 /* ProfileButton.swift in Sources */,
 				4A0B397728E06E9600D7EEC9 /* SinusUserData.swift in Sources */,
 				4AD26FBC28BBA5D40065FB01 /* ContentView.swift in Sources */,
@@ -705,31 +895,33 @@
 				CE7B525D29BE159500913C3C /* FeedItemModel.swift in Sources */,
 				4A32755329B7BD91009D1CC8 /* HistoryItemView.swift in Sources */,
 				4AC5B3D529698525003D819C /* ProfileView.swift in Sources */,
-				4A0B396A28D38DE000D7EEC9 /* MenuView.swift in Sources */,
 				4A4C6D062917C30D001DB4F7 /* RegisterView.swift in Sources */,
-				4A0B397028D3937100D7EEC9 /* AdminView.swift in Sources */,
-				4A327527297729BE009D1CC8 /* HeaderWithSubTextView.swift in Sources */,
+				4A327527297729BE009D1CC8 /* HeaderView.swift in Sources */,
 				4A32751F2977244E009D1CC8 /* ChartView.swift in Sources */,
 				CE89A87A296AF2D300300C9D /* LogHelper.swift in Sources */,
-				4A32752929772B0A009D1CC8 /* WaveMenuView.swift in Sources */,
 				4AC5B3DA296989B0003D819C /* SingleWaveView.swift in Sources */,
 				4A0B396C28D38F0700D7EEC9 /* MenuButton.swift in Sources */,
+				4A32759A29EF1170009D1CC8 /* SearchModel.swift in Sources */,
 				4A32754B29AFD157009D1CC8 /* WavePreviewView.swift in Sources */,
 				4AC5B3DF296AD546003D819C /* Style.swift in Sources */,
+				4A32759129EAA217009D1CC8 /* CropView.swift in Sources */,
 				4A0B397228D3ABF200D7EEC9 /* SmallFrame.swift in Sources */,
 				4A0B397928E081CF00D7EEC9 /* RelationshipStatus.swift in Sources */,
 				4A4C6D082917CD95001DB4F7 /* AuthenticationResult.swift in Sources */,
 				4A4C6D032917C2F9001DB4F7 /* LoginView.swift in Sources */,
+				CEDADA4629D81A3D00340CAA /* Content.swift in Sources */,
 				4A32754929AA4088009D1CC8 /* FeedItemView.swift in Sources */,
-				4A0B397B28E0846900D7EEC9 /* RelationStatusView.swift in Sources */,
-				4A327547298EA697009D1CC8 /* PreAuthenticationView.swift in Sources */,
 				4AC5B3E3296ADB51003D819C /* UserData.swift in Sources */,
-				4AD26FBA28BBA5D40065FB01 /* SinuSApp.swift in Sources */,
+				4AD26FBA28BBA5D40065FB01 /* LoveWavesApp.swift in Sources */,
+				4A32757629E002F6009D1CC8 /* FollowingModel.swift in Sources */,
+				4A32759329EAA2AA009D1CC8 /* DetailsView.swift in Sources */,
 				4AC5B3D3296849DD003D819C /* RestApiHelper.swift in Sources */,
 				CEECA50329748DA600CA4496 /* ClickResetPasswordLinkView.swift in Sources */,
+				CEDADA4429D819A400340CAA /* ContentViewModel.swift in Sources */,
 				4AD26FED28C676C10065FB01 /* LineChart.swift in Sources */,
 				4A0B396E28D3935900D7EEC9 /* NewWaveView.swift in Sources */,
 				CE95360E29BCB3F100D9B0D4 /* Profile.swift in Sources */,
+				4A32759C29EF18E1009D1CC8 /* SearchItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,7 +1009,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -872,7 +1064,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -890,20 +1082,27 @@
 				CODE_SIGN_ENTITLEMENTS = SinuS/SinuS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"SinuS/Preview Content\"";
 				DEVELOPMENT_TEAM = 479GB76B7L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SinuS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Love waves";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.antrum.lovewaves;
 				PRODUCT_NAME = "Love waves";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -915,20 +1114,27 @@
 				CODE_SIGN_ENTITLEMENTS = SinuS/SinuS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"SinuS/Preview Content\"";
 				DEVELOPMENT_TEAM = 479GB76B7L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SinuS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Love waves";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.antrum.lovewaves;
 				PRODUCT_NAME = "Love waves";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1076,6 +1282,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		4A32758D29EAA15D009D1CC8 /* XCRemoteSwiftPackageReference "PhotoSelectAndCrop" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Rillieux/PhotoSelectAndCrop";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		CE6A64E429696C1C00DC47E5 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
@@ -1089,7 +1303,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
+				minimumVersion = 7.7.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1124,6 +1338,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4A32755429BC8F06009D1CC8 /* XCRemoteSwiftPackageReference "Get" */;
 			productName = Get;
+		};
+		4A32758E29EAA15E009D1CC8 /* PhotoSelectAndCrop */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A32758D29EAA15D009D1CC8 /* XCRemoteSwiftPackageReference "PhotoSelectAndCrop" */;
+			productName = PhotoSelectAndCrop;
 		};
 		CE6A64E529696C1C00DC47E5 /* SwiftKeychainWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
